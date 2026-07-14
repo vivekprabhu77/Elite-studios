@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/src/assets/react.svg" />
+  <link rel="preload" as="image" href="/ELITE STUDIOS.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elite Studios | Premium Creative Digital Studio</title>
+  <meta name="description"
+    content="Elite Studios is an award-winning creative digital studio crafting premium brands and world-class digital experiences that help ambitious businesses stand out and grow." />
+  <meta name="keywords"
+    content="Creative Studio, Branding, Website Design, Web Development, UI/UX Design, Motion Graphics, Digital Agency, Elite Studios" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Syne:wght@700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Bebas+Neue&family=Pinyon+Script&family=Allura&family=Monsieur+La+Doulaise&display=swap"
+    rel="stylesheet">
+</head>
+
+<body style="overflow: hidden;"
+  class="bg-[#050505] text-[#f3f4f6] antialiased selection:bg-white selection:text-black overflow-x-hidden">
+  <!-- Static Preloader to prevent flash of content -->
+  <div id="preloader"
+    style="position: fixed; inset: 0; background-color: #050505; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); opacity: 1; pointer-events: auto; transform: scale(1);">
+    <div style="max-width: 320px; width: 100%; padding: 0 24px; text-align: center;">
+      <img src="/ELITE STUDIOS.png" alt="Elite Studios Logo"
+        style="width: 100%; height: auto; object-fit: contain; animation: preloader-reveal 1.5s forwards cubic-bezier(0.16, 1, 0.3, 1);" />
+    </div>
+    <style>
+      @keyframes preloader-reveal {
+        0% {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+
+        25% {
+          opacity: 1;
+        }
+
+        100% {
+          opacity: 1;
+          transform: scale(1.02);
+        }
+      }
+    </style>
+  </div>
+
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>
