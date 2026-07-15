@@ -58,7 +58,7 @@ export default function Navbar() {
               <img
                 src={logo}
                 alt="Elite Studios"
-                className="w-auto object-contain transition-all duration-500 group-hover:scale-[1.01] h-20 sm:h-24 lg:h-[210px]"
+                className="w-auto object-contain transition-all duration-500 group-hover:scale-[1.01] h-24 sm:h-28 lg:h-[210px]"
               />
             </Link>
           </div>
