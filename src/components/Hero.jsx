@@ -13,7 +13,7 @@ export default function Hero() {
     <section
       id="home"
       data-designer-selector=".hero-section-responsive"
-      className="relative min-h-[100svh] flex flex-col justify-end lg:justify-center pt-24 pb-20 px-6 md:px-12 lg:px-16 overflow-hidden bg-[#050505] hero-section-responsive"
+      className="relative min-h-[100svh] lg:min-h-screen flex flex-col justify-start lg:justify-center pt-28 lg:pt-20 pb-20 px-6 md:px-12 lg:px-16 overflow-hidden bg-[#050505] hero-section-responsive"
       style={{
         backgroundImage: `url(${HeroBg})`,
         backgroundSize: 'cover',
