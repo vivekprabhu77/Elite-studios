@@ -1,20 +1,25 @@
 /* Responsive Stylesheet for Elite Studios */
+
+/* Default (all screens) */
+.hero-section-responsive {
+  background-position: center center;
+}
+
 /* Targets Mobile and Tablet screens (under 1024px) */
 @media (max-width: 1023px) {
   .hero-section-responsive {
     /* Shift the background image left so the laptop mockups are visible on mobile */
-    background-position: 65% center !important;
+    background-position: 65% -100px !important;
+    /* -100px is for y axis */
     min-height: 100svh !important;
   }
 
   .hero-overlay-responsive {
     /* Lighter overlay so the hero background image shows through */
-    background: linear-gradient(
-      to right,
-      rgba(5, 5, 5, 0.88) 0%,
-      rgba(5, 5, 5, 0.75) 40%,
-      rgba(5, 5, 5, 0.50) 100%
-    ) !important;
+    background: linear-gradient(to right,
+        rgba(5, 5, 5, 0.88) 0%,
+        rgba(5, 5, 5, 0.75) 40%,
+        rgba(5, 5, 5, 0.50) 100%) !important;
   }
 
   .hero-heading-responsive {
@@ -84,7 +89,7 @@
 @media (max-width: 480px) {
   .hero-section-responsive {
     /* On small phones push image more to the right to show mockups */
-    background-position: 60% center !important;
+    background-position: 60% -80px !important;
   }
 
   .hero-heading-responsive {
@@ -110,10 +115,9 @@
   .services-banner-responsive {
     font-size: 11px !important;
   }
-  
+
   .services-card-responsive {
     padding: 20px !important;
     min-height: 350px !important;
   }
 }
-
