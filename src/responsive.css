@@ -6,26 +6,31 @@
   }
 
   .hero-overlay-responsive {
-    background: linear-gradient(\n      to right,\n      rgba(5, 5, 5, 0.90) 0%,\n      rgba(5, 5, 5, 0.85) 50%,\n      rgba(5, 5, 5, 0.70) 100%\n    ) !important;
+    background: linear-gradient(
+      to bottom,
+      rgba(5, 5, 5, 0.92) 0%,
+      rgba(5, 5, 5, 0.82) 50%,
+      rgba(5, 5, 5, 0.95) 100%
+    ) !important;
   }
 
   .hero-heading-responsive {
-    font-size: 56px !important;
-    line-height: 1.15 !important;
-    margin-bottom: 19px !important;
-    gap: 12px !important;
+    font-size: 46px !important;
+    line-height: 1.1 !important;
+    margin-bottom: 20px !important;
+    gap: 10px !important;
     padding-left: 0px !important;
   }
 
   .hero-description-responsive {
-    font-size: 13px !important;
+    font-size: 13.5px !important;
     line-height: 1.6 !important;
-    margin-bottom: 36px !important;
+    margin-bottom: 28px !important;
     max-width: 100% !important;
   }
 
   .hero-cursive-title {
-    font-size: 44px !important;
+    font-size: 48px !important;
     padding-right: 16px !important;
   }
 
@@ -35,8 +40,8 @@
   }
 
   .services-section-responsive {
-    padding-top: 64px !important;
-    padding-bottom: 64px !important;
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
   }
 
   .services-title-responsive {
@@ -57,7 +62,18 @@
   .services-card-responsive {
     padding: 24px !important;
     height: auto !important;
-    min-height: 480px !important;
+    min-height: 380px !important;
+  }
+}
+
+/* Medium screens / Small tablets (under 768px) */
+@media (max-width: 768px) {
+  .hero-heading-responsive {
+    font-size: 38px !important;
+  }
+
+  .services-title-responsive {
+    font-size: 28px !important;
   }
 }
 
@@ -69,13 +85,19 @@
 
   .hero-description-responsive {
     font-size: 12.5px !important;
+    line-height: 1.5 !important;
   }
 
   .services-title-responsive {
-    font-size: 28px !important;
+    font-size: 24px !important;
   }
 
   .services-banner-responsive {
     font-size: 11px !important;
+  }
+  
+  .services-card-responsive {
+    padding: 20px !important;
+    min-height: 350px !important;
   }
 }

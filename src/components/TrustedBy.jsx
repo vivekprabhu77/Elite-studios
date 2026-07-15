@@ -38,9 +38,9 @@ export default function TrustedBy() {
           {marqueeItems.map((brand, index) => (
             <div
               key={index}
-              className="flex items-center justify-center px-12 md:px-20 text-white/30 hover:text-white/80 transition-colors duration-500 cursor-default"
+              className="flex items-center justify-center px-8 md:px-20 text-white/30 hover:text-white/80 transition-colors duration-500 cursor-default"
             >
-              <span className={`text-base md:text-lg ${brand.style}`}>
+              <span className={`text-base md:text-lg whitespace-nowrap ${brand.style}`}>
                 {brand.name}
               </span>
             </div>
