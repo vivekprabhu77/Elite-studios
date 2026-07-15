@@ -1,28 +1,29 @@
 import React from 'react';
 
-const BRANDS = [
-  { name: 'AURELIA', style: 'font-display tracking-[0.25em] font-light' },
-  { name: 'KRONOS', style: 'font-sans tracking-[0.3em] font-extrabold text-[13px]' },
-  { name: 'VALO STUDIO', style: 'font-creative tracking-[0.1em] font-bold' },
-  { name: 'NEON INC.', style: 'font-mono tracking-[0.15em] font-semibold text-[12px]' },
-  { name: 'SOMA CREATIVE', style: 'font-display tracking-[0.2em] font-medium' },
-  { name: 'VIRTUE CO.', style: 'font-sans tracking-[0.4em] font-light text-[11px]' },
-  { name: 'OMNI GROUP', style: 'font-creative tracking-[0.15em] font-bold' },
-  { name: 'VERVE', style: 'font-display tracking-[0.3em] font-extrabold' }
+const SERVICES = [
+  { name: 'WEBSITE DESIGN & DEVELOPMENT', style: 'font-display tracking-[0.15em] font-bold' },
+  { name: 'PHOTOGRAPHY', style: 'font-sans tracking-[0.3em] font-extrabold text-[13px]' },
+  { name: 'VIDEOGRAPHY', style: 'font-creative tracking-[0.15em] font-bold' },
+  { name: 'GRAPHIC DESIGN', style: 'font-mono tracking-[0.2em] font-semibold text-[12px]' },
+  { name: 'DIGITAL MARKETING', style: 'font-display tracking-[0.2em] font-medium' },
+  { name: 'LIVE STREAMING', style: 'font-sans tracking-[0.3em] font-light text-[12px]' },
+  { name: 'POSTER MAKING', style: 'font-creative tracking-[0.15em] font-bold' },
+  { name: 'VIDEO EDITING', style: 'font-display tracking-[0.25em] font-extrabold' },
+  { name: 'SOCIAL MEDIA HANDLING', style: 'font-sans tracking-[0.2em] font-semibold text-[12px]' }
 ];
 
 export default function TrustedBy() {
   // Double the array to make the marquee loop seamless
-  const marqueeItems = [...BRANDS, ...BRANDS];
+  const marqueeItems = [...SERVICES, ...SERVICES];
 
   return (
     <section className="py-16 border-y border-white/[0.06] bg-[#050505] overflow-hidden relative w-full">
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 mb-6 flex justify-between items-center">
         <span className="text-[10px] uppercase font-bold tracking-widest text-white/40">
-          Selected Clients & Partners
+          Our Services
         </span>
         <span className="text-[10px] uppercase font-bold tracking-widest text-white/40 hidden sm:block">
-          Trusted Globally
+          What We Do
         </span>
       </div>
 
@@ -35,14 +36,16 @@ export default function TrustedBy() {
 
         {/* Scrolling Inner Container */}
         <div className="flex w-max animate-marquee-left">
-          {marqueeItems.map((brand, index) => (
+          {marqueeItems.map((service, index) => (
             <div
               key={index}
-              className="flex items-center justify-center px-8 md:px-20 text-white/30 hover:text-white/80 transition-colors duration-500 cursor-default"
+              className="flex items-center justify-center px-8 md:px-16 text-white/30 hover:text-[#d4b07c] transition-colors duration-500 cursor-default"
             >
-              <span className={`text-base md:text-lg whitespace-nowrap ${brand.style}`}>
-                {brand.name}
+              <span className={`text-sm md:text-base whitespace-nowrap ${service.style}`}>
+                {service.name}
               </span>
+              {/* Gold dot separator */}
+              <span className="ml-8 md:ml-16 w-1 h-1 rounded-full bg-[#d4b07c]/40"></span>
             </div>
           ))}
         </div>
@@ -50,3 +53,4 @@ export default function TrustedBy() {
     </section>
   );
 }
+
