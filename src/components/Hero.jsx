@@ -13,7 +13,7 @@ export default function Hero() {
     <section
       id="home"
       data-designer-selector=".hero-section-responsive"
-      className="relative min-h-screen flex flex-col justify-center pt-20 pb-16 px-6 md:px-12 lg:px-16 overflow-hidden bg-[#050505] hero-section-responsive"
+      className="relative min-h-[100svh] flex flex-col justify-end lg:justify-center pt-24 pb-20 px-6 md:px-12 lg:px-16 overflow-hidden bg-[#050505] hero-section-responsive"
       style={{
         backgroundImage: `url(${HeroBg})`,
         backgroundSize: 'cover',
@@ -60,7 +60,7 @@ export default function Hero() {
           <p
             data-designer-selector=".hero-description-responsive"
             data-designer-file="src/components/Hero.jsx"
-            className="text-sm md:text-base text-gray-400 font-light leading-relaxed mb-16 max-w-lg pl-[22px] sm:pl-[30px] hero-description-responsive"
+            className="text-sm md:text-base text-gray-400 font-light leading-relaxed mb-8 lg:mb-16 max-w-lg pl-[22px] sm:pl-[30px] hero-description-responsive"
           >
             Elite Studios is your digital partner for powerful designs, stunning videos, smart websites, live streaming & complete digital solutions.
           </p>
@@ -105,7 +105,7 @@ export default function Hero() {
           data-designer-file="src/components/Hero.jsx"
           className="font-script text-[48px] md:text-[68px] text-[#d4b07c] leading-none mb-1 select-none pr-8 hero-cursive-title"
         >
-          Digital Future
+          Creativity
         </span>
         <span
           data-designer-selector=".hero-cursive-subtitle"

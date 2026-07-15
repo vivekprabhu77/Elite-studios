@@ -2,36 +2,39 @@
 /* Targets Mobile and Tablet screens (under 1024px) */
 @media (max-width: 1023px) {
   .hero-section-responsive {
-    background-position: center center !important;
+    /* Shift the background image left so the laptop mockups are visible on mobile */
+    background-position: 65% center !important;
+    min-height: 100svh !important;
   }
 
   .hero-overlay-responsive {
+    /* Lighter overlay so the hero background image shows through */
     background: linear-gradient(
-      to bottom,
-      rgba(5, 5, 5, 0.92) 0%,
-      rgba(5, 5, 5, 0.82) 50%,
-      rgba(5, 5, 5, 0.95) 100%
+      to right,
+      rgba(5, 5, 5, 0.88) 0%,
+      rgba(5, 5, 5, 0.75) 40%,
+      rgba(5, 5, 5, 0.50) 100%
     ) !important;
   }
 
   .hero-heading-responsive {
-    font-size: 46px !important;
-    line-height: 1.1 !important;
-    margin-bottom: 20px !important;
-    gap: 10px !important;
+    font-size: 52px !important;
+    line-height: 1.05 !important;
+    margin-bottom: 16px !important;
+    gap: 12px !important;
     padding-left: 0px !important;
   }
 
   .hero-description-responsive {
-    font-size: 13.5px !important;
+    font-size: 14px !important;
     line-height: 1.6 !important;
-    margin-bottom: 28px !important;
+    margin-bottom: 24px !important;
     max-width: 100% !important;
   }
 
   .hero-cursive-title {
-    font-size: 48px !important;
-    padding-right: 16px !important;
+    font-size: 42px !important;
+    padding-right: 12px !important;
   }
 
   .hero-cursive-subtitle {
@@ -54,7 +57,7 @@
     margin-top: 12px !important;
     white-space: normal !important;
     max-width: 100% !important;
-    text-align: center !important;
+    text-align: left !important;
     display: inline-block !important;
     line-height: 1.4 !important;
   }
@@ -69,7 +72,7 @@
 /* Medium screens / Small tablets (under 768px) */
 @media (max-width: 768px) {
   .hero-heading-responsive {
-    font-size: 38px !important;
+    font-size: 48px !important;
   }
 
   .services-title-responsive {
@@ -79,13 +82,25 @@
 
 /* Extra small mobile screens (under 480px) */
 @media (max-width: 480px) {
+  .hero-section-responsive {
+    /* On small phones push image more to the right to show mockups */
+    background-position: 60% center !important;
+  }
+
   .hero-heading-responsive {
-    font-size: 32px !important;
+    font-size: 42px !important;
+    line-height: 1.0 !important;
+    gap: 10px !important;
   }
 
   .hero-description-responsive {
-    font-size: 12.5px !important;
-    line-height: 1.5 !important;
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 20px !important;
+  }
+
+  .hero-cursive-title {
+    font-size: 36px !important;
   }
 
   .services-title-responsive {
@@ -101,3 +116,4 @@
     min-height: 350px !important;
   }
 }
+
