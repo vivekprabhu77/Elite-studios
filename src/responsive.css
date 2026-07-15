@@ -1,0 +1,102 @@
+/* Responsive Stylesheet for Elite Studios */
+/* Targets Mobile and Tablet screens (under 1024px) */
+@media (max-width: 1023px) {
+  
+  /* ==========================================================================
+     Hero Section Responsiveness
+     ========================================================================== */
+  
+  .hero-section-responsive {
+    /* Correct the image position to be centered so the mockups (storytellers) are fully visible */
+    background-position: center center !important;
+  }
+
+  .hero-overlay-responsive {
+    /* Use a premium left-to-right dark gradient overlay.
+       Denser on the left (90%) for text legibility, and slightly lighter on the right (70%)
+       so the glowing laptop/monitor screens (main storytellers) are beautifully visible. */
+    background: linear-gradient(
+      to right,
+      rgba(5, 5, 5, 0.90) 0%,
+      rgba(5, 5, 5, 0.85) 50%,
+      rgba(5, 5, 5, 0.70) 100%
+    ) !important;
+  }
+
+  .hero-heading-responsive {
+    font-size: 38px !important;
+    line-height: 1.0 !important;
+    margin-bottom: 20px !important;
+    gap: 12px !important;
+  }
+
+  .hero-heading-responsive span.inline-block {
+    width: 5px !important;
+  }
+
+  .hero-description-responsive {
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 36px !important;
+    max-width: 100% !important;
+  }
+
+  .hero-cursive-title {
+    font-size: 44px !important;
+    padding-right: 16px !important;
+  }
+
+  .hero-cursive-subtitle {
+    font-size: 8px !important;
+    letter-spacing: 0.25em !important;
+  }
+
+  /* ==========================================================================
+     Services Section Responsiveness
+     ========================================================================== */
+
+  .services-section-responsive {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+
+  .services-title-responsive {
+    font-size: 32px !important;
+  }
+
+  .services-banner-responsive {
+    font-size: 13px !important;
+    padding: 6px 12px !important;
+    margin-top: 12px !important;
+    white-space: normal !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    display: inline-block !important;
+    line-height: 1.4 !important;
+  }
+
+  .services-card-responsive {
+    padding: 24px !important;
+    height: auto !important; /* Allow card height to adapt naturally if content wraps */
+    min-height: 480px !important;
+  }
+}
+
+/* Extra small mobile screens (under 480px) */
+@media (max-width: 480px) {
+  .hero-heading-responsive {
+    font-size: 32px !important;
+  }
+
+  .hero-description-responsive {
+    font-size: 12.5px !important;
+  }
+
+  .services-title-responsive {
+    font-size: 28px !important;
+  }
+
+  .services-banner-responsive {
+    font-size: 11px !important;
+  }
+}

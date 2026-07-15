@@ -336,7 +336,7 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="py-32 px-6 md:px-12 lg:px-16 bg-[#050505] relative overflow-hidden">
+    <section id="services" className="py-32 px-6 md:px-12 lg:px-16 bg-[#050505] relative overflow-hidden services-section-responsive">
       {/* Background Spotlight */}
       <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] bg-white/[0.01] rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -348,13 +348,13 @@ export default function Services() {
               Capabilities
             </span>
             <h2 className="text-white tracking-tight leading-[1.2] font-creative">
-              <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold block">
+              <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold block services-title-responsive">
                 WE DEFINE
               </span>
-              <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold block">
+              <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold block services-title-responsive">
                 THE FUTURE OF
               </span>
-              <span className="inline-block bg-[#E4B028] text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold px-3 py-1.5 md:px-5 md:py-2.5 mt-4 select-none">
+              <span className="inline-block bg-[#E4B028] text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold px-3 py-1.5 md:px-5 md:py-2.5 mt-4 select-none services-banner-responsive">
                 CREATIVE DIGITAL EXPERIENCES
               </span>
             </h2>
@@ -374,7 +374,7 @@ export default function Services() {
               <div
                 key={service.num}
                 onMouseMove={handleMouseMove}
-                className="card-glow flex flex-col justify-between p-8 md:p-10 border border-white/5 bg-[#0b0b0b] hover:bg-[#0f0f0f] hover:border-[#d4b07c]/20 transition-all duration-500 rounded-none h-[500px] group text-left reveal"
+                className="card-glow flex flex-col justify-between p-8 md:p-10 border border-white/5 bg-[#0b0b0b] hover:bg-[#0f0f0f] hover:border-[#d4b07c]/20 transition-all duration-500 rounded-none h-[500px] group text-left reveal services-card-responsive"
                 style={{ transitionDelay: `${index * 0.05}s` }}
               >
                 <div>

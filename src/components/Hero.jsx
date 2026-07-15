@@ -12,7 +12,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col justify-center pt-20 pb-16 px-6 md:px-12 lg:px-16 overflow-hidden bg-[#050505]"
+      className="relative min-h-screen flex flex-col justify-center pt-20 pb-16 px-6 md:px-12 lg:px-16 overflow-hidden bg-[#050505] hero-section-responsive"
       style={{
         backgroundImage: `url(${HeroBg})`,
         backgroundSize: 'cover',
@@ -21,7 +21,7 @@ export default function Hero() {
       }}
     >
       {/* Dark gradient overlay to blend image to the left and provide readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/75 to-transparent pointer-events-none z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/75 to-transparent pointer-events-none z-0 hero-overlay-responsive"></div>
 
       <div className="max-w-[1600px] mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center h-full">
         {/* Left Text Column */}
@@ -36,7 +36,7 @@ export default function Hero() {
           </span>
 
           {/* Heading with vertical bar */}
-          <h1 className="text-[48px] sm:text-[68px] md:text-[84px] lg:text-[90px] xl:text-[96px] font-extrabold font-display leading-[0.95] tracking-tight text-white uppercase mb-6 flex items-stretch gap-4 sm:gap-6">
+          <h1 className="text-[48px] sm:text-[68px] md:text-[84px] lg:text-[90px] xl:text-[96px] font-extrabold font-display leading-[0.95] tracking-tight text-white uppercase mb-6 flex items-stretch gap-4 sm:gap-6 hero-heading-responsive">
             <span className="inline-block w-[6px] sm:w-[8px] bg-[#d4b07c] self-stretch"></span>
             <span className="flex flex-col justify-center">
               <span>DIGITAL</span>
@@ -50,7 +50,7 @@ export default function Hero() {
           </div>
 
           {/* Description */}
-          <p className="text-sm md:text-base text-gray-400 font-light leading-relaxed mb-16 max-w-lg pl-[22px] sm:pl-[30px]">
+          <p className="text-sm md:text-base text-gray-400 font-light leading-relaxed mb-16 max-w-lg pl-[22px] sm:pl-[30px] hero-description-responsive">
             Elite Studios is your digital partner for powerful designs, stunning videos, smart websites, live streaming & complete digital solutions.
           </p>
 
@@ -91,10 +91,10 @@ export default function Hero() {
           isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
       >
-        <span className="font-script text-[48px] md:text-[68px] text-[#d4b07c] leading-none mb-1 select-none pr-8">
+        <span className="font-script text-[48px] md:text-[68px] text-[#d4b07c] leading-none mb-1 select-none pr-8 hero-cursive-title">
           Creativity
         </span>
-        <span className="text-[9px] md:text-[10px] font-bold tracking-[0.3em] text-white uppercase whitespace-nowrap">
+        <span className="text-[9px] md:text-[10px] font-bold tracking-[0.3em] text-white uppercase whitespace-nowrap hero-cursive-subtitle">
           CAN MAKE MAN CREATIVE
         </span>
       </div>
