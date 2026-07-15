@@ -53,12 +53,12 @@ export default function Navbar() {
       >
         <div className="max-w-[1600px] mx-auto flex items-center justify-between w-full relative h-16">
           {/* Logo */}
-          <div className="absolute left-0 -top-12 md:-top-[68px] z-50">
+          <div className="absolute left-0 -top-8 sm:-top-12 md:-top-[68px] z-50">
             <Link to="/" className="flex items-center group">
               <img
                 src={logo}
                 alt="Elite Studios"
-                className="w-auto object-contain transition-all duration-500 group-hover:scale-[1.01] h-36 md:h-[210px]"
+                className="w-auto object-contain transition-all duration-500 group-hover:scale-[1.01] h-28 sm:h-36 md:h-[210px]"
               />
             </Link>
           </div>

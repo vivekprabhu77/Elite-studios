@@ -1,37 +1,20 @@
 /* Responsive Stylesheet for Elite Studios */
 /* Targets Mobile and Tablet screens (under 1024px) */
 @media (max-width: 1023px) {
-  
-  /* ==========================================================================
-     Hero Section Responsiveness
-     ========================================================================== */
-  
   .hero-section-responsive {
-    /* Correct the image position to be centered so the mockups (storytellers) are fully visible */
     background-position: center center !important;
   }
 
   .hero-overlay-responsive {
-    /* Use a premium left-to-right dark gradient overlay.
-       Denser on the left (90%) for text legibility, and slightly lighter on the right (70%)
-       so the glowing laptop/monitor screens (main storytellers) are beautifully visible. */
-    background: linear-gradient(
-      to right,
-      rgba(5, 5, 5, 0.90) 0%,
-      rgba(5, 5, 5, 0.85) 50%,
-      rgba(5, 5, 5, 0.70) 100%
-    ) !important;
+    background: linear-gradient(\n      to right,\n      rgba(5, 5, 5, 0.90) 0%,\n      rgba(5, 5, 5, 0.85) 50%,\n      rgba(5, 5, 5, 0.70) 100%\n    ) !important;
   }
 
   .hero-heading-responsive {
-    font-size: 38px !important;
-    line-height: 1.0 !important;
-    margin-bottom: 20px !important;
+    font-size: 56px !important;
+    line-height: 1.15 !important;
+    margin-bottom: 19px !important;
     gap: 12px !important;
-  }
-
-  .hero-heading-responsive span.inline-block {
-    width: 5px !important;
+    padding-left: 0px !important;
   }
 
   .hero-description-responsive {
@@ -50,10 +33,6 @@
     font-size: 8px !important;
     letter-spacing: 0.25em !important;
   }
-
-  /* ==========================================================================
-     Services Section Responsiveness
-     ========================================================================== */
 
   .services-section-responsive {
     padding-top: 64px !important;
@@ -77,7 +56,7 @@
 
   .services-card-responsive {
     padding: 24px !important;
-    height: auto !important; /* Allow card height to adapt naturally if content wraps */
+    height: auto !important;
     min-height: 480px !important;
   }
 }

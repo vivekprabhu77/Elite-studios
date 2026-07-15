@@ -22,19 +22,19 @@ const InstagramLogo = () => (
 
 const YoutubeLogo = () => (
   <svg className="w-5 h-5 text-red-500 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+    <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
   </svg>
 );
 
 const LinkedinLogo = () => (
   <svg className="w-5 h-5 text-blue-400 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
   </svg>
 );
 
 const FacebookLogo = () => (
   <svg className="w-5 h-5 text-blue-600 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
   </svg>
 );
 
@@ -336,7 +336,7 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="py-32 px-6 md:px-12 lg:px-16 bg-[#050505] relative overflow-hidden services-section-responsive">
+    <section id="services" data-designer-selector=".services-section-responsive" className="py-32 px-6 md:px-12 lg:px-16 bg-[#050505] relative overflow-hidden services-section-responsive">
       {/* Background Spotlight */}
       <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] bg-white/[0.01] rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -348,13 +348,25 @@ export default function Services() {
               Capabilities
             </span>
             <h2 className="text-white tracking-tight leading-[1.2] font-creative">
-              <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold block services-title-responsive">
+              <span
+                data-designer-selector=".services-title-responsive"
+                data-designer-file="src/components/Services.jsx"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold block services-title-responsive"
+              >
                 WE DEFINE
               </span>
-              <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold block services-title-responsive">
+              <span
+                data-designer-selector=".services-title-responsive"
+                data-designer-file="src/components/Services.jsx"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold block services-title-responsive"
+              >
                 THE FUTURE OF
               </span>
-              <span className="inline-block bg-[#E4B028] text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold px-3 py-1.5 md:px-5 md:py-2.5 mt-4 select-none services-banner-responsive">
+              <span
+                data-designer-selector=".services-banner-responsive"
+                data-designer-file="src/components/Services.jsx"
+                className="inline-block bg-[#E4B028] text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold px-3 py-1.5 md:px-5 md:py-2.5 mt-4 select-none services-banner-responsive"
+              >
                 CREATIVE DIGITAL EXPERIENCES
               </span>
             </h2>
@@ -374,6 +386,7 @@ export default function Services() {
               <div
                 key={service.num}
                 onMouseMove={handleMouseMove}
+                data-designer-selector=".services-card-responsive"
                 className="card-glow flex flex-col justify-between p-8 md:p-10 border border-white/5 bg-[#0b0b0b] hover:bg-[#0f0f0f] hover:border-[#d4b07c]/20 transition-all duration-500 rounded-none h-[500px] group text-left reveal services-card-responsive"
                 style={{ transitionDelay: `${index * 0.05}s` }}
               >

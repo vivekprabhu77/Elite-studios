@@ -118,6 +118,8 @@ export default function App() {
 
       {/* Structured Footer */}
       <Footer />
+
+
     </div>
   );
 }
