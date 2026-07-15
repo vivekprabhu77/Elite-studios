@@ -342,7 +342,7 @@ export default function Services() {
 
       <div className="max-w-[1600px] mx-auto w-full">
         {/* Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-24 reveal">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12 lg:mb-24 reveal">
           <div className="lg:col-span-8 text-left">
             <span className="text-xs uppercase tracking-widest text-[#d4b07c] font-bold block mb-4 font-display">
               Capabilities

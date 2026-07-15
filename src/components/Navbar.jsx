@@ -53,7 +53,7 @@ export default function Navbar() {
       >
         <div className="max-w-[1600px] mx-auto flex items-center justify-between w-full relative h-16">
           {/* Logo */}
-          <div className="absolute left-0 -top-6 sm:-top-8 lg:-top-[68px] z-50">
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 lg:top-auto lg:translate-y-0 lg:-top-[68px] z-50">
             <Link to="/" className="flex items-center group">
               <img
                 src={logo}
