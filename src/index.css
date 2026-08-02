@@ -19,8 +19,8 @@
   --color-border-light: rgba(255, 255, 255, 0.1);
   --color-border-hover: rgba(255, 255, 255, 0.25);
   
-  --animate-marquee-left: marquee-left 30s linear infinite;
-  --animate-marquee-right: marquee-right 30s linear infinite;
+  --animate-marquee-left: marquee-left 55s linear infinite;
+  --animate-marquee-right: marquee-right 55s linear infinite;
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 
