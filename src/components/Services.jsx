@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Globe,
   Camera,
@@ -433,13 +434,13 @@ export default function Services() {
 
         {/* View All Button */}
         <div className="mt-16 text-center reveal">
-          <a
-            href="#contact"
+          <Link
+            to="/work"
             className="inline-flex items-center gap-3 px-8 py-4 text-xs font-bold uppercase tracking-widest border border-white/10 hover:border-[#d4b07c] text-white hover:text-[#d4b07c] transition-all duration-500 group"
           >
             <span>Explore All Capabilities</span>
             <ArrowUpRight className="w-4 h-4 text-white/50 group-hover:text-[#d4b07c] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

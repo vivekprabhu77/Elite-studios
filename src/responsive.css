@@ -1,16 +1,20 @@
 /* Responsive Stylesheet for Elite Studios */
 
 /* Default (all screens) */
-.hero-section-responsive {
+.hero-section-responsive,
+.hero-bg-image {
   background-position: center center;
 }
 
 /* Targets Mobile and Tablet screens (under 1024px) */
 @media (max-width: 1023px) {
-  .hero-section-responsive {
+  .hero-section-responsive,
+  .hero-bg-image {
     /* Shift the background image left so the laptop mockups are visible on mobile */
     background-position: 65% -100px !important;
     /* -100px is for y axis */
+  }
+  .hero-section-responsive {
     min-height: 100svh !important;
   }
 
@@ -33,8 +37,13 @@
   .hero-description-responsive {
     font-size: 14px !important;
     line-height: 1.6 !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 40px !important;
     max-width: 100% !important;
+  }
+
+  .hero-btn-responsive {
+    /* Adjust values to move button: transform: translate(X-axis, Y-axis) */
+    transform: translate(-5px, 30px) !important;
   }
 
   .hero-cursive-title {
@@ -87,7 +96,8 @@
 
 /* Extra small mobile screens (under 480px) */
 @media (max-width: 480px) {
-  .hero-section-responsive {
+  .hero-section-responsive,
+  .hero-bg-image {
     /* On small phones push image more to the right to show mockups */
     background-position: 60% -80px !important;
   }
@@ -102,6 +112,11 @@
     font-size: 13px !important;
     line-height: 1.55 !important;
     margin-bottom: 20px !important;
+  }
+
+  .hero-btn-responsive {
+    /* Adjust values to move button: transform: translate(X-axis, Y-axis) */
+    transform: translate(0px, 0px) !important;
   }
 
   .hero-cursive-title {

@@ -1,12 +1,254 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import HeroBg from '../assets/Hero_bg.png';
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const canvasRef = useRef(null);
 
   useEffect(() => {
     setIsLoaded(true);
+  }, []);
+
+  // Golden Particle Ribbon Animation Effect
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    
+    let animationFrameId;
+    let width = canvas.offsetWidth;
+    let height = canvas.offsetHeight;
+    
+    const resize = () => {
+      width = canvas.offsetWidth;
+      height = canvas.offsetHeight;
+      canvas.width = width * window.devicePixelRatio;
+      canvas.height = height * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    };
+    
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Initialize ambient background starfield particles (60 particles)
+    const ambientParticles = [];
+    const particleCount = 60;
+    for (let k = 0; k < particleCount; k++) {
+      ambientParticles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        size: 0.5 + Math.random() * 1.5, // 0.5 to 2.0px radius
+        speedX: (Math.random() * 0.25) - 0.125, // range [-0.125, 0.125]
+        speedY: (Math.random() * 0.25) - 0.125, // range [-0.125, 0.125]
+        alpha: 0.15 + Math.random() * 0.45 // range [0.15, 0.60]
+      });
+    }
+
+    const V_steps = 28;
+    let t = 0; // Time step incremented by 16ms per frame
+
+    const render = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      const U_steps = width > 768 ? 130 : 80;
+
+      // ----------------------------------------------------
+      // PASS A: Ambient Radial Glow (Background Layer)
+      // ----------------------------------------------------
+      const glowX = 0.60 * width;
+      const glowY = 0.45 * height;
+      const glowR = 0.45 * width;
+      const glowGrad = ctx.createRadialGradient(glowX, glowY, 0, glowX, glowY, glowR);
+      glowGrad.addColorStop(0, 'rgba(245, 197, 66, 0.18)');
+      glowGrad.addColorStop(0.35, 'rgba(212, 175, 55, 0.08)');
+      glowGrad.addColorStop(0.7, 'rgba(154, 123, 28, 0.02)');
+      glowGrad.addColorStop(1, 'rgba(5, 5, 5, 0)');
+      ctx.fillStyle = glowGrad;
+      ctx.fillRect(0, 0, width, height);
+
+      // ----------------------------------------------------
+      // PASS B: Drifting Ambient Dust
+      // ----------------------------------------------------
+      ambientParticles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        // Wrap around screen borders
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(245, 197, 66, ${p.alpha})`;
+        ctx.fill();
+      });
+
+      // ----------------------------------------------------
+      // Compute Coordinates Grid (U, V mapping)
+      // ----------------------------------------------------
+      const pointsGrid = [];
+
+      for (let i = 0; i <= U_steps; i++) {
+        const u = i / U_steps;
+        
+        // Ribbon Backbone Curve (Shifted leftwards from 0.95 to 0.83)
+        const pathX = width * (0.83 - 0.38 * Math.sin(0.95 * u * Math.PI));
+        const pathY = height * (-0.05 + 1.1 * u);
+
+        // Ribbon Envelope
+        const widthRibbon = 160 * Math.sin(u * Math.PI) + 50;
+        const thetaTwist = 2.2 * u * Math.PI + 0.0004 * t;
+
+        pointsGrid[i] = [];
+
+        for (let j = 0; j <= V_steps; j++) {
+          const v = (j / V_steps) - 0.5;
+
+          // Z-depth wave undulation
+          const zWave = 22 * Math.sin(6.0 * u + 3.0 * v + 0.0008 * t);
+
+          // Offsets
+          const offsetX = (v * widthRibbon) * Math.cos(thetaTwist + 1.2 * v) + zWave;
+          const offsetY = (0.45 * v * widthRibbon) * Math.sin(thetaTwist + 1.2 * v) + 18 * Math.cos(5.0 * u + 0.0006 * t);
+
+          // Final coordinate projection
+          const px = pathX + offsetX;
+          const py = pathY + offsetY;
+
+          // Node alpha
+          const alphaNode = Math.sin(u * Math.PI) * (0.65 - 0.5 * Math.abs(v));
+          
+          // Perspective Node Size
+          const sizeNode = Math.max(0.5, 0.7 + (zWave + 25) * 0.035);
+
+          pointsGrid[i][j] = {
+            x: px,
+            y: py,
+            alpha: alphaNode,
+            size: sizeNode
+          };
+        }
+      }
+
+      // ----------------------------------------------------
+      // PASS C: Transverse Ribbon Strip Lines (across width)
+      // ----------------------------------------------------
+      for (let i = 0; i <= U_steps; i += 2) {
+        for (let j = 0; j < V_steps; j++) {
+          const pt1 = pointsGrid[i][j];
+          const pt2 = pointsGrid[i][j + 1];
+          const avgAlpha = (pt1.alpha + pt2.alpha) / 2;
+          if (avgAlpha > 0.02) {
+            const lineAlpha = 0.22 * avgAlpha;
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(245, 197, 66, ${lineAlpha})`;
+            ctx.lineWidth = 0.75;
+            ctx.moveTo(pt1.x, pt1.y);
+            ctx.lineTo(pt2.x, pt2.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // ----------------------------------------------------
+      // PASS D: Longitudinal Flow Wave Lines (down length)
+      // ----------------------------------------------------
+      for (let j = 0; j <= V_steps; j += 3) {
+        for (let i = 0; i < U_steps; i++) {
+          const pt1 = pointsGrid[i][j];
+          const pt2 = pointsGrid[i + 1][j];
+          const avgAlpha = (pt1.alpha + pt2.alpha) / 2;
+          if (avgAlpha > 0.02) {
+            const lineAlpha = 0.28 * avgAlpha;
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(212, 175, 55, ${lineAlpha})`;
+            ctx.lineWidth = 0.85;
+            ctx.moveTo(pt1.x, pt1.y);
+            ctx.lineTo(pt2.x, pt2.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // ----------------------------------------------------
+      // PASS E: Grid Intersection Dot Matrix Particles
+      // ----------------------------------------------------
+      for (let i = 0; i <= U_steps; i++) {
+        for (let j = 0; j <= V_steps; j++) {
+          const pt = pointsGrid[i][j];
+          if (pt.alpha > 0.02) {
+            ctx.beginPath();
+            ctx.arc(pt.x, pt.y, pt.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(245, 197, 66, ${pt.alpha})`;
+            ctx.fill();
+          }
+        }
+      }
+
+      // ----------------------------------------------------
+      // PASS F: Floating Specular Accent Spheres (Metallic Beads)
+      // ----------------------------------------------------
+      const uRatios = [0.22, 0.45, 0.65, 0.82, 0.92];
+      const vOffsets = [-12, 15, -20, 18, -10];
+      const radii = [5, 6, 4, 5, 3];
+
+      uRatios.forEach((uRatio, idx) => {
+        const iVal = Math.floor(uRatio * U_steps);
+        const pt = pointsGrid[iVal][14]; // Center spine (j = 14)
+        if (!pt) return;
+
+        const Bx = pt.x + vOffsets[idx];
+        const By = pt.y + 4 * Math.sin(0.001 * t + 10 * uRatio);
+        const r = radii[idx];
+
+        // Sphere Outer Glow
+        const nodeGlow = ctx.createRadialGradient(Bx, By, 0, Bx, By, 1.6 * r);
+        nodeGlow.addColorStop(0, 'rgba(245, 197, 66, 0.2)');
+        nodeGlow.addColorStop(1, 'rgba(245, 197, 66, 0)');
+        ctx.beginPath();
+        ctx.arc(Bx, By, 1.6 * r, 0, Math.PI * 2);
+        ctx.fillStyle = nodeGlow;
+        ctx.fill();
+
+        // 2D Specular Radial Gradient core
+        const specGrad = ctx.createRadialGradient(
+          Bx - 0.35 * r, By - 0.35 * r, 0.05 * r,
+          Bx, By, r
+        );
+        specGrad.addColorStop(0, '#FFFFFF');
+        specGrad.addColorStop(0.3, '#FFEFA6');
+        specGrad.addColorStop(0.7, '#F5C542');
+        specGrad.addColorStop(1, '#8C6C0F');
+
+        ctx.beginPath();
+        ctx.arc(Bx, By, r, 0, Math.PI * 2);
+        ctx.fillStyle = specGrad;
+        ctx.fill();
+      });
+
+      // ----------------------------------------------------
+      // PASS G: Screen Edge Blending Vignette (Left Side Fade)
+      // ----------------------------------------------------
+      const vignetteGrad = ctx.createLinearGradient(0, 0, 0.28 * width, 0);
+      vignetteGrad.addColorStop(0, '#050505');
+      vignetteGrad.addColorStop(0.6, 'rgba(5, 5, 5, 0.6)');
+      vignetteGrad.addColorStop(1, 'rgba(5, 5, 5, 0)');
+      ctx.fillStyle = vignetteGrad;
+      ctx.fillRect(0, 0, 0.28 * width, height);
+
+      t += 16; // Increment by 16ms per frame
+      animationFrameId = requestAnimationFrame(render);
+    };
+    
+    render();
+
+    return () => {
+      window.removeEventListener('resize', resize);
+      cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   return (
@@ -14,12 +256,15 @@ export default function Hero() {
       id="home"
       data-designer-selector=".hero-section-responsive"
       className="relative min-h-[100svh] lg:min-h-screen flex flex-col justify-start lg:justify-center pt-40 lg:pt-20 pb-20 px-6 md:px-12 lg:px-16 overflow-hidden bg-[#050505] hero-section-responsive"
-      style={{
-        backgroundImage: `url(${HeroBg})`,
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-      }}
     >
+      {/* Background Image Container with reduced opacity */}
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-no-repeat opacity-20 hero-bg-image"
+        style={{
+          backgroundImage: `url(${HeroBg})`,
+        }}
+      ></div>
+
       {/* Dark gradient overlay to blend image to the left and provide readability */}
       <div
         data-designer-selector=".hero-overlay-responsive"
@@ -68,7 +313,7 @@ export default function Hero() {
           <div className="flex pl-[22px] sm:pl-[30px]">
             <Link
               to="/work"
-              className="group inline-flex items-center border border-[#d4b07c] text-[#d4b07c] hover:bg-[#d4b07c] hover:text-black transition-all duration-300 rounded-sm"
+              className="group inline-flex items-center border border-[#d4b07c] text-[#d4b07c] hover:bg-[#d4b07c] hover:text-black transition-all duration-300 rounded-sm hero-btn-responsive"
             >
               <span className="text-[10px] md:text-[11px] font-bold tracking-[0.25em] uppercase px-7 md:px-9 py-3.5 md:py-4">
                 EXPLORE OUR SERVICES &gt;
@@ -77,8 +322,10 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right Empty Column to display mockup */}
-        <div className="lg:col-span-5 hidden lg:block"></div>
+        {/* Right Column: Canvas Container */}
+        <div className="lg:col-span-5 hidden lg:block relative w-full h-[550px]">
+          <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />
+        </div>
       </div>
 
       {/* Scroll Down Indicator — bottom center */}

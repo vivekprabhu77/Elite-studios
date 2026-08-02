@@ -1,8 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import footerLogo from '../assets/ELITE STUDIOS.png';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+
+  const navItems = [
+    { label: 'Home', to: '/' },
+    { label: 'Services', to: '/#services' },
+    { label: 'Work', to: '/work' },
+    { label: 'About', to: '/about' },
+    { label: 'Contact', to: '/contact' }
+  ];
 
   return (
     <footer className="bg-[#050505] text-gray-400 py-20 px-6 md:px-12 border-t border-white/[0.04] relative z-10 overflow-hidden">
@@ -15,11 +24,13 @@ export default function Footer() {
 
           {/* Logo & Pitch */}
           <div className="lg:col-span-5 flex flex-col items-start text-left">
-            <img
-              src={footerLogo}
-              alt="Elite Studios Logo"
-              className="h-35 w-auto object-contain mb-6 select-none pointer-events-none"
-            />
+            <Link to="/">
+              <img
+                src={footerLogo}
+                alt="Elite Studios Logo"
+                className="h-35 w-auto object-contain mb-6 select-none pointer-events-none"
+              />
+            </Link>
             <p className="text-xs text-gray-400 font-light leading-relaxed max-w-sm">
               We design and engineer digital interfaces that demand attention. Crafting luxury minimalism, bespoke branding, and high-performance React frontends.
             </p>
@@ -31,14 +42,14 @@ export default function Footer() {
               Navigation
             </h4>
             <div className="flex flex-col gap-3 text-xs">
-              {['Home', 'Services', 'Work', 'About', 'Contact'].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
+              {navItems.map((item) => (
+                <Link
+                  key={item.label}
+                  to={item.to}
                   className="hover:text-[#d4b07c] transition-colors duration-300 tracking-wider uppercase text-[10px] font-bold"
                 >
-                  {item}
-                </a>
+                  {item.label}
+                </Link>
               ))}
             </div>
           </div>
