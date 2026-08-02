@@ -20,13 +20,13 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-32 px-6 md:px-12 bg-[#050505] relative overflow-hidden border-b border-white/[0.04]">
+    <section id="testimonials" className="py-12 md:py-16 px-6 md:px-12 bg-[#050505] relative overflow-hidden border-b border-white/[0.04]">
       {/* Background Spotlight */}
       <div className="absolute top-[30%] right-[-10%] w-[500px] h-[500px] bg-[#d4b07c]/[0.005] rounded-full blur-[110px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
-        <div className="mb-24 text-center reveal">
+        <div className="mb-10 md:mb-12 text-center reveal">
           <span className="text-xs uppercase tracking-widest text-[#d4b07c] font-bold block mb-4 font-display">
             Endorsements
           </span>
