@@ -52,7 +52,7 @@ function CountUp({ value, suffix, duration = 2000 }) {
 
 export default function WhyUs() {
   return (
-    <section id="about" className="py-12 md:py-16 px-6 md:px-12 bg-[#050505] relative overflow-hidden border-y border-white/[0.04]">
+    <section id="about" className="py-12 md:py-16 px-6 md:px-12 bg-black relative overflow-hidden border-y border-white/[0.04]">
       {/* Background Spotlight */}
       <div className="absolute bottom-[10%] right-[5%] w-[400px] h-[400px] bg-white/[0.015] rounded-full blur-[100px] pointer-events-none"></div>
 

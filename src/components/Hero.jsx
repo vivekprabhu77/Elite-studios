@@ -255,7 +255,7 @@ export default function Hero() {
     <section
       id="home"
       data-designer-selector=".hero-section-responsive"
-      className="relative min-h-[100svh] lg:min-h-screen flex flex-col justify-start lg:justify-center pt-40 lg:pt-20 pb-20 px-6 md:px-12 lg:px-16 overflow-hidden bg-[#050505] hero-section-responsive"
+      className="relative min-h-[100svh] lg:min-h-screen flex flex-col justify-start lg:justify-center pt-28 lg:pt-24 pb-12 lg:pb-16 px-6 md:px-12 lg:px-16 overflow-hidden bg-black hero-section-responsive"
     >
       {/* Background Image Container with reduced opacity */}
       <div
@@ -268,7 +268,7 @@ export default function Hero() {
       {/* Dark gradient overlay to blend image to the left and provide readability */}
       <div
         data-designer-selector=".hero-overlay-responsive"
-        className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/75 to-transparent pointer-events-none z-0 hero-overlay-responsive"
+        className="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-transparent pointer-events-none z-0 hero-overlay-responsive"
       ></div>
 
       <div className="max-w-[1600px] mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center h-full">
@@ -277,47 +277,39 @@ export default function Hero() {
           className={`lg:col-span-7 flex flex-col justify-center text-left transition-all duration-1000 delay-100 transform ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
         >
-          {/* WE CREATE — padded left to align with text after the gold bar */}
-          <span className="text-sm md:text-base font-semibold tracking-[0.35em] text-white/95 uppercase mb-4 pl-[22px] sm:pl-[30px]">
-            WE CREATE
-          </span>
-
-          {/* Heading with vertical bar */}
+          {/* Heading */}
           <h1
             data-designer-selector=".hero-heading-responsive"
             data-designer-file="src/components/Hero.jsx"
-            className="text-[48px] sm:text-[68px] md:text-[84px] lg:text-[90px] xl:text-[96px] font-extrabold font-display leading-[0.95] tracking-tight text-white uppercase mb-6 flex items-stretch gap-4 sm:gap-6 hero-heading-responsive"
+            className="text-[40px] sm:text-[56px] md:text-[72px] lg:text-[80px] font-black font-display leading-[0.96] tracking-tight uppercase mb-6 hero-heading-responsive"
           >
-            <span className="inline-block w-[6px] sm:w-[8px] bg-[#d4b07c] self-stretch"></span>
-            <span className="flex flex-col justify-center">
-              <span>DIGITAL</span>
-              <span>EXPERIENCES</span>
-            </span>
+            <span className="text-white block">DIGITAL</span>
+            <span className="text-white block">EXPERIENCES THAT</span>
+            <span className="text-[#d4b07c] block">BUILDS BRANDS.</span>
           </h1>
-
-          {/* DESIGN. DEVELOP. DELIVER. — padded to align with E in EXPERIENCES */}
-          <div className="text-xs md:text-sm font-bold tracking-[0.4em] text-white uppercase mb-8 pl-[22px] sm:pl-[30px]">
-            DESIGN. DEVELOP. DELIVER.
-          </div>
 
           {/* Description */}
           <p
             data-designer-selector=".hero-description-responsive"
             data-designer-file="src/components/Hero.jsx"
-            className="text-sm md:text-base text-gray-400 font-light leading-relaxed mb-8 lg:mb-16 max-w-lg pl-[22px] sm:pl-[30px] hero-description-responsive"
+            className="text-sm sm:text-base md:text-[17px] text-[#9a9a9a] font-normal leading-[1.65] mb-8 max-w-xl hero-description-responsive"
           >
-            Elite Studios is your digital partner for powerful designs, stunning videos, smart websites, live streaming & complete digital solutions.
+            We design premium websites, create powerful brand identities, build AI automations and deliver digital experiences that help ambitious businesses grow.
           </p>
 
-          {/* Explore Our Services Button */}
-          <div className="flex pl-[22px] sm:pl-[30px]">
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap items-center gap-4">
+            <Link
+              to="/contact"
+              className="group inline-flex items-center justify-center bg-[#d4b07c] text-black font-bold text-xs sm:text-sm tracking-wider uppercase px-7 py-3.5 rounded-[8px] hover:bg-[#c39f6b] transition-all duration-300 shadow-[0_0_24px_rgba(212,176,124,0.25)] hero-btn-responsive"
+            >
+              <span>START YOUR PROJECT &rarr;</span>
+            </Link>
             <Link
               to="/work"
-              className="group inline-flex items-center border border-[#d4b07c] text-[#d4b07c] hover:bg-[#d4b07c] hover:text-black transition-all duration-300 rounded-sm hero-btn-responsive"
+              className="group inline-flex items-center justify-center border border-[#2e2e2e] bg-[#0e0e0e] text-white font-bold text-xs sm:text-sm tracking-wider uppercase px-7 py-3.5 rounded-[8px] hover:border-white/40 hover:bg-[#181818] transition-all duration-300"
             >
-              <span className="text-[10px] md:text-[11px] font-bold tracking-[0.25em] uppercase px-7 md:px-9 py-3.5 md:py-4">
-                EXPLORE OUR SERVICES &gt;
-              </span>
+              <span>VIEW OUR WORK &#9655;</span>
             </Link>
           </div>
         </div>

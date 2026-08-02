@@ -40,7 +40,7 @@ const PROJECTS = [
 
 export default function FeaturedProjects() {
   return (
-    <section id="work" className="py-32 px-6 md:px-12 bg-[#050505] relative overflow-hidden">
+    <section id="work" className="py-32 px-6 md:px-12 bg-black relative overflow-hidden">
       {/* Background Spotlight */}
       <div className="absolute top-[40%] left-[-10%] w-[600px] h-[600px] bg-white/[0.005] rounded-full blur-[140px] pointer-events-none"></div>
 

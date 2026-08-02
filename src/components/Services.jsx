@@ -337,46 +337,22 @@ export default function Services() {
   };
 
   return (
-    <section id="services" data-designer-selector=".services-section-responsive" className="py-32 px-6 md:px-12 lg:px-16 bg-[#050505] relative overflow-hidden services-section-responsive">
+    <section id="services" data-designer-selector=".services-section-responsive" className="py-12 md:py-16 px-6 md:px-12 lg:px-16 bg-black relative overflow-hidden services-section-responsive">
       {/* Background Spotlight */}
       <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] bg-white/[0.01] rounded-full blur-[120px] pointer-events-none"></div>
 
       <div className="max-w-[1600px] mx-auto w-full">
         {/* Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12 lg:mb-24 reveal">
-          <div className="lg:col-span-8 text-left">
-            <span className="text-xs uppercase tracking-widest text-[#d4b07c] font-bold block mb-4 font-display">
-              Capabilities
-            </span>
-            <h2 className="text-white tracking-tight leading-[1.2] font-creative">
-              <span
-                data-designer-selector=".services-title-responsive"
-                data-designer-file="src/components/Services.jsx"
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold block services-title-responsive"
-              >
-                WE DEFINE
-              </span>
-              <span
-                data-designer-selector=".services-title-responsive"
-                data-designer-file="src/components/Services.jsx"
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold block services-title-responsive"
-              >
-                THE FUTURE OF
-              </span>
-              <span
-                data-designer-selector=".services-banner-responsive"
-                data-designer-file="src/components/Services.jsx"
-                className="inline-block bg-[#E4B028] text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold px-3 py-1.5 md:px-5 md:py-2.5 mt-4 select-none services-banner-responsive"
-              >
-                CREATIVE DIGITAL EXPERIENCES
-              </span>
-            </h2>
-          </div>
-          <div className="lg:col-span-4 text-left lg:text-right">
-            <p className="text-sm text-gray-400 font-light max-w-sm ml-auto leading-relaxed">
-              We merge art direction and design engineering to deliver elite digital products that command respect.
-            </p>
-          </div>
+        <div className="mb-8 lg:mb-10 text-center reveal">
+          <span className="text-xs uppercase tracking-[0.25em] text-[#d4b07c] font-bold block mb-1.5 font-display">
+            WHAT WE DO
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white uppercase mb-2 font-display">
+            OUR CORE SERVICES
+          </h2>
+          <p className="text-sm sm:text-base text-gray-400 font-light leading-relaxed max-w-xl mx-auto">
+            We craft premium digital experiences that transform ambitious brands into industry leaders.
+          </p>
         </div>
 
         {/* Services Grid */}

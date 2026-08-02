@@ -8,9 +8,9 @@
   --font-bebas: 'Bebas Neue', sans-serif;
   --font-script: 'Pinyon Script', 'Allura', 'Monsieur La Doulaise', cursive;
   
-  --color-bg-dark: #050505;
-  --color-bg-card: #0b0b0b;
-  --color-bg-card-hover: #121212;
+  --color-bg-dark: #000000;
+  --color-bg-card: #080808;
+  --color-bg-card-hover: #101010;
   --color-accent-white: #ffffff;
   --color-brand-gold: #d4b07c;
   --color-text-muted: #8e8e93;
@@ -44,7 +44,7 @@
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: #000000;
 }
 ::-webkit-scrollbar-thumb {
   background: #222;
@@ -56,7 +56,7 @@
 
 /* Base Body Style */
 body {
-  background-color: #050505;
+  background-color: #000000;
   color: #f3f4f6;
   font-family: var(--font-sans);
 }
@@ -257,8 +257,8 @@ body {
   --font-heading: 'Inter Tight', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-body: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  --bg-primary: #050505;          /* Deep black background */
-  --bg-secondary: #0a0a0a;       /* Section background (marquee uses this) */
+  --bg-primary: #000000;          /* Pure black background */
+  --bg-secondary: #000000;       /* Section background */
   --gold-primary: #D4AF37;       /* Eyebrow tag text color */
   --gold-secondary: #F5C542;     /* Hover accent */
   --text-white: #FFFFFF;          /* Heading + logo name color */

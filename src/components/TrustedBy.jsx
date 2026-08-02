@@ -17,7 +17,7 @@ export default function TrustedBy() {
   const marqueeItems = [...SERVICES, ...SERVICES];
 
   return (
-    <section className="py-16 border-y border-white/[0.06] bg-[#050505] overflow-hidden relative w-full">
+    <section className="py-16 border-y border-white/[0.06] bg-black overflow-hidden relative w-full">
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 mb-6 flex justify-between items-center">
         <span className="text-[10px] uppercase font-bold tracking-widest text-white/40">
           Our Services

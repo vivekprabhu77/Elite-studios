@@ -14,7 +14,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#050505] text-gray-400 py-20 px-6 md:px-12 border-t border-white/[0.04] relative z-10 overflow-hidden">
+    <footer className="bg-black text-gray-400 py-20 px-6 md:px-12 border-t border-white/[0.04] relative z-10 overflow-hidden">
       {/* Background radial highlight */}
       <div className="absolute bottom-[-100px] left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#d4b07c]/[0.005] rounded-full blur-[80px] pointer-events-none"></div>
 

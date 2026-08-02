@@ -3,7 +3,7 @@ import { ArrowUpRight } from 'lucide-react';
 
 export default function FinalCTA() {
   return (
-    <section id="contact" className="py-40 px-6 md:px-12 bg-[#050505] relative overflow-hidden text-center border-b border-white/[0.04]">
+    <section id="contact" className="py-40 px-6 md:px-12 bg-black relative overflow-hidden text-center border-b border-white/[0.04]">
       {/* Background spotlights */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-white/[0.01] rounded-full blur-[140px] pointer-events-none"></div>
 

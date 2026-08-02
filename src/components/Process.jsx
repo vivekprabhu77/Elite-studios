@@ -431,7 +431,7 @@ export default function Process() {
   const step = STEPS[active];
 
   return (
-    <section id="process" className="py-12 md:py-16 px-6 md:px-12 bg-[#050505] relative overflow-hidden border-b border-white/[0.04]">
+    <section id="process" className="py-12 md:py-16 px-6 md:px-12 bg-black relative overflow-hidden border-b border-white/[0.04]">
       <div className="absolute top-[10%] left-[-15%] w-[500px] h-[500px] bg-[#d4b07c]/[0.005] rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto w-full">

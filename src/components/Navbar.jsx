@@ -45,11 +45,10 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 px-6 md:px-12 lg:px-16 ${
-          isScrolled
-            ? 'py-4 bg-[#050505]/90 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.8)]'
-            : 'pt-4 pb-6 bg-transparent'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+            ? 'py-4 bg-black/90 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.8)]'
+            : 'py-6 md:py-8 bg-transparent'
+          }`}
       >
         <div className="max-w-[1600px] mx-auto flex items-center justify-between w-full relative h-16">
           {/* Logo */}
