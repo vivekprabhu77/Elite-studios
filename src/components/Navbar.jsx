@@ -57,7 +57,7 @@ export default function Navbar() {
               <img
                 src={logo}
                 alt="Elite Studios"
-                className="w-auto object-contain transition-all duration-500 group-hover:scale-[1.01] h-20 sm:h-24 lg:h-[180px]"
+                className="w-auto object-contain transition-all duration-500 group-hover:scale-[1.01] h-[110px] sm:h-[120px] lg:h-[180px] mobile-logo-img"
               />
             </Link>
           </div>
@@ -97,13 +97,15 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden flex flex-col justify-between w-6 h-4 z-50 relative focus:outline-none ml-auto"
+            className="lg:hidden p-2.5 z-50 relative focus:outline-none ml-auto flex items-center justify-center min-w-[44px] min-h-[44px]"
             aria-label="Toggle navigation menu"
             aria-expanded={isMobileMenuOpen}
           >
-            <span className={`w-full h-0.5 bg-white transition-all duration-300 origin-left ${isMobileMenuOpen ? 'rotate-45 translate-y-[-1px]' : ''}`}></span>
-            <span className={`w-full h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`w-full h-0.5 bg-white transition-all duration-300 origin-left ${isMobileMenuOpen ? '-rotate-45 translate-y-[1px]' : ''}`}></span>
+            <div className="w-6 h-4 flex flex-col justify-between pointer-events-none">
+              <span className={`w-full h-0.5 bg-white transition-all duration-300 origin-left ${isMobileMenuOpen ? 'rotate-45 translate-y-[-1px]' : ''}`}></span>
+              <span className={`w-full h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`w-full h-0.5 bg-white transition-all duration-300 origin-left ${isMobileMenuOpen ? '-rotate-45 translate-y-[1px]' : ''}`}></span>
+            </div>
           </button>
         </div>
       </nav>

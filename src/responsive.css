@@ -1,138 +1,560 @@
-/* Responsive Stylesheet for Elite Studios */
+/* ==========================================================================
+   ELITE STUDIOS — RESPONSIVE STYLESHEET (responsive.css)
+   Production-ready responsive architecture for mobile and tablet devices.
+   Desktop (>1200px) remains 100% untouched.
+   ========================================================================== */
 
-/* Default (all screens) */
-.hero-section-responsive,
-.hero-bg-image {
-  background-position: center center;
+/* --------------------------------------------------------------------------
+   GLOBAL VIEWPORT & PERFORMANCE SETUP
+   -------------------------------------------------------------------------- */
+html,
+body {
+  overflow-x: hidden !important;
+  width: 100%;
+  position: relative;
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
 }
 
-/* Targets Mobile and Tablet screens (under 1024px) */
-@media (max-width: 1023px) {
-  .hero-section-responsive,
-  .hero-bg-image {
-    /* Shift the background image left so the laptop mockups are visible on mobile */
-    background-position: 65% -100px !important;
-    /* -100px is for y axis */
+*,
+*::before,
+*::after {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* GPU Hardware Acceleration for smooth 60fps animations */
+.reveal,
+.reveal-left,
+.reveal-right,
+.tech-logo-card,
+nav,
+.hero-section-responsive {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Disable hover scale shifts on touch screens */
+@media (hover: none) {
+
+  .hover\:scale-105:hover,
+  .hover\:-translate-y-2:hover,
+  .group:hover .group-hover\:scale-105 {
+    transform: none !important;
   }
-  .hero-section-responsive {
-    min-height: 100svh !important;
+}
+
+/* ==========================================================================
+   TABLET & MOBILE (max-width: 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+
+  /* Header Navigation */
+  nav {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    background-color: rgba(5, 5, 5, 0.95) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
 
-  .hero-overlay-responsive {
-    /* Lighter overlay so the hero background image shows through */
-    background: linear-gradient(to right,
-        rgba(5, 5, 5, 0.88) 0%,
-        rgba(5, 5, 5, 0.75) 40%,
-        rgba(5, 5, 5, 0.50) 100%) !important;
+  /* Prominent Logo on Tablet */
+  nav img,
+  .mobile-logo-img {
+    height: 120px !important;
+    max-height: 120px !important;
+    width: auto !important;
+  }
+
+  /* Remove Golden Canvas Ribbon Artwork on Mobile/Tablet */
+  .hero-artwork-container {
+    display: none !important;
+  }
+
+  /* Mobile Hero Layout & Composition */
+  .hero-section-responsive {
+    min-height: auto !important;
+    padding-top: 7.5rem !important;
+    padding-bottom: 4rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    background: radial-gradient(circle at 50% 15%, rgba(212, 176, 124, 0.1) 0%, rgba(5, 5, 5, 1) 75%) !important;
+  }
+
+  /* Services Grid on Tablet */
+  .services-grid,
+  .packages-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem !important;
+  }
+}
+
+/* ==========================================================================
+   TABLET PORTRAIT & PHONES (max-width: 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+
+  /* Header & Logo */
+  nav {
+    padding-top: 0.4rem !important;
+    padding-bottom: 0.4rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Bigger Prominent Logo Aligned Left */
+  nav img,
+  .mobile-logo-img {
+    height: 110px !important;
+    max-height: 110px !important;
+    width: auto !important;
+  }
+
+  /* Hamburger Menu Button Lines Fix */
+  nav button[aria-label="Toggle navigation menu"] {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    padding: 0.5rem !important;
+  }
+
+  nav button[aria-label="Toggle navigation menu"] span {
+    height: 2px !important;
+    display: block !important;
+    background-color: #ffffff !important;
+  }
+
+  /* Hero Section Mobile Rhythm & Text Hierarchy */
+  .hero-section-responsive {
+    padding-top: 6.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  /* ------------------------------------------------------------------------
+     HIGH-IMPACT MOBILE TEXT HIERARCHY
+     ------------------------------------------------------------------------ */
+
+  /* 1. Eyebrow Tag Tier */
+  .hero-eyebrow-tag {
+    display: inline-flex !important;
+    font-size: 10px !important;
+    letter-spacing: 0.25em !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* 2. Main Headline Tier (Contrasting font sizes, weights & colors) */
+  .hero-heading-responsive {
+    font-family: var(--font-display) !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Line 1: Primary Punch */
+  .hero-heading-responsive span:nth-child(1) {
+    font-size: clamp(38px, 9.8vw, 54px) !important;
+    font-weight: 900 !important;
+    color: #ffffff !important;
+    line-height: 0.95 !important;
+    letter-spacing: -0.03em !important;
+    display: block !important;
+  }
+
+  /* Line 2: Secondary Context */
+  .hero-heading-responsive span:nth-child(2) {
+    font-size: clamp(23px, 6vw, 32px) !important;
+    font-weight: 700 !important;
+    color: #d1d5db !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.01em !important;
+    display: block !important;
+    margin: 4px 0 !important;
+    opacity: 0.9;
+  }
+
+  /* Line 3: Focal Gold Accent */
+  .hero-heading-responsive span:nth-child(3) {
+    font-size: clamp(30px, 8vw, 42px) !important;
+    font-weight: 900 !important;
+    color: #d4b07c !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.02em !important;
+    display: block !important;
+    text-shadow: 0 0 25px rgba(212, 176, 124, 0.35) !important;
+  }
+
+  /* 3. Body Paragraph Tier (Left Accent Border + Crisp Typography) */
+  .hero-description-responsive {
+    font-size: 15px !important;
+    line-height: 1.68 !important;
+    color: #a1a1aa !important;
+    font-weight: 400 !important;
+    margin-bottom: 2rem !important;
+    border-left: 2px solid rgba(212, 176, 124, 0.45) !important;
+    padding-left: 0.85rem !important;
+    letter-spacing: 0.01em !important;
+  }
+
+  /* 4. Tactical Call-to-Action Buttons Tier */
+  .hero-btn-responsive {
+    width: 100% !important;
+    min-height: 52px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.875rem 1.5rem !important;
+    border-radius: 8px !important;
+    letter-spacing: 0.1em !important;
+  }
+
+  /* Hide scroll indicator on mobile */
+  .hero-scroll-indicator {
+    display: none !important;
+  }
+
+  /* Restore & Position "Creativity" Signature Text below CTA Buttons */
+  .hero-signature-box {
+    display: flex !important;
+    position: relative !important;
+    bottom: auto !important;
+    right: auto !important;
+    margin-top: 2.25rem !important;
+    align-items: flex-end !important;
+    justify-content: flex-end !important;
+    width: 100% !important;
+    z-index: 20;
+  }
+
+  .hero-cursive-title {
+    font-size: 44px !important;
+    color: #d4b07c !important;
+    line-height: 1 !important;
+    padding-right: 0.5rem !important;
+  }
+
+  .hero-cursive-subtitle {
+    font-size: 8.5px !important;
+    letter-spacing: 0.25em !important;
+    color: #ffffff !important;
+  }
+
+  /* About Section */
+  .about-section {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  /* Services Section */
+  .services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .process-step-card {
+    padding: 1.25rem !important;
+  }
+
+  /* Portfolio Section */
+  .portfolio-filter-strip {
+    display: flex !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    padding-bottom: 0.5rem !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .portfolio-filter-strip::-webkit-scrollbar {
+    display: none;
+  }
+
+  .portfolio-filter-btn {
+    flex-shrink: 0 !important;
+    min-height: 44px !important;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .project-card-image {
+    height: 230px !important;
+    object-fit: cover !important;
+  }
+
+  /* Packages Section */
+  .packages-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Contact Section */
+  .contact-form-container {
+    padding: 1.5rem !important;
+  }
+
+  /* Technologies Marquee Animation (Smaller & Faster on Mobile) */
+  .marquee-section {
+    padding: 28px 0 !important;
+  }
+
+  .eyebrow-tag {
+    font-size: 0.65rem !important;
+    margin-bottom: 8px !important;
+  }
+
+  .heading-lg {
+    font-size: clamp(1.2rem, 5vw, 1.6rem) !important;
+    line-height: 1.15 !important;
+  }
+
+  .section-header {
+    margin-bottom: 24px !important;
+  }
+
+  .marquee-wrapper {
+    gap: 10px !important;
+  }
+
+  .marquee-track {
+    gap: 12px !important;
+  }
+
+  .marquee-left {
+    animation: scrollLeft 14s linear infinite !important;
+  }
+
+  .marquee-right {
+    animation: scrollRight 14s linear infinite !important;
+  }
+
+  .tech-logo-card {
+    padding: 8px 14px !important;
+    gap: 8px !important;
+    border-radius: 8px !important;
+  }
+
+  .tech-icon-wrapper {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 6px !important;
+  }
+
+  .tech-svg-img {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .tech-logo-name {
+    font-size: 0.78rem !important;
+  }
+
+  /* ------------------------------------------------------------------------
+     ULTRA-COOL MOBILE FOOTER ARCHITECTURE
+     ------------------------------------------------------------------------ */
+  .site-footer {
+    padding-top: 3.5rem !important;
+    padding-bottom: 2.5rem !important;
+    background: radial-gradient(circle at 50% 100%, rgba(212, 176, 124, 0.08) 0%, rgba(0, 0, 0, 1) 85%) !important;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  /* Footer Brand Block */
+  .footer-brand-col {
+    background: rgba(15, 15, 15, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    border-radius: 14px !important;
+    padding: 1.25rem !important;
+    backdrop-filter: blur(12px) !important;
+  }
+
+  .footer-logo-img {
+    height: 75px !important;
+    max-height: 75px !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .footer-pitch-text {
+    font-size: 0.78rem !important;
+    line-height: 1.6 !important;
+    color: #a1a1aa !important;
+  }
+
+  /* Glassmorphic Cards for Links & Contact */
+  .footer-nav-col,
+  .footer-social-col,
+  .footer-contact-col {
+    background: rgba(12, 12, 12, 0.5) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px !important;
+    padding: 1.25rem !important;
+  }
+
+  .footer-col-heading {
+    font-size: 0.7rem !important;
+    letter-spacing: 0.25em !important;
+    color: #d4b07c !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* 2-Column Touch Pill Grid for Navigation & Socials */
+  .footer-links-group {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.6rem !important;
+  }
+
+  .footer-link-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.6rem 0.75rem !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+    color: #d1d5db !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.1em !important;
+    font-weight: 700 !important;
+  }
+
+  .footer-link-item:active {
+    background: rgba(212, 176, 124, 0.15) !important;
+    border-color: rgba(212, 176, 124, 0.4) !important;
+    color: #d4b07c !important;
+  }
+
+  /* Interactive Contact Action Buttons */
+  .footer-contact-group {
+    gap: 0.65rem !important;
+  }
+
+  .footer-email-btn,
+  .footer-phone-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.65rem 1rem !important;
+    background: rgba(212, 176, 124, 0.08) !important;
+    border: 1px solid rgba(212, 176, 124, 0.22) !important;
+    border-radius: 8px !important;
+    color: #d4b07c !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.05em !important;
+  }
+
+  /* Bottom Copyright & Admin Pill */
+  .footer-bottom {
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+    text-align: center !important;
+    padding-top: 1.5rem !important;
+    font-size: 0.62rem !important;
+  }
+
+  .footer-admin-link {
+    display: inline-block !important;
+    padding: 0.35rem 0.85rem !important;
+    background: rgba(212, 176, 124, 0.12) !important;
+    border: 1px solid rgba(212, 176, 124, 0.25) !important;
+    border-radius: 9999px !important;
+    color: #d4b07c !important;
+    font-weight: 700 !important;
+  }
+}
+
+/* ==========================================================================
+   LARGE PHONES (max-width: 576px)
+   ========================================================================== */
+@media (max-width: 576px) {
+  nav img {
+    height: 68px !important;
+    max-height: 68px !important;
   }
 
   .hero-heading-responsive {
-    font-size: 52px !important;
-    line-height: 1.05 !important;
-    margin-bottom: 16px !important;
-    gap: 12px !important;
-    padding-left: 0px !important;
+    font-size: clamp(30px, 9vw, 42px) !important;
+  }
+
+  .package-card {
+    padding: 1.5rem !important;
+  }
+
+  .package-price {
+    font-size: 2.25rem !important;
+  }
+}
+
+/* ==========================================================================
+   PHONES (max-width: 430px)
+   ========================================================================== */
+@media (max-width: 430px) {
+  nav img {
+    height: 64px !important;
+    max-height: 64px !important;
+  }
+
+  .hero-heading-responsive {
+    font-size: 28px !important;
+    line-height: 1.04 !important;
   }
 
   .hero-description-responsive {
     font-size: 14px !important;
-    line-height: 1.6 !important;
-    margin-bottom: 20px !important;
-    max-width: 100% !important;
   }
 
-  .hero-btn-responsive {
-    /* Adjust values to move button: transform: translate(X-axis, Y-axis) */
-    transform: translate(-5px, 0px) !important;
-  }
-
-  .hero-cursive-title {
-    font-size: 42px !important;
-    padding-right: 12px !important;
-  }
-
-  .hero-cursive-subtitle {
-    font-size: 8px !important;
-    letter-spacing: 0.25em !important;
-  }
-
-  .services-section-responsive {
-    padding-top: 40px !important;
-    padding-bottom: 40px !important;
-  }
-
-  .services-title-responsive {
-    font-size: 32px !important;
-  }
-
-  .services-banner-responsive {
-    font-size: 13px !important;
-    padding: 6px 12px !important;
-    margin-top: 12px !important;
-    white-space: normal !important;
-    max-width: 100% !important;
-    text-align: left !important;
-    display: inline-block !important;
-    line-height: 1.4 !important;
-  }
-
-  .services-card-responsive {
-    padding: 24px !important;
-    height: auto !important;
-    min-height: 380px !important;
+  .project-card-image {
+    height: 200px !important;
   }
 }
 
-/* Medium screens / Small tablets (under 768px) */
+/* ==========================================================================
+   SMALL PHONES (max-width: 360px)
+   ========================================================================== */
+@media (max-width: 360px) {
+  nav img {
+    height: 56px !important;
+    max-height: 56px !important;
+  }
+
+  .hero-heading-responsive {
+    font-size: 25px !important;
+  }
+
+  .hero-btn-responsive {
+    font-size: 13px !important;
+    padding: 0.75rem 1rem !important;
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY & TOUCH STANDARDS
+   ========================================================================== */
 @media (max-width: 768px) {
-  .hero-heading-responsive {
-    font-size: 48px !important;
+
+  button,
+  a.inline-flex,
+  a.inline-block,
+  input[type="submit"],
+  input[type="button"] {
+    min-height: 48px;
+    touch-action: manipulation;
   }
 
-  .services-title-responsive {
-    font-size: 28px !important;
-  }
-}
-
-/* Extra small mobile screens (under 480px) */
-@media (max-width: 480px) {
-  .hero-section-responsive,
-  .hero-bg-image {
-    /* On small phones push image more to the right to show mockups */
-    background-position: 60% -80px !important;
-  }
-
-  .hero-heading-responsive {
-    font-size: 42px !important;
-    line-height: 1.0 !important;
-    gap: 10px !important;
-  }
-
-  .hero-description-responsive {
-    font-size: 13px !important;
-    line-height: 1.55 !important;
-    margin-bottom: 20px !important;
-  }
-
-  .hero-btn-responsive {
-    /* Adjust values to move button: transform: translate(X-axis, Y-axis) */
-    transform: translate(0px, 0px) !important;
-  }
-
-  .hero-cursive-title {
-    font-size: 36px !important;
-  }
-
-  .services-title-responsive {
-    font-size: 24px !important;
-  }
-
-  .services-banner-responsive {
-    font-size: 11px !important;
-  }
-
-  .services-card-responsive {
-    padding: 20px !important;
-    min-height: 350px !important;
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
   }
 }

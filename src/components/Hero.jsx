@@ -255,7 +255,7 @@ export default function Hero() {
     <section
       id="home"
       data-designer-selector=".hero-section-responsive"
-      className="relative min-h-[100svh] lg:min-h-screen flex flex-col justify-start lg:justify-center pt-28 lg:pt-24 pb-12 lg:pb-16 px-6 md:px-12 lg:px-16 overflow-hidden bg-black hero-section-responsive"
+      className="relative min-h-[100svh] lg:min-h-screen flex flex-col justify-start lg:justify-center pt-24 sm:pt-28 lg:pt-24 pb-32 sm:pb-36 lg:pb-16 px-6 md:px-12 lg:px-16 overflow-hidden bg-black hero-section-responsive"
     >
       {/* Background Image Container with reduced opacity */}
       <div
@@ -284,7 +284,7 @@ export default function Hero() {
             className="text-[40px] sm:text-[56px] md:text-[72px] lg:text-[80px] font-black font-display leading-[0.96] tracking-tight uppercase mb-6 hero-heading-responsive"
           >
             <span className="text-white block">DIGITAL</span>
-            <span className="text-white block">EXPERIENCES THAT</span>
+            <span className="text-gray-300 block text-opacity-90">EXPERIENCES THAT</span>
             <span className="text-[#d4b07c] block">BUILDS BRANDS.</span>
           </h1>
 
@@ -298,7 +298,7 @@ export default function Hero() {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center gap-4 mb-6 lg:mb-0">
             <Link
               to="/contact"
               className="group inline-flex items-center justify-center bg-[#d4b07c] text-black font-bold text-xs sm:text-sm tracking-wider uppercase px-7 py-3.5 rounded-[8px] hover:bg-[#c39f6b] transition-all duration-300 shadow-[0_0_24px_rgba(212,176,124,0.25)] hero-btn-responsive"
@@ -307,7 +307,7 @@ export default function Hero() {
             </Link>
             <Link
               to="/work"
-              className="group inline-flex items-center justify-center border border-[#2e2e2e] bg-[#0e0e0e] text-white font-bold text-xs sm:text-sm tracking-wider uppercase px-7 py-3.5 rounded-[8px] hover:border-white/40 hover:bg-[#181818] transition-all duration-300"
+              className="group inline-flex items-center justify-center border border-[#2e2e2e] bg-[#0e0e0e] text-white font-bold text-xs sm:text-sm tracking-wider uppercase px-7 py-3.5 rounded-[8px] hover:border-white/40 hover:bg-[#181818] transition-all duration-300 hero-btn-responsive"
             >
               <span>VIEW OUR WORK &#9655;</span>
             </Link>
@@ -315,40 +315,40 @@ export default function Hero() {
         </div>
 
         {/* Right Column: Canvas Container */}
-        <div className="lg:col-span-5 hidden lg:block relative w-full h-[550px]">
+        <div className="lg:col-span-5 hidden lg:block relative w-full h-[550px] hero-artwork-container">
           <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />
         </div>
       </div>
 
       {/* Scroll Down Indicator — bottom center */}
       <div
-        className={`absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 transition-all duration-1000 delay-500 transform ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        className={`absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1.5 transition-all duration-1000 delay-500 transform hero-scroll-indicator ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
       >
         <span className="text-[9px] md:text-[10px] font-bold tracking-[0.3em] text-white/50 uppercase">
           Scroll
         </span>
-        <div className="w-[1px] h-8 bg-white/30 relative overflow-hidden">
-          <div className="w-full h-3 bg-[#d4b07c] animate-bounce absolute top-0"></div>
+        <div className="w-[1px] h-6 sm:h-8 bg-white/30 relative overflow-hidden">
+          <div className="w-full h-2.5 sm:h-3 bg-[#d4b07c] animate-bounce absolute top-0"></div>
         </div>
       </div>
 
       {/* Signature and Cursive Text at the bottom right */}
       <div
-        className={`absolute bottom-8 right-6 md:bottom-12 md:right-12 z-20 flex flex-col items-end transition-all duration-1000 delay-300 transform ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        className={`absolute bottom-3 right-4 sm:bottom-8 sm:right-6 md:bottom-12 md:right-12 z-20 flex flex-col items-end transition-all duration-1000 delay-300 transform hero-signature-box ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
       >
         <span
           data-designer-selector=".hero-cursive-title"
           data-designer-file="src/components/Hero.jsx"
-          className="font-script text-[48px] md:text-[68px] text-[#d4b07c] leading-none mb-1 select-none pr-8 hero-cursive-title"
+          className="font-script text-[36px] sm:text-[48px] md:text-[68px] text-[#d4b07c] leading-none mb-0.5 select-none pr-2 sm:pr-8 hero-cursive-title"
         >
           Creativity
         </span>
         <span
           data-designer-selector=".hero-cursive-subtitle"
           data-designer-file="src/components/Hero.jsx"
-          className="text-[9px] md:text-[10px] font-bold tracking-[0.3em] text-white uppercase whitespace-nowrap hero-cursive-subtitle"
+          className="text-[8px] sm:text-[9px] md:text-[10px] font-bold tracking-[0.25em] sm:tracking-[0.3em] text-white uppercase whitespace-nowrap hero-cursive-subtitle"
         >
           CAN MAKE MAN CREATIVE
         </span>

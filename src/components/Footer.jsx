@@ -14,39 +14,39 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-black text-gray-400 py-20 px-6 md:px-12 border-t border-white/[0.04] relative z-10 overflow-hidden">
+    <footer className="bg-black text-gray-400 py-16 md:py-20 px-4 sm:px-6 md:px-12 border-t border-white/[0.04] relative z-10 overflow-hidden site-footer">
       {/* Background radial highlight */}
-      <div className="absolute bottom-[-100px] left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#d4b07c]/[0.005] rounded-full blur-[80px] pointer-events-none"></div>
+      <div className="absolute bottom-[-100px] left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#d4b07c]/[0.015] rounded-full blur-[90px] pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto w-full">
+      <div className="max-w-7xl mx-auto w-full relative z-10">
         {/* Top Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 pb-16 border-b border-white/[0.04]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 md:pb-16 border-b border-white/[0.06] footer-grid">
 
           {/* Logo & Pitch */}
-          <div className="lg:col-span-5 flex flex-col items-start text-left">
+          <div className="lg:col-span-5 flex flex-col items-start text-left footer-brand-col">
             <Link to="/">
               <img
                 src={footerLogo}
                 alt="Elite Studios Logo"
-                className="h-35 w-auto object-contain mb-6 select-none pointer-events-none"
+                className="h-28 sm:h-32 w-auto object-contain mb-5 select-none footer-logo-img"
               />
             </Link>
-            <p className="text-xs text-gray-400 font-light leading-relaxed max-w-sm">
+            <p className="text-xs text-gray-400 font-light leading-relaxed max-w-sm footer-pitch-text">
               We design and engineer digital interfaces that demand attention. Crafting luxury minimalism, bespoke branding, and high-performance React frontends.
             </p>
           </div>
 
           {/* Quick Links Column */}
-          <div className="lg:col-span-2 flex flex-col items-start text-left">
-            <h4 className="text-xs uppercase font-bold tracking-widest text-[#d4b07c] font-display mb-6">
+          <div className="lg:col-span-2 flex flex-col items-start text-left footer-nav-col">
+            <h4 className="text-xs uppercase font-bold tracking-widest text-[#d4b07c] font-display mb-4 md:mb-6 footer-col-heading">
               Navigation
             </h4>
-            <div className="flex flex-col gap-3 text-xs">
+            <div className="flex flex-col gap-2.5 text-xs w-full footer-links-group">
               {navItems.map((item) => (
                 <Link
                   key={item.label}
                   to={item.to}
-                  className="hover:text-[#d4b07c] transition-colors duration-300 tracking-wider uppercase text-[10px] font-bold"
+                  className="hover:text-[#d4b07c] transition-all duration-300 tracking-wider uppercase text-[10px] font-bold footer-link-item"
                 >
                   {item.label}
                 </Link>
@@ -55,16 +55,16 @@ export default function Footer() {
           </div>
 
           {/* Socials Column */}
-          <div className="lg:col-span-2 flex flex-col items-start text-left">
-            <h4 className="text-xs uppercase font-bold tracking-widest text-[#d4b07c] font-display mb-6">
+          <div className="lg:col-span-2 flex flex-col items-start text-left footer-social-col">
+            <h4 className="text-xs uppercase font-bold tracking-widest text-[#d4b07c] font-display mb-4 md:mb-6 footer-col-heading">
               Socials
             </h4>
-            <div className="flex flex-col gap-3 text-xs">
+            <div className="flex flex-col gap-2.5 text-xs w-full footer-links-group">
               {['Instagram', 'Behance', 'Dribbble', 'LinkedIn', 'Twitter'].map((item) => (
                 <a
                   key={item}
                   href={`#social-${item.toLowerCase()}`}
-                  className="hover:text-[#d4b07c] transition-colors duration-300 tracking-wider uppercase text-[10px] font-bold"
+                  className="hover:text-[#d4b07c] transition-all duration-300 tracking-wider uppercase text-[10px] font-bold footer-link-item"
                 >
                   {item}
                 </a>
@@ -73,16 +73,16 @@ export default function Footer() {
           </div>
 
           {/* Contact / Office Column */}
-          <div className="lg:col-span-3 flex flex-col items-start text-left">
-            <h4 className="text-xs uppercase font-bold tracking-widest text-[#d4b07c] font-display mb-6">
+          <div className="lg:col-span-3 flex flex-col items-start text-left footer-contact-col">
+            <h4 className="text-xs uppercase font-bold tracking-widest text-[#d4b07c] font-display mb-4 md:mb-6 footer-col-heading">
               Elite Office
             </h4>
-            <div className="flex flex-col gap-3 text-xs font-light">
+            <div className="flex flex-col gap-3 text-xs font-light w-full footer-contact-group">
               <span className="text-white/80">Siddapura, Karnataka, India</span>
-              <a href="mailto:hello@elitestudios.com" className="hover:text-[#d4b07c] transition-colors duration-300 font-semibold">
+              <a href="mailto:hello@elitestudios.com" className="hover:text-[#d4b07c] transition-colors duration-300 font-semibold footer-email-btn">
                 hello@elitestudios.com
               </a>
-              <a href="tel:+18005550199" className="hover:text-[#d4b07c] transition-colors duration-300 font-semibold">
+              <a href="tel:+18005550199" className="hover:text-[#d4b07c] transition-colors duration-300 font-semibold footer-phone-btn">
                 +1 (800) 555-0199
               </a>
             </div>
@@ -91,10 +91,10 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-mono tracking-widest uppercase text-white/30">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-mono tracking-widest uppercase text-white/40 footer-bottom">
           <span>&copy; {currentYear} Elite Studios. All rights reserved.</span>
-          <div className="flex gap-6">
-            <Link to="/admin" className="hover:text-[#d4b07c] transition-colors duration-300">Admin Portal</Link>
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+            <Link to="/admin" className="hover:text-[#d4b07c] transition-colors duration-300 footer-admin-link">Admin Portal</Link>
             <a href="#privacy" className="hover:text-white transition-colors duration-300">Privacy Policy</a>
             <a href="#terms" className="hover:text-white transition-colors duration-300">Terms of Service</a>
           </div>
