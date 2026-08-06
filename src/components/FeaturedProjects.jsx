@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowUpRight, Loader2 } from 'lucide-react';
-import { getProjects, preloadProjectImages } from '../utils/portfolioStore';
+import { getProjectsLocal, fetchProjects, preloadProjectImages } from '../utils/portfolioStore';
 
 const CATEGORY_TABS = [
   'ALL',
@@ -13,19 +13,41 @@ const CATEGORY_TABS = [
 ];
 
 export default function FeaturedProjects() {
-  const [projects, setProjects] = useState(getProjects());
+  const [projects, setProjects] = useState(getProjectsLocal());
   const [activeCategory, setActiveCategory] = useState('ALL');
   const [loadedImages, setLoadedImages] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const handleUpdate = () => {
-      const updated = getProjects();
-      setProjects(updated);
-      preloadProjectImages(updated);
+    let isMounted = true;
+
+    const loadData = async () => {
+      setIsLoading(true);
+      const data = await fetchProjects();
+      if (isMounted && Array.isArray(data)) {
+        setProjects(data);
+        preloadProjectImages(data);
+      }
+      if (isMounted) {
+        setIsLoading(false);
+      }
     };
-    preloadProjectImages(projects);
+
+    loadData();
+
+    const handleUpdate = () => {
+      if (isMounted) {
+        const updated = getProjectsLocal();
+        setProjects(updated);
+        preloadProjectImages(updated);
+      }
+    };
+
     window.addEventListener('portfolio-updated', handleUpdate);
-    return () => window.removeEventListener('portfolio-updated', handleUpdate);
+    return () => {
+      isMounted = false;
+      window.removeEventListener('portfolio-updated', handleUpdate);
+    };
   }, []);
 
   const handleImageLoad = (id) => {
@@ -40,7 +62,7 @@ export default function FeaturedProjects() {
   });
 
   return (
-    <section id="work" className="scroll-mt-28 md:scroll-mt-36 pt-10 md:pt-14 pb-16 md:pb-24 px-6 md:px-12 bg-black relative overflow-hidden text-left">
+    <section id="work" className="scroll-mt-28 md:scroll-mt-36 pt-10 md:pt-14 pb-16 md:pb-24 px-6 md:px-12 bg-black relative overflow-hidden text-left min-h-[500px]">
       {/* Background Spotlight */}
       <div className="absolute top-[40%] left-[-10%] w-[600px] h-[600px] bg-white/[0.005] rounded-full blur-[140px] pointer-events-none"></div>
 
@@ -75,8 +97,20 @@ export default function FeaturedProjects() {
           })}
         </div>
 
-        {/* Projects Grid */}
-        {filteredProjects.length === 0 ? (
+        {/* Loading Spinner Skeleton state while fetching on first visit */}
+        {isLoading && projects.length === 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {[1, 2, 3].map((n) => (
+              <div key={n} className="bg-[#0b0b0b] border border-white/5 p-6 animate-pulse">
+                <div className="aspect-[16/10] bg-white/[0.03] mb-4 flex items-center justify-center">
+                  <Loader2 className="w-6 h-6 text-[#d4b07c]/40 animate-spin" />
+                </div>
+                <div className="h-4 bg-white/10 w-2/3 mb-2"></div>
+                <div className="h-3 bg-white/5 w-1/3"></div>
+              </div>
+            ))}
+          </div>
+        ) : filteredProjects.length === 0 ? (
           <div className="py-20 text-center border border-dashed border-white/10 bg-[#080808]">
             <p className="text-xs text-white/40 uppercase tracking-widest font-mono">
               No projects found in this category.
@@ -95,9 +129,8 @@ export default function FeaturedProjects() {
                   key={projId}
                   className="group flex flex-col bg-[#0b0b0b] border border-white/5 hover:border-[#d4b07c]/40 transition-all duration-500 reveal rounded-none overflow-hidden"
                 >
-                  {/* Top Image Container with Instant Skeleton Loader */}
+                  {/* Top Image Container */}
                   <div className="relative aspect-[16/10] bg-[#0d0d0d] overflow-hidden cursor-pointer border-b border-white/5">
-                    {/* Skeleton Loader placeholder while image loads */}
                     {!isImgLoaded && project.src && (
                       <div className="absolute inset-0 bg-gradient-to-r from-white/[0.02] via-white/[0.06] to-white/[0.02] animate-pulse flex items-center justify-center">
                         <Loader2 className="w-5 h-5 text-[#d4b07c]/40 animate-spin" />
