@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUpRight } from 'lucide-react';
-import { getProjects } from '../utils/portfolioStore';
+import { ArrowUpRight, Loader2 } from 'lucide-react';
+import { getProjects, preloadProjectImages } from '../utils/portfolioStore';
 
 const CATEGORY_TABS = [
   'ALL',
@@ -15,14 +15,22 @@ const CATEGORY_TABS = [
 export default function FeaturedProjects() {
   const [projects, setProjects] = useState(getProjects());
   const [activeCategory, setActiveCategory] = useState('ALL');
+  const [loadedImages, setLoadedImages] = useState({});
 
   useEffect(() => {
     const handleUpdate = () => {
-      setProjects(getProjects());
+      const updated = getProjects();
+      setProjects(updated);
+      preloadProjectImages(updated);
     };
+    preloadProjectImages(projects);
     window.addEventListener('portfolio-updated', handleUpdate);
     return () => window.removeEventListener('portfolio-updated', handleUpdate);
   }, []);
+
+  const handleImageLoad = (id) => {
+    setLoadedImages((prev) => ({ ...prev, [id]: true }));
+  };
 
   const filteredProjects = projects.filter((p) => {
     if (activeCategory === 'ALL') return true;
@@ -43,22 +51,22 @@ export default function FeaturedProjects() {
             Selected Work
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-none font-creative">
-            FEATURED <span className="text-[#d4b07c]">PROJECTS</span>
+            OUR <span className="text-[#d4b07c]">PORTFOLIO</span>
           </h2>
         </div>
 
         {/* Category Filter Tabs */}
-        <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-12 pb-4 border-b border-white/10 reveal">
+        <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-10 pb-4 border-b border-white/10 reveal overflow-x-auto">
           {CATEGORY_TABS.map((tab) => {
             const isActive = activeCategory === tab;
             return (
               <button
                 key={tab}
                 onClick={() => setActiveCategory(tab)}
-                className={`px-5 py-2.5 text-xs font-mono tracking-widest uppercase transition-all duration-300 rounded-none border ${
+                className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-300 rounded-none whitespace-nowrap cursor-pointer ${
                   isActive
-                    ? 'bg-[#d4b07c] text-black border-[#d4b07c] font-bold shadow-[0_0_20px_rgba(212,176,124,0.2)]'
-                    : 'bg-[#0a0a0a] text-white/60 border-white/10 hover:border-white/30 hover:text-white'
+                    ? 'bg-[#d4b07c] text-black shadow-[0_0_20px_rgba(212,176,124,0.3)]'
+                    : 'bg-white/[0.03] text-white/60 hover:text-white hover:bg-white/10 border border-white/5'
                 }`}
               >
                 {tab}
@@ -67,42 +75,45 @@ export default function FeaturedProjects() {
           })}
         </div>
 
-        {/* Portfolio Grid Layout: 3 Projects Per Row */}
+        {/* Projects Grid */}
         {filteredProjects.length === 0 ? (
-          <div className="py-16 text-center border border-white/5 bg-[#0b0b0b] p-12 max-w-2xl mx-auto reveal">
-            <p className="text-xs font-mono uppercase tracking-widest text-[#d4b07c] mb-3 font-bold">
-              {projects.length === 0 ? 'Database Empty' : 'No Projects Found'}
+          <div className="py-20 text-center border border-dashed border-white/10 bg-[#080808]">
+            <p className="text-xs text-white/40 uppercase tracking-widest font-mono">
+              No projects found in this category.
             </p>
-            <p className="text-sm text-gray-300 font-light mb-6 leading-relaxed">
-              {projects.length === 0
-                ? 'All sample data has been cleared. Upload your images from the Admin Portal to see them saved in your MySQL database.'
-                : `No projects match the "${activeCategory}" category. Try selecting "ALL" or upload a project under this category.`}
-            </p>
-            <a
-              href="/admin"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#d4b07c] text-black font-bold text-xs uppercase tracking-widest hover:bg-white transition-colors"
-            >
-              <span>Go to Admin Portal</span>
-            </a>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {filteredProjects.map((project, idx) => {
-              const targetUrl = project.website_url || project.websiteUrl || '#contact';
-              const hasExternalLink = Boolean(project.website_url || project.websiteUrl);
+              const hasExternalLink = Boolean(project.website_url);
+              const targetUrl = project.website_url || '#contact';
+              const projId = project.id || idx;
+              const isImgLoaded = loadedImages[projId];
 
               return (
                 <div
-                  key={project.id || idx}
+                  key={projId}
                   className="group flex flex-col bg-[#0b0b0b] border border-white/5 hover:border-[#d4b07c]/40 transition-all duration-500 reveal rounded-none overflow-hidden"
                 >
-                  {/* Top Image Container */}
-                  <div className="relative aspect-[16/10] bg-[#050505] overflow-hidden cursor-pointer border-b border-white/5">
+                  {/* Top Image Container with Instant Skeleton Loader */}
+                  <div className="relative aspect-[16/10] bg-[#0d0d0d] overflow-hidden cursor-pointer border-b border-white/5">
+                    {/* Skeleton Loader placeholder while image loads */}
+                    {!isImgLoaded && project.src && (
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/[0.02] via-white/[0.06] to-white/[0.02] animate-pulse flex items-center justify-center">
+                        <Loader2 className="w-5 h-5 text-[#d4b07c]/40 animate-spin" />
+                      </div>
+                    )}
+
                     {project.src ? (
                       <img
                         src={project.src}
                         alt={project.client}
-                        className="w-full h-full object-cover filter brightness-[0.8] group-hover:brightness-100 group-hover:scale-105 transition-all duration-700"
+                        loading="eager"
+                        decoding="async"
+                        onLoad={() => handleImageLoad(projId)}
+                        className={`w-full h-full object-cover filter brightness-[0.85] group-hover:brightness-100 group-hover:scale-105 transition-all duration-700 ${
+                          isImgLoaded ? 'opacity-100' : 'opacity-0'
+                        }`}
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center bg-[#0d0d0d] text-white/20 font-mono text-xs">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getProjects, addProject, deleteProject, resetProjects } from '../utils/portfolioStore';
-import { Upload, Trash2, Plus, RefreshCw, CheckCircle, Image as ImageIcon, ShieldCheck, ArrowUpRight, Globe } from 'lucide-react';
+import { Upload, Trash2, Plus, RefreshCw, CheckCircle, Image as ImageIcon, ShieldCheck, ArrowUpRight, Globe, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Admin() {
@@ -13,6 +13,7 @@ export default function Admin() {
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [successMsg, setSuccessMsg] = useState('');
+  const [isUploading, setIsUploading] = useState(false);
 
   useEffect(() => {
     setProjects(getProjects());
@@ -40,23 +41,31 @@ export default function Admin() {
       return;
     }
 
-    await addProject({
-      title,
-      client,
-      category,
-      year: year || new Date().getFullYear().toString(),
-      websiteUrl,
-      imageFile,
-      imagePreview
-    });
+    setIsUploading(true);
 
-    setTitle('');
-    setClient('');
-    setWebsiteUrl('');
-    setImageFile(null);
-    setImagePreview(null);
-    setSuccessMsg('New project successfully saved to MySQL database & published to portfolio!');
-    setTimeout(() => setSuccessMsg(''), 4000);
+    try {
+      await addProject({
+        title,
+        client,
+        category,
+        year: year || new Date().getFullYear().toString(),
+        websiteUrl,
+        imageFile,
+        imagePreview
+      });
+
+      setTitle('');
+      setClient('');
+      setWebsiteUrl('');
+      setImageFile(null);
+      setImagePreview(null);
+      setSuccessMsg('New project successfully saved to Cloudflare R2 & published live!');
+      setTimeout(() => setSuccessMsg(''), 5000);
+    } catch (err) {
+      alert('Failed to publish project: ' + (err.message || 'Error occurred during upload'));
+    } finally {
+      setIsUploading(false);
+    }
   };
 
   const handleDelete = (id) => {
@@ -99,11 +108,12 @@ export default function Admin() {
               <RefreshCw className="w-3.5 h-3.5" />
               <span>Reset Defaults</span>
             </button>
+
             <Link
-              to="/work"
-              className="inline-flex items-center gap-2 px-5 py-2 text-xs font-bold tracking-widest uppercase bg-[#d4b07c] text-black hover:bg-white transition-colors duration-300"
+              to="/"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#d4b07c] text-black text-xs font-bold uppercase tracking-wider hover:bg-white transition-colors duration-300"
             >
-              <span>View Portfolio</span>
+              <span>View Website</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -111,22 +121,21 @@ export default function Admin() {
 
         {/* Success Alert */}
         {successMsg && (
-          <div className="mb-8 p-4 bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 text-xs font-mono flex items-center gap-3 rounded-none text-left">
-            <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
+          <div className="mb-8 p-4 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono flex items-center gap-3">
+            <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
             <span>{successMsg}</span>
           </div>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 text-left">
-          {/* Left Column: Upload Form */}
-          <div className="lg:col-span-5">
-            <div className="p-8 bg-[#0b0b0b] border border-white/10">
-              <h2 className="text-lg font-bold text-white uppercase tracking-tight mb-6 font-display flex items-center gap-2">
-                <Plus className="w-4 h-4 text-[#d4b07c]" />
-                <span>Upload New Project</span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 text-left">
+          {/* Left Column: Upload New Project Form */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="p-6 md:p-8 bg-[#0a0a0a] border border-white/10 rounded-none relative">
+              <h2 className="text-lg font-bold text-white uppercase tracking-tight mb-6 font-display border-b border-white/10 pb-3">
+                Publish New Project
               </h2>
 
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">
                     Client Name *
@@ -134,44 +143,46 @@ export default function Admin() {
                   <input
                     type="text"
                     required
-                    placeholder="e.g. Aurelia Luxury"
+                    placeholder="e.g. Apex Dynamics"
                     value={client}
                     onChange={(e) => setClient(e.target.value)}
-                    className="w-full px-4 py-3 bg-black border border-white/10 text-white text-xs font-light focus:outline-none focus:border-[#d4b07c] transition-colors"
+                    disabled={isUploading}
+                    className="w-full px-4 py-3 bg-black border border-white/10 text-white text-xs font-light focus:outline-none focus:border-[#d4b07c] transition-colors placeholder:text-white/20"
                   />
                 </div>
 
                 <div>
                   <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">
-                    Project Title *
+                    Project Title / Subtitle *
                   </label>
                   <input
                     type="text"
                     required
-                    placeholder="e.g. Editorial photography & visual identity"
+                    placeholder="e.g. High-performance SaaS Landing Page"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    className="w-full px-4 py-3 bg-black border border-white/10 text-white text-xs font-light focus:outline-none focus:border-[#d4b07c] transition-colors"
+                    disabled={isUploading}
+                    className="w-full px-4 py-3 bg-black border border-white/10 text-white text-xs font-light focus:outline-none focus:border-[#d4b07c] transition-colors placeholder:text-white/20"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">
-                      Category
+                      Category *
                     </label>
                     <select
                       value={category}
                       onChange={(e) => setCategory(e.target.value)}
-                      className="w-full px-3 py-3 bg-black border border-white/10 text-white text-xs font-light focus:outline-none focus:border-[#d4b07c] transition-colors"
+                      disabled={isUploading}
+                      className="w-full px-4 py-3 bg-black border border-white/10 text-white text-xs font-light focus:outline-none focus:border-[#d4b07c] transition-colors"
                     >
                       <option value="Website Design & Development">Website Design</option>
-                      <option value="Graphic Design">Graphic Design</option>
-                      <option value="Digital Marketing">Digital Marketing</option>
-                      <option value="Live Streaming">Live Streaming</option>
-                      <option value="Video Editing">Video Editing</option>
-                      <option value="Entire Social Media Handling">Social Media Handling</option>
-                      <option value="Branding & Web Design">Branding</option>
+                      <option value="Graphic Design & Branding">Graphic Design</option>
+                      <option value="Digital Marketing Campaign">Digital Marketing</option>
+                      <option value="Video Editing & Post-Production">Video Editing</option>
+                      <option value="Live Streaming Setup">Live Streaming</option>
+                      <option value="Social Media Management">Social Media</option>
                     </select>
                   </div>
 
@@ -183,12 +194,13 @@ export default function Admin() {
                       type="text"
                       value={year}
                       onChange={(e) => setYear(e.target.value)}
+                      disabled={isUploading}
                       className="w-full px-4 py-3 bg-black border border-white/10 text-white text-xs font-light focus:outline-none focus:border-[#d4b07c] transition-colors"
                     />
                   </div>
                 </div>
 
-                {/* Conditional Website Link input when Website category selected */}
+                {/* Conditional Website Link input */}
                 {(category.toLowerCase().includes('website') || category.toLowerCase().includes('web')) && (
                   <div className="p-4 bg-[#121212] border border-[#d4b07c]/40 text-left">
                     <label className="block text-[10px] font-mono uppercase tracking-widest text-[#d4b07c] mb-2 font-bold flex items-center gap-1.5">
@@ -200,6 +212,7 @@ export default function Admin() {
                       placeholder="e.g. https://www.example.com"
                       value={websiteUrl}
                       onChange={(e) => setWebsiteUrl(e.target.value)}
+                      disabled={isUploading}
                       className="w-full px-4 py-3 bg-black border border-white/20 text-white text-xs font-light focus:outline-none focus:border-[#d4b07c] transition-colors placeholder:text-white/30"
                     />
                   </div>
@@ -215,6 +228,7 @@ export default function Admin() {
                       type="file"
                       accept="image/*"
                       onChange={handleImageChange}
+                      disabled={isUploading}
                       className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                     />
                     {imagePreview ? (
@@ -231,19 +245,34 @@ export default function Admin() {
                           Click or drag image file here
                         </span>
                         <span className="text-[9px] font-mono text-white/30">
-                          PNG, JPG, WEBP or GIF (Max 10MB)
+                          PNG, JPG, WEBP or GIF (Auto-compressed)
                         </span>
                       </div>
                     )}
                   </div>
                 </div>
 
+                {/* Submit Button with Loading State */}
                 <button
                   type="submit"
-                  className="w-full py-4 bg-[#d4b07c] text-black font-bold text-xs uppercase tracking-widest hover:bg-white transition-colors duration-300 flex items-center justify-center gap-2 mt-4"
+                  disabled={isUploading}
+                  className={`w-full py-4 bg-[#d4b07c] text-black font-bold text-xs uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 mt-4 ${
+                    isUploading
+                      ? 'opacity-80 cursor-not-allowed bg-[#d4b07c]/80'
+                      : 'hover:bg-white cursor-pointer'
+                  }`}
                 >
-                  <Plus className="w-4 h-4" />
-                  <span>Publish to Live Portfolio</span>
+                  {isUploading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin text-black" />
+                      <span>Uploading to Cloudflare R2...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Plus className="w-4 h-4" />
+                      <span>Publish to Live Portfolio</span>
+                    </>
+                  )}
                 </button>
               </form>
             </div>
@@ -260,47 +289,63 @@ export default function Admin() {
               </span>
             </div>
 
-            <div className="space-y-4 max-h-[700px] overflow-y-auto pr-2">
-              {projects.map((project, idx) => (
-                <div
-                  key={project.id || idx}
-                  className="p-4 bg-[#0b0b0b] border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 group hover:border-[#d4b07c]/30 transition-all"
-                >
-                  <div className="flex items-center gap-4">
-                    {/* Thumbnail preview */}
-                    <div className="w-20 h-14 bg-black border border-white/10 overflow-hidden shrink-0 flex items-center justify-center">
-                      {project.src ? (
-                        <img src={project.src} alt={project.client} className="w-full h-full object-cover" />
-                      ) : (
-                        <ImageIcon className="w-5 h-5 text-white/20" />
+            {projects.length === 0 ? (
+              <div className="p-12 text-center bg-[#0a0a0a] border border-white/10">
+                <ImageIcon className="w-8 h-8 text-white/20 mx-auto mb-3" />
+                <p className="text-xs text-gray-400">No custom projects published yet.</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {projects.map((item) => (
+                  <div
+                    key={item.id}
+                    className="p-4 bg-[#0a0a0a] border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between group"
+                  >
+                    <div>
+                      <div className="aspect-video w-full bg-black overflow-hidden mb-3 relative border border-white/5">
+                        {item.src ? (
+                          <img src={item.src} alt={item.title} className="w-full h-full object-cover" />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-white/20">
+                            <ImageIcon className="w-6 h-6" />
+                          </div>
+                        )}
+                      </div>
+                      <span className="text-[9px] font-mono uppercase tracking-widest text-[#d4b07c] block mb-1">
+                        {item.category} ({item.year})
+                      </span>
+                      <h3 className="text-xs font-bold text-white uppercase tracking-tight line-clamp-1">
+                        {item.title}
+                      </h3>
+                      <p className="text-[11px] text-gray-400 font-light mt-0.5 line-clamp-1">
+                        Client: {item.client}
+                      </p>
+                      {item.website_url && (
+                        <a
+                          href={item.website_url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-[10px] text-[#d4b07c] underline block mt-1 truncate"
+                        >
+                          {item.website_url}
+                        </a>
                       )}
                     </div>
 
-                    <div>
-                      <div className="flex items-center gap-2 text-[10px] font-mono text-white/40 uppercase">
-                        <span className="text-[#d4b07c]">{project.client}</span>
-                        <span>•</span>
-                        <span>{project.year}</span>
-                      </div>
-                      <h4 className="text-sm font-bold text-white line-clamp-1 group-hover:text-[#d4b07c] transition-colors">
-                        {project.title}
-                      </h4>
-                      <span className="text-[9px] uppercase tracking-wider text-white/30 font-mono">
-                        {project.category}
-                      </span>
+                    <div className="pt-3 border-t border-white/5 mt-4 flex items-center justify-between">
+                      <span className="text-[9px] font-mono text-white/30">ID: {item.id}</span>
+                      <button
+                        onClick={() => handleDelete(item.id)}
+                        className="p-1.5 text-red-400/60 hover:text-red-400 hover:bg-red-500/10 transition-colors"
+                        title="Delete project"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
                     </div>
                   </div>
-
-                  <button
-                    onClick={() => handleDelete(project.id)}
-                    className="p-2 border border-white/10 text-white/40 hover:text-red-400 hover:border-red-400/30 transition-colors shrink-0"
-                    title="Delete project"
-                  >
-                    <Trash2 className="w-4 h-4" />
-                  </button>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>

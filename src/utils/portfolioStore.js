@@ -4,6 +4,17 @@ const UPLOAD_API_URL = '/api/upload';
 const DEFAULT_PROJECTS = [];
 const STORAGE_KEY = 'elite_portfolio_projects';
 
+// Background Image Preloader for Ultra Fast Portfolio Image Loading
+export function preloadProjectImages(projects) {
+  if (!Array.isArray(projects) || typeof window === 'undefined') return;
+  projects.forEach((p) => {
+    if (p && p.src) {
+      const img = new Image();
+      img.src = p.src;
+    }
+  });
+}
+
 // Helper to compress & convert image File to lightweight Base64
 function compressImage(file, maxWidth = 1920, quality = 0.85) {
   return new Promise((resolve) => {
@@ -51,6 +62,7 @@ export function getProjectsLocal() {
     if (data !== null) {
       const parsed = JSON.parse(data);
       if (Array.isArray(parsed)) {
+        preloadProjectImages(parsed);
         return parsed;
       }
     }
@@ -71,6 +83,7 @@ export async function fetchProjects() {
           src: formatProjectSrc(p.src)
         }));
         localStorage.setItem(STORAGE_KEY, JSON.stringify(formatted));
+        preloadProjectImages(formatted);
         window.dispatchEvent(new CustomEvent('portfolio-updated'));
         return formatted;
       }
@@ -78,17 +91,22 @@ export async function fetchProjects() {
   } catch (err) {
     console.warn('[Vercel API Notice] Backend API offline or credentials missing:', err.message);
   }
-  return getProjectsLocal();
+  const local = getProjectsLocal();
+  preloadProjectImages(local);
+  return local;
 }
 
 export function getProjects() {
   fetchProjects();
-  return getProjectsLocal();
+  const local = getProjectsLocal();
+  preloadProjectImages(local);
+  return local;
 }
 
 export function saveProjectsLocal(projects) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(projects));
+    preloadProjectImages(projects);
     window.dispatchEvent(new CustomEvent('portfolio-updated'));
   } catch (err) {
     console.error('Failed to save local storage:', err);

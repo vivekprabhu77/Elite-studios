@@ -169,9 +169,6 @@ export default function Footer() {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-mono tracking-widest uppercase text-white/40 footer-bottom">
           <span>&copy; {currentYear} ELITE STUDIOS. ALL RIGHTS RESERVED.</span>
           <div className="flex flex-wrap items-center justify-center gap-6">
-            <Link to="/admin" className="hover:text-[#d4b07c] transition-colors duration-300 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-[#d4b07c] font-bold footer-admin-link">
-              ADMIN PORTAL
-            </Link>
             <a href="#privacy" className="hover:text-white transition-colors duration-300">PRIVACY POLICY</a>
             <a href="#terms" className="hover:text-white transition-colors duration-300">TERMS OF SERVICE</a>
             <button
