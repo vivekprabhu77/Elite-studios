@@ -9,6 +9,8 @@ import ServicesPage from './pages/ServicesPage';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
 
+import WhatsAppButton from './components/WhatsAppButton';
+
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
   useEffect(() => {
@@ -129,6 +131,8 @@ export default function App() {
       {/* Structured Footer */}
       <Footer />
 
+      {/* Fixed WhatsApp Floating CTA Button */}
+      <WhatsAppButton />
 
     </div>
   );

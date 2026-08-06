@@ -27,7 +27,7 @@ export default function FinalCTA() {
         {/* CTA Button */}
         <div className="reveal">
           <a
-            href="mailto:hello@elitestudios.com"
+            href="mailto:elitestudiossiddapura@gmail.com"
             className="inline-flex items-center gap-4 px-10 py-5 bg-[#d4b07c] text-black hover:bg-transparent border border-[#d4b07c] hover:text-[#d4b07c] transition-all duration-500 text-xs font-bold uppercase tracking-widest group shadow-[0_0_40px_rgba(212,176,124,0.1)] hover:shadow-none"
           >
             <span>Start Your Project</span>
@@ -37,12 +37,12 @@ export default function FinalCTA() {
 
         {/* Contact Links */}
         <div className="mt-20 flex flex-wrap justify-center items-center gap-x-12 gap-y-4 text-xs font-mono tracking-widest uppercase text-white/40 reveal">
-          <a href="mailto:hello@elitestudios.com" className="hover:text-[#d4b07c] transition-colors duration-300">
-            hello@elitestudios.com
+          <a href="mailto:elitestudiossiddapura@gmail.com" className="hover:text-[#d4b07c] transition-colors duration-300">
+            elitestudiossiddapura@gmail.com
           </a>
           <span className="h-1 w-1 bg-[#d4b07c]/30 rounded-full hidden sm:inline"></span>
-          <a href="tel:+18005550199" className="hover:text-[#d4b07c] transition-colors duration-300">
-            +1 (800) 555-0199
+          <a href="tel:+917259174667" className="hover:text-[#d4b07c] transition-colors duration-300">
+            +91 7259174667
           </a>
         </div>
       </div>

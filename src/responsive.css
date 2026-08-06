@@ -87,8 +87,7 @@ nav,
   }
 
   /* Services Grid on Tablet */
-  .services-grid,
-  .packages-grid {
+  .services-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 1.5rem !important;
   }
@@ -287,11 +286,6 @@ nav,
     object-fit: cover !important;
   }
 
-  /* Packages Section */
-  .packages-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
-  }
 
   /* Contact Section */
   .contact-form-container {
@@ -487,13 +481,7 @@ nav,
     font-size: clamp(30px, 9vw, 42px) !important;
   }
 
-  .package-card {
-    padding: 1.5rem !important;
-  }
 
-  .package-price {
-    font-size: 2.25rem !important;
-  }
 }
 
 /* ==========================================================================

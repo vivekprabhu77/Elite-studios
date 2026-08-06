@@ -25,7 +25,6 @@ export default function Navbar() {
     { label: 'ABOUT US', to: '/about' },
     { label: 'SERVICES', to: '/services' },
     { label: 'PORTFOLIO', to: '/work' },
-    { label: 'PACKAGES', to: '/#packages' },
     { label: 'CONTACT', to: '/contact' }
   ];
 
