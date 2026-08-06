@@ -154,33 +154,46 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-// MySQL connection parameters (Default XAMPP credentials)
+// MySQL / TiDB Connection parameters
 const DB_HOST = process.env.DB_HOST || 'localhost';
 const DB_USER = process.env.DB_USER || 'root';
 const DB_PASSWORD = process.env.DB_PASSWORD || '';
-const DB_NAME = 'Elitestudios';
+const DB_NAME = process.env.DB_NAME || 'Elitestudios';
+const DB_PORT = parseInt(process.env.DB_PORT || '3306', 10);
+const DB_SSL = process.env.DB_SSL === 'true' || DB_HOST.includes('tidbcloud.com') || DB_HOST.includes('render');
 
 let dbPool;
 
 // Initialize Database & Table automatically
 async function initDatabase() {
   try {
-    // 1. Connect without database name to ensure Elitestudios DB exists
-    const rootConnection = await mysql.createConnection({
-      host: DB_HOST,
-      user: DB_USER,
-      password: DB_PASSWORD
-    });
+    const sslConfig = DB_SSL ? { minVersion: 'TLSv1.2', rejectUnauthorized: false } : undefined;
 
-    await rootConnection.query(`CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\`;`);
-    await rootConnection.end();
+    // 1. If local environment, ensure DB exists
+    if (!DB_HOST.includes('tidbcloud.com')) {
+      try {
+        const rootConnection = await mysql.createConnection({
+          host: DB_HOST,
+          port: DB_PORT,
+          user: DB_USER,
+          password: DB_PASSWORD,
+          ssl: sslConfig
+        });
+        await rootConnection.query(`CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\`;`);
+        await rootConnection.end();
+      } catch (err) {
+        console.warn('[DB Notice] Could not create database root connection, connecting directly:', err.message);
+      }
+    }
 
-    // 2. Create pool connected to Elitestudios
+    // 2. Create pool connected to DB_NAME
     dbPool = mysql.createPool({
       host: DB_HOST,
+      port: DB_PORT,
       user: DB_USER,
       password: DB_PASSWORD,
       database: DB_NAME,
+      ssl: sslConfig,
       waitForConnections: true,
       connectionLimit: 10,
       queueLimit: 0
