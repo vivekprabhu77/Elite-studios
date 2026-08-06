@@ -3,7 +3,7 @@ import mysql from 'mysql2/promise';
 const DB_HOST = process.env.DB_HOST;
 const DB_USER = process.env.DB_USER;
 const DB_PASSWORD = process.env.DB_PASSWORD;
-const DB_NAME = process.env.DB_NAME || 'Elitestudios';
+const DB_NAME = process.env.DB_NAME || 'test';
 const DB_PORT = parseInt(process.env.DB_PORT || '4000', 10);
 const DB_SSL = process.env.DB_SSL === 'true' || (DB_HOST && DB_HOST.includes('tidbcloud.com'));
 
@@ -29,23 +29,6 @@ function getDbPool() {
   return pool;
 }
 
-async function ensureTable(db) {
-  const createTableQuery = `
-    CREATE TABLE IF NOT EXISTS projects (
-      id INT AUTO_INCREMENT PRIMARY KEY,
-      client VARCHAR(255) NOT NULL,
-      title VARCHAR(255) NOT NULL,
-      category VARCHAR(255) NOT NULL,
-      year VARCHAR(50) DEFAULT '2026',
-      type VARCHAR(50) DEFAULT 'image',
-      src TEXT NOT NULL,
-      website_url VARCHAR(500) DEFAULT NULL,
-      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-  `;
-  await db.query(createTableQuery);
-}
-
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -66,8 +49,6 @@ export default async function handler(req, res) {
   }
 
   try {
-    await ensureTable(db);
-
     if (req.method === 'GET') {
       const [rows] = await db.query('SELECT * FROM projects ORDER BY created_at DESC');
       return res.status(200).json(rows);
