@@ -46,18 +46,18 @@ export default function Navbar() {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-            ? 'py-4 bg-black/90 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.8)]'
-            : 'py-6 md:py-8 bg-transparent'
+            ? 'py-2.5 bg-black/90 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.8)]'
+            : 'py-3 md:py-4 bg-transparent'
           }`}
       >
-        <div className="max-w-[1600px] mx-auto flex items-center justify-between w-full relative h-16">
+        <div className="max-w-[1600px] mx-auto flex items-center justify-between w-full relative h-14 px-4 sm:px-6 lg:px-12">
           {/* Logo */}
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 lg:top-auto lg:translate-y-0 lg:-top-[68px] z-50">
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 lg:top-auto lg:translate-y-0 lg:-top-[55px] z-50">
             <Link to="/" className="flex items-center group">
               <img
                 src={logo}
                 alt="Elite Studios"
-                className="w-auto object-contain transition-all duration-500 group-hover:scale-[1.01] h-24 sm:h-28 lg:h-[210px]"
+                className="w-auto object-contain transition-all duration-500 group-hover:scale-[1.01] h-20 sm:h-24 lg:h-[180px]"
               />
             </Link>
           </div>
@@ -84,7 +84,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop CTA Button */}
-          <div className="hidden lg:block z-50">
+          <div className="hidden lg:block z-50 mr-6 lg:mr-12 xl:mr-20">
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 px-6 py-2.5 text-[10px] font-bold uppercase tracking-[0.2em] border border-[#d4b07c] text-[#d4b07c] transition-all duration-300 hover:bg-[#d4b07c] hover:text-black rounded-md"
