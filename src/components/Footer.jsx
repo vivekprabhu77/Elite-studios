@@ -147,7 +147,9 @@ export default function Footer() {
                 <span className="text-xs text-gray-400">Karnataka, India</span>
               </div>
               <a
-                href="mailto:elitestudiossiddapura@gmail.com"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=elitestudiossiddapura@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2.5 text-gray-300 hover:text-[#d4b07c] transition-all duration-300 text-xs font-semibold py-2.5 px-3.5 rounded-lg bg-white/[0.03] border border-white/[0.07] hover:bg-[#d4b07c]/10 hover:border-[#d4b07c]/40 footer-email-btn"
               >
                 <span>elitestudiossiddapura@gmail.com</span>
