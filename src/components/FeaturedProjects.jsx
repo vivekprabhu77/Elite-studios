@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUpRight, Loader2 } from 'lucide-react';
-import { getProjectsLocal, fetchProjects, preloadProjectImages } from '../utils/portfolioStore';
+import { ArrowUpRight } from 'lucide-react';
+import { fetchProjects, preloadProjectImages } from '../utils/portfolioStore';
 
 const CATEGORY_TABS = [
   'ALL',
@@ -13,9 +13,8 @@ const CATEGORY_TABS = [
 ];
 
 export default function FeaturedProjects() {
-  const [projects, setProjects] = useState(getProjectsLocal());
+  const [projects, setProjects] = useState([]);
   const [activeCategory, setActiveCategory] = useState('ALL');
-  const [loadedImages, setLoadedImages] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -23,13 +22,18 @@ export default function FeaturedProjects() {
 
     const loadData = async () => {
       setIsLoading(true);
-      const data = await fetchProjects();
-      if (isMounted && Array.isArray(data)) {
-        setProjects(data);
-        preloadProjectImages(data);
-      }
-      if (isMounted) {
-        setIsLoading(false);
+      try {
+        const data = await fetchProjects();
+        if (isMounted && Array.isArray(data)) {
+          setProjects(data);
+          preloadProjectImages(data);
+        }
+      } catch (err) {
+        console.error('Failed to load portfolio projects:', err);
+      } finally {
+        if (isMounted) {
+          setIsLoading(false);
+        }
       }
     };
 
@@ -37,9 +41,7 @@ export default function FeaturedProjects() {
 
     const handleUpdate = () => {
       if (isMounted) {
-        const updated = getProjectsLocal();
-        setProjects(updated);
-        preloadProjectImages(updated);
+        loadData();
       }
     };
 
@@ -49,10 +51,6 @@ export default function FeaturedProjects() {
       window.removeEventListener('portfolio-updated', handleUpdate);
     };
   }, []);
-
-  const handleImageLoad = (id) => {
-    setLoadedImages((prev) => ({ ...prev, [id]: true }));
-  };
 
   const filteredProjects = projects.filter((p) => {
     if (activeCategory === 'ALL') return true;
@@ -67,7 +65,7 @@ export default function FeaturedProjects() {
       <div className="absolute top-[40%] left-[-10%] w-[600px] h-[600px] bg-white/[0.005] rounded-full blur-[140px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto w-full">
-        {/* Section Header */}
+        {/* Exact Original Section Header */}
         <div className="mb-8 md:mb-10 reveal">
           <span className="text-xs uppercase tracking-widest text-[#d4b07c] font-bold block mb-2 font-display">
             Selected Work
@@ -97,16 +95,14 @@ export default function FeaturedProjects() {
           })}
         </div>
 
-        {/* Loading Spinner Skeleton state while fetching on first visit */}
+        {/* Live Projects Grid */}
         {isLoading && projects.length === 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {[1, 2, 3].map((n) => (
               <div key={n} className="bg-[#0b0b0b] border border-white/5 p-6 animate-pulse">
-                <div className="aspect-[16/10] bg-white/[0.03] mb-4 flex items-center justify-center">
-                  <Loader2 className="w-6 h-6 text-[#d4b07c]/40 animate-spin" />
-                </div>
+                <div className="aspect-[16/10] bg-white/[0.03] mb-4"></div>
                 <div className="h-4 bg-white/10 w-2/3 mb-2"></div>
-                <div className="h-3 bg-white/5 w-1/3"></div>
+                <div className="h-3 bg-[#d4b07c]/20 w-1/3"></div>
               </div>
             ))}
           </div>
@@ -122,7 +118,6 @@ export default function FeaturedProjects() {
               const hasExternalLink = Boolean(project.website_url);
               const targetUrl = project.website_url || '#contact';
               const projId = project.id || idx;
-              const isImgLoaded = loadedImages[projId];
 
               return (
                 <div
@@ -130,23 +125,14 @@ export default function FeaturedProjects() {
                   className="group flex flex-col bg-[#0b0b0b] border border-white/5 hover:border-[#d4b07c]/40 transition-all duration-500 reveal rounded-none overflow-hidden"
                 >
                   {/* Top Image Container */}
-                  <div className="relative aspect-[16/10] bg-[#0d0d0d] overflow-hidden cursor-pointer border-b border-white/5">
-                    {!isImgLoaded && project.src && (
-                      <div className="absolute inset-0 bg-gradient-to-r from-white/[0.02] via-white/[0.06] to-white/[0.02] animate-pulse flex items-center justify-center">
-                        <Loader2 className="w-5 h-5 text-[#d4b07c]/40 animate-spin" />
-                      </div>
-                    )}
-
+                  <div className="relative aspect-[16/10] bg-[#050505] overflow-hidden cursor-pointer border-b border-white/5">
                     {project.src ? (
                       <img
                         src={project.src}
                         alt={project.client}
                         loading="eager"
                         decoding="async"
-                        onLoad={() => handleImageLoad(projId)}
-                        className={`w-full h-full object-cover filter brightness-[0.85] group-hover:brightness-100 group-hover:scale-105 transition-all duration-700 ${
-                          isImgLoaded ? 'opacity-100' : 'opacity-0'
-                        }`}
+                        className="w-full h-full object-cover filter brightness-[0.85] group-hover:brightness-100 group-hover:scale-105 transition-all duration-700 opacity-100 block"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center bg-[#0d0d0d] text-white/20 font-mono text-xs">
