@@ -3,7 +3,14 @@ import mysql from 'mysql2/promise';
 const DB_HOST = process.env.DB_HOST;
 const DB_USER = process.env.DB_USER;
 const DB_PASSWORD = process.env.DB_PASSWORD;
-const DB_NAME = process.env.DB_NAME || 'test';
+
+// Force 'test' database if DB_NAME is unset or erroneously set to system 'sys'
+let rawDbName = process.env.DB_NAME || 'test';
+if (rawDbName === 'sys' || !rawDbName) {
+  rawDbName = 'test';
+}
+const DB_NAME = rawDbName;
+
 const DB_PORT = parseInt(process.env.DB_PORT || '4000', 10);
 const DB_SSL = process.env.DB_SSL === 'true' || (DB_HOST && DB_HOST.includes('tidbcloud.com'));
 
