@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowUpRight } from 'lucide-react';
-import { fetchProjects, preloadProjectImages } from '../utils/portfolioStore';
+import { getProjectsLocal, fetchProjects, preloadProjectImages } from '../utils/portfolioStore';
 
 const CATEGORY_TABS = [
   'ALL',
@@ -13,27 +13,17 @@ const CATEGORY_TABS = [
 ];
 
 export default function FeaturedProjects() {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState(getProjectsLocal());
   const [activeCategory, setActiveCategory] = useState('ALL');
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     let isMounted = true;
 
     const loadData = async () => {
-      setIsLoading(true);
-      try {
-        const data = await fetchProjects();
-        if (isMounted && Array.isArray(data)) {
-          setProjects(data);
-          preloadProjectImages(data);
-        }
-      } catch (err) {
-        console.error('Failed to load portfolio projects:', err);
-      } finally {
-        if (isMounted) {
-          setIsLoading(false);
-        }
+      const data = await fetchProjects();
+      if (isMounted && Array.isArray(data) && data.length > 0) {
+        setProjects(data);
+        preloadProjectImages(data);
       }
     };
 
@@ -41,7 +31,9 @@ export default function FeaturedProjects() {
 
     const handleUpdate = () => {
       if (isMounted) {
-        loadData();
+        const updated = getProjectsLocal();
+        setProjects(updated);
+        preloadProjectImages(updated);
       }
     };
 
@@ -65,8 +57,8 @@ export default function FeaturedProjects() {
       <div className="absolute top-[40%] left-[-10%] w-[600px] h-[600px] bg-white/[0.005] rounded-full blur-[140px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto w-full">
-        {/* Exact Original Section Header */}
-        <div className="mb-8 md:mb-10 reveal">
+        {/* Exact Original Section Header - No reveal hiding */}
+        <div className="mb-8 md:mb-10">
           <span className="text-xs uppercase tracking-widest text-[#d4b07c] font-bold block mb-2 font-display">
             Selected Work
           </span>
@@ -75,8 +67,8 @@ export default function FeaturedProjects() {
           </h2>
         </div>
 
-        {/* Category Filter Tabs */}
-        <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-10 pb-4 border-b border-white/10 reveal overflow-x-auto">
+        {/* Category Filter Tabs - No reveal hiding */}
+        <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-10 pb-4 border-b border-white/10 overflow-x-auto">
           {CATEGORY_TABS.map((tab) => {
             const isActive = activeCategory === tab;
             return (
@@ -96,17 +88,7 @@ export default function FeaturedProjects() {
         </div>
 
         {/* Live Projects Grid */}
-        {isLoading && projects.length === 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {[1, 2, 3].map((n) => (
-              <div key={n} className="bg-[#0b0b0b] border border-white/5 p-6 animate-pulse">
-                <div className="aspect-[16/10] bg-white/[0.03] mb-4"></div>
-                <div className="h-4 bg-white/10 w-2/3 mb-2"></div>
-                <div className="h-3 bg-[#d4b07c]/20 w-1/3"></div>
-              </div>
-            ))}
-          </div>
-        ) : filteredProjects.length === 0 ? (
+        {filteredProjects.length === 0 ? (
           <div className="py-20 text-center border border-dashed border-white/10 bg-[#080808]">
             <p className="text-xs text-white/40 uppercase tracking-widest font-mono">
               No projects found in this category.
@@ -122,7 +104,7 @@ export default function FeaturedProjects() {
               return (
                 <div
                   key={projId}
-                  className="group flex flex-col bg-[#0b0b0b] border border-white/5 hover:border-[#d4b07c]/40 transition-all duration-500 reveal rounded-none overflow-hidden"
+                  className="group flex flex-col bg-[#0b0b0b] border border-white/5 hover:border-[#d4b07c]/40 transition-all duration-500 rounded-none overflow-hidden"
                 >
                   {/* Top Image Container */}
                   <div className="relative aspect-[16/10] bg-[#050505] overflow-hidden cursor-pointer border-b border-white/5">
