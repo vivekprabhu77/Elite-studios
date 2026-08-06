@@ -1,69 +1,7 @@
 const API_BASE_URL = '/api/projects';
 const UPLOAD_API_URL = '/api/upload';
 
-const DEFAULT_PROJECTS = [
-  {
-    id: 'default-1',
-    client: 'Virtue Arch',
-    title: 'Minimalist brutalist villa & architectural identity.',
-    category: 'Website Design',
-    year: '2026',
-    type: 'image',
-    src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop',
-    website_url: ''
-  },
-  {
-    id: 'default-2',
-    client: 'Aura Cosmetics',
-    title: 'Luxury skincare e-commerce & bottle mockups.',
-    category: 'Graphic Design',
-    year: '2026',
-    type: 'image',
-    src: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1200&auto=format&fit=crop',
-    website_url: ''
-  },
-  {
-    id: 'default-3',
-    client: 'Kinetic Lab',
-    title: 'Fluid kinetic sculpture motion design system.',
-    category: 'Video Editing',
-    year: '2026',
-    type: 'image',
-    src: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop',
-    website_url: ''
-  },
-  {
-    id: 'default-4',
-    client: 'Elevate Partners',
-    title: 'Next-gen venture investment web platform.',
-    category: 'Website Design',
-    year: '2026',
-    type: 'image',
-    src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop',
-    website_url: ''
-  },
-  {
-    id: 'default-5',
-    client: 'Vogue Studios',
-    title: 'High-fashion editorial campaign & social branding.',
-    category: 'Social Media',
-    year: '2026',
-    type: 'image',
-    src: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1200&auto=format&fit=crop',
-    website_url: ''
-  },
-  {
-    id: 'default-6',
-    client: 'Apex Marketing',
-    title: 'Global omnichannel digital marketing strategy.',
-    category: 'Digital Marketing',
-    year: '2026',
-    type: 'image',
-    src: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop',
-    website_url: ''
-  }
-];
-
+const DEFAULT_PROJECTS = [];
 const STORAGE_KEY = 'elite_portfolio_projects';
 
 // Background Image Preloader for Ultra Fast Portfolio Image Loading
@@ -123,15 +61,16 @@ export function getProjectsLocal() {
     const data = localStorage.getItem(STORAGE_KEY);
     if (data !== null) {
       const parsed = JSON.parse(data);
-      if (Array.isArray(parsed) && parsed.length > 0) {
-        preloadProjectImages(parsed);
-        return parsed;
+      if (Array.isArray(parsed)) {
+        // Filter out old sample default items if present
+        const customOnly = parsed.filter(p => !String(p.id).startsWith('default-'));
+        preloadProjectImages(customOnly);
+        return customOnly;
       }
     }
   } catch (err) {
     console.error('Failed to load local storage:', err);
   }
-  preloadProjectImages(DEFAULT_PROJECTS);
   return DEFAULT_PROJECTS;
 }
 
@@ -146,14 +85,10 @@ export async function fetchProjects() {
           src: formatProjectSrc(p.src)
         }));
 
-        // Merge DB projects on top of default showcases
-        const dbIds = new Set(formatted.map(f => String(f.id)));
-        const combined = [...formatted, ...DEFAULT_PROJECTS.filter(d => !dbIds.has(String(d.id)))];
-
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(combined));
-        preloadProjectImages(combined);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(formatted));
+        preloadProjectImages(formatted);
         window.dispatchEvent(new CustomEvent('portfolio-updated'));
-        return combined;
+        return formatted;
       }
     }
   } catch (err) {
@@ -277,5 +212,5 @@ export async function clearAllProjects() {
 }
 
 export async function resetProjects() {
-  saveProjectsLocal(DEFAULT_PROJECTS);
+  saveProjectsLocal([]);
 }
