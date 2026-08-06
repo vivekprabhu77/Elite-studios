@@ -4,13 +4,35 @@ const UPLOAD_API_URL = '/api/upload';
 const DEFAULT_PROJECTS = [];
 const STORAGE_KEY = 'elite_portfolio_projects';
 
-// Helper to convert File object to Base64
-function fileToBase64(file) {
-  return new Promise((resolve, reject) => {
+// Helper to compress & convert image File to lightweight Base64
+function compressImage(file, maxWidth = 1920, quality = 0.85) {
+  return new Promise((resolve) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
+    reader.onload = (event) => {
+      const img = new Image();
+      img.src = event.target.result;
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        let width = img.width;
+        let height = img.height;
+
+        if (width > maxWidth) {
+          height = Math.round((height * maxWidth) / width);
+          width = maxWidth;
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+
+        const dataUrl = canvas.toDataURL('image/jpeg', quality);
+        resolve(dataUrl);
+      };
+      img.onerror = () => resolve(event.target.result);
+    };
+    reader.onerror = () => resolve(null);
   });
 }
 
@@ -77,24 +99,26 @@ export async function addProject({ title, client, category, year, websiteUrl, we
   const urlToSave = websiteUrl || website_url || '';
   let finalImageSrc = imagePreview || '';
 
-  // 1. If an image file is selected, upload to Cloudflare R2 via Serverless Handler
+  // 1. If an image file is selected, compress & upload to Cloudflare R2 via Vercel API
   if (imageFile) {
     try {
-      const imageBase64 = await fileToBase64(imageFile);
-      const uploadRes = await fetch(UPLOAD_API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          imageBase64,
-          filename: imageFile.name,
-          mimeType: imageFile.type
-        })
-      });
+      const imageBase64 = await compressImage(imageFile);
+      if (imageBase64) {
+        const uploadRes = await fetch(UPLOAD_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            imageBase64,
+            filename: imageFile.name,
+            mimeType: 'image/jpeg'
+          })
+        });
 
-      if (uploadRes.ok) {
-        const uploadData = await uploadRes.json();
-        if (uploadData.publicUrl) {
-          finalImageSrc = uploadData.publicUrl;
+        if (uploadRes.ok) {
+          const uploadData = await uploadRes.json();
+          if (uploadData.publicUrl) {
+            finalImageSrc = uploadData.publicUrl;
+          }
         }
       }
     } catch (uploadErr) {
@@ -102,7 +126,7 @@ export async function addProject({ title, client, category, year, websiteUrl, we
     }
   }
 
-  // 2. Try saving to TiDB / MySQL serverless database API
+  // 2. Save project details to TiDB Cloud database API
   try {
     const res = await fetch(API_BASE_URL, {
       method: 'POST',
