@@ -2,12 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   Globe,
-  Camera,
-  Video,
   Palette,
   Megaphone,
   Radio,
-  Layers,
   Scissors,
   Share2,
   ArrowUpRight
@@ -49,55 +46,34 @@ const SERVICES = [
   },
   {
     num: '02',
-    title: 'Photography',
-    desc: 'Elite commercial, product, and brand photography captured with premium optics and styled to reflect pure luxury.',
-    items: ['Studio Shoots', 'Art Direction', 'Editorial'],
-    icon: Camera
-  },
-  {
-    num: '03',
-    title: 'Videography',
-    desc: 'High-end cinematic video production, corporate storytelling, and dynamic commercial shoots from concept to execution.',
-    items: ['Brand Reels', 'Cinematography', 'Direction'],
-    icon: Video
-  },
-  {
-    num: '04',
     title: 'Graphic Design',
     desc: 'Sophisticated corporate and artistic design assets crafted with rigorous typography standards and grid systems.',
     items: ['Typography', 'Key Visuals', 'Vector Art'],
     icon: Palette
   },
   {
-    num: '05',
+    num: '03',
     title: 'Digital Marketing',
     desc: 'Data-backed growth marketing campaigns, SEO optimization, and hyper-targeted advertising strategies that convert.',
     items: ['Campaigns', 'SEO Execution', 'ROI Tracking'],
     icon: Megaphone
   },
   {
-    num: '06',
+    num: '04',
     title: 'Live Streaming',
     desc: 'Broadcasting virtual events, webcasts, and high-fidelity multi-cam live streams with zero latency and clean audio.',
     items: ['Multi-Cam Setup', 'Live Audio Mix', 'Broadcast'],
     icon: Radio
   },
   {
-    num: '07',
-    title: 'Poster Making',
-    desc: 'High-impact promotional posters, digital event key visuals, and marketing flyers that command visual attention.',
-    items: ['Flyer Layouts', 'Key Visuals', 'Print Media'],
-    icon: Layers
-  },
-  {
-    num: '08',
+    num: '05',
     title: 'Video Editing',
     desc: 'Post-production mastery featuring detailed color grading, sound design, visual effects, and fluid pacing.',
     items: ['Color Grading', 'Sound Design', 'VFX / Motion'],
     icon: Scissors
   },
   {
-    num: '09',
+    num: '06',
     title: 'Entire Social Media Handling',
     desc: 'Complete management of social handles, content calendars, cohesive aesthetic feeds, and organic community building.',
     items: ['Feed Aesthetics', 'Scheduling', 'Analytics'],
@@ -117,7 +93,6 @@ function renderWidget(num) {
             <div className="h-2 w-28 bg-white/[0.03] rounded-full mx-auto"></div>
           </div>
           <div className="flex-1 flex gap-2">
-            {/* Left: layout skeleton */}
             <div className="flex-1 flex flex-col gap-1 text-left">
               <div className="h-1.5 w-10 bg-white/20 rounded-full"></div>
               <div className="h-4 w-full bg-white/[0.02] border border-white/[0.05] rounded-sm flex items-center justify-between px-1.5 transition-all duration-500 group-hover:translate-y-[-1px] group-hover:bg-[#d4b07c]/5">
@@ -128,7 +103,6 @@ function renderWidget(num) {
                 <span className="text-[5px] font-bold text-white/30">PREVIEW</span>
               </div>
             </div>
-            {/* Right: mini terminal */}
             <div className="w-24 bg-black/40 border border-white/5 rounded-sm p-1.5 font-mono text-[7px] text-left text-white/40 flex flex-col justify-between">
               <div>
                 <div>$ npm run build</div>
@@ -141,50 +115,7 @@ function renderWidget(num) {
           </div>
         </div>
       );
-    case '02': // Photography
-      return (
-        <div className="relative w-full h-full flex items-center justify-center bg-black/40 border border-white/[0.02] rounded-sm overflow-hidden p-4 group-hover:bg-black/60 transition-colors duration-500">
-          {/* Viewfinder frame */}
-          <div className="absolute inset-2 border border-white/10 pointer-events-none rounded-sm"></div>
-          {/* Focus markers */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 border border-[#d4b07c]/50 rounded-full flex items-center justify-center group-hover:scale-95 transition-transform duration-300">
-            <div className="w-1 h-1 bg-[#d4b07c] rounded-full"></div>
-          </div>
-          <div className="absolute top-4 left-4 font-mono text-[7px] text-white/30 tracking-wider">[ o ]</div>
-          <div className="absolute bottom-4 right-4 font-mono text-[7px] text-white/30">ISO 200</div>
-          <div className="absolute bottom-4 left-4 font-mono text-[7px] text-[#d4b07c]">F/2.8 1/250s</div>
-          <div className="absolute top-4 right-4 flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-            <span className="font-mono text-[7px] text-white/40">AF-S</span>
-          </div>
-        </div>
-      );
-    case '03': // Videography
-      return (
-        <div className="relative w-full h-full flex items-center justify-center bg-black/40 border border-white/[0.02] rounded-sm overflow-hidden p-4 group-hover:bg-black/60 transition-colors duration-500">
-          <div className="absolute inset-2 border border-white/10 pointer-events-none rounded-sm"></div>
-          {/* Recording indicator */}
-          <div className="absolute top-4 left-4 flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
-            <span className="font-mono text-[7px] text-white/80 tracking-widest font-bold">REC</span>
-          </div>
-          <div className="absolute top-4 right-4 font-mono text-[7px] text-white/30">1080P 60FPS</div>
-          <div className="absolute bottom-4 left-4 font-mono text-[7px] text-white/30">00:02:14:08</div>
-          {/* Grid visual overlay */}
-          <div className="w-full h-[1px] bg-white/5 absolute top-1/3"></div>
-          <div className="w-full h-[1px] bg-white/5 absolute top-2/3"></div>
-          <div className="h-full w-[1px] bg-white/5 absolute left-1/3"></div>
-          <div className="h-full w-[1px] bg-white/5 absolute left-2/3"></div>
-          {/* Audio monitor */}
-          <div className="absolute bottom-4 right-4 flex gap-0.5 items-end h-3">
-            <div className="w-0.5 h-1 bg-emerald-500"></div>
-            <div className="w-0.5 h-2 bg-emerald-500"></div>
-            <div className="w-0.5 h-3 bg-[#d4b07c]"></div>
-            <div className="w-0.5 h-1.5 bg-emerald-500"></div>
-          </div>
-        </div>
-      );
-    case '04': // Graphic Design
+    case '02': // Graphic Design
       return (
         <div className="relative w-full h-full flex items-center justify-center bg-black/40 border border-white/[0.02] rounded-sm overflow-hidden p-4 group-hover:bg-black/60 transition-colors duration-500">
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:10px_10px] pointer-events-none"></div>
@@ -201,7 +132,7 @@ function renderWidget(num) {
           </div>
         </div>
       );
-    case '05': // Digital Marketing
+    case '03': // Digital Marketing
       return (
         <div className="relative w-full h-full flex items-center justify-center bg-black/40 border border-white/[0.02] rounded-sm overflow-hidden p-4 group-hover:bg-black/60 transition-colors duration-500">
           <svg className="w-full h-20" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -223,7 +154,7 @@ function renderWidget(num) {
           </div>
         </div>
       );
-    case '06': // Live Streaming
+    case '04': // Live Streaming
       return (
         <div className="relative w-full h-full flex flex-col justify-between bg-black/40 border border-white/[0.02] rounded-sm overflow-hidden p-2.5 group-hover:bg-black/60 transition-colors duration-500">
           <div className="flex items-center justify-between">
@@ -245,28 +176,7 @@ function renderWidget(num) {
           </div>
         </div>
       );
-    case '07': // Poster Making
-      return (
-        <div className="relative w-full h-full flex items-center justify-center bg-black/40 border border-white/[0.02] rounded-sm overflow-hidden p-4 group-hover:bg-black/60 transition-colors duration-500">
-          <div className="relative w-28 h-22 border border-white/10 bg-black/60 overflow-hidden flex flex-col p-2 transition-transform duration-500 group-hover:scale-[1.03] group-hover:rotate-1">
-            <div className="border-b border-white/5 pb-1 flex justify-between items-center">
-              <span className="font-bebas text-[11px] tracking-widest text-white">EVENT</span>
-              <span className="font-mono text-[5px] text-[#d4b07c]">2026 EDITION</span>
-            </div>
-            <div className="flex-1 flex gap-2 mt-1.5 items-center justify-between">
-              <div className="w-12 h-12 bg-gradient-to-tr from-[#d4b07c]/20 to-transparent border border-[#d4b07c]/10 rounded-sm flex items-center justify-center">
-                <span className="text-[8px] font-script text-[#d4b07c]">Art</span>
-              </div>
-              <div className="flex-1 flex flex-col gap-1 text-left">
-                <div className="h-1 w-full bg-white/20 rounded-full"></div>
-                <div className="h-1 w-full bg-white/15 rounded-full"></div>
-                <div className="h-1 w-1/2 bg-[#d4b07c] rounded-full"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    case '08': // Video Editing
+    case '05': // Video Editing
       return (
         <div className="relative w-full h-full flex flex-col justify-between bg-black/40 border border-white/[0.02] rounded-sm overflow-hidden p-2.5 group-hover:bg-black/60 transition-colors duration-500">
           <div className="w-full flex justify-between border-b border-white/5 pb-1 font-mono text-[6px] text-white/20 select-none">
@@ -290,7 +200,7 @@ function renderWidget(num) {
           </div>
         </div>
       );
-    case '09': // Entire Social Media Handling
+    case '06': // Entire Social Media Handling
       return (
         <div className="relative w-full h-full flex flex-col justify-between bg-black/40 border border-white/[0.02] rounded-sm overflow-hidden p-3 group-hover:bg-black/60 transition-colors duration-500">
           <div className="flex items-center justify-between border-b border-white/[0.03] pb-1.5 text-[8px] text-white/30 font-mono">
@@ -337,7 +247,7 @@ export default function Services() {
   };
 
   return (
-    <section id="services" data-designer-selector=".services-section-responsive" className="py-12 md:py-16 px-6 md:px-12 lg:px-16 bg-black relative overflow-hidden services-section-responsive">
+    <section id="services" data-designer-selector=".services-section-responsive" className="scroll-mt-28 md:scroll-mt-36 pt-20 md:pt-28 pb-12 md:pb-16 px-6 md:px-12 lg:px-16 bg-black relative overflow-hidden services-section-responsive">
       {/* Background Spotlight */}
       <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] bg-white/[0.01] rounded-full blur-[120px] pointer-events-none"></div>
 

@@ -2,19 +2,19 @@ import React from 'react';
 
 const TESTIMONIALS = [
   {
-    quote: "“Elite Studios completely redefined our digital footprint. Their attention to grid layout and typography scale is unmatched. Our customer trust and direct bookings increased by 62% in the first month of launching.”",
+    quote: "“Working with Elite Studios changed how people perceive our brand. Their editorial direction and fast technical delivery helped us launch our rebrand three weeks ahead of schedule.”",
     author: "Marcus Sterling",
-    role: "CEO of Aurelia Luxury Group"
+    role: "Managing Director, Aurelia Group"
   },
   {
-    quote: "“Working with them felt like commissioning a custom art piece. The meticulous use of white space, micro-animations, and visual hierarchy is exactly what a high-end brand needs to stand out.”",
+    quote: "“They brought absolute clarity to a complex project. The photography, video cuts, and frontend architecture all fit together like a single cohesive system.”",
     author: "Elena Rostova",
-    role: "Creative Director of SOMA Magazine"
+    role: "Creative Lead, SOMA Studio"
   },
   {
-    quote: "“The codebase is just as polished as the visual design. They delivered a modular, fast-loading React 19 app that loads instantly and performs flawlessly on mobile devices.”",
+    quote: "“Incredibly sharp team with a focus on real performance. The site speed and visual polish exceeded our expectations, and our clients noticed the difference immediately.”",
     author: "David Vance",
-    role: "CTO of Elevate Partners"
+    role: "Co-Founder, Elevate Partners"
   }
 ];
 

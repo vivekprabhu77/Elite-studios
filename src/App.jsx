@@ -5,7 +5,9 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Work from './pages/Work';
 import About from './pages/About';
+import ServicesPage from './pages/ServicesPage';
 import Contact from './pages/Contact';
+import Admin from './pages/Admin';
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -13,8 +15,14 @@ function ScrollToTop() {
     if (hash) {
       const id = hash.replace('#', '');
       const element = document.getElementById(id);
+      const scrollToElement = (el) => {
+        const yOffset = -110; // Clear fixed navbar
+        const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+      };
+
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        scrollToElement(element);
         return;
       }
       
@@ -22,7 +30,7 @@ function ScrollToTop() {
       const timer = setTimeout(() => {
         const el = document.getElementById(id);
         if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
+          scrollToElement(el);
         }
       }, 100);
       return () => clearTimeout(timer);
@@ -110,9 +118,11 @@ export default function App() {
         <RevealObserver />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/services" element={<ServicesPage />} />
           <Route path="/work" element={<Work />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </main>
 

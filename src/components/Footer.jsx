@@ -7,7 +7,7 @@ export default function Footer() {
 
   const navItems = [
     { label: 'Home', to: '/' },
-    { label: 'Services', to: '/#services' },
+    { label: 'Services', to: '/services' },
     { label: 'Work', to: '/work' },
     { label: 'About', to: '/about' },
     { label: 'Contact', to: '/contact' }
@@ -94,6 +94,7 @@ export default function Footer() {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-mono tracking-widest uppercase text-white/30">
           <span>&copy; {currentYear} Elite Studios. All rights reserved.</span>
           <div className="flex gap-6">
+            <Link to="/admin" className="hover:text-[#d4b07c] transition-colors duration-300">Admin Portal</Link>
             <a href="#privacy" className="hover:text-white transition-colors duration-300">Privacy Policy</a>
             <a href="#terms" className="hover:text-white transition-colors duration-300">Terms of Service</a>
           </div>

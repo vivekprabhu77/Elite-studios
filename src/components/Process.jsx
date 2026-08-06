@@ -2,28 +2,28 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 const STEPS = [
   {
-    num: '01', phase: 'Discover', title: 'Immersion & Research',
-    desc: 'We start by diving deep into your brand identity, business model, and competitor landscape to isolate opportunities and define your target audience.',
+    num: '01', phase: 'Discover', title: 'Discovery & Positioning',
+    desc: 'We analyze your brand position, clarify core project goals, and isolate what makes your story compelling.',
     icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>)
   },
   {
-    num: '02', phase: 'Strategy', title: 'Architecture & Art Direction',
-    desc: 'Establishing the design system foundation, choosing typography palettes, outlining content strategies, and drafting functional wireframes.',
+    num: '02', phase: 'Strategy', title: 'Direction & Structure',
+    desc: 'Defining visual direction, layout grids, typography scale, and content architecture before writing any code.',
     icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>)
   },
   {
-    num: '03', phase: 'Design', title: 'High-End Visual Craft',
-    desc: 'Creating high-fidelity UI layouts, magazine-grade graphics, brand mockups, and interactive designs designed to capture emotion.',
+    num: '03', phase: 'Design', title: 'Visual & Motion Design',
+    desc: 'Crafting custom interfaces, editorial media, and fluid interactions tailored specifically to your audience.',
     icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>)
   },
   {
-    num: '04', phase: 'Develop', title: 'Clean Engineering',
-    desc: 'Translating designs into fast, clean, React-supported code with micro-interactions, responsive layouts, and top-tier SEO optimizations.',
+    num: '04', phase: 'Develop', title: 'Frontend Engineering',
+    desc: 'Building high-performance React code with smooth 60fps micro-interactions, clean structure, and zero bloat.',
     icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>)
   },
   {
-    num: '05', phase: 'Launch', title: 'Launch & Expansion',
-    desc: 'Conducting thorough audit checks, performance speed-tuning, and hosting setup, followed by a smooth deployment launch.',
+    num: '05', phase: 'Launch', title: 'Testing & Deployment',
+    desc: 'Conducting cross-browser audits, performance optimization, and seamless deployment with zero downtime.',
     icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>)
   }
 ];

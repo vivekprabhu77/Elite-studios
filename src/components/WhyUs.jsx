@@ -71,14 +71,14 @@ export default function WhyUs() {
           
           <div className="lg:col-span-8">
             <p className="text-xl sm:text-2xl text-gray-300 font-light leading-relaxed tracking-tight mb-8">
-              We do not build generic pages. We craft digital monuments that establish brand authority and command premium valuations.
+              We built Elite Studios around a simple principle: create work that lasts. No generic templates, no unnecessary bloat, and no middle managers.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-sm text-gray-400 font-light leading-relaxed">
               <p>
-                Ambitious companies don't need templates; they need handcrafted digital design. At Elite Studios, every layout, font pairing, and micro-interaction is custom-engineered. We focus on structural alignment, magazine-grade layout composition, and rapid load times.
+                We are a compact team of designers, filmmakers, and engineers. Every typography choice, layout grid, and line of code is built with intention. We focus on clear messaging, editorial aesthetic, and high-performance execution.
               </p>
               <p>
-                Our philosophy centers on luxury minimalism—cutting clutter to allow bold ideas and beautiful typography to communicate instantly. The result is a digital presence that builds immediate trust, feels highly premium, and looks worthy of an Awwwards nomination.
+                Whether launching a new digital platform or producing cinematic visual campaigns, we work directly with founders and creative leaders. The result is an authentic visual identity that builds immediate credibility.
               </p>
             </div>
           </div>
