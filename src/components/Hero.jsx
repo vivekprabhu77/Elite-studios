@@ -4,12 +4,8 @@ import HeroBg from '../assets/Hero_bg.webp';
 import { getWhatsAppProjectUrl } from '../utils/whatsapp';
 
 export default function Hero() {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(true);
   const canvasRef = useRef(null);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
 
   // Golden Particle Ribbon Animation Effect
   useEffect(() => {

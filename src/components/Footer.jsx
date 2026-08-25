@@ -67,6 +67,10 @@ export default function Footer() {
               <img
                 src={footerLogo}
                 alt="Elite Studios Logo"
+                width="160"
+                height="160"
+                loading="lazy"
+                decodings="async"
                 className="h-32 sm:h-36 lg:h-40 w-auto object-contain mb-5 select-none footer-logo-img"
               />
             </Link>

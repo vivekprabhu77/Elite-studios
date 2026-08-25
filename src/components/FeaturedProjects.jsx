@@ -119,7 +119,7 @@ export default function FeaturedProjects() {
                       <img
                         src={project.src}
                         alt={project.client || project.title}
-                        loading="eager"
+                        loading="lazy"
                         decoding="async"
                         className="w-full h-full object-cover filter brightness-[0.85] group-hover:brightness-100 group-hover:scale-105 transition-all duration-700 opacity-100 block"
                       />
