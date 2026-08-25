@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import HeroBg from '../assets/Hero_bg.png';
+import HeroBg from '../assets/Hero_bg.webp';
 import { getWhatsAppProjectUrl } from '../utils/whatsapp';
 
 export default function Hero() {
@@ -52,7 +52,7 @@ export default function Hero() {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      const U_steps = width > 768 ? 130 : 80;
+      const U_steps = width > 768 ? 90 : 50;
 
       // ----------------------------------------------------
       // PASS A: Ambient Radial Glow (Background Layer)
@@ -231,13 +231,27 @@ export default function Hero() {
       });
 
       t += 16; // Increment by 16ms per frame
-      animationFrameId = requestAnimationFrame(render);
+      if (isIntersecting) {
+        animationFrameId = requestAnimationFrame(render);
+      }
     };
+
+    let isIntersecting = true;
+    const observer = new IntersectionObserver(([entry]) => {
+      isIntersecting = entry.isIntersecting;
+      if (isIntersecting) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = requestAnimationFrame(render);
+      }
+    }, { threshold: 0.05 });
+
+    observer.observe(canvas);
 
     render();
 
     return () => {
       window.removeEventListener('resize', resize);
+      observer.disconnect();
       cancelAnimationFrame(animationFrameId);
     };
   }, []);

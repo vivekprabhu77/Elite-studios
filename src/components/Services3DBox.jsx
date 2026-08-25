@@ -10,7 +10,7 @@ import {
   RotateCcw,
   Layers
 } from 'lucide-react';
-import logo from '../assets/ELITE STUDIOS.png';
+import logo from '../assets/ELITE STUDIOS.webp';
 import { getWhatsAppProjectUrl } from '../utils/whatsapp';
 
 export default function Services3DBox() {
@@ -362,12 +362,26 @@ export default function Services3DBox() {
         ctx.shadowBlur = 0;
       }
 
-      animationId = requestAnimationFrame(render);
+      if (isIntersecting) {
+        animationId = requestAnimationFrame(render);
+      }
     };
+
+    let isIntersecting = true;
+    const observer = new IntersectionObserver(([entry]) => {
+      isIntersecting = entry.isIntersecting;
+      if (isIntersecting) {
+        cancelAnimationFrame(animationId);
+        animationId = requestAnimationFrame(render);
+      }
+    }, { threshold: 0.05 });
+
+    observer.observe(canvas);
 
     render();
 
     return () => {
+      observer.disconnect();
       cancelAnimationFrame(animationId);
       window.removeEventListener('resize', handleCanvasResize);
     };

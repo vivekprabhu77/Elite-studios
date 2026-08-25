@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
-import logo from '../assets/ELITE STUDIOS.png';
+import logo from '../assets/ELITE STUDIOS.webp';
 
 export default function NotFound() {
   return (

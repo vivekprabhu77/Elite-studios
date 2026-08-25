@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import logo from '../assets/ELITE STUDIOS.png';
+import logo from '../assets/ELITE STUDIOS.webp';
 import { Send } from 'lucide-react';
 
 export default function Navbar() {
