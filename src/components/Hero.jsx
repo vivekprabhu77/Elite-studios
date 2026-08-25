@@ -16,11 +16,11 @@ export default function Hero() {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    
+
     let animationFrameId;
     let width = canvas.offsetWidth;
     let height = canvas.offsetHeight;
-    
+
     const resize = () => {
       width = canvas.offsetWidth;
       height = canvas.offsetHeight;
@@ -28,7 +28,7 @@ export default function Hero() {
       canvas.height = height * window.devicePixelRatio;
       ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
     };
-    
+
     resize();
     window.addEventListener('resize', resize);
 
@@ -94,7 +94,7 @@ export default function Hero() {
 
       for (let i = 0; i <= U_steps; i++) {
         const u = i / U_steps;
-        
+
         // Ribbon Backbone Curve (Shifted leftwards from 0.95 to 0.83)
         const pathX = width * (0.83 - 0.38 * Math.sin(0.95 * u * Math.PI));
         const pathY = height * (-0.05 + 1.1 * u);
@@ -121,7 +121,7 @@ export default function Hero() {
 
           // Node alpha
           const alphaNode = Math.sin(u * Math.PI) * (0.65 - 0.5 * Math.abs(v));
-          
+
           // Perspective Node Size
           const sizeNode = Math.max(0.5, 0.7 + (zWave + 25) * 0.035);
 
@@ -233,7 +233,7 @@ export default function Hero() {
       t += 16; // Increment by 16ms per frame
       animationFrameId = requestAnimationFrame(render);
     };
-    
+
     render();
 
     return () => {
@@ -274,6 +274,7 @@ export default function Hero() {
             data-designer-file="src/components/Hero.jsx"
             className="text-[40px] sm:text-[56px] md:text-[72px] lg:text-[80px] font-black font-display leading-[0.96] tracking-tight uppercase mb-6 hero-heading-responsive"
           >
+
             <span className="text-white block">DIGITAL</span>
             <span className="text-gray-300 block text-opacity-90">EXPERIENCES THAT</span>
             <span className="text-[#d4b07c] block">BUILDS BRANDS.</span>
@@ -285,7 +286,7 @@ export default function Hero() {
             data-designer-file="src/components/Hero.jsx"
             className="text-sm sm:text-base md:text-[17px] text-[#9a9a9a] font-normal leading-[1.65] mb-8 max-w-xl hero-description-responsive"
           >
-            We design premium websites, create powerful brand identities, build AI automations and deliver digital experiences that help ambitious businesses grow.
+            We engineer high-performance websites, craft bespoke graphic design, execute targeted digital marketing, broadcast live streams, edit professional videos, and manage complete social media profiles.
           </p>
 
           {/* CTA Buttons */}

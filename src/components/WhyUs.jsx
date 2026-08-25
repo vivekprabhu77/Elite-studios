@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 const STATS = [
-  { value: '120', suffix: '+', label: 'Projects Completed' },
-  { value: '45', suffix: '+', label: 'Happy Clients' },
-  { value: '18000', suffix: '+', label: 'Creative Hours' },
-  { value: '8', suffix: '+', label: 'Years Experience' }
+  { value: '600', suffix: '+', label: 'Projects Completed' },
+  { value: '400', suffix: '+', label: 'Happy Clients' },
+  { value: '10000', suffix: '+', label: 'Creative Hours' },
+  { value: '5', suffix: '+', label: 'Years Experience' }
 ];
 
 function CountUp({ value, suffix, duration = 2000 }) {
@@ -71,14 +71,14 @@ export default function WhyUs() {
           
           <div className="lg:col-span-8">
             <p className="text-xl sm:text-2xl text-gray-300 font-light leading-relaxed tracking-tight mb-8">
-              We built Elite Studios around a simple principle: create work that lasts. No generic templates, no unnecessary bloat, and no middle managers.
+              We built Elite Studios around a simple principle: create work that drives real growth. No generic templates, no unnecessary bloat, and no middle managers.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-sm text-gray-400 font-light leading-relaxed">
               <p>
-                We are a compact team of designers, filmmakers, and engineers. Every typography choice, layout grid, and line of code is built with intention. We focus on clear messaging, editorial aesthetic, and high-performance execution.
+                We are a dedicated creative team specializing in Website Design & Development, Graphic Design, Digital Marketing, Live Streaming, Video Editing, and Social Media Handling. Every layout grid, brand asset, and video frame is crafted with intention.
               </p>
               <p>
-                Whether launching a new digital platform or producing cinematic visual campaigns, we work directly with founders and creative leaders. The result is an authentic visual identity that builds immediate credibility.
+                Whether launching a brand-new digital web presence, executing high-ROI advertising campaigns, broadcasting live events, or managing your complete social feeds, we work directly with business owners and creative leaders to deliver authentic results.
               </p>
             </div>
           </div>

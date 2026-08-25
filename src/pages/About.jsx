@@ -19,20 +19,20 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-8 border-t border-white/10 items-start">
           <div className="lg:col-span-7">
             <p className="text-lg sm:text-xl text-gray-300 font-light leading-relaxed mb-6">
-              Elite Studios is an independent digital creative studio. We combine editorial design, brand strategy, film production, and frontend engineering into singular brand experiences.
+              Elite Studios is a full-service digital creative studio based in Siddapura. We specialize in Website Design & Development, Graphic Design, Digital Marketing, Live Streaming, Video Editing, and complete Social Media Handling.
             </p>
             <p className="text-sm text-gray-400 font-light leading-relaxed">
-              We started with a straightforward conviction: most websites and digital brand assets are over-engineered yet under-designed. We strip away generic patterns and replace them with sharp visual systems, tactile animations, and performance-focused code.
+              We started with a straightforward conviction: businesses deserve end-to-end creative and digital solutions executed with uncompromised quality. We strip away generic templates and replace them with sharp visual systems, bespoke designs, targeted marketing strategies, and high-performance media production.
             </p>
           </div>
           
           <div className="lg:col-span-5 grid grid-cols-2 gap-6 bg-[#0b0b0b] p-6 border border-white/5">
             <div>
-              <span className="block text-3xl font-extrabold text-[#d4b07c] font-display">2018</span>
+              <span className="block text-3xl font-extrabold text-[#d4b07c] font-display">2021</span>
               <span className="text-[10px] uppercase tracking-widest text-white/40 font-mono">Founded</span>
             </div>
             <div>
-              <span className="block text-3xl font-extrabold text-white font-display">120+</span>
+              <span className="block text-3xl font-extrabold text-white font-display">600+</span>
               <span className="text-[10px] uppercase tracking-widest text-white/40 font-mono">Projects Delivered</span>
             </div>
             <div>
@@ -40,7 +40,7 @@ export default function About() {
               <span className="text-[10px] uppercase tracking-widest text-white/40 font-mono">Custom Built</span>
             </div>
             <div>
-              <span className="block text-3xl font-extrabold text-[#d4b07c] font-display">GLOBAL</span>
+              <span className="block text-3xl font-extrabold text-[#d4b07c] font-display">INDIAN</span>
               <span className="text-[10px] uppercase tracking-widest text-white/40 font-mono">Client Base</span>
             </div>
           </div>
