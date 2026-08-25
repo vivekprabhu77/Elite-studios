@@ -230,16 +230,6 @@ export default function Hero() {
         ctx.fill();
       });
 
-      // ----------------------------------------------------
-      // PASS G: Screen Edge Blending Vignette (Left Side Fade)
-      // ----------------------------------------------------
-      const vignetteGrad = ctx.createLinearGradient(0, 0, 0.28 * width, 0);
-      vignetteGrad.addColorStop(0, '#050505');
-      vignetteGrad.addColorStop(0.6, 'rgba(5, 5, 5, 0.6)');
-      vignetteGrad.addColorStop(1, 'rgba(5, 5, 5, 0)');
-      ctx.fillStyle = vignetteGrad;
-      ctx.fillRect(0, 0, 0.28 * width, height);
-
       t += 16; // Increment by 16ms per frame
       animationFrameId = requestAnimationFrame(render);
     };
