@@ -58,25 +58,6 @@ export default function Footer() {
       <div className="absolute bottom-[-120px] left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-t from-[#d4b07c]/[0.03] to-transparent rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
-        {/* Elite Agency CTA Banner (Desktop/Laptop Header) */}
-        <div className="mb-16 pb-12 border-b border-white/[0.08] flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 footer-cta-banner">
-          <div>
-            <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#d4b07c] block mb-2">
-              READY TO ELEVATE YOUR BRAND?
-            </span>
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-display text-white tracking-tight leading-tight">
-              LET'S BUILD SOMETHING <span className="text-[#d4b07c]">EXTRAORDINARY.</span>
-            </h3>
-          </div>
-          <Link
-            to="/contact"
-            className="group inline-flex items-center gap-2 px-8 py-4 bg-[#d4b07c] text-black font-extrabold text-xs uppercase tracking-[0.2em] rounded-lg hover:bg-[#c39f6b] transition-all duration-300 shadow-[0_0_30px_rgba(212,176,124,0.3)] shrink-0 hover:scale-[1.02]"
-          >
-            <span>START A PROJECT</span>
-            <span className="group-hover:translate-x-1 transition-transform duration-300">&rarr;</span>
-          </Link>
-        </div>
-
         {/* Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-16 border-b border-white/[0.06] footer-grid">
 

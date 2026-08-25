@@ -1,20 +1,10 @@
 import React from 'react';
+import { getWhatsAppProjectUrl } from '../utils/whatsapp';
 
 export default function WhatsAppButton() {
-  const phoneNumber = '917259174667';
-  const message = `Hi Elite Studios! 👋
-
-I'm interested in your services and would like to discuss my project with your team.
-
-Could you please guide me on the next steps?
-
-Looking forward to hearing from you. 😊`;
-
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-
   return (
     <a
-      href={whatsappUrl}
+      href={getWhatsAppProjectUrl()}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"

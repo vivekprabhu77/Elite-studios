@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import HeroBg from '../assets/Hero_bg.png';
+import { getWhatsAppProjectUrl } from '../utils/whatsapp';
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -299,12 +300,14 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap items-center gap-4 mb-6 lg:mb-0">
-            <Link
-              to="/contact"
+            <a
+              href={getWhatsAppProjectUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center justify-center bg-[#d4b07c] text-black font-bold text-xs sm:text-sm tracking-wider uppercase px-7 py-3.5 rounded-[8px] hover:bg-[#c39f6b] transition-all duration-300 shadow-[0_0_24px_rgba(212,176,124,0.25)] hero-btn-responsive"
             >
               <span>START YOUR PROJECT &rarr;</span>
-            </Link>
+            </a>
             <Link
               to="/work"
               className="group inline-flex items-center justify-center border border-[#2e2e2e] bg-[#0e0e0e] text-white font-bold text-xs sm:text-sm tracking-wider uppercase px-7 py-3.5 rounded-[8px] hover:border-white/40 hover:bg-[#181818] transition-all duration-300 hero-btn-responsive"
