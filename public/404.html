@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 Page Not Found — Elite Studios</title>
+  <meta name="description" content="The page you are looking for does not exist or has been moved." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Single Page App Fallback Redirect for GitHub Pages / Static Hosts -->
+  <script>
+    // SPA redirect script for static hosts
+    (function() {
+      var path = window.location.pathname;
+      if (path && path !== '/' && path !== '/404.html' && !path.includes('.')) {
+        window.location.replace('/#' + path);
+      }
+    })();
+  </script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #050505;
+      color: #ffffff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Radial Glow */
+    body::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(212, 176, 124, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 10;
+      max-width: 600px;
+    }
+
+    .logo {
+      height: 48px;
+      margin-bottom: 2rem;
+    }
+
+    .code-badge {
+      display: inline-block;
+      font-family: monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      color: #d4b07c;
+      text-transform: uppercase;
+      background: rgba(212, 176, 124, 0.1);
+      border: 1px solid rgba(212, 176, 124, 0.3);
+      padding: 4px 16px;
+      border-radius: 9999px;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    h1 span {
+      color: #d4b07c;
+    }
+
+    p {
+      color: #a0a0a0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #d4b07c;
+      color: #000000;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 25px rgba(212, 176, 124, 0.3);
+    }
+
+    .cta-btn:hover {
+      background-color: #c39f6b;
+      transform: translateY(-2px);
+      box-shadow: 0 0 35px rgba(212, 176, 124, 0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img src="/ELITE STUDIOS.png" alt="Elite Studios" class="logo" />
+    
+    <div>
+      <span class="code-badge">ERROR 404 • PAGE NOT FOUND</span>
+    </div>
+
+    <h1>PAGE DOES NOT <span>EXIST.</span></h1>
+    
+    <p>
+      The page you are looking for has been moved, removed, or never existed. Let's get you back on track.
+    </p>
+
+    <a href="/" class="cta-btn">
+      <span>RETURN TO HOMEPAGE &rarr;</span>
+    </a>
+  </div>
+
+</body>
+</html>

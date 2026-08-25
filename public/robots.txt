@@ -1,0 +1,9 @@
+# Elite Studios — Robots.txt
+User-agent: *
+Allow: /
+
+# Host
+Host: https://elitestudios.in
+
+# Sitemap Location
+Sitemap: https://elitestudios.in/sitemap.xml
