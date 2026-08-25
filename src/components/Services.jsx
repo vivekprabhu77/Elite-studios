@@ -274,36 +274,36 @@ export default function Services() {
                 key={service.num}
                 onMouseMove={handleMouseMove}
                 data-designer-selector=".services-card-responsive"
-                className="card-glow flex flex-col justify-between p-8 md:p-10 border border-white/5 bg-[#0b0b0b] hover:bg-[#0f0f0f] hover:border-[#d4b07c]/20 transition-all duration-500 rounded-none h-[500px] group text-left reveal services-card-responsive"
+                className="card-glow flex flex-col justify-between p-5 sm:p-6 md:p-10 border border-white/5 bg-[#0b0b0b] hover:bg-[#0f0f0f] hover:border-[#d4b07c]/20 transition-all duration-500 rounded-none h-auto md:h-[500px] group text-left reveal services-card-responsive"
                 style={{ transitionDelay: `${index * 0.05}s` }}
               >
                 <div>
                   {/* Top Bar inside Card */}
-                  <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center justify-between mb-4 md:mb-6">
                     <span className="font-mono text-xs text-white/30 group-hover:text-[#d4b07c]/80 transition-colors duration-300">
                       {service.num}
                     </span>
-                    <div className="w-10 h-10 flex items-center justify-center border border-white/5 bg-[#0d0d0d] group-hover:border-[#d4b07c]/30 transition-colors duration-500 rounded-none">
-                      <IconComponent className="w-4.5 h-4.5 text-[#d4b07c] group-hover:scale-110 transition-transform duration-300" />
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center border border-white/5 bg-[#0d0d0d] group-hover:border-[#d4b07c]/30 transition-colors duration-500 rounded-none">
+                      <IconComponent className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#d4b07c] group-hover:scale-110 transition-transform duration-300" />
                     </div>
                   </div>
 
                   {/* Title & Description */}
-                  <h3 className="text-xl font-bold text-white group-hover:text-[#d4b07c] tracking-tight mb-3 font-display transition-colors duration-300">
+                  <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-[#d4b07c] tracking-tight mb-2 md:mb-3 font-display transition-colors duration-300">
                     {service.title}
                   </h3>
-                  <p className="text-xs text-gray-400 font-light leading-relaxed group-hover:text-gray-300 transition-colors duration-300 mb-6">
+                  <p className="text-xs text-gray-400 font-light leading-relaxed group-hover:text-gray-300 transition-colors duration-300 mb-4 md:mb-6">
                     {service.desc}
                   </p>
 
                   {/* Visual Widget */}
-                  <div className="w-full h-36 bg-[#050505]/40 border border-white/[0.02] rounded-sm overflow-hidden mb-2">
+                  <div className="w-full h-28 sm:h-32 md:h-36 bg-[#050505]/40 border border-white/[0.02] rounded-sm overflow-hidden mb-2">
                     {renderWidget(service.num)}
                   </div>
                 </div>
 
                 {/* Footer of Card */}
-                <div className="mt-6 border-t border-white/[0.04] pt-4 flex justify-between items-end">
+                <div className="mt-4 md:mt-6 border-t border-white/[0.04] pt-3 md:pt-4 flex justify-between items-end">
                   <div className="flex flex-wrap gap-x-3 gap-y-1">
                     {service.items.slice(0, 3).map((item) => (
                       <span key={item} className="text-[9px] uppercase tracking-wider text-white/40">

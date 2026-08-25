@@ -203,7 +203,7 @@ export default function Contact() {
               Operating Hours
             </span>
             <h4 className="text-base font-bold text-white">Mon - Sat</h4>
-            <p className="text-xs text-gray-400">9:00 AM - 8:00 PM IST</p>
+            <p className="text-xs text-gray-400">10:30 AM - 8:00 PM IST</p>
           </div>
 
         </div>

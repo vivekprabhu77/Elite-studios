@@ -250,7 +250,13 @@ nav,
   /* Services Section */
   .services-grid {
     grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
+    gap: 1.25rem !important;
+  }
+
+  .services-card-responsive {
+    height: auto !important;
+    min-height: auto !important;
+    padding: 1.25rem !important;
   }
 
   .process-step-card {

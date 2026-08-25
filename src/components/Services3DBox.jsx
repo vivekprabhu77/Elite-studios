@@ -388,7 +388,7 @@ export default function Services3DBox() {
 
       {/* Clean 3D Stage Container */}
       <div 
-        className={`services-3d-container relative w-full max-w-5xl mx-auto h-[560px] sm:h-[520px] rounded-3xl p-4 sm:p-10 transition-all duration-700 shadow-2xl overflow-hidden border ${
+        className={`services-3d-container relative w-full max-w-5xl mx-auto h-[460px] sm:h-[520px] rounded-2xl sm:rounded-3xl p-3 sm:p-10 transition-all duration-700 shadow-2xl overflow-hidden border ${
           phase === 'united' 
             ? 'bg-gradient-to-b from-[#1e170c] via-[#090805] to-black border-2 border-[#d4b07c] shadow-[0_0_80px_rgba(212,176,124,0.4)]' 
             : 'bg-[#050505] border-white/[0.08] hover:border-[#d4b07c]/40'
@@ -445,7 +445,7 @@ export default function Services3DBox() {
           </div>
 
           {/* MAIN SINGLE UNIFIED STAGE */}
-          <div className="services-3d-stage my-auto py-2 sm:py-4 relative z-20 flex flex-col items-center justify-center min-h-[320px] sm:min-h-[360px]">
+          <div className="services-3d-stage my-auto py-2 sm:py-4 relative z-20 flex flex-col items-center justify-center min-h-[270px] sm:min-h-[360px]">
             
             {/* Center Stage Ring & LUXURY EMBLEM */}
             <div className="relative w-full max-w-3xl h-[250px] sm:h-[300px] flex items-center justify-center">

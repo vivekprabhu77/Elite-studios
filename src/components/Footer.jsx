@@ -126,6 +126,7 @@ export default function Footer() {
               <div className="flex flex-col gap-1 text-gray-300 py-2 px-3 rounded-lg bg-white/[0.02] border border-white/[0.04]">
                 <span className="text-white font-semibold text-sm">Siddapura</span>
                 <span className="text-xs text-gray-400">Karnataka, India</span>
+                <span className="text-[11px] text-gray-400 font-mono mt-1 pt-1 border-t border-white/[0.04]">Mon - Sat: 10:30 AM - 8:00 PM</span>
               </div>
               <a
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=elitestudiossiddapura@gmail.com"
