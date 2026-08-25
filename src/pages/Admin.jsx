@@ -1,9 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { getProjects, addProject, deleteProject, resetProjects } from '../utils/portfolioStore';
-import { Upload, Trash2, Plus, RefreshCw, CheckCircle, Image as ImageIcon, ShieldCheck, ArrowUpRight, Globe, Loader2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import {
+  Upload,
+  Trash2,
+  Plus,
+  RefreshCw,
+  CheckCircle,
+  Image as ImageIcon,
+  ShieldCheck,
+  ArrowUpRight,
+  Globe,
+  Loader2,
+  Lock,
+  User,
+  LogOut,
+  Eye,
+  EyeOff
+} from 'lucide-react';
+import logo from '../assets/ELITE STUDIOS.png';
+const ADMIN_USER_LOWER = "elite studios";
+const ADMIN_PASS_HASH = "d4b0e8187e174067d572493e9e3e963a2e9a8be34838faaa996c322a176cc81f";
 
 export default function Admin() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [loginError, setLoginError] = useState('');
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+
+  // Portfolio Management States
   const [projects, setProjects] = useState([]);
   const [title, setTitle] = useState('');
   const [client, setClient] = useState('');
@@ -15,12 +41,67 @@ export default function Admin() {
   const [successMsg, setSuccessMsg] = useState('');
   const [isUploading, setIsUploading] = useState(false);
 
+  // Check existing session
   useEffect(() => {
-    setProjects(getProjects());
-    const handleUpdate = () => setProjects(getProjects());
-    window.addEventListener('portfolio-updated', handleUpdate);
-    return () => window.removeEventListener('portfolio-updated', handleUpdate);
+    const authStatus = sessionStorage.getItem('elite_admin_auth');
+    if (authStatus === 'true') {
+      setIsAuthenticated(true);
+    }
   }, []);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      setProjects(getProjects());
+      const handleUpdate = () => setProjects(getProjects());
+      window.addEventListener('portfolio-updated', handleUpdate);
+      return () => window.removeEventListener('portfolio-updated', handleUpdate);
+    }
+  }, [isAuthenticated]);
+
+  // Compute Web Crypto SHA-256 Hash
+  const hashPassword = async (pwd) => {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(pwd);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoginError('');
+
+    if (!username.trim() || !password) {
+      setLoginError('Please enter both username and password.');
+      return;
+    }
+
+    setIsLoggingIn(true);
+
+    try {
+      const userMatch = username.trim().toLowerCase() === ADMIN_USER_LOWER;
+      const enteredHash = await hashPassword(password);
+      const passMatch = enteredHash === ADMIN_PASS_HASH;
+
+      if (userMatch && passMatch) {
+        sessionStorage.setItem('elite_admin_auth', 'true');
+        setIsAuthenticated(true);
+        setPassword('');
+        setUsername('');
+      } else {
+        setLoginError('Invalid Username or Password. Please try again.');
+      }
+    } catch (err) {
+      setLoginError('Authentication error occurred. Please try again.');
+    } finally {
+      setIsLoggingIn(false);
+    }
+  };
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('elite_admin_auth');
+    setIsAuthenticated(false);
+  };
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -59,7 +140,7 @@ export default function Admin() {
       setWebsiteUrl('');
       setImageFile(null);
       setImagePreview(null);
-      setSuccessMsg('New project successfully saved to Cloudflare R2 & published live!');
+      setSuccessMsg('New project successfully published!');
       setTimeout(() => setSuccessMsg(''), 5000);
     } catch (err) {
       alert('Failed to publish project: ' + (err.message || 'Error occurred during upload'));
@@ -80,6 +161,121 @@ export default function Admin() {
     }
   };
 
+  // ═══════════════════════════════════════════════════════════
+  // LOGIN SCREEN (UNTIL AUTHENTICATED)
+  // ═══════════════════════════════════════════════════════════
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen pt-28 md:pt-36 pb-20 px-6 flex flex-col items-center justify-center bg-black text-white relative overflow-hidden">
+        {/* Background Spotlight Glow */}
+        <div className="absolute w-[500px] h-[500px] bg-[#d4b07c]/10 rounded-full blur-[140px] pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0"></div>
+
+        <div className="relative z-10 w-full max-w-md bg-[#0a0a0a] border border-white/10 rounded-2xl p-8 sm:p-10 shadow-[0_0_50px_rgba(0,0,0,0.8)] backdrop-blur-2xl text-left">
+
+          {/* Logo & Portal Header */}
+          <div className="text-center mb-8">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-[#d4b07c]/20 via-black to-[#d4b07c]/05 border border-[#d4b07c]/50 p-2.5 shadow-[0_0_25px_rgba(212,176,124,0.3)]">
+              <img src={logo} alt="Elite Studios" className="w-full h-full object-contain" />
+            </div>
+
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#d4b07c]/10 border border-[#d4b07c]/30 text-[#d4b07c] text-[10px] font-mono font-bold tracking-widest uppercase mb-2">
+              <ShieldCheck className="w-3 h-3" />
+              <span>PORTAL ACCESS</span>
+            </div>
+
+            <h1 className="text-2xl font-extrabold text-white uppercase tracking-tight font-display">
+              ADMIN LOGIN
+            </h1>
+            <p className="text-xs text-gray-400 font-light mt-1">
+              Sign in with your admin credentials to manage portfolio items.
+            </p>
+          </div>
+
+          {/* Error Message */}
+          {loginError && (
+            <div className="mb-6 p-3.5 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-mono text-center animate-fade-in">
+              {loginError}
+            </div>
+          )}
+
+          {/* Login Form */}
+          <form onSubmit={handleLogin} className="space-y-5">
+            <div>
+              <label className="block text-[11px] uppercase tracking-widest text-gray-400 font-mono font-bold mb-2">
+                Username
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-500">
+                  <User className="w-4 h-4" />
+                </div>
+                <input
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Enter admin username"
+                  className="w-full pl-10 pr-4 py-3 bg-[#121212] border border-white/10 rounded-lg text-xs text-white placeholder-gray-600 focus:outline-none focus:border-[#d4b07c] transition-all"
+                  autoComplete="off"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-[11px] uppercase tracking-widest text-gray-400 font-mono font-bold mb-2">
+                Password
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-500">
+                  <Lock className="w-4 h-4" />
+                </div>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter admin password"
+                  className="w-full pl-10 pr-10 py-3 bg-[#121212] border border-white/10 rounded-lg text-xs text-white placeholder-gray-600 focus:outline-none focus:border-[#d4b07c] transition-all"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-gray-500 hover:text-white"
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              disabled={isLoggingIn}
+              className="w-full py-3.5 bg-[#d4b07c] text-black font-extrabold text-xs uppercase tracking-[0.2em] rounded-lg hover:bg-[#c39f6b] transition-all duration-300 shadow-[0_0_20px_rgba(212,176,124,0.3)] cursor-pointer flex items-center justify-center gap-2 mt-2"
+            >
+              {isLoggingIn ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>VERIFYING HASH...</span>
+                </>
+              ) : (
+                <>
+                  <span>SIGN IN TO PORTAL</span>
+                  <ArrowUpRight className="w-4 h-4" />
+                </>
+              )}
+            </button>
+          </form>
+
+          <div className="mt-8 pt-6 border-t border-white/5 text-center">
+            <span className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+              SECURED VIA SHA-256 HASH VERIFICATION
+            </span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // AUTHENTICATED ADMIN MANAGEMENT PORTAL
+  // ═══════════════════════════════════════════════════════════
   return (
     <div className="pt-28 md:pt-36 pb-20 px-6 md:px-12 bg-black text-white min-h-screen">
       <div className="max-w-7xl mx-auto w-full">
@@ -100,202 +296,188 @@ export default function Admin() {
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex items-center gap-3">
             <button
               onClick={handleReset}
-              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono tracking-wider uppercase border border-white/10 hover:border-white/30 text-white/70 hover:text-white transition-all duration-300"
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-white/5 border border-white/10 hover:border-red-500/40 text-gray-300 hover:text-red-400 text-xs font-mono font-bold tracking-wider uppercase transition-all rounded-none cursor-pointer"
             >
               <RefreshCw className="w-3.5 h-3.5" />
-              <span>Reset Defaults</span>
+              <span>Reset Samples</span>
             </button>
 
-            <Link
-              to="/"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#d4b07c] text-black text-xs font-bold uppercase tracking-wider hover:bg-white transition-colors duration-300"
+            <button
+              onClick={handleLogout}
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#d4b07c] text-black font-extrabold text-xs font-mono tracking-wider uppercase transition-all rounded-none cursor-pointer hover:bg-[#c39f6b]"
             >
-              <span>View Website</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </Link>
+              <LogOut className="w-3.5 h-3.5" />
+              <span>LOG OUT</span>
+            </button>
           </div>
         </div>
 
         {/* Success Alert */}
         {successMsg && (
-          <div className="mb-8 p-4 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono flex items-center gap-3">
-            <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+          <div className="mb-8 p-4 bg-[#d4b07c]/10 border border-[#d4b07c]/40 text-[#d4b07c] text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-3 animate-fade-in">
+            <CheckCircle className="w-4 h-4 shrink-0" />
             <span>{successMsg}</span>
           </div>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 text-left">
-          {/* Left Column: Upload New Project Form */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="p-6 md:p-8 bg-[#0a0a0a] border border-white/10 rounded-none relative">
-              <h2 className="text-lg font-bold text-white uppercase tracking-tight mb-6 font-display border-b border-white/10 pb-3">
-                Publish New Project
-              </h2>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          {/* Left Form: Add Project */}
+          <div className="lg:col-span-5 bg-[#0b0b0b] p-6 sm:p-8 border border-white/10 text-left">
+            <h2 className="text-xl font-bold uppercase tracking-tight text-white font-display mb-6 pb-3 border-b border-white/10 flex items-center justify-between">
+              <span>ADD NEW PROJECT</span>
+              <Plus className="w-4 h-4 text-[#d4b07c]" />
+            </h2>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">
+                  Client Name *
+                </label>
+                <input
+                  type="text"
+                  value={client}
+                  onChange={(e) => setClient(e.target.value)}
+                  placeholder="e.g. Aurelia Group, Kundapura Event"
+                  className="w-full px-4 py-3 bg-black border border-white/10 text-xs text-white placeholder-white/20 focus:outline-none focus:border-[#d4b07c] transition-all"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">
+                  Project Title *
+                </label>
+                <input
+                  type="text"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  placeholder="e.g. Festival Poster Design, Lyrical Video"
+                  className="w-full px-4 py-3 bg-black border border-white/10 text-xs text-white placeholder-white/20 focus:outline-none focus:border-[#d4b07c] transition-all"
+                  required
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">
-                    Client Name *
+                    Category
+                  </label>
+                  <select
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    className="w-full px-3 py-3 bg-black border border-white/10 text-xs text-white focus:outline-none focus:border-[#d4b07c] transition-all cursor-pointer"
+                  >
+                    <option value="Website Design & Development">Website Design</option>
+                    <option value="Graphic Design">Graphic Design</option>
+                    <option value="Digital Marketing">Digital Marketing</option>
+                    <option value="Live Streaming">Live Streaming</option>
+                    <option value="Video Editing">Video Editing</option>
+                    <option value="Entire Social Media Handling">Social Media</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">
+                    Year
                   </label>
                   <input
                     type="text"
-                    required
-                    placeholder="e.g. Apex Dynamics"
-                    value={client}
-                    onChange={(e) => setClient(e.target.value)}
-                    disabled={isUploading}
-                    className="w-full px-4 py-3 bg-black border border-white/10 text-white text-xs font-light focus:outline-none focus:border-[#d4b07c] transition-colors placeholder:text-white/20"
+                    value={year}
+                    onChange={(e) => setYear(e.target.value)}
+                    placeholder="2026"
+                    className="w-full px-3 py-3 bg-black border border-white/10 text-xs text-white focus:outline-none focus:border-[#d4b07c] transition-all"
                   />
                 </div>
+              </div>
 
-                <div>
-                  <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">
-                    Project Title / Subtitle *
-                  </label>
+              <div>
+                <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">
+                  Live Website URL (Optional)
+                </label>
+                <div className="relative">
+                  <Globe className="w-3.5 h-3.5 absolute left-3 top-3.5 text-white/30" />
                   <input
-                    type="text"
-                    required
-                    placeholder="e.g. High-performance SaaS Landing Page"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    disabled={isUploading}
-                    className="w-full px-4 py-3 bg-black border border-white/10 text-white text-xs font-light focus:outline-none focus:border-[#d4b07c] transition-colors placeholder:text-white/20"
+                    type="url"
+                    value={websiteUrl}
+                    onChange={(e) => setWebsiteUrl(e.target.value)}
+                    placeholder="https://example.com"
+                    className="w-full pl-9 pr-4 py-3 bg-black border border-white/10 text-xs text-white placeholder-white/20 focus:outline-none focus:border-[#d4b07c] transition-all"
                   />
                 </div>
+              </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">
-                      Category *
-                    </label>
-                    <select
-                      value={category}
-                      onChange={(e) => setCategory(e.target.value)}
-                      disabled={isUploading}
-                      className="w-full px-4 py-3 bg-black border border-white/10 text-white text-xs font-light focus:outline-none focus:border-[#d4b07c] transition-colors"
-                    >
-                      <option value="Website Design & Development">Website Design</option>
-                      <option value="Graphic Design & Branding">Graphic Design</option>
-                      <option value="Digital Marketing Campaign">Digital Marketing</option>
-                      <option value="Video Editing & Post-Production">Video Editing</option>
-                      <option value="Live Streaming Setup">Live Streaming</option>
-                      <option value="Social Media Management">Social Media</option>
-                    </select>
-                  </div>
+              <div>
+                <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">
+                  Project Image *
+                </label>
 
-                  <div>
-                    <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">
-                      Year
-                    </label>
-                    <input
-                      type="text"
-                      value={year}
-                      onChange={(e) => setYear(e.target.value)}
-                      disabled={isUploading}
-                      className="w-full px-4 py-3 bg-black border border-white/10 text-white text-xs font-light focus:outline-none focus:border-[#d4b07c] transition-colors"
-                    />
-                  </div>
-                </div>
+                <div className="border border-dashed border-white/20 p-4 text-center bg-black hover:border-[#d4b07c]/50 transition-all cursor-pointer relative group">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                  />
 
-                {/* Conditional Website Link input */}
-                {(category.toLowerCase().includes('website') || category.toLowerCase().includes('web')) && (
-                  <div className="p-4 bg-[#121212] border border-[#d4b07c]/40 text-left">
-                    <label className="block text-[10px] font-mono uppercase tracking-widest text-[#d4b07c] mb-2 font-bold flex items-center gap-1.5">
-                      <Globe className="w-3.5 h-3.5" />
-                      <span>Website Link / URL</span>
-                    </label>
-                    <input
-                      type="url"
-                      placeholder="e.g. https://www.example.com"
-                      value={websiteUrl}
-                      onChange={(e) => setWebsiteUrl(e.target.value)}
-                      disabled={isUploading}
-                      className="w-full px-4 py-3 bg-black border border-white/20 text-white text-xs font-light focus:outline-none focus:border-[#d4b07c] transition-colors placeholder:text-white/30"
-                    />
-                  </div>
-                )}
-
-                {/* File Upload Box */}
-                <div>
-                  <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">
-                    Upload Image File *
-                  </label>
-                  <div className="relative border border-dashed border-white/20 hover:border-[#d4b07c] transition-colors bg-black p-6 text-center cursor-pointer group">
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageChange}
-                      disabled={isUploading}
-                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
-                    />
-                    {imagePreview ? (
-                      <div className="relative aspect-video w-full overflow-hidden border border-white/10">
-                        <img src={imagePreview} alt="Upload preview" className="w-full h-full object-cover" />
-                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-xs font-mono">
-                          Click to change image
-                        </div>
+                  {imagePreview ? (
+                    <div className="relative aspect-video w-full overflow-hidden">
+                      <img src={imagePreview} alt="Preview" className="w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-xs font-mono text-[#d4b07c] uppercase">
+                        Change Image
                       </div>
-                    ) : (
-                      <div className="flex flex-col items-center gap-2 py-4">
-                        <Upload className="w-6 h-6 text-[#d4b07c] group-hover:scale-110 transition-transform" />
-                        <span className="text-xs text-white/70 font-light">
-                          Click or drag image file here
-                        </span>
-                        <span className="text-[9px] font-mono text-white/30">
-                          PNG, JPG, WEBP or GIF (Auto-compressed)
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                {/* Submit Button with Loading State */}
-                <button
-                  type="submit"
-                  disabled={isUploading}
-                  className={`w-full py-4 bg-[#d4b07c] text-black font-bold text-xs uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 mt-4 ${
-                    isUploading
-                      ? 'opacity-80 cursor-not-allowed bg-[#d4b07c]/80'
-                      : 'hover:bg-white cursor-pointer'
-                  }`}
-                >
-                  {isUploading ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin text-black" />
-                      <span>Uploading to Cloudflare R2...</span>
-                    </>
+                    </div>
                   ) : (
-                    <>
-                      <Plus className="w-4 h-4" />
-                      <span>Publish to Live Portfolio</span>
-                    </>
+                    <div className="py-6 flex flex-col items-center gap-2">
+                      <Upload className="w-6 h-6 text-[#d4b07c]" />
+                      <span className="text-xs text-gray-300 font-semibold">Click or drag image to upload</span>
+                      <span className="text-[10px] text-white/30 font-mono">PNG, JPG, WEBP up to 10MB</span>
+                    </div>
                   )}
-                </button>
-              </form>
-            </div>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                disabled={isUploading}
+                className="w-full py-4 bg-[#d4b07c] text-black font-extrabold text-xs uppercase tracking-[0.2em] hover:bg-[#c39f6b] transition-all shadow-[0_0_20px_rgba(212,176,124,0.3)] cursor-pointer flex items-center justify-center gap-2 mt-4"
+              >
+                {isUploading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span>PUBLISHING PROJECT...</span>
+                  </>
+                ) : (
+                  <>
+                    <Plus className="w-4 h-4" />
+                    <span>PUBLISH TO LIVE PORTFOLIO</span>
+                  </>
+                )}
+              </button>
+            </form>
           </div>
 
-          {/* Right Column: Manage Live Projects */}
-          <div className="lg:col-span-7 space-y-6">
-            <div className="flex items-center justify-between pb-4 border-b border-white/10">
-              <h2 className="text-lg font-bold text-white uppercase tracking-tight font-display">
-                Active Projects ({projects.length})
+          {/* Right Column: Existing Live Projects List */}
+          <div className="lg:col-span-7 bg-[#0b0b0b] p-6 sm:p-8 border border-white/10 text-left">
+            <div className="flex items-center justify-between mb-6 pb-3 border-b border-white/10">
+              <h2 className="text-xl font-bold uppercase tracking-tight text-white font-display">
+                LIVE PROJECTS ({projects.length})
               </h2>
-              <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1">
-                Live Synced
+              <span className="text-[10px] font-mono text-[#d4b07c] uppercase tracking-widest">
+                ACTIVE ON SITE
               </span>
             </div>
 
             {projects.length === 0 ? (
-              <div className="p-12 text-center bg-[#0a0a0a] border border-white/10">
-                <ImageIcon className="w-8 h-8 text-white/20 mx-auto mb-3" />
-                <p className="text-xs text-gray-400">No custom projects published yet.</p>
+              <div className="py-16 text-center border border-dashed border-white/10 bg-black">
+                <p className="text-xs text-white/40 font-mono uppercase tracking-widest">
+                  No projects currently published.
+                </p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-[680px] overflow-y-auto pr-1 no-scrollbar">
                 {projects.map((item) => (
                   <div
                     key={item.id}
@@ -336,7 +518,7 @@ export default function Admin() {
                       <span className="text-[9px] font-mono text-white/30">ID: {item.id}</span>
                       <button
                         onClick={() => handleDelete(item.id)}
-                        className="p-1.5 text-red-400/60 hover:text-red-400 hover:bg-red-500/10 transition-colors"
+                        className="p-1.5 text-red-400/60 hover:text-red-400 hover:bg-red-500/10 transition-colors cursor-pointer"
                         title="Delete project"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
