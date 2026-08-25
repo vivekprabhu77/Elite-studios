@@ -3,27 +3,27 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 const STEPS = [
   {
     num: '01', phase: 'Discover', title: 'Discovery & Positioning',
-    desc: 'We analyze your brand position, clarify core project goals, and isolate what makes your story compelling.',
+    desc: 'We analyze your business goals, target audience, and brand vision to lay a solid creative foundation across all media.',
     icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>)
   },
   {
-    num: '02', phase: 'Strategy', title: 'Direction & Structure',
-    desc: 'Defining visual direction, layout grids, typography scale, and content architecture before writing any code.',
+    num: '02', phase: 'Strategy', title: 'Creative & Campaign Strategy',
+    desc: 'Defining visual direction, messaging frameworks, content calendars, and production roadmaps for maximum impact.',
     icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>)
   },
   {
-    num: '03', phase: 'Design', title: 'Visual & Motion Design',
-    desc: 'Crafting custom interfaces, editorial media, and fluid interactions tailored specifically to your audience.',
+    num: '03', phase: 'Create', title: 'Design & Media Production',
+    desc: 'Crafting bespoke websites, graphic assets, video edits, live stream setups, and engaging social media content.',
     icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>)
   },
   {
-    num: '04', phase: 'Develop', title: 'Frontend Engineering',
-    desc: 'Building high-performance React code with smooth 60fps micro-interactions, clean structure, and zero bloat.',
+    num: '04', phase: 'Execute', title: 'Execution & Optimization',
+    desc: 'Engineering high-performance web code, executing marketing campaigns, post-production editing, and live event broadcasting.',
     icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>)
   },
   {
-    num: '05', phase: 'Launch', title: 'Testing & Deployment',
-    desc: 'Conducting cross-browser audits, performance optimization, and seamless deployment with zero downtime.',
+    num: '05', phase: 'Deliver', title: 'Delivery & Growth Management',
+    desc: 'Launching digital platforms, deploying visual campaigns, managing active social feeds, and driving continuous brand growth.',
     icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>)
   }
 ];
