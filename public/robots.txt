@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://elitestudios.in
+Host: https://www.elitestudios.in
 
 # Sitemap Location
-Sitemap: https://elitestudios.in/sitemap.xml
+Sitemap: https://www.elitestudios.in/sitemap.xml
