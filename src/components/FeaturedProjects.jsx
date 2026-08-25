@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Maximize2 } from 'lucide-react';
 import { getProjectsLocal, fetchProjects, preloadProjectImages } from '../utils/portfolioStore';
 
 const CATEGORY_TABS = [
@@ -57,7 +57,7 @@ export default function FeaturedProjects() {
       <div className="absolute top-[40%] left-[-10%] w-[600px] h-[600px] bg-white/[0.005] rounded-full blur-[140px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto w-full">
-        {/* Exact Original Section Header - No reveal hiding */}
+        {/* Section Header */}
         <div className="mb-8 md:mb-10">
           <span className="text-xs uppercase tracking-widest text-[#d4b07c] font-bold block mb-2 font-display">
             Selected Work
@@ -67,8 +67,8 @@ export default function FeaturedProjects() {
           </h2>
         </div>
 
-        {/* Category Filter Tabs - No reveal hiding */}
-        <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-10 pb-4 border-b border-white/10 overflow-x-auto">
+        {/* Category Filter Tabs */}
+        <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-10 pb-4 border-b border-white/10 overflow-x-auto no-scrollbar">
           {CATEGORY_TABS.map((tab) => {
             const isActive = activeCategory === tab;
             return (
@@ -98,7 +98,8 @@ export default function FeaturedProjects() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {filteredProjects.map((project, idx) => {
               const hasExternalLink = Boolean(project.website_url);
-              const targetUrl = project.website_url || '#contact';
+              const targetUrl = project.website_url || project.src;
+              const linkLabel = hasExternalLink ? 'Visit Live Website' : 'View Full Image';
               const projId = project.id || idx;
 
               return (
@@ -106,12 +107,18 @@ export default function FeaturedProjects() {
                   key={projId}
                   className="group flex flex-col bg-[#0b0b0b] border border-white/5 hover:border-[#d4b07c]/40 transition-all duration-500 rounded-none overflow-hidden"
                 >
-                  {/* Top Image Container */}
-                  <div className="relative aspect-[16/10] bg-[#050505] overflow-hidden cursor-pointer border-b border-white/5">
+                  {/* Top Image Container - Clicking image opens full image / link in new tab */}
+                  <a
+                    href={targetUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative aspect-[16/10] bg-[#050505] overflow-hidden cursor-pointer border-b border-white/5 block"
+                    title={`Open ${project.title} in new tab`}
+                  >
                     {project.src ? (
                       <img
                         src={project.src}
-                        alt={project.client}
+                        alt={project.client || project.title}
                         loading="eager"
                         decoding="async"
                         className="w-full h-full object-cover filter brightness-[0.85] group-hover:brightness-100 group-hover:scale-105 transition-all duration-700 opacity-100 block"
@@ -125,16 +132,11 @@ export default function FeaturedProjects() {
                     {/* Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                    {/* Hover Arrow Overlay */}
-                    <a
-                      href={targetUrl}
-                      target={hasExternalLink ? '_blank' : '_self'}
-                      rel="noreferrer"
-                      className="absolute bottom-4 right-4 w-10 h-10 bg-[#d4b07c] text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg"
-                    >
+                    {/* Hover Arrow Button */}
+                    <div className="absolute bottom-4 right-4 w-10 h-10 bg-[#d4b07c] text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg">
                       <ArrowUpRight className="w-4 h-4" />
-                    </a>
-                  </div>
+                    </div>
+                  </a>
 
                   {/* Bottom Info Stacked Below Image */}
                   <div className="p-6 flex flex-col justify-between flex-grow text-left">
@@ -157,16 +159,16 @@ export default function FeaturedProjects() {
                       </span>
                     </div>
 
-                    {/* Action Button Link */}
+                    {/* Action Button Link - Opens in new tab */}
                     <div className="pt-4 border-t border-white/5 mt-auto">
                       <a
                         href={targetUrl}
-                        target={hasExternalLink ? '_blank' : '_self'}
-                        rel="noreferrer"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/80 hover:text-[#d4b07c] transition-colors duration-300 group py-1"
                       >
-                        <span>{hasExternalLink ? 'Visit Live Website' : 'View Case Study'}</span>
-                        <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+                        <span>{linkLabel}</span>
+                        <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300 text-[#d4b07c]" />
                       </a>
                     </div>
                   </div>
