@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import logo from '../assets/ELITE STUDIOS.webp';
+import logo from '../assets/ELITE STUDIOS.png';
 import { Send } from 'lucide-react';
 
 export default function Navbar() {
@@ -16,7 +16,7 @@ export default function Navbar() {
         setIsScrolled(false);
       }
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -45,8 +45,8 @@ export default function Navbar() {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-          ? 'py-2.5 bg-black/90 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.8)]'
-          : 'py-3 md:py-4 bg-transparent'
+            ? 'py-2.5 bg-black/90 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.8)]'
+            : 'py-3 md:py-4 bg-transparent'
           }`}
       >
         <div className="max-w-[1600px] mx-auto flex items-center justify-between w-full relative h-14 px-4 sm:px-6 lg:px-12">
@@ -56,10 +56,6 @@ export default function Navbar() {
               <img
                 src={logo}
                 alt="Elite Studios"
-                width="180"
-                height="180"
-                fetchpriority="high"
-                decodings="async"
                 className="w-auto object-contain transition-all duration-500 group-hover:scale-[1.01] h-[110px] sm:h-[120px] lg:h-[180px] mobile-logo-img"
               />
             </Link>
@@ -73,8 +69,9 @@ export default function Navbar() {
                 <NavLink
                   key={item.label}
                   to={item.to}
-                  className={`text-[10px] font-bold tracking-[0.25em] transition-all duration-300 relative py-1 uppercase ${isActive ? 'text-[#d4b07c]' : 'text-gray-300 hover:text-white'
-                    }`}
+                  className={`text-[10px] font-bold tracking-[0.25em] transition-all duration-300 relative py-1 uppercase ${
+                    isActive ? 'text-[#d4b07c]' : 'text-gray-300 hover:text-white'
+                  }`}
                 >
                   {item.label}
                   {isActive && (
@@ -123,8 +120,9 @@ export default function Navbar() {
                 to={item.to}
                 onClick={() => setIsMobileMenuOpen(false)}
                 style={{ transitionDelay: `${idx * 0.06}s` }}
-                className={`text-xl font-light tracking-widest uppercase hover:text-gray-400 transition-colors duration-300 ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-                  } transition-all duration-500 ${isActive ? 'text-[#d4b07c]' : 'text-white'}`}
+                className={`text-xl font-light tracking-widest uppercase hover:text-gray-400 transition-colors duration-300 ${
+                  isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+                } transition-all duration-500 ${isActive ? 'text-[#d4b07c]' : 'text-white'}`}
               >
                 {item.label}
               </NavLink>
@@ -132,10 +130,10 @@ export default function Navbar() {
           })}
           <Link
             to="/contact"
-
             onClick={() => setIsMobileMenuOpen(false)}
-            className={`mt-8 px-8 py-3.5 text-xs font-semibold uppercase tracking-widest border border-[#d4b07c] text-[#d4b07c] transition-colors duration-300 bg-transparent rounded-md hover:bg-[#d4b07c] hover:text-black flex items-center justify-center gap-2 ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-              } transition-all duration-500`}
+            className={`mt-8 px-8 py-3.5 text-xs font-semibold uppercase tracking-widest border border-[#d4b07c] text-[#d4b07c] transition-colors duration-300 bg-transparent rounded-md hover:bg-[#d4b07c] hover:text-black flex items-center justify-center gap-2 ${
+              isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+            } transition-all duration-500`}
             style={{ transitionDelay: '0.4s' }}
           >
             <span>LET'S TALK</span>

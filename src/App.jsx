@@ -1,15 +1,14 @@
-import React, { useEffect, lazy, Suspense } from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-
-const Work = lazy(() => import('./pages/Work'));
-const About = lazy(() => import('./pages/About'));
-const ServicesPage = lazy(() => import('./pages/ServicesPage'));
-const Contact = lazy(() => import('./pages/Contact'));
-const Admin = lazy(() => import('./pages/Admin'));
-const NotFound = lazy(() => import('./pages/NotFound'));
+import Work from './pages/Work';
+import About from './pages/About';
+import ServicesPage from './pages/ServicesPage';
+import Contact from './pages/Contact';
+import Admin from './pages/Admin';
+import NotFound from './pages/NotFound';
 
 import WhatsAppButton from './components/WhatsAppButton';
 
@@ -90,18 +89,20 @@ export default function App() {
     const timer = setTimeout(() => {
       const preloader = document.getElementById('preloader');
       if (preloader) {
+        // Fade out and scale up slightly for a premium exit effect
         preloader.style.opacity = '0';
         preloader.style.transform = 'scale(1.05)';
         preloader.style.pointerEvents = 'none';
 
+        // Unlock scroll and remove from DOM after transition completes
         setTimeout(() => {
-          if (preloader.parentNode) preloader.remove();
+          preloader.remove();
           document.body.style.overflow = '';
-        }, 300);
+        }, 600);
       } else {
         document.body.style.overflow = '';
       }
-    }, 0);
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -118,17 +119,15 @@ export default function App() {
       <main>
         <ScrollToTop />
         <RevealObserver />
-        <Suspense fallback={null}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/work" element={<Work />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/work" element={<Work />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </main>
 
       {/* Structured Footer */}

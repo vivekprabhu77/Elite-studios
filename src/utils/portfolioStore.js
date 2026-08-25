@@ -6,8 +6,13 @@ const STORAGE_KEY = 'elite_portfolio_projects';
 
 // Background Image Preloader for Ultra Fast Portfolio Image Loading
 export function preloadProjectImages(projects) {
-  // Disabled background image flooding for Lighthouse network optimization
-  return;
+  if (!Array.isArray(projects) || typeof window === 'undefined') return;
+  projects.forEach((p) => {
+    if (p && p.src) {
+      const img = new Image();
+      img.src = p.src;
+    }
+  });
 }
 
 // Helper to compress & convert image File to lightweight Base64

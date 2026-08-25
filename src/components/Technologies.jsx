@@ -57,9 +57,6 @@ export default function Technologies() {
                       alt={logo.name} 
                       className="tech-svg-img" 
                       loading="lazy"
-                      decodings="async"
-                      width="30"
-                      height="30"
                     />
                   </div>
                   <span className="tech-logo-name">{logo.name}</span>
@@ -81,9 +78,6 @@ export default function Technologies() {
                       alt={logo.name} 
                       className="tech-svg-img" 
                       loading="lazy"
-                      decodings="async"
-                      width="30"
-                      height="30"
                     />
                   </div>
                   <span className="tech-logo-name">{logo.name}</span>

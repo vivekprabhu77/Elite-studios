@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import preloaderBg from '../assets/preloader.webp';
+import preloaderBg from '../assets/preloader.png';
 
 export default function Preloader({ onComplete }) {
   const [percentage, setPercentage] = useState(0);
@@ -7,7 +7,7 @@ export default function Preloader({ onComplete }) {
   const animationRef = useRef(null);
   const startTimeRef = useRef(null);
 
-  const DURATION = 300; // 0.3s fast loader for high performance
+  const DURATION = 4500; // 4.5 seconds total load time
 
   useEffect(() => {
     startTimeRef.current = performance.now();

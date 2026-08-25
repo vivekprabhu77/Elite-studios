@@ -17,7 +17,7 @@ import {
   Eye,
   EyeOff
 } from 'lucide-react';
-import logo from '../assets/ELITE STUDIOS.webp';
+import logo from '../assets/ELITE STUDIOS.png';
 const ADMIN_USER_LOWER = "elite studios";
 const ADMIN_PASS_HASH = "d4b0e8187e174067d572493e9e3e963a2e9a8be34838faaa996c322a176cc81f";
 
