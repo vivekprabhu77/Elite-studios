@@ -312,9 +312,6 @@ body {
   gap: 20px;
   overflow: hidden;
   position: relative;
-  /* Fade edges for seamless loop illusion */
-  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
 }
 
 .marquee-track {
@@ -323,26 +320,33 @@ body {
   width: max-content;
   max-width: none !important;
   will-change: transform;
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
 }
 
 /* Row 1 scrolls LEFT */
 .marquee-left {
   animation: scrollLeft 100s linear infinite;
+  will-change: transform;
 }
 
 /* Row 2 scrolls RIGHT */
 .marquee-right {
   animation: scrollRight 100s linear infinite;
+  will-change: transform;
 }
 
 @keyframes scrollLeft {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 
 @keyframes scrollRight {
-  0%   { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
+  0%   { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -365,11 +369,14 @@ body {
   background: rgba(18, 18, 18, 0.9);
   border: 1px solid rgba(212, 175, 55, 0.25);
   border-radius: 12px;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.22s cubic-bezier(0.16, 1, 0.3, 1), background 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   flex-shrink: 0 !important;
   max-width: none !important;
   white-space: nowrap;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .tech-logo-card:hover {
