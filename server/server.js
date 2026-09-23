@@ -73,7 +73,8 @@ async function uploadToR2(filePath, mimeType, originalName) {
     Bucket: R2_BUCKET_NAME,
     Key: fileKey,
     Body: fileStream,
-    ContentType: mimeType || 'image/jpeg'
+    ContentType: mimeType || 'image/jpeg',
+    CacheControl: 'public, max-age=31536000, immutable'
   });
 
   await client.send(command);
@@ -241,7 +242,7 @@ app.get('/api/projects', async (req, res) => {
     if (!dbPool) {
       return res.status(503).json({ error: 'MySQL database not connected yet.' });
     }
-    const [rows] = await dbPool.query('SELECT * FROM projects ORDER BY id DESC');
+    const [rows] = await dbPool.query('SELECT id, client, title, category, year, type, src, website_url FROM projects ORDER BY id DESC');
     res.json(rows);
   } catch (err) {
     console.error('Error fetching projects from MySQL:', err);

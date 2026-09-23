@@ -31,7 +31,9 @@ function getDbPool() {
     ssl: sslConfig,
     waitForConnections: true,
     connectionLimit: 5,
-    queueLimit: 0
+    queueLimit: 0,
+    enableKeepAlive: true,
+    keepAliveInitialDelay: 10000
   });
   return pool;
 }
@@ -57,7 +59,18 @@ export default async function handler(req, res) {
 
   try {
     if (req.method === 'GET') {
-      const [rows] = await db.query('SELECT * FROM projects ORDER BY created_at DESC');
+      const isFresh = req.query.fresh === 'true' || req.headers['cache-control'] === 'no-cache';
+      if (isFresh) {
+        res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+      } else {
+        // Fast edge caching: 15s edge cache + 59s background stale-while-revalidate
+        res.setHeader('Cache-Control', 'public, s-maxage=15, stale-while-revalidate=59');
+      }
+
+      // Optimize SELECT to only requested columns instead of SELECT *
+      const [rows] = await db.query(
+        'SELECT id, client, title, category, year, type, src, website_url FROM projects ORDER BY created_at DESC'
+      );
       return res.status(200).json(rows);
     }
 

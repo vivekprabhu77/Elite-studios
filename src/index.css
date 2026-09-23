@@ -403,3 +403,32 @@ body {
   white-space: nowrap;
 }
 
+/* Premium Skeleton Shimmer for Elite Studios Portfolio */
+@keyframes elite-skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.02) 0%,
+    rgba(212, 176, 124, 0.08) 50%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  background-size: 200% 100%;
+  animation: elite-skeleton-shimmer 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: background-position;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-shimmer {
+    animation: none !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+  }
+}
+

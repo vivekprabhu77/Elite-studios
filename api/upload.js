@@ -63,7 +63,8 @@ export default async function handler(req, res) {
       Bucket: R2_BUCKET_NAME,
       Key: fileKey,
       Body: buffer,
-      ContentType: mimeType || 'image/jpeg'
+      ContentType: mimeType || 'image/jpeg',
+      CacheControl: 'public, max-age=31536000, immutable'
     });
 
     await client.send(command);
