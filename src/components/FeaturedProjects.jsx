@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useSearchParams, useLocation } from 'react-router-dom';
 import { ArrowUpRight, Image as ImageIcon, RefreshCw } from 'lucide-react';
 import { getCachedProjects, fetchProjects } from '../utils/portfolioStore';
 
@@ -161,11 +162,57 @@ function ProjectCard({ project, idx }) {
 }
 
 export default function FeaturedProjects() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+
+  const resolveMatchingCategory = useCallback((catName) => {
+    if (!catName) return null;
+    const clean = catName.trim().toLowerCase();
+    return CATEGORY_TABS.find(
+      (tab) => tab.toLowerCase() === clean ||
+               clean.includes(tab.toLowerCase()) ||
+               tab.toLowerCase().includes(clean)
+    ) || null;
+  }, []);
+
+  const getInitialCategory = () => {
+    const fromSearch = searchParams.get('category');
+    const fromState = location.state?.category;
+    const match = resolveMatchingCategory(fromSearch || fromState);
+    return match || 'ALL';
+  };
+
   const cached = getCachedProjects();
   const [projects, setProjects] = useState(cached || []);
   const [status, setStatus] = useState(cached && cached.length > 0 ? 'success' : 'loading');
   const [errorMessage, setErrorMessage] = useState('');
-  const [activeCategory, setActiveCategory] = useState('ALL');
+  const [activeCategory, setActiveCategory] = useState(getInitialCategory);
+
+  // Sync category if URL search params or route state change
+  useEffect(() => {
+    const fromSearch = searchParams.get('category');
+    const fromState = location.state?.category;
+    const target = fromSearch || fromState;
+    if (target) {
+      const match = resolveMatchingCategory(target);
+      if (match) {
+        setActiveCategory(match);
+      }
+    } else if (fromSearch === null && !fromState) {
+      setActiveCategory('ALL');
+    }
+  }, [searchParams, location.state, resolveMatchingCategory]);
+
+  const handleCategorySelect = (tab) => {
+    setActiveCategory(tab);
+    const newParams = new URLSearchParams(searchParams);
+    if (tab === 'ALL') {
+      newParams.delete('category');
+    } else {
+      newParams.set('category', tab);
+    }
+    setSearchParams(newParams, { replace: true });
+  };
 
   const loadData = useCallback(async (isRetry = false) => {
     if (isRetry) {
@@ -242,7 +289,7 @@ export default function FeaturedProjects() {
             return (
               <button
                 key={tab}
-                onClick={() => setActiveCategory(tab)}
+                onClick={() => handleCategorySelect(tab)}
                 className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-300 rounded-none whitespace-nowrap cursor-pointer ${
                   isActive
                     ? 'bg-[#d4b07c] text-black shadow-[0_0_20px_rgba(212,176,124,0.3)]'

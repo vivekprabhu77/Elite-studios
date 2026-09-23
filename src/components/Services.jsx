@@ -40,6 +40,7 @@ const SERVICES = [
   {
     num: '01',
     title: 'Website Design & Development',
+    categoryTab: 'Website Design',
     desc: 'Designing and engineering editorial-grade, responsive websites that combine jaw-dropping layouts with clean frontend execution.',
     items: ['UI/UX Design', 'React / Vite', 'Animations'],
     icon: Globe
@@ -47,6 +48,7 @@ const SERVICES = [
   {
     num: '02',
     title: 'Graphic Design',
+    categoryTab: 'Graphic Design',
     desc: 'Sophisticated corporate and artistic design assets crafted with rigorous typography standards and grid systems.',
     items: ['Typography', 'Key Visuals', 'Vector Art'],
     icon: Palette
@@ -54,6 +56,7 @@ const SERVICES = [
   {
     num: '03',
     title: 'Digital Marketing',
+    categoryTab: 'Digital Marketing',
     desc: 'Data-backed growth marketing campaigns, SEO optimization, and hyper-targeted advertising strategies that convert.',
     items: ['Campaigns', 'SEO Execution', 'ROI Tracking'],
     icon: Megaphone
@@ -61,6 +64,7 @@ const SERVICES = [
   {
     num: '04',
     title: 'Live Streaming',
+    categoryTab: 'Live Streaming',
     desc: 'Broadcasting virtual events, webcasts, and high-fidelity multi-cam live streams with zero latency and clean audio.',
     items: ['Multi-Cam Setup', 'Live Audio Mix', 'Broadcast'],
     icon: Radio
@@ -68,6 +72,7 @@ const SERVICES = [
   {
     num: '05',
     title: 'Video Editing',
+    categoryTab: 'Video Editing',
     desc: 'Post-production mastery featuring detailed color grading, sound design, visual effects, and fluid pacing.',
     items: ['Color Grading', 'Sound Design', 'VFX / Motion'],
     icon: Scissors
@@ -75,6 +80,7 @@ const SERVICES = [
   {
     num: '06',
     title: 'Entire Social Media Handling',
+    categoryTab: 'Social Media',
     desc: 'Complete management of social handles, content calendars, cohesive aesthetic feeds, and organic community building.',
     items: ['Feed Aesthetics', 'Scheduling', 'Analytics'],
     icon: Share2
@@ -289,9 +295,13 @@ export default function Services() {
                   </div>
 
                   {/* Title & Description */}
-                  <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-[#d4b07c] tracking-tight mb-2 md:mb-3 font-display transition-colors duration-300">
+                  <Link
+                    to={`/work?category=${encodeURIComponent(service.categoryTab)}`}
+                    className="block text-lg sm:text-xl font-bold text-white group-hover:text-[#d4b07c] tracking-tight mb-2 md:mb-3 font-display transition-colors duration-300 hover:text-[#d4b07c] cursor-pointer"
+                    title={`View ${service.title} Portfolio`}
+                  >
                     {service.title}
-                  </h3>
+                  </Link>
                   <p className="text-xs text-gray-400 font-light leading-relaxed group-hover:text-gray-300 transition-colors duration-300 mb-4 md:mb-6">
                     {service.desc}
                   </p>
@@ -311,7 +321,14 @@ export default function Services() {
                       </span>
                     ))}
                   </div>
-                  <ArrowUpRight className="w-4 h-4 text-white/20 group-hover:text-[#d4b07c] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+                  <Link
+                    to={`/work?category=${encodeURIComponent(service.categoryTab)}`}
+                    className="w-8 h-8 flex items-center justify-center rounded-none border border-transparent hover:border-[#d4b07c]/30 hover:bg-[#d4b07c]/10 text-white/30 hover:text-[#d4b07c] group-hover:text-[#d4b07c] transition-all duration-300 cursor-pointer group/btn shrink-0"
+                    title={`View ${service.title} Portfolio`}
+                    aria-label={`View ${service.title} Portfolio`}
+                  >
+                    <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover/btn:scale-110" />
+                  </Link>
                 </div>
               </div>
             );
