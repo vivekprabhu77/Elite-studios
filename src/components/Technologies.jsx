@@ -34,6 +34,10 @@ const row2Logos = [
 ];
 
 export default function Technologies() {
+  // 4 identical sets ensure wide track width and exact 50% shift matching full sets
+  const row1Items = [...row1Logos, ...row1Logos, ...row1Logos, ...row1Logos];
+  const row2Items = [...row2Logos, ...row2Logos, ...row2Logos, ...row2Logos];
+
   return (
     <section className="marquee-section">
       <div className="container mx-auto px-6">
@@ -46,44 +50,35 @@ export default function Technologies() {
       <div className="marquee-wrapper">
         {/* Top Row — Scrolls Left */}
         <div className="marquee-track marquee-left">
-          {/* Repeat the card set 4 times for infinite loop illusion */}
-          {[...Array(4)].map((_, loopIdx) => (
-            <React.Fragment key={loopIdx}>
-              {row1Logos.map((logo, i) => (
-                <div className="tech-logo-card" key={`${loopIdx}-${i}`}>
-                  <div className="tech-icon-wrapper">
-                    <img 
-                      src={`/assets/logos/${logo.file}`} 
-                      alt={logo.name} 
-                      className="tech-svg-img" 
-                      loading="lazy"
-                    />
-                  </div>
-                  <span className="tech-logo-name">{logo.name}</span>
-                </div>
-              ))}
-            </React.Fragment>
+          {row1Items.map((logo, i) => (
+            <div className="tech-logo-card" key={`r1-${i}`}>
+              <div className="tech-icon-wrapper">
+                <img 
+                  src={`/assets/logos/${logo.file}`} 
+                  alt={logo.name} 
+                  className="tech-svg-img" 
+                  loading="lazy"
+                />
+              </div>
+              <span className="tech-logo-name">{logo.name}</span>
+            </div>
           ))}
         </div>
 
         {/* Bottom Row — Scrolls Right */}
         <div className="marquee-track marquee-right">
-          {[...Array(4)].map((_, loopIdx) => (
-            <React.Fragment key={loopIdx}>
-              {row2Logos.map((logo, i) => (
-                <div className="tech-logo-card" key={`${loopIdx}-${i}`}>
-                  <div className="tech-icon-wrapper">
-                    <img 
-                      src={`/assets/logos/${logo.file}`} 
-                      alt={logo.name} 
-                      className="tech-svg-img" 
-                      loading="lazy"
-                    />
-                  </div>
-                  <span className="tech-logo-name">{logo.name}</span>
-                </div>
-              ))}
-            </React.Fragment>
+          {row2Items.map((logo, i) => (
+            <div className="tech-logo-card" key={`r2-${i}`}>
+              <div className="tech-icon-wrapper">
+                <img 
+                  src={`/assets/logos/${logo.file}`} 
+                  alt={logo.name} 
+                  className="tech-svg-img" 
+                  loading="lazy"
+                />
+              </div>
+              <span className="tech-logo-name">{logo.name}</span>
+            </div>
           ))}
         </div>
       </div>

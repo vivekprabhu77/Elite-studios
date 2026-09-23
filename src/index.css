@@ -310,6 +310,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow: hidden;
+  position: relative;
   /* Fade edges for seamless loop illusion */
   mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
@@ -317,18 +319,20 @@ body {
 
 .marquee-track {
   display: flex;
-  gap: 24px;
+  flex-wrap: nowrap;
   width: max-content;
+  max-width: none !important;
+  will-change: transform;
 }
 
 /* Row 1 scrolls LEFT */
 .marquee-left {
-  animation: scrollLeft 25s linear infinite;
+  animation: scrollLeft 100s linear infinite;
 }
 
 /* Row 2 scrolls RIGHT */
 .marquee-right {
-  animation: scrollRight 25s linear infinite;
+  animation: scrollRight 100s linear infinite;
 }
 
 @keyframes scrollLeft {
@@ -341,6 +345,13 @@ body {
   100% { transform: translateX(0); }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .marquee-left,
+  .marquee-right {
+    animation-play-state: paused !important;
+  }
+}
+
 /* ===========================
    TECH LOGO CARD
    =========================== */
@@ -350,11 +361,15 @@ body {
   align-items: center;
   gap: 16px;
   padding: 16px 28px;
+  margin-right: 24px;
   background: rgba(18, 18, 18, 0.9);
   border: 1px solid rgba(212, 175, 55, 0.25);
   border-radius: 12px;
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
+  flex-shrink: 0 !important;
+  max-width: none !important;
+  white-space: nowrap;
 }
 
 .tech-logo-card:hover {

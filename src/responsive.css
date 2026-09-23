@@ -322,21 +322,26 @@ nav,
   }
 
   .marquee-track {
-    gap: 12px !important;
+    max-width: none !important;
+    width: max-content !important;
   }
 
   .marquee-left {
-    animation: scrollLeft 14s linear infinite !important;
+    animation: scrollLeft 70s linear infinite !important;
   }
 
   .marquee-right {
-    animation: scrollRight 14s linear infinite !important;
+    animation: scrollRight 70s linear infinite !important;
   }
 
   .tech-logo-card {
     padding: 8px 14px !important;
     gap: 8px !important;
+    margin-right: 12px !important;
     border-radius: 8px !important;
+    flex-shrink: 0 !important;
+    max-width: none !important;
+    white-space: nowrap !important;
   }
 
   .tech-icon-wrapper {
