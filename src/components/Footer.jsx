@@ -152,7 +152,12 @@ export default function Footer() {
           <span>&copy; {currentYear} ELITE STUDIOS. ALL RIGHTS RESERVED.</span>
           <div className="flex flex-wrap items-center justify-center gap-6">
             <a href="#privacy" className="hover:text-white transition-colors duration-300">PRIVACY POLICY</a>
-            <a href="#terms" className="hover:text-white transition-colors duration-300">TERMS OF SERVICE</a>
+            <Link
+              to="/terms"
+              className="hover:text-white transition-colors duration-300"
+            >
+              TERMS OF SERVICE
+            </Link>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="hover:text-[#d4b07c] transition-colors duration-300 flex items-center gap-1 font-bold text-white/60"

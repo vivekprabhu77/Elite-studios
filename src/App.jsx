@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -8,13 +8,21 @@ import About from './pages/About';
 import ServicesPage from './pages/ServicesPage';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
+import TermsPage from './pages/TermsPage';
 import NotFound from './pages/NotFound';
 
 import WhatsAppButton from './components/WhatsAppButton';
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
+  const navigate = useNavigate();
+
   useEffect(() => {
+    if (hash === '#terms' && pathname !== '/terms') {
+      navigate('/terms', { replace: true });
+      return;
+    }
+
     if (hash) {
       const id = hash.replace('#', '');
       const element = document.getElementById(id);
@@ -40,7 +48,7 @@ function ScrollToTop() {
     } else {
       window.scrollTo(0, 0);
     }
-  }, [pathname, hash]);
+  }, [pathname, hash, navigate]);
   return null;
 }
 
@@ -126,6 +134,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/terms" element={<TermsPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
