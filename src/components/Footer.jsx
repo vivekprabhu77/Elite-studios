@@ -10,7 +10,8 @@ export default function Footer() {
     { label: 'Services', to: '/services' },
     { label: 'Work', to: '/work' },
     { label: 'About', to: '/about' },
-    { label: 'Contact', to: '/contact' }
+    { label: 'Contact', to: '/contact' },
+    { label: 'Terms of Service', to: '/terms' }
   ];
 
   const socialLinks = [
@@ -53,7 +54,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-black text-gray-400 py-16 lg:py-24 px-6 md:px-12 border-t border-white/[0.06] relative z-10 overflow-hidden site-footer">
+    <footer className="bg-black text-gray-400 pt-16 lg:pt-24 pb-28 sm:pb-32 px-6 md:px-12 border-t border-white/[0.06] relative z-10 overflow-hidden site-footer">
       {/* Background radial spotlight highlight */}
       <div className="absolute bottom-[-120px] left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-t from-[#d4b07c]/[0.03] to-transparent rounded-full blur-[100px] pointer-events-none"></div>
 
@@ -148,19 +149,20 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-mono tracking-widest uppercase text-white/40 footer-bottom">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-mono tracking-widest uppercase text-white/40 footer-bottom pr-0 sm:pr-24">
           <span>&copy; {currentYear} ELITE STUDIOS. ALL RIGHTS RESERVED.</span>
-          <div className="flex flex-wrap items-center justify-center gap-6">
-            <a href="#privacy" className="hover:text-white transition-colors duration-300">PRIVACY POLICY</a>
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+            <a href="#privacy" className="hover:text-white transition-colors duration-300 py-1 px-1.5">PRIVACY POLICY</a>
             <Link
               to="/terms"
-              className="hover:text-white transition-colors duration-300"
+              className="py-1.5 px-3.5 rounded-md bg-[#d4b07c]/10 text-[#d4b07c] border border-[#d4b07c]/30 hover:bg-[#d4b07c] hover:text-black font-semibold transition-all duration-300 inline-flex items-center gap-1.5 cursor-pointer"
             >
-              TERMS OF SERVICE
+              <span>TERMS OF SERVICE</span>
+              <span className="text-xs">&rarr;</span>
             </Link>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="hover:text-[#d4b07c] transition-colors duration-300 flex items-center gap-1 font-bold text-white/60"
+              className="hover:text-[#d4b07c] transition-colors duration-300 flex items-center gap-1 font-bold text-white/60 py-1 px-1.5"
             >
               <span>TOP</span>
               <span>&uarr;</span>
