@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import footerLogo from '../assets/ELITE STUDIOS.png';
+import TextLoop from './TextLoop';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -54,11 +55,39 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-black text-gray-400 pt-16 lg:pt-24 pb-28 sm:pb-32 px-6 md:px-12 border-t border-white/[0.06] relative z-10 overflow-hidden site-footer">
+    <footer className="bg-black text-gray-400 pb-28 sm:pb-32 border-t border-white/[0.06] relative z-10 overflow-hidden site-footer">
       {/* Background radial spotlight highlight */}
       <div className="absolute bottom-[-120px] left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-t from-[#d4b07c]/[0.03] to-transparent rounded-full blur-[100px] pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto w-full relative z-10">
+      {/* Full-bleed End-to-End TextLoop Ribbon */}
+      <div className="w-full overflow-hidden">
+        <TextLoop
+          text="ELITE STUDIOS"
+          shape="wave"
+          speed={70}
+          direction="forward"
+          separator="✦"
+          curviness={16}
+          tilt={0}
+          fontSize={22}
+          fontWeight={800}
+          letterSpacing={2.5}
+          uppercase
+          ribbon
+          ribbonColor="#ffffff"
+          ribbonWidth={48}
+          edgeFade={0}
+          cross={false}
+          draggable={false}
+          scrollBoost={0}
+          outline={false}
+          pauseOnHover
+          color="#120f17"
+          viewHeight={130}
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto w-full relative z-10 pt-8 sm:pt-12 px-6 md:px-12">
         {/* Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-16 border-b border-white/[0.06] footer-grid">
 
