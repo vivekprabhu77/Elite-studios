@@ -1,0 +1,109 @@
+.focus-container {
+  position: relative;
+  display: flex;
+  gap: 1.2em;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  outline: none;
+  user-select: none;
+}
+
+.focus-word {
+  position: relative;
+  font-size: clamp(0.95rem, 2.2vw, 1.85rem);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+  cursor: pointer;
+  transition:
+    filter 0.3s ease,
+    color 0.3s ease;
+  outline: none;
+  user-select: none;
+}
+
+.focus-word.active {
+  filter: blur(0);
+}
+
+.focus-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.focus-highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  max-width: none !important;
+  max-height: none !important;
+  border-radius: 6px;
+  background-color: var(--highlight-color);
+  pointer-events: none;
+}
+
+.focus-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  max-width: none !important;
+  max-height: none !important;
+  border: var(--border-width, 3px) solid var(--border-color, currentColor);
+  border-radius: 8px;
+  filter: drop-shadow(0 0 10px var(--glow-color, rgba(255, 255, 255, 0.5)));
+  pointer-events: none;
+}
+
+.focus-underline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  max-width: none !important;
+  max-height: none !important;
+  border-radius: calc(var(--border-width, 3px) / 2);
+  background-color: var(--border-color, currentColor);
+  filter: drop-shadow(0 0 10px var(--glow-color, rgba(255, 255, 255, 0.5)));
+  pointer-events: none;
+}
+
+.corner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  max-width: none !important;
+  max-height: none !important;
+  width: var(--corner-size, 1rem);
+  height: var(--corner-size, 1rem);
+  border: var(--border-width, 3px) solid var(--border-color, currentColor);
+  border-radius: 3px;
+  filter: drop-shadow(0 0 10px var(--glow-color, rgba(255, 255, 255, 0.5)));
+  pointer-events: none;
+}
+
+.top-left {
+  border-right: none;
+  border-bottom: none;
+}
+
+.top-right {
+  border-left: none;
+  border-bottom: none;
+}
+
+.bottom-left {
+  border-right: none;
+  border-top: none;
+}
+
+.bottom-right {
+  border-left: none;
+  border-top: none;
+}

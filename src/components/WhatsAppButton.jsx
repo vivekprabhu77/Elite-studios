@@ -1,7 +1,15 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { getWhatsAppProjectUrl } from '../utils/whatsapp';
 
 export default function WhatsAppButton() {
+  const { pathname } = useLocation();
+
+  // Hide the floating button on the home page
+  if (pathname === '/') {
+    return null;
+  }
+
   return (
     <div className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-[999] flex items-center gap-3 select-none pointer-events-none group">
       {/* Premium Dark Glass Tooltip Pill - completely to the left of the button */}
