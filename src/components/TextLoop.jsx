@@ -230,8 +230,11 @@ const TextLoop = ({
       document.fonts.ready.then(measure).catch(() => {});
     }
 
+    window.addEventListener('resize', measure);
+
     return () => {
       cancelled = true;
+      window.removeEventListener('resize', measure);
     };
   }, [d, crossD, unit, fontSize, fontWeight, letterSpacing]);
 

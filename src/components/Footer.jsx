@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import footerLogo from '../assets/ELITE STUDIOS.png';
 import TextLoop from './TextLoop';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' ? window.innerWidth < 768 : false
+  );
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const navItems = [
     { label: 'Home', to: '/' },
@@ -64,18 +74,18 @@ export default function Footer() {
         <TextLoop
           text="ELITE STUDIOS"
           shape="wave"
-          speed={70}
+          speed={isMobile ? 55 : 70}
           direction="forward"
           separator="✦"
-          curviness={16}
+          curviness={isMobile ? 22 : 16}
           tilt={0}
-          fontSize={22}
+          fontSize={isMobile ? 38 : 22}
           fontWeight={800}
-          letterSpacing={2.5}
+          letterSpacing={isMobile ? 3 : 2.5}
           uppercase
           ribbon
           ribbonColor="#ffffff"
-          ribbonWidth={48}
+          ribbonWidth={isMobile ? 76 : 48}
           edgeFade={0}
           cross={false}
           draggable={false}
@@ -83,7 +93,7 @@ export default function Footer() {
           outline={false}
           pauseOnHover
           color="#120f17"
-          viewHeight={130}
+          viewHeight={isMobile ? 180 : 130}
         />
       </div>
 
