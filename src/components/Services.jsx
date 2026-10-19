@@ -91,7 +91,7 @@ function renderWidget(num) {
   switch (num) {
     case '01': // Website Design & Dev
       return (
-        <div className="relative w-full h-full flex flex-col justify-start bg-black/40 border border-white/[0.02] rounded-sm overflow-hidden p-2 group-hover:bg-black/60 transition-colors duration-500">
+        <div className="relative w-full h-full flex flex-col justify-start bg-[#2f3336]/60 border border-white/[0.06] rounded-sm overflow-hidden p-2 group-hover:bg-[#2f3336]/80 transition-colors duration-500">
           <div className="flex items-center gap-1.5 mb-1.5 pb-1 border-b border-white/[0.03]">
             <div className="w-1.5 h-1.5 rounded-full bg-red-500/60"></div>
             <div className="w-1.5 h-1.5 rounded-full bg-yellow-500/60"></div>
@@ -101,21 +101,21 @@ function renderWidget(num) {
           <div className="flex-1 flex gap-2">
             <div className="flex-1 flex flex-col gap-1 text-left">
               <div className="h-1.5 w-10 bg-white/20 rounded-full"></div>
-              <div className="h-4 w-full bg-white/[0.02] border border-white/[0.05] rounded-sm flex items-center justify-between px-1.5 transition-all duration-500 group-hover:translate-y-[-1px] group-hover:bg-[#d4b07c]/5">
+              <div className="h-4 w-full bg-white/[0.02] border border-white/[0.05] rounded-sm flex items-center justify-between px-1.5 transition-all duration-500 group-hover:translate-y-[-1px] group-hover:bg-[#E94F37]/10">
                 <div className="h-1 w-12 bg-white/15 rounded-full"></div>
-                <div className="h-1 w-1 bg-[#d4b07c] rounded-full"></div>
+                <div className="h-1 w-1 bg-[#E94F37] rounded-full"></div>
               </div>
-              <div className="h-6 w-full bg-gradient-to-tr from-[#d4b07c]/10 to-transparent border border-white/5 rounded-sm flex items-center justify-center">
-                <span className="text-[5px] font-bold text-white/30">PREVIEW</span>
+              <div className="h-6 w-full bg-gradient-to-tr from-[#E94F37]/15 to-transparent border border-white/5 rounded-sm flex items-center justify-center">
+                <span className="text-[5px] font-bold text-[#F6F7EB]/40">PREVIEW</span>
               </div>
             </div>
-            <div className="w-24 bg-black/40 border border-white/5 rounded-sm p-1.5 font-mono text-[7px] text-left text-white/40 flex flex-col justify-between">
+            <div className="w-24 bg-[#2f3336]/60 border border-white/5 rounded-sm p-1.5 font-mono text-[7px] text-left text-[#F6F7EB]/50 flex flex-col justify-between">
               <div>
                 <div>$ npm run build</div>
                 <div className="text-emerald-400">✔ success in 1.2s</div>
               </div>
               <div className="w-full h-0.5 bg-white/5 rounded-full overflow-hidden">
-                <div className="h-full bg-[#d4b07c] w-0 progress-fill-anim"></div>
+                <div className="h-full bg-[#E94F37] w-0 progress-fill-anim"></div>
               </div>
             </div>
           </div>
@@ -123,60 +123,60 @@ function renderWidget(num) {
       );
     case '02': // Graphic Design
       return (
-        <div className="relative w-full h-full flex items-center justify-center bg-black/40 border border-white/[0.02] rounded-sm overflow-hidden p-4 group-hover:bg-black/60 transition-colors duration-500">
+        <div className="relative w-full h-full flex items-center justify-center bg-[#2f3336]/60 border border-white/[0.06] rounded-sm overflow-hidden p-4 group-hover:bg-[#2f3336]/80 transition-colors duration-500">
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:10px_10px] pointer-events-none"></div>
           <svg className="w-28 h-20" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M10,30 C30,10 70,50 90,30" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
-            <circle cx="10" cy="30" r="2.5" fill="#d4b07c" stroke="white" strokeWidth="0.5" className="node-dot" />
-            <circle cx="50" cy="30" r="2.5" fill="#d4b07c" stroke="white" strokeWidth="0.5" className="node-dot" />
-            <circle cx="90" cy="30" r="2.5" fill="#d4b07c" stroke="white" strokeWidth="0.5" className="node-dot" />
-            <path d="M50,30 L50,15" stroke="#d4b07c" strokeWidth="0.5" />
+            <circle cx="10" cy="30" r="2.5" fill="#E94F37" stroke="white" strokeWidth="0.5" className="node-dot" />
+            <circle cx="50" cy="30" r="2.5" fill="#E94F37" stroke="white" strokeWidth="0.5" className="node-dot" />
+            <circle cx="90" cy="30" r="2.5" fill="#E94F37" stroke="white" strokeWidth="0.5" className="node-dot" />
+            <path d="M50,30 L50,15" stroke="#E94F37" strokeWidth="0.5" />
             <circle cx="50" cy="15" r="1.5" fill="white" />
           </svg>
-          <div className="absolute bottom-2 right-3 font-mono text-[7px] text-white/30 uppercase tracking-widest">
+          <div className="absolute bottom-2 right-3 font-mono text-[7px] text-[#F6F7EB]/40 uppercase tracking-widest">
             Vector anchor tool
           </div>
         </div>
       );
     case '03': // Digital Marketing
       return (
-        <div className="relative w-full h-full flex items-center justify-center bg-black/40 border border-white/[0.02] rounded-sm overflow-hidden p-4 group-hover:bg-black/60 transition-colors duration-500">
+        <div className="relative w-full h-full flex items-center justify-center bg-[#2f3336]/60 border border-white/[0.06] rounded-sm overflow-hidden p-4 group-hover:bg-[#2f3336]/80 transition-colors duration-500">
           <svg className="w-full h-20" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0,35 Q15,35 30,25 T60,20 T90,5" stroke="rgba(255,255,255,0.1)" strokeWidth="1.5" />
-            <path d="M0,35 Q15,35 30,25 T60,20 T90,5" stroke="#d4b07c" strokeWidth="2" strokeLinecap="round" className="chart-path" />
-            <path d="M0,35 Q15,35 30,25 T60,20 T90,5 L90,40 L0,40 Z" fill="url(#chart-grad)" opacity="0.05" />
+            <path d="M0,35 Q15,35 30,25 T60,20 T90,5" stroke="#E94F37" strokeWidth="2" strokeLinecap="round" className="chart-path" />
+            <path d="M0,35 Q15,35 30,25 T60,20 T90,5 L90,40 L0,40 Z" fill="url(#chart-grad)" opacity="0.1" />
             <defs>
               <linearGradient id="chart-grad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#d4b07c" />
+                <stop offset="0%" stopColor="#E94F37" />
                 <stop offset="100%" stopColor="transparent" />
               </linearGradient>
             </defs>
           </svg>
-          <div className="absolute top-2 right-3 bg-[#d4b07c]/10 border border-[#d4b07c]/20 text-[#d4b07c] text-[8px] font-bold px-2 py-0.5 rounded-full tracking-wider group-hover:scale-105 transition-transform duration-300">
+          <div className="absolute top-2 right-3 bg-[#E94F37]/15 border border-[#E94F37]/30 text-[#E94F37] text-[8px] font-bold px-2 py-0.5 rounded-full tracking-wider group-hover:scale-105 transition-transform duration-300">
             +324.8% CTR
           </div>
-          <div className="absolute bottom-2 left-3 font-mono text-[7px] text-white/20 uppercase tracking-widest">
+          <div className="absolute bottom-2 left-3 font-mono text-[7px] text-[#F6F7EB]/30 uppercase tracking-widest">
             Campaign analytics
           </div>
         </div>
       );
     case '04': // Live Streaming
       return (
-        <div className="relative w-full h-full flex flex-col justify-between bg-black/40 border border-white/[0.02] rounded-sm overflow-hidden p-2.5 group-hover:bg-black/60 transition-colors duration-500">
+        <div className="relative w-full h-full flex flex-col justify-between bg-[#2f3336]/60 border border-white/[0.06] rounded-sm overflow-hidden p-2.5 group-hover:bg-[#2f3336]/80 transition-colors duration-500">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse"></span>
-              <span className="text-[#d4b07c] font-bold font-mono text-[8px] tracking-widest">LIVE</span>
+              <span className="text-[#E94F37] font-bold font-mono text-[8px] tracking-widest">LIVE</span>
             </div>
-            <span className="font-mono text-[7px] text-white/30">12,408 viewers</span>
+            <span className="font-mono text-[7px] text-[#F6F7EB]/40">12,408 viewers</span>
           </div>
-          <div className="flex-1 flex items-center justify-center my-1.5 bg-[#050505]/40 border border-white/[0.03] rounded-sm relative">
-            <svg className="w-6 h-6 text-[#d4b07c]/40 group-hover:scale-110 group-hover:text-[#d4b07c]/80 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <div className="flex-1 flex items-center justify-center my-1.5 bg-[#2f3336]/80 border border-white/[0.06] rounded-sm relative">
+            <svg className="w-6 h-6 text-[#E94F37]/60 group-hover:scale-110 group-hover:text-[#E94F37] transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <polygon points="23 7 16 12 23 17 23 7" />
               <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
             </svg>
           </div>
-          <div className="flex items-center justify-between text-[6px] font-mono text-white/20">
+          <div className="flex items-center justify-between text-[6px] font-mono text-[#F6F7EB]/30">
             <span>BITRATE: 6800 kb/s</span>
             <span>AUDIO: 320 kb/s</span>
           </div>
@@ -184,8 +184,8 @@ function renderWidget(num) {
       );
     case '05': // Video Editing
       return (
-        <div className="relative w-full h-full flex flex-col justify-between bg-black/40 border border-white/[0.02] rounded-sm overflow-hidden p-2.5 group-hover:bg-black/60 transition-colors duration-500">
-          <div className="w-full flex justify-between border-b border-white/5 pb-1 font-mono text-[6px] text-white/20 select-none">
+        <div className="relative w-full h-full flex flex-col justify-between bg-[#2f3336]/60 border border-white/[0.06] rounded-sm overflow-hidden p-2.5 group-hover:bg-[#2f3336]/80 transition-colors duration-500">
+          <div className="w-full flex justify-between border-b border-white/5 pb-1 font-mono text-[6px] text-[#F6F7EB]/30 select-none">
             <span>0:00</span>
             <span>0:01</span>
             <span>0:02</span>
@@ -195,21 +195,21 @@ function renderWidget(num) {
           <div className="flex items-end justify-center gap-1.5 h-12 my-1">
             <div className="w-1 h-3 bg-white/15 rounded-full audio-bar audio-bar-1"></div>
             <div className="w-1 h-6 bg-white/25 rounded-full audio-bar audio-bar-2"></div>
-            <div className="w-1 h-9 bg-[#d4b07c] rounded-full audio-bar audio-bar-3"></div>
+            <div className="w-1 h-9 bg-[#E94F37] rounded-full audio-bar audio-bar-3"></div>
             <div className="w-1 h-5 bg-white/20 rounded-full audio-bar audio-bar-4"></div>
             <div className="w-1 h-7 bg-white/25 rounded-full audio-bar audio-bar-5"></div>
-            <div className="w-1 h-10 bg-[#d4b07c] rounded-full audio-bar audio-bar-6"></div>
+            <div className="w-1 h-10 bg-[#E94F37] rounded-full audio-bar audio-bar-6"></div>
             <div className="w-1 h-4 bg-white/15 rounded-full audio-bar audio-bar-7"></div>
           </div>
           <div className="w-full h-1.5 bg-white/5 border border-white/10 rounded-sm relative flex items-center">
-            <div className="absolute left-1/2 -translate-x-1/2 w-1.5 h-1.5 rotate-45 bg-[#d4b07c] border border-black shadow-[0_0_8px_#d4b07c] transition-all duration-700 group-hover:left-[70%]"></div>
+            <div className="absolute left-1/2 -translate-x-1/2 w-1.5 h-1.5 rotate-45 bg-[#E94F37] border border-[#393E41] shadow-[0_0_8px_#E94F37] transition-all duration-700 group-hover:left-[70%]"></div>
           </div>
         </div>
       );
     case '06': // Entire Social Media Handling
       return (
-        <div className="relative w-full h-full flex flex-col justify-between bg-black/40 border border-white/[0.02] rounded-sm overflow-hidden p-3 group-hover:bg-black/60 transition-colors duration-500">
-          <div className="flex items-center justify-between border-b border-white/[0.03] pb-1.5 text-[8px] text-white/30 font-mono">
+        <div className="relative w-full h-full flex flex-col justify-between bg-[#2f3336]/60 border border-white/[0.06] rounded-sm overflow-hidden p-3 group-hover:bg-[#2f3336]/80 transition-colors duration-500">
+          <div className="flex items-center justify-between border-b border-white/[0.03] pb-1.5 text-[8px] text-[#F6F7EB]/40 font-mono">
             <span>Social Dashboard</span>
             <span className="text-emerald-400 font-bold">Live Synced</span>
           </div>
@@ -231,9 +231,9 @@ function renderWidget(num) {
               <span className="text-[5px] text-white/50">Facebook</span>
             </div>
           </div>
-          <div className="flex items-center justify-between text-[7px] text-white/30 pt-1.5 border-t border-white/[0.03] font-mono">
+          <div className="flex items-center justify-between text-[7px] text-[#F6F7EB]/40 pt-1.5 border-t border-white/[0.03] font-mono">
             <span>Engagement: +18.4%</span>
-            <span className="text-[#d4b07c]">@elitestudios</span>
+            <span className="text-[#E94F37]">@elitestudios</span>
           </div>
         </div>
       );
@@ -253,20 +253,20 @@ export default function Services() {
   };
 
   return (
-    <section id="services" data-designer-selector=".services-section-responsive" className="scroll-mt-28 md:scroll-mt-36 pt-20 md:pt-28 pb-12 md:pb-16 px-6 md:px-12 lg:px-16 bg-black relative overflow-hidden services-section-responsive">
+    <section id="services" data-designer-selector=".services-section-responsive" className="scroll-mt-28 md:scroll-mt-36 pt-20 md:pt-28 pb-12 md:pb-16 px-6 md:px-12 lg:px-16 bg-[#F6F7EB] relative overflow-hidden services-section-responsive">
       {/* Background Spotlight */}
-      <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] bg-white/[0.01] rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] bg-[#E94F37]/[0.02] rounded-full blur-[120px] pointer-events-none"></div>
 
       <div className="max-w-[1600px] mx-auto w-full">
         {/* Section Header */}
         <div className="mb-8 lg:mb-10 text-center reveal">
-          <span className="text-xs uppercase tracking-[0.25em] text-[#d4b07c] font-bold block mb-1.5 font-display">
+          <span className="text-xs uppercase tracking-[0.25em] text-[#E94F37] font-bold block mb-1.5 font-display">
             WHAT WE DO
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white uppercase mb-2 font-display">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#393E41] uppercase mb-2 font-display">
             OUR CORE SERVICES
           </h2>
-          <p className="text-sm sm:text-base text-gray-400 font-light leading-relaxed max-w-xl mx-auto">
+          <p className="text-sm sm:text-base text-[#393E41]/75 font-light leading-relaxed max-w-xl mx-auto">
             We craft premium digital experiences that transform ambitious brands into industry leaders.
           </p>
         </div>
@@ -280,50 +280,50 @@ export default function Services() {
                 key={service.num}
                 onMouseMove={handleMouseMove}
                 data-designer-selector=".services-card-responsive"
-                className="card-glow flex flex-col justify-between p-5 sm:p-6 md:p-10 border border-white/5 bg-[#0b0b0b] hover:bg-[#0f0f0f] hover:border-[#d4b07c]/20 transition-all duration-500 rounded-none h-auto md:h-[500px] group text-left reveal services-card-responsive"
+                className="card-glow flex flex-col justify-between p-5 sm:p-6 md:p-10 border border-transparent bg-[#393E41] hover:bg-[#393E41] hover:border-[#E94F37]/30 transition-all duration-500 rounded-none h-auto md:h-[500px] group text-left reveal services-card-responsive shadow-lg"
                 style={{ transitionDelay: `${index * 0.05}s` }}
               >
                 <div>
                   {/* Top Bar inside Card */}
                   <div className="flex items-center justify-between mb-4 md:mb-6">
-                    <span className="font-mono text-xs text-white/30 group-hover:text-[#d4b07c]/80 transition-colors duration-300">
+                    <span className="font-mono text-xs text-[#F6F7EB]/40 group-hover:text-[#E94F37] transition-colors duration-300">
                       {service.num}
                     </span>
-                    <div className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center border border-white/5 bg-[#0d0d0d] group-hover:border-[#d4b07c]/30 transition-colors duration-500 rounded-none">
-                      <IconComponent className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#d4b07c] group-hover:scale-110 transition-transform duration-300" />
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center border border-white/10 bg-[#2f3336] group-hover:border-[#E94F37]/30 transition-colors duration-500 rounded-none">
+                      <IconComponent className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#E94F37] group-hover:scale-110 transition-transform duration-300" />
                     </div>
                   </div>
 
                   {/* Title & Description */}
                   <Link
                     to={`/work?category=${encodeURIComponent(service.categoryTab)}`}
-                    className="block text-lg sm:text-xl font-bold text-white group-hover:text-[#d4b07c] tracking-tight mb-2 md:mb-3 font-display transition-colors duration-300 hover:text-[#d4b07c] cursor-pointer"
+                    className="block text-lg sm:text-xl font-bold text-[#F6F7EB] group-hover:text-[#E94F37] tracking-tight mb-2 md:mb-3 font-display transition-colors duration-300 hover:text-[#E94F37] cursor-pointer"
                     title={`View ${service.title} Portfolio`}
                   >
                     {service.title}
                   </Link>
-                  <p className="text-xs text-gray-400 font-light leading-relaxed group-hover:text-gray-300 transition-colors duration-300 mb-4 md:mb-6">
+                  <p className="text-xs text-[#F6F7EB]/70 font-light leading-relaxed group-hover:text-[#F6F7EB]/90 transition-colors duration-300 mb-4 md:mb-6">
                     {service.desc}
                   </p>
 
                   {/* Visual Widget */}
-                  <div className="w-full h-28 sm:h-32 md:h-36 bg-[#050505]/40 border border-white/[0.02] rounded-sm overflow-hidden mb-2">
+                  <div className="w-full h-28 sm:h-32 md:h-36 bg-[#2f3336]/70 border border-white/[0.04] rounded-sm overflow-hidden mb-2">
                     {renderWidget(service.num)}
                   </div>
                 </div>
 
                 {/* Footer of Card */}
-                <div className="mt-4 md:mt-6 border-t border-white/[0.04] pt-3 md:pt-4 flex justify-between items-end">
+                <div className="mt-4 md:mt-6 border-t border-[#F6F7EB]/10 pt-3 md:pt-4 flex justify-between items-end">
                   <div className="flex flex-wrap gap-x-3 gap-y-1">
                     {service.items.slice(0, 3).map((item) => (
-                      <span key={item} className="text-[9px] uppercase tracking-wider text-white/40">
+                      <span key={item} className="text-[9px] uppercase tracking-wider text-[#F6F7EB]/50">
                         {item}
                       </span>
                     ))}
                   </div>
                   <Link
                     to={`/work?category=${encodeURIComponent(service.categoryTab)}`}
-                    className="w-8 h-8 flex items-center justify-center rounded-none border border-transparent hover:border-[#d4b07c]/30 hover:bg-[#d4b07c]/10 text-white/30 hover:text-[#d4b07c] group-hover:text-[#d4b07c] transition-all duration-300 cursor-pointer group/btn shrink-0"
+                    className="w-8 h-8 flex items-center justify-center rounded-none border border-transparent hover:border-[#E94F37]/40 hover:bg-[#E94F37]/15 text-[#F6F7EB]/40 hover:text-[#E94F37] group-hover:text-[#E94F37] transition-all duration-300 cursor-pointer group/btn shrink-0"
                     title={`View ${service.title} Portfolio`}
                     aria-label={`View ${service.title} Portfolio`}
                   >
@@ -339,10 +339,10 @@ export default function Services() {
         <div className="mt-16 text-center reveal">
           <Link
             to="/work"
-            className="inline-flex items-center gap-3 px-8 py-4 text-xs font-bold uppercase tracking-widest border border-white/10 hover:border-[#d4b07c] text-white hover:text-[#d4b07c] transition-all duration-500 group"
+            className="inline-flex items-center gap-3 px-8 py-4 text-xs font-bold uppercase tracking-widest border border-[#393E41]/20 hover:border-[#E94F37] text-[#393E41] hover:text-[#E94F37] transition-all duration-500 group"
           >
             <span>Explore All Capabilities</span>
-            <ArrowUpRight className="w-4 h-4 text-white/50 group-hover:text-[#d4b07c] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+            <ArrowUpRight className="w-4 h-4 text-[#393E41]/50 group-hover:text-[#E94F37] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
           </Link>
         </div>
       </div>

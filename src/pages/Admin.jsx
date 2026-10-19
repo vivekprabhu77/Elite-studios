@@ -166,27 +166,27 @@ export default function Admin() {
   // ═══════════════════════════════════════════════════════════
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen pt-28 md:pt-36 pb-20 px-6 flex flex-col items-center justify-center bg-black text-white relative overflow-hidden">
+      <div className="min-h-screen pt-28 md:pt-36 pb-20 px-6 flex flex-col items-center justify-center bg-[#F6F7EB] text-[#393E41] relative overflow-hidden">
         {/* Background Spotlight Glow */}
-        <div className="absolute w-[500px] h-[500px] bg-[#d4b07c]/10 rounded-full blur-[140px] pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0"></div>
+        <div className="absolute w-[500px] h-[500px] bg-[#E94F37]/[0.03] rounded-full blur-[140px] pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0"></div>
 
-        <div className="relative z-10 w-full max-w-md bg-[#0a0a0a] border border-white/10 rounded-2xl p-8 sm:p-10 shadow-[0_0_50px_rgba(0,0,0,0.8)] backdrop-blur-2xl text-left">
+        <div className="relative z-10 w-full max-w-md bg-[#393E41] border border-[#393E41] rounded-2xl p-8 sm:p-10 shadow-2xl backdrop-blur-2xl text-left">
 
           {/* Logo & Portal Header */}
           <div className="text-center mb-8">
-            <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-[#d4b07c]/20 via-black to-[#d4b07c]/05 border border-[#d4b07c]/50 p-2.5 shadow-[0_0_25px_rgba(212,176,124,0.3)]">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-[#2f3336] border border-[#E94F37]/50 p-2.5 shadow-[0_4px_20px_rgba(57,62,65,0.2)]">
               <img src={logo} alt="Elite Studios" className="w-full h-full object-contain" />
             </div>
 
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#d4b07c]/10 border border-[#d4b07c]/30 text-[#d4b07c] text-[10px] font-mono font-bold tracking-widest uppercase mb-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E94F37]/15 border border-[#E94F37]/40 text-[#E94F37] text-[10px] font-mono font-bold tracking-widest uppercase mb-2">
               <ShieldCheck className="w-3 h-3" />
               <span>PORTAL ACCESS</span>
             </div>
 
-            <h1 className="text-2xl font-extrabold text-white uppercase tracking-tight font-display">
+            <h1 className="text-2xl font-extrabold text-[#F6F7EB] uppercase tracking-tight font-display">
               ADMIN LOGIN
             </h1>
-            <p className="text-xs text-gray-400 font-light mt-1">
+            <p className="text-xs text-[#F6F7EB]/70 font-light mt-1">
               Sign in with your admin credentials to manage portfolio items.
             </p>
           </div>
@@ -201,11 +201,11 @@ export default function Admin() {
           {/* Login Form */}
           <form onSubmit={handleLogin} className="space-y-5">
             <div>
-              <label className="block text-[11px] uppercase tracking-widest text-gray-400 font-mono font-bold mb-2">
+              <label className="block text-[11px] uppercase tracking-widest text-[#F6F7EB]/70 font-mono font-bold mb-2">
                 Username
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-500">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#F6F7EB]/40">
                   <User className="w-4 h-4" />
                 </div>
                 <input
@@ -213,18 +213,18 @@ export default function Admin() {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   placeholder="Enter admin username"
-                  className="w-full pl-10 pr-4 py-3 bg-[#121212] border border-white/10 rounded-lg text-xs text-white placeholder-gray-600 focus:outline-none focus:border-[#d4b07c] transition-all"
+                  className="w-full pl-10 pr-4 py-3 bg-[#2f3336] border border-[#F6F7EB]/10 rounded-lg text-xs text-[#F6F7EB] placeholder-[#F6F7EB]/30 focus:outline-none focus:border-[#E94F37] transition-all"
                   autoComplete="off"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-[11px] uppercase tracking-widest text-gray-400 font-mono font-bold mb-2">
+              <label className="block text-[11px] uppercase tracking-widest text-[#F6F7EB]/70 font-mono font-bold mb-2">
                 Password
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-500">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#F6F7EB]/40">
                   <Lock className="w-4 h-4" />
                 </div>
                 <input
@@ -232,12 +232,12 @@ export default function Admin() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter admin password"
-                  className="w-full pl-10 pr-10 py-3 bg-[#121212] border border-white/10 rounded-lg text-xs text-white placeholder-gray-600 focus:outline-none focus:border-[#d4b07c] transition-all"
+                  className="w-full pl-10 pr-10 py-3 bg-[#2f3336] border border-[#F6F7EB]/10 rounded-lg text-xs text-[#F6F7EB] placeholder-[#F6F7EB]/30 focus:outline-none focus:border-[#E94F37] transition-all"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-gray-500 hover:text-white"
+                  className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-[#F6F7EB]/50 hover:text-[#F6F7EB]"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
@@ -247,7 +247,7 @@ export default function Admin() {
             <button
               type="submit"
               disabled={isLoggingIn}
-              className="w-full py-3.5 bg-[#d4b07c] text-black font-extrabold text-xs uppercase tracking-[0.2em] rounded-lg hover:bg-[#c39f6b] transition-all duration-300 shadow-[0_0_20px_rgba(212,176,124,0.3)] cursor-pointer flex items-center justify-center gap-2 mt-2"
+              className="w-full py-3.5 bg-[#E94F37] text-[#F6F7EB] font-extrabold text-xs uppercase tracking-[0.2em] rounded-lg hover:bg-[#d03e27] transition-all duration-300 shadow-[0_4px_20px_rgba(233,79,55,0.3)] cursor-pointer flex items-center justify-center gap-2 mt-2"
             >
               {isLoggingIn ? (
                 <>
@@ -263,8 +263,8 @@ export default function Admin() {
             </button>
           </form>
 
-          <div className="mt-8 pt-6 border-t border-white/5 text-center">
-            <span className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+          <div className="mt-8 pt-6 border-t border-[#F6F7EB]/10 text-center">
+            <span className="text-[10px] font-mono text-[#F6F7EB]/50 uppercase tracking-widest">
               SECURED VIA SHA-256 HASH VERIFICATION
             </span>
           </div>
@@ -277,21 +277,21 @@ export default function Admin() {
   // AUTHENTICATED ADMIN MANAGEMENT PORTAL
   // ═══════════════════════════════════════════════════════════
   return (
-    <div className="pt-28 md:pt-36 pb-20 px-6 md:px-12 bg-black text-white min-h-screen">
+    <div className="pt-28 md:pt-36 pb-20 px-6 md:px-12 bg-[#F6F7EB] text-[#393E41] min-h-screen">
       <div className="max-w-7xl mx-auto w-full">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 pb-8 border-b border-white/10 text-left">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 pb-8 border-b border-[#393E41]/10 text-left">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <ShieldCheck className="w-4 h-4 text-[#d4b07c]" />
-              <span className="text-xs uppercase tracking-widest text-[#d4b07c] font-bold font-mono">
+              <ShieldCheck className="w-4 h-4 text-[#E94F37]" />
+              <span className="text-xs uppercase tracking-widest text-[#E94F37] font-bold font-mono">
                 ADMIN PORTAL
               </span>
             </div>
-            <h1 className="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight font-creative">
-              PORTFOLIO <span className="text-[#d4b07c]">MANAGEMENT</span>
+            <h1 className="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight font-creative text-[#393E41]">
+              PORTFOLIO <span className="text-[#E94F37]">MANAGEMENT</span>
             </h1>
-            <p className="text-xs text-gray-400 font-light mt-1">
+            <p className="text-xs text-[#393E41]/75 font-light mt-1">
               Upload images and publish projects directly to the live portfolio section.
             </p>
           </div>
@@ -299,7 +299,7 @@ export default function Admin() {
           <div className="flex items-center gap-3">
             <button
               onClick={handleReset}
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-white/5 border border-white/10 hover:border-red-500/40 text-gray-300 hover:text-red-400 text-xs font-mono font-bold tracking-wider uppercase transition-all rounded-none cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#393E41] border border-[#393E41] hover:border-red-500/40 text-[#F6F7EB] hover:text-red-400 text-xs font-mono font-bold tracking-wider uppercase transition-all rounded-lg cursor-pointer"
             >
               <RefreshCw className="w-3.5 h-3.5" />
               <span>Reset Samples</span>
@@ -307,7 +307,7 @@ export default function Admin() {
 
             <button
               onClick={handleLogout}
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#d4b07c] text-black font-extrabold text-xs font-mono tracking-wider uppercase transition-all rounded-none cursor-pointer hover:bg-[#c39f6b]"
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#E94F37] text-[#F6F7EB] font-extrabold text-xs font-mono tracking-wider uppercase transition-all rounded-lg cursor-pointer hover:bg-[#d03e27]"
             >
               <LogOut className="w-3.5 h-3.5" />
               <span>LOG OUT</span>
@@ -317,7 +317,7 @@ export default function Admin() {
 
         {/* Success Alert */}
         {successMsg && (
-          <div className="mb-8 p-4 bg-[#d4b07c]/10 border border-[#d4b07c]/40 text-[#d4b07c] text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-3 animate-fade-in">
+          <div className="mb-8 p-4 bg-[#E94F37]/10 border border-[#E94F37]/40 text-[#E94F37] text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-3 animate-fade-in rounded-lg">
             <CheckCircle className="w-4 h-4 shrink-0" />
             <span>{successMsg}</span>
           </div>
@@ -325,15 +325,15 @@ export default function Admin() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           {/* Left Form: Add Project */}
-          <div className="lg:col-span-5 bg-[#0b0b0b] p-6 sm:p-8 border border-white/10 text-left">
-            <h2 className="text-xl font-bold uppercase tracking-tight text-white font-display mb-6 pb-3 border-b border-white/10 flex items-center justify-between">
+          <div className="lg:col-span-5 bg-[#393E41] p-6 sm:p-8 border border-[#393E41] text-left rounded-2xl shadow-lg">
+            <h2 className="text-xl font-bold uppercase tracking-tight text-[#F6F7EB] font-display mb-6 pb-3 border-b border-[#F6F7EB]/10 flex items-center justify-between">
               <span>ADD NEW PROJECT</span>
-              <Plus className="w-4 h-4 text-[#d4b07c]" />
+              <Plus className="w-4 h-4 text-[#E94F37]" />
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">
+                <label className="block text-[10px] font-mono uppercase tracking-widest text-[#F6F7EB]/70 mb-2">
                   Client Name *
                 </label>
                 <input
@@ -341,13 +341,13 @@ export default function Admin() {
                   value={client}
                   onChange={(e) => setClient(e.target.value)}
                   placeholder="e.g. Aurelia Group, Kundapura Event"
-                  className="w-full px-4 py-3 bg-black border border-white/10 text-xs text-white placeholder-white/20 focus:outline-none focus:border-[#d4b07c] transition-all"
+                  className="w-full px-4 py-3 bg-[#2f3336] border border-[#F6F7EB]/10 rounded-lg text-xs text-[#F6F7EB] placeholder-[#F6F7EB]/30 focus:outline-none focus:border-[#E94F37] transition-all"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">
+                <label className="block text-[10px] font-mono uppercase tracking-widest text-[#F6F7EB]/70 mb-2">
                   Project Title *
                 </label>
                 <input
@@ -355,20 +355,20 @@ export default function Admin() {
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="e.g. Festival Poster Design, Lyrical Video"
-                  className="w-full px-4 py-3 bg-black border border-white/10 text-xs text-white placeholder-white/20 focus:outline-none focus:border-[#d4b07c] transition-all"
+                  className="w-full px-4 py-3 bg-[#2f3336] border border-[#F6F7EB]/10 rounded-lg text-xs text-[#F6F7EB] placeholder-[#F6F7EB]/30 focus:outline-none focus:border-[#E94F37] transition-all"
                   required
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">
+                  <label className="block text-[10px] font-mono uppercase tracking-widest text-[#F6F7EB]/70 mb-2">
                     Category
                   </label>
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="w-full px-3 py-3 bg-black border border-white/10 text-xs text-white focus:outline-none focus:border-[#d4b07c] transition-all cursor-pointer"
+                    className="w-full px-3 py-3 bg-[#2f3336] border border-[#F6F7EB]/10 rounded-lg text-xs text-[#F6F7EB] focus:outline-none focus:border-[#E94F37] transition-all cursor-pointer"
                   >
                     <option value="Website Design & Development">Website Design</option>
                     <option value="Graphic Design">Graphic Design</option>
@@ -380,7 +380,7 @@ export default function Admin() {
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">
+                  <label className="block text-[10px] font-mono uppercase tracking-widest text-[#F6F7EB]/70 mb-2">
                     Year
                   </label>
                   <input
@@ -388,33 +388,33 @@ export default function Admin() {
                     value={year}
                     onChange={(e) => setYear(e.target.value)}
                     placeholder="2026"
-                    className="w-full px-3 py-3 bg-black border border-white/10 text-xs text-white focus:outline-none focus:border-[#d4b07c] transition-all"
+                    className="w-full px-3 py-3 bg-[#2f3336] border border-[#F6F7EB]/10 rounded-lg text-xs text-[#F6F7EB] focus:outline-none focus:border-[#E94F37] transition-all"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">
+                <label className="block text-[10px] font-mono uppercase tracking-widest text-[#F6F7EB]/70 mb-2">
                   Live Website URL (Optional)
                 </label>
                 <div className="relative">
-                  <Globe className="w-3.5 h-3.5 absolute left-3 top-3.5 text-white/30" />
+                  <Globe className="w-3.5 h-3.5 absolute left-3 top-3.5 text-[#F6F7EB]/30" />
                   <input
                     type="url"
                     value={websiteUrl}
                     onChange={(e) => setWebsiteUrl(e.target.value)}
                     placeholder="https://example.com"
-                    className="w-full pl-9 pr-4 py-3 bg-black border border-white/10 text-xs text-white placeholder-white/20 focus:outline-none focus:border-[#d4b07c] transition-all"
+                    className="w-full pl-9 pr-4 py-3 bg-[#2f3336] border border-[#F6F7EB]/10 rounded-lg text-xs text-[#F6F7EB] placeholder-[#F6F7EB]/30 focus:outline-none focus:border-[#E94F37] transition-all"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">
+                <label className="block text-[10px] font-mono uppercase tracking-widest text-[#F6F7EB]/70 mb-2">
                   Project Image *
                 </label>
 
-                <div className="border border-dashed border-white/20 p-4 text-center bg-black hover:border-[#d4b07c]/50 transition-all cursor-pointer relative group">
+                <div className="border border-dashed border-[#F6F7EB]/20 p-4 text-center bg-[#2f3336] hover:border-[#E94F37]/50 transition-all cursor-pointer relative group rounded-lg">
                   <input
                     type="file"
                     accept="image/*"
@@ -423,17 +423,17 @@ export default function Admin() {
                   />
 
                   {imagePreview ? (
-                    <div className="relative aspect-video w-full overflow-hidden">
+                    <div className="relative aspect-video w-full overflow-hidden rounded-md">
                       <img src={imagePreview} alt="Preview" className="w-full h-full object-cover" />
-                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-xs font-mono text-[#d4b07c] uppercase">
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-xs font-mono text-[#E94F37] uppercase">
                         Change Image
                       </div>
                     </div>
                   ) : (
                     <div className="py-6 flex flex-col items-center gap-2">
-                      <Upload className="w-6 h-6 text-[#d4b07c]" />
-                      <span className="text-xs text-gray-300 font-semibold">Click or drag image to upload</span>
-                      <span className="text-[10px] text-white/30 font-mono">PNG, JPG, WEBP up to 10MB</span>
+                      <Upload className="w-6 h-6 text-[#E94F37]" />
+                      <span className="text-xs text-[#F6F7EB] font-semibold">Click or drag image to upload</span>
+                      <span className="text-[10px] text-[#F6F7EB]/40 font-mono">PNG, JPG, WEBP up to 10MB</span>
                     </div>
                   )}
                 </div>
@@ -442,7 +442,7 @@ export default function Admin() {
               <button
                 type="submit"
                 disabled={isUploading}
-                className="w-full py-4 bg-[#d4b07c] text-black font-extrabold text-xs uppercase tracking-[0.2em] hover:bg-[#c39f6b] transition-all shadow-[0_0_20px_rgba(212,176,124,0.3)] cursor-pointer flex items-center justify-center gap-2 mt-4"
+                className="w-full py-4 bg-[#E94F37] text-[#F6F7EB] font-extrabold text-xs uppercase tracking-[0.2em] hover:bg-[#d03e27] transition-all shadow-[0_4px_20px_rgba(233,79,55,0.3)] cursor-pointer flex items-center justify-center gap-2 mt-4 rounded-lg"
               >
                 {isUploading ? (
                   <>
@@ -460,19 +460,19 @@ export default function Admin() {
           </div>
 
           {/* Right Column: Existing Live Projects List */}
-          <div className="lg:col-span-7 bg-[#0b0b0b] p-6 sm:p-8 border border-white/10 text-left">
-            <div className="flex items-center justify-between mb-6 pb-3 border-b border-white/10">
-              <h2 className="text-xl font-bold uppercase tracking-tight text-white font-display">
+          <div className="lg:col-span-7 bg-[#393E41] p-6 sm:p-8 border border-[#393E41] text-left rounded-2xl shadow-lg">
+            <div className="flex items-center justify-between mb-6 pb-3 border-b border-[#F6F7EB]/10">
+              <h2 className="text-xl font-bold uppercase tracking-tight text-[#F6F7EB] font-display">
                 LIVE PROJECTS ({projects.length})
               </h2>
-              <span className="text-[10px] font-mono text-[#d4b07c] uppercase tracking-widest">
+              <span className="text-[10px] font-mono text-[#E94F37] uppercase tracking-widest">
                 ACTIVE ON SITE
               </span>
             </div>
 
             {projects.length === 0 ? (
-              <div className="py-16 text-center border border-dashed border-white/10 bg-black">
-                <p className="text-xs text-white/40 font-mono uppercase tracking-widest">
+              <div className="py-16 text-center border border-dashed border-[#F6F7EB]/10 bg-[#2f3336] rounded-lg">
+                <p className="text-xs text-[#F6F7EB]/40 font-mono uppercase tracking-widest">
                   No projects currently published.
                 </p>
               </div>
@@ -481,25 +481,25 @@ export default function Admin() {
                 {projects.map((item) => (
                   <div
                     key={item.id}
-                    className="p-4 bg-[#0a0a0a] border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between group"
+                    className="p-4 bg-[#2f3336] border border-[#F6F7EB]/10 hover:border-[#E94F37]/50 transition-all flex flex-col justify-between group rounded-xl"
                   >
                     <div>
-                      <div className="aspect-video w-full bg-black overflow-hidden mb-3 relative border border-white/5">
+                      <div className="aspect-video w-full bg-black overflow-hidden mb-3 relative border border-[#F6F7EB]/5 rounded-lg">
                         {item.src ? (
                           <img src={item.src} alt={item.title} className="w-full h-full object-cover" />
                         ) : (
-                          <div className="w-full h-full flex items-center justify-center text-white/20">
+                          <div className="w-full h-full flex items-center justify-center text-[#F6F7EB]/20">
                             <ImageIcon className="w-6 h-6" />
                           </div>
                         )}
                       </div>
-                      <span className="text-[9px] font-mono uppercase tracking-widest text-[#d4b07c] block mb-1">
+                      <span className="text-[9px] font-mono uppercase tracking-widest text-[#E94F37] block mb-1">
                         {item.category} ({item.year})
                       </span>
-                      <h3 className="text-xs font-bold text-white uppercase tracking-tight line-clamp-1">
+                      <h3 className="text-xs font-bold text-[#F6F7EB] uppercase tracking-tight line-clamp-1">
                         {item.title}
                       </h3>
-                      <p className="text-[11px] text-gray-400 font-light mt-0.5 line-clamp-1">
+                      <p className="text-[11px] text-[#F6F7EB]/70 font-light mt-0.5 line-clamp-1">
                         Client: {item.client}
                       </p>
                       {item.website_url && (
@@ -507,15 +507,15 @@ export default function Admin() {
                           href={item.website_url}
                           target="_blank"
                           rel="noreferrer"
-                          className="text-[10px] text-[#d4b07c] underline block mt-1 truncate"
+                          className="text-[10px] text-[#E94F37] underline block mt-1 truncate"
                         >
                           {item.website_url}
                         </a>
                       )}
                     </div>
 
-                    <div className="pt-3 border-t border-white/5 mt-4 flex items-center justify-between">
-                      <span className="text-[9px] font-mono text-white/30">ID: {item.id}</span>
+                    <div className="pt-3 border-t border-[#F6F7EB]/10 mt-4 flex items-center justify-between">
+                      <span className="text-[9px] font-mono text-[#F6F7EB]/40">ID: {item.id}</span>
                       <button
                         onClick={() => handleDelete(item.id)}
                         className="p-1.5 text-red-400/60 hover:text-red-400 hover:bg-red-500/10 transition-colors cursor-pointer"

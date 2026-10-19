@@ -14,7 +14,7 @@
   font-size: clamp(0.95rem, 2.2vw, 1.85rem);
   font-weight: 800;
   letter-spacing: 0.12em;
-  color: #ffffff;
+  color: #393E41;
   cursor: pointer;
   transition:
     filter 0.3s ease,
@@ -56,7 +56,7 @@
   max-height: none !important;
   border: var(--border-width, 3px) solid var(--border-color, currentColor);
   border-radius: 8px;
-  filter: drop-shadow(0 0 10px var(--glow-color, rgba(255, 255, 255, 0.5)));
+  filter: drop-shadow(0 0 10px var(--glow-color, rgba(233, 79, 55, 0.4)));
   pointer-events: none;
 }
 
@@ -69,7 +69,7 @@
   max-height: none !important;
   border-radius: calc(var(--border-width, 3px) / 2);
   background-color: var(--border-color, currentColor);
-  filter: drop-shadow(0 0 10px var(--glow-color, rgba(255, 255, 255, 0.5)));
+  filter: drop-shadow(0 0 10px var(--glow-color, rgba(233, 79, 55, 0.4)));
   pointer-events: none;
 }
 
@@ -84,7 +84,7 @@
   height: var(--corner-size, 1rem);
   border: var(--border-width, 3px) solid var(--border-color, currentColor);
   border-radius: 3px;
-  filter: drop-shadow(0 0 10px var(--glow-color, rgba(255, 255, 255, 0.5)));
+  filter: drop-shadow(0 0 10px var(--glow-color, rgba(233, 79, 55, 0.4)));
   pointer-events: none;
 }
 

@@ -80,7 +80,7 @@ function resolveDuration(trans) {
 
 const COMPONENT_DEFAULTS = {
   text: 'ELITE STUDIOS',
-  colors: ['#FFFFFF'],
+  colors: ['#393E41'],
   mode: 'onEnter',
   replay: true,
   position: 'above',
@@ -146,7 +146,7 @@ export default function ParticleText(props) {
     const palette =
       Array.isArray(colors) && colors.length > 0
         ? colors
-        : ['#FFFFFF'];
+        : ['#393E41'];
 
     let entered = false;
     let count = 0;

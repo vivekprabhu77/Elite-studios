@@ -20,11 +20,11 @@ const CATEGORY_TABS = [
 function ProjectSkeletonCard() {
   return (
     <div
-      className="flex flex-col bg-[#0b0b0b] border border-white/5 rounded-none overflow-hidden"
+      className="flex flex-col bg-[#393E41] border border-[#F6F7EB]/10 rounded-none overflow-hidden"
       aria-hidden="true"
     >
       {/* Top Image Container Skeleton matching aspect-[16/10] */}
-      <div className="relative aspect-[16/10] bg-[#070707] overflow-hidden border-b border-white/5">
+      <div className="relative aspect-[16/10] bg-[#2f3336] overflow-hidden border-b border-[#F6F7EB]/10">
         <div className="w-full h-full skeleton-shimmer" />
       </div>
 
@@ -49,7 +49,7 @@ function ProjectSkeletonCard() {
         </div>
 
         {/* Action Button Link Skeleton */}
-        <div className="pt-4 border-t border-white/5 mt-auto">
+        <div className="pt-4 border-t border-[#F6F7EB]/10 mt-auto">
           <div className="h-3.5 w-32 skeleton-shimmer rounded-none" />
         </div>
       </div>
@@ -76,13 +76,13 @@ function ProjectCard({ project, idx }) {
   const isAboveTheFold = idx < 3;
 
   return (
-    <div className="group flex flex-col bg-[#0b0b0b] border border-white/5 hover:border-[#d4b07c]/40 transition-all duration-500 rounded-none overflow-hidden">
+    <div className="group flex flex-col bg-[#393E41] border border-transparent hover:border-[#E94F37]/50 transition-all duration-500 rounded-none overflow-hidden shadow-md">
       {/* Top Image Container - fixed aspect-ratio prevents layout shift */}
       <a
         href={targetUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="relative aspect-[16/10] bg-[#050505] overflow-hidden cursor-pointer border-b border-white/5 block"
+        className="relative aspect-[16/10] bg-[#2f3336] overflow-hidden cursor-pointer border-b border-[#F6F7EB]/10 block"
         title={`Open ${project.title} in new tab`}
       >
         {/* Skeleton Shimmer visible while image is downloading */}
@@ -101,14 +101,14 @@ function ProjectCard({ project, idx }) {
             decoding="async"
             onLoad={() => setImageLoaded(true)}
             onError={() => setImageError(true)}
-            className={`w-full h-full object-cover filter brightness-[0.85] group-hover:brightness-100 group-hover:scale-105 transition-all duration-700 block ${
+            className={`w-full h-full object-cover filter brightness-[0.9] group-hover:brightness-100 group-hover:scale-105 transition-all duration-700 block ${
               imageLoaded ? 'opacity-100' : 'opacity-0'
             }`}
           />
         ) : (
-          <div className="w-full h-full flex flex-col items-center justify-center bg-[#0d0d0d] text-white/30 p-4 font-mono text-center">
-            <ImageIcon className="w-6 h-6 mb-2 text-[#d4b07c]/40" />
-            <span className="text-[10px] uppercase tracking-widest text-white/30">
+          <div className="w-full h-full flex flex-col items-center justify-center bg-[#2f3336] text-[#F6F7EB]/40 p-4 font-mono text-center">
+            <ImageIcon className="w-6 h-6 mb-2 text-[#E94F37]/50" />
+            <span className="text-[10px] uppercase tracking-widest text-[#F6F7EB]/40">
               {imageError ? 'Preview Unavailable' : 'No Image'}
             </span>
           </div>
@@ -118,7 +118,7 @@ function ProjectCard({ project, idx }) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
         {/* Hover Arrow Button */}
-        <div className="absolute bottom-4 right-4 w-10 h-10 bg-[#d4b07c] text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg">
+        <div className="absolute bottom-4 right-4 w-10 h-10 bg-[#E94F37] text-[#F6F7EB] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg">
           <ArrowUpRight className="w-4 h-4" />
         </div>
       </a>
@@ -127,33 +127,33 @@ function ProjectCard({ project, idx }) {
       <div className="p-6 flex flex-col justify-between flex-grow text-left">
         <div>
           {/* Client & Year Header */}
-          <div className="flex items-center gap-3 text-[10px] font-mono tracking-widest uppercase text-white/40 mb-2">
-            <span className="text-[#d4b07c] font-bold">{project.client}</span>
+          <div className="flex items-center gap-3 text-[10px] font-mono tracking-widest uppercase text-[#F6F7EB]/50 mb-2">
+            <span className="text-[#E94F37] font-bold">{project.client}</span>
             <span>•</span>
             <span>{project.year || '2026'}</span>
           </div>
 
           {/* Title */}
-          <h3 className="text-base sm:text-lg font-bold text-white tracking-tight leading-snug mb-3 font-display group-hover:text-[#d4b07c] transition-colors duration-300 line-clamp-2">
+          <h3 className="text-base sm:text-lg font-bold text-[#F6F7EB] tracking-tight leading-snug mb-3 font-display group-hover:text-[#E94F37] transition-colors duration-300 line-clamp-2">
             {project.title}
           </h3>
 
           {/* Category Badge */}
-          <span className="text-[10px] uppercase tracking-widest text-[#d4b07c] font-bold block mb-4 font-display">
+          <span className="text-[10px] uppercase tracking-widest text-[#E94F37] font-bold block mb-4 font-display">
             {project.category}
           </span>
         </div>
 
         {/* Action Button Link - Opens in new tab */}
-        <div className="pt-4 border-t border-white/5 mt-auto">
+        <div className="pt-4 border-t border-[#F6F7EB]/10 mt-auto">
           <a
             href={targetUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/80 hover:text-[#d4b07c] transition-colors duration-300 group py-1"
+            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#F6F7EB]/80 hover:text-[#E94F37] transition-colors duration-300 group py-1"
           >
             <span>{linkLabel}</span>
-            <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300 text-[#d4b07c]" />
+            <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300 text-[#E94F37]" />
           </a>
         </div>
       </div>
@@ -267,23 +267,23 @@ export default function FeaturedProjects() {
   });
 
   return (
-    <section id="work" className="scroll-mt-28 md:scroll-mt-36 pt-10 md:pt-14 pb-16 md:pb-24 px-6 md:px-12 bg-black relative overflow-hidden text-left min-h-[500px]">
+    <section id="work" className="scroll-mt-28 md:scroll-mt-36 pt-10 md:pt-14 pb-16 md:pb-24 px-6 md:px-12 bg-[#F6F7EB] relative overflow-hidden text-left min-h-[500px]">
       {/* Background Spotlight */}
-      <div className="absolute top-[40%] left-[-10%] w-[600px] h-[600px] bg-white/[0.005] rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-[40%] left-[-10%] w-[600px] h-[600px] bg-[#E94F37]/[0.01] rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
         <div className="mb-8 md:mb-10">
-          <span className="text-xs uppercase tracking-widest text-[#d4b07c] font-bold block mb-2 font-display">
+          <span className="text-xs uppercase tracking-widest text-[#E94F37] font-bold block mb-2 font-display">
             Selected Work
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-none font-creative">
-            OUR <span className="text-[#d4b07c]">PORTFOLIO</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#393E41] tracking-tight leading-none font-creative">
+            OUR <span className="text-[#E94F37]">PORTFOLIO</span>
           </h2>
         </div>
 
         {/* Category Filter Tabs */}
-        <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-10 pb-4 border-b border-white/10 overflow-x-auto no-scrollbar">
+        <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-10 pb-4 border-b border-[#393E41]/15 overflow-x-auto no-scrollbar">
           {CATEGORY_TABS.map((tab) => {
             const isActive = activeCategory === tab;
             return (
@@ -292,8 +292,8 @@ export default function FeaturedProjects() {
                 onClick={() => handleCategorySelect(tab)}
                 className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-300 rounded-none whitespace-nowrap cursor-pointer ${
                   isActive
-                    ? 'bg-[#d4b07c] text-black shadow-[0_0_20px_rgba(212,176,124,0.3)]'
-                    : 'bg-white/[0.03] text-white/60 hover:text-white hover:bg-white/10 border border-white/5'
+                    ? 'bg-[#E94F37] text-[#F6F7EB] shadow-[0_0_20px_rgba(233,79,55,0.3)]'
+                    : 'bg-[#393E41]/10 text-[#393E41]/70 hover:text-[#393E41] hover:bg-[#393E41]/20 border border-[#393E41]/15'
                 }`}
               >
                 {tab}
@@ -313,13 +313,13 @@ export default function FeaturedProjects() {
 
         {/* 2. ERROR STATE: Dedicated graceful error notification */}
         {status === 'error' && (
-          <div className="py-16 px-6 text-center border border-white/10 bg-[#080808]">
-            <p className="text-xs text-red-400 uppercase tracking-widest font-mono mb-4">
+          <div className="py-16 px-6 text-center border border-[#393E41]/20 bg-[#393E41] text-[#F6F7EB]">
+            <p className="text-xs text-red-300 uppercase tracking-widest font-mono mb-4">
               {errorMessage || 'Unable to load portfolio projects at this time.'}
             </p>
             <button
               onClick={() => loadData(true)}
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#d4b07c] text-black font-extrabold text-xs uppercase tracking-widest hover:bg-[#c39f6b] transition-all cursor-pointer shadow-[0_0_20px_rgba(212,176,124,0.3)]"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#E94F37] text-[#F6F7EB] font-extrabold text-xs uppercase tracking-widest hover:bg-[#d43f28] transition-all cursor-pointer shadow-[0_0_20px_rgba(233,79,55,0.3)]"
             >
               <RefreshCw className="w-3.5 h-3.5" />
               <span>Retry</span>
@@ -329,8 +329,8 @@ export default function FeaturedProjects() {
 
         {/* 3. EMPTY STATE: Database confirmed 0 projects exist */}
         {status === 'empty' && (
-          <div className="py-20 text-center border border-dashed border-white/10 bg-[#080808]">
-            <p className="text-xs text-white/40 uppercase tracking-widest font-mono">
+          <div className="py-20 text-center border border-dashed border-[#393E41]/25 bg-[#393E41] text-[#F6F7EB]">
+            <p className="text-xs text-[#F6F7EB]/60 uppercase tracking-widest font-mono">
               No projects currently published.
             </p>
           </div>
@@ -340,8 +340,8 @@ export default function FeaturedProjects() {
         {status === 'success' && (
           <>
             {filteredProjects.length === 0 ? (
-              <div className="py-20 text-center border border-dashed border-white/10 bg-[#080808]">
-                <p className="text-xs text-white/40 uppercase tracking-widest font-mono">
+              <div className="py-20 text-center border border-dashed border-[#393E41]/25 bg-[#393E41] text-[#F6F7EB]">
+                <p className="text-xs text-[#F6F7EB]/60 uppercase tracking-widest font-mono">
                   No projects found in this category.
                 </p>
               </div>

@@ -13,12 +13,12 @@ export default function Hero() {
     <section
       id="home"
       data-designer-selector=".hero-section-responsive"
-      className="relative min-h-[100svh] lg:min-h-screen flex flex-col justify-center items-center pt-20 pb-20 px-4 sm:px-8 md:px-12 overflow-hidden bg-black hero-section-responsive"
+      className="relative min-h-[100svh] lg:min-h-screen flex flex-col justify-center items-center pt-20 pb-20 px-4 sm:px-8 md:px-12 overflow-hidden bg-[#F6F7EB] hero-section-responsive"
     >
       <div className="max-w-[1600px] w-full mx-auto relative z-10 flex flex-col justify-center items-center h-full my-auto -translate-y-6 sm:-translate-y-8 md:-translate-y-12">
         <ParticleText
           text="ELITE STUDIOS"
-          colors={['#FFFFFF']}
+          colors={['#393E41']}
           fontSize={175}
           autoFit={true}
           particleSize={12}
@@ -39,7 +39,7 @@ export default function Hero() {
             blurAmount={3.5}
             focusScale={1.03}
             unfocusedOpacity={0.35}
-            borderColor="#ffffff"
+            borderColor="#E94F37"
             cornerSize={16}
             borderWidth={3}
             animationDuration={0.8}
@@ -53,11 +53,11 @@ export default function Hero() {
         className={`absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1.5 transition-all duration-1000 delay-500 transform hero-scroll-indicator ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
       >
-        <span className="text-[9px] md:text-[10px] font-bold tracking-[0.3em] text-white/50 uppercase">
+        <span className="text-[9px] md:text-[10px] font-bold tracking-[0.3em] text-[#393E41]/50 uppercase">
           Scroll
         </span>
-        <div className="w-[1px] h-6 sm:h-8 bg-white/30 relative overflow-hidden">
-          <div className="w-full h-2.5 sm:h-3 bg-[#d4b07c] animate-bounce absolute top-0"></div>
+        <div className="w-[1px] h-6 sm:h-8 bg-[#393E41]/30 relative overflow-hidden">
+          <div className="w-full h-2.5 sm:h-3 bg-[#E94F37] animate-bounce absolute top-0"></div>
         </div>
       </div>
 
@@ -69,14 +69,14 @@ export default function Hero() {
         <span
           data-designer-selector=".hero-cursive-title"
           data-designer-file="src/components/Hero.jsx"
-          className="font-script text-[36px] sm:text-[48px] md:text-[68px] text-[#d4b07c] leading-none mb-0.5 select-none pr-2 sm:pr-8 hero-cursive-title"
+          className="font-script text-[36px] sm:text-[48px] md:text-[68px] text-[#E94F37] leading-none mb-0.5 select-none pr-2 sm:pr-8 hero-cursive-title"
         >
           Creativity
         </span>
         <span
           data-designer-selector=".hero-cursive-subtitle"
           data-designer-file="src/components/Hero.jsx"
-          className="text-[8px] sm:text-[9px] md:text-[10px] font-bold tracking-[0.25em] sm:tracking-[0.3em] text-white uppercase whitespace-nowrap hero-cursive-subtitle"
+          className="text-[8px] sm:text-[9px] md:text-[10px] font-bold tracking-[0.25em] sm:tracking-[0.3em] text-[#393E41] uppercase whitespace-nowrap hero-cursive-subtitle"
         >
           CAN MAKE MAN CREATIVE
         </span>

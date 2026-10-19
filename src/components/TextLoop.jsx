@@ -136,7 +136,9 @@ const TextLoop = ({
   outlineWidth = 1.5,
   className = '',
   style = {},
-  viewHeight = 520
+  viewHeight = 520,
+  splitTopColor,
+  splitBottomColor
 }) => {
   const currentH = viewHeight;
   const cy = currentH / 2;
@@ -171,6 +173,16 @@ const TextLoop = ({
   }, [cross, path, shape, curviness, ribbonWidth, cy]);
   const fade = useMemo(() => buildFade(edgeFade), [edgeFade]);
   const fill = color || (ribbon ? '#ffffff' : 'currentColor');
+
+  const topFillD = useMemo(() => {
+    if (!splitTopColor) return '';
+    return `${d} L ${VIEW_W + 320} -20 L -320 -20 Z`;
+  }, [d, splitTopColor]);
+
+  const bottomFillD = useMemo(() => {
+    if (!splitBottomColor) return '';
+    return `${d} L ${VIEW_W + 320} ${currentH + 20} L -320 ${currentH + 20} Z`;
+  }, [d, currentH, splitBottomColor]);
 
   const half = cross ? crossAngle / 2 : 0;
   const mainAngle = tilt + half;
@@ -518,6 +530,13 @@ const TextLoop = ({
             </mask>
           )}
         </defs>
+
+        {splitTopColor && topFillD && (
+          <path d={topFillD} fill={splitTopColor} />
+        )}
+        {splitBottomColor && bottomFillD && (
+          <path d={bottomFillD} fill={splitBottomColor} />
+        )}
 
         <text ref={measureRef} className="text-loop-measure" style={textStyle} aria-hidden="true">
           {unit}

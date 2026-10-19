@@ -91,18 +91,18 @@ export default function Terms() {
   return (
     <section
       id="terms"
-      className="scroll-mt-24 md:scroll-mt-32 py-4 md:py-8 px-6 md:px-12 lg:px-16 bg-[#050505] text-[#f3f4f6] relative"
+      className="scroll-mt-24 md:scroll-mt-32 py-4 md:py-8 px-6 md:px-12 lg:px-16 bg-[#F6F7EB] text-[#393E41] relative"
     >
       <div className="max-w-7xl mx-auto w-full">
         {/* Main Section Header */}
         <div className="mb-12 md:mb-16 text-left reveal">
-          <span className="text-xs uppercase tracking-[0.25em] text-[#d4b07c] font-bold block mb-3 font-display">
+          <span className="text-xs uppercase tracking-[0.25em] text-[#E94F37] font-bold block mb-3 font-display">
             Legal & Policies
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white uppercase font-display mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#393E41] uppercase font-display mb-4">
             Terms of Service
           </h2>
-          <p className="text-base sm:text-lg text-gray-300 font-light leading-relaxed max-w-3xl">
+          <p className="text-base sm:text-lg text-[#393E41]/80 font-light leading-relaxed max-w-3xl">
             These Terms apply to services provided by Elite Studios. By confirming a project or making payment, the Client agrees to the applicable terms below.
           </p>
         </div>
@@ -112,19 +112,19 @@ export default function Terms() {
           {SERVICES_TERMS.map((service, index) => (
             <div
               key={service.num}
-              className="p-6 sm:p-7 bg-[#0b0b0b] border border-white/[0.06] flex flex-col justify-start text-left transition-colors duration-300 hover:border-white/15 reveal"
+              className="p-6 sm:p-7 bg-[#393E41] border border-[#393E41] flex flex-col justify-start text-left transition-colors duration-300 hover:border-[#E94F37]/50 reveal rounded-xl shadow-lg"
               style={{ transitionDelay: `${index * 0.05}s` }}
             >
-              <div className="flex items-center justify-between mb-3 pb-3 border-b border-white/[0.06]">
-                <span className="font-mono text-xs text-[#d4b07c] font-semibold tracking-wider">
+              <div className="flex items-center justify-between mb-3 pb-3 border-b border-[#F6F7EB]/10">
+                <span className="font-mono text-xs text-[#E94F37] font-semibold tracking-wider">
                   {service.num}
                 </span>
-                <span className="text-[10px] uppercase font-mono tracking-widest text-white/30">
+                <span className="text-[10px] uppercase font-mono tracking-widest text-[#F6F7EB]/40">
                   Service Terms
                 </span>
               </div>
 
-              <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight font-display mb-4">
+              <h3 className="text-lg sm:text-xl font-bold text-[#F6F7EB] tracking-tight font-display mb-4">
                 {service.title}
               </h3>
 
@@ -132,10 +132,10 @@ export default function Terms() {
                 {service.terms.map((term, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-2.5 text-xs sm:text-sm text-gray-400 font-normal leading-relaxed"
+                    className="flex items-start gap-2.5 text-xs sm:text-sm text-[#F6F7EB]/80 font-normal leading-relaxed"
                   >
                     <span
-                      className="w-1.5 h-1.5 rounded-full bg-[#d4b07c]/70 mt-1.5 shrink-0"
+                      className="w-1.5 h-1.5 rounded-full bg-[#E94F37] mt-1.5 shrink-0"
                       aria-hidden="true"
                     />
                     <span>{term}</span>
@@ -147,10 +147,10 @@ export default function Terms() {
         </div>
 
         {/* General Terms Subsection */}
-        <div className="mt-8 sm:mt-10 p-6 sm:p-8 bg-[#090909] border border-white/[0.06] text-left reveal">
-          <div className="flex items-center gap-3 mb-5 pb-3 border-b border-white/[0.06]">
-            <span className="w-2 h-2 rounded-full bg-[#d4b07c]" aria-hidden="true" />
-            <h3 className="text-base sm:text-lg font-bold text-white uppercase tracking-wider font-display">
+        <div className="mt-8 sm:mt-10 p-6 sm:p-8 bg-[#393E41] border border-[#393E41] text-left reveal rounded-xl shadow-lg">
+          <div className="flex items-center gap-3 mb-5 pb-3 border-b border-[#F6F7EB]/10">
+            <span className="w-2 h-2 rounded-full bg-[#E94F37]" aria-hidden="true" />
+            <h3 className="text-base sm:text-lg font-bold text-[#F6F7EB] uppercase tracking-wider font-display">
               General Terms
             </h3>
           </div>
@@ -159,10 +159,10 @@ export default function Terms() {
             {GENERAL_TERMS.map((term, i) => (
               <li
                 key={i}
-                className="flex items-start gap-2.5 text-xs sm:text-sm text-gray-400 font-normal leading-relaxed"
+                className="flex items-start gap-2.5 text-xs sm:text-sm text-[#F6F7EB]/80 font-normal leading-relaxed"
               >
                 <span
-                  className="w-1.5 h-1.5 rounded-full bg-[#d4b07c]/60 mt-1.5 shrink-0"
+                  className="w-1.5 h-1.5 rounded-full bg-[#E94F37] mt-1.5 shrink-0"
                   aria-hidden="true"
                 />
                 <span>{term}</span>
@@ -172,15 +172,15 @@ export default function Terms() {
         </div>
 
         {/* Separate Additional Services Subsection */}
-        <div className="mt-16 sm:mt-20 pt-12 sm:pt-16 border-t border-white/[0.08] text-left reveal">
+        <div className="mt-16 sm:mt-20 pt-12 sm:pt-16 border-t border-[#393E41]/15 text-left reveal">
           <div className="mb-8">
-            <span className="text-xs uppercase tracking-[0.25em] text-[#d4b07c] font-bold block mb-2.5 font-display">
+            <span className="text-xs uppercase tracking-[0.25em] text-[#E94F37] font-bold block mb-2.5 font-display">
               Scope & Add-ons
             </span>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight uppercase font-display mb-3">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#393E41] tracking-tight uppercase font-display mb-3">
               Additional Services — Terms & Conditions
             </h3>
-            <p className="text-sm sm:text-base text-gray-300 font-light leading-relaxed max-w-3xl">
+            <p className="text-sm sm:text-base text-[#393E41]/80 font-light leading-relaxed max-w-3xl">
               Any service, feature, revision, integration, or requirement outside the agreed quotation or package will be considered an Additional Service.
             </p>
           </div>
@@ -189,16 +189,16 @@ export default function Terms() {
             {ADDITIONAL_SERVICES_TERMS.map((item, index) => (
               <li
                 key={index}
-                className="p-4 sm:p-5 bg-[#0b0b0b] border border-white/[0.05] flex items-start gap-3 text-xs sm:text-sm text-gray-300 font-normal leading-relaxed"
+                className="p-4 sm:p-5 bg-[#393E41] border border-[#393E41] flex items-start gap-3 text-xs sm:text-sm text-[#F6F7EB]/85 font-normal leading-relaxed rounded-xl shadow-sm"
               >
                 <span
-                  className="w-1.5 h-1.5 rounded-full bg-[#d4b07c] mt-2 shrink-0"
+                  className="w-1.5 h-1.5 rounded-full bg-[#E94F37] mt-2 shrink-0"
                   aria-hidden="true"
                 />
                 {item.strong ? (
                   <span>
                     {item.prefix}
-                    <strong className="font-semibold text-white">{item.strong}</strong>
+                    <strong className="font-semibold text-[#F6F7EB]">{item.strong}</strong>
                     {item.suffix}
                   </span>
                 ) : (
@@ -209,11 +209,11 @@ export default function Terms() {
           </ul>
 
           {/* Supporting line: Examples of Additional Services */}
-          <div className="p-5 sm:p-6 bg-[#080808] border border-white/[0.04]">
-            <h4 className="text-xs uppercase tracking-widest text-[#d4b07c] font-bold font-display mb-2">
+          <div className="p-5 sm:p-6 bg-[#393E41] border border-[#393E41] rounded-xl shadow-sm">
+            <h4 className="text-xs uppercase tracking-widest text-[#E94F37] font-bold font-display mb-2">
               Examples of Additional Services
             </h4>
-            <p className="text-xs sm:text-sm text-gray-400 font-normal leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#F6F7EB]/80 font-normal leading-relaxed">
               Additional Services may include extra website features, custom dashboards, mobile apps, AI integrations, payment gateways, APIs, SEO, extra designs/videos, photography/videography, influencer collaborations, hosting, domain services, premium software, on-site services, urgent work, and other requirements outside the original scope.
             </p>
           </div>

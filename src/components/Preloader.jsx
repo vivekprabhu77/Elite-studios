@@ -51,27 +51,27 @@ export default function Preloader({ onComplete }) {
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
         backgroundRepeat: 'no-repeat',
-        backgroundColor: '#050505',
+        backgroundColor: '#393E41',
       }}
     >
       {/* Progress Bar + Percentage below center */}
       <div className="absolute bottom-[28%] sm:bottom-[30%] left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 w-[280px] sm:w-[340px]">
         {/* Progress bar track */}
         <div className="w-full flex items-center gap-3">
-          <div className="flex-1 h-[3px] bg-white/10 rounded-full overflow-hidden">
+          <div className="flex-1 h-[3px] bg-[#F6F7EB]/20 rounded-full overflow-hidden">
             <div
-              className="h-full bg-[#d4b07c] rounded-full transition-[width] duration-100 ease-linear"
+              className="h-full bg-[#E94F37] rounded-full transition-[width] duration-100 ease-linear"
               style={{ width: `${percentage}%` }}
             />
           </div>
           {/* Percentage number */}
-          <span className="text-sm font-bold tracking-wider text-[#d4b07c] font-display tabular-nums min-w-[40px] text-right">
+          <span className="text-sm font-bold tracking-wider text-[#E94F37] font-display tabular-nums min-w-[40px] text-right">
             {percentage}%
           </span>
         </div>
 
         {/* Loading text */}
-        <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.35em] text-white/50 uppercase whitespace-nowrap">
+        <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.35em] text-[#F6F7EB]/70 uppercase whitespace-nowrap">
           Loading Amazing Experiences...
         </span>
       </div>

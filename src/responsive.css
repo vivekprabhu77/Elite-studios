@@ -56,10 +56,10 @@ nav,
     padding-bottom: 0.5rem !important;
     padding-left: 1rem !important;
     padding-right: 1rem !important;
-    background-color: rgba(5, 5, 5, 0.95) !important;
+    background-color: rgba(246, 247, 235, 0.95) !important;
     backdrop-filter: blur(20px) !important;
     -webkit-backdrop-filter: blur(20px) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(57, 62, 65, 0.12);
   }
 
   /* Prominent Logo on Tablet */
@@ -83,7 +83,7 @@ nav,
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
-    background: radial-gradient(circle at 50% 15%, rgba(212, 176, 124, 0.1) 0%, rgba(5, 5, 5, 1) 75%) !important;
+    background: radial-gradient(circle at 50% 15%, rgba(233, 79, 55, 0.08) 0%, rgba(246, 247, 235, 1) 75%) !important;
   }
 
   /* Services Grid on Tablet */
@@ -124,7 +124,7 @@ nav,
   nav button[aria-label="Toggle navigation menu"] span {
     height: 2px !important;
     display: block !important;
-    background-color: #ffffff !important;
+    background-color: #393E41 !important;
   }
 
   /* Hero Section Mobile Rhythm & Text Hierarchy */
@@ -155,7 +155,7 @@ nav,
   .hero-heading-responsive span:nth-child(1) {
     font-size: clamp(38px, 9.8vw, 54px) !important;
     font-weight: 900 !important;
-    color: #ffffff !important;
+    color: #393E41 !important;
     line-height: 0.95 !important;
     letter-spacing: -0.03em !important;
     display: block !important;
@@ -165,33 +165,34 @@ nav,
   .hero-heading-responsive span:nth-child(2) {
     font-size: clamp(23px, 6vw, 32px) !important;
     font-weight: 700 !important;
-    color: #d1d5db !important;
+    color: #393E41 !important;
     line-height: 1.1 !important;
     letter-spacing: -0.01em !important;
     display: block !important;
     margin: 4px 0 !important;
-    opacity: 0.9;
+    opacity: 0.85;
   }
 
   /* Line 3: Focal Gold Accent */
   .hero-heading-responsive span:nth-child(3) {
     font-size: clamp(30px, 8vw, 42px) !important;
     font-weight: 900 !important;
-    color: #d4b07c !important;
+    color: #E94F37 !important;
     line-height: 1.05 !important;
     letter-spacing: -0.02em !important;
     display: block !important;
-    text-shadow: 0 0 25px rgba(212, 176, 124, 0.35) !important;
+    text-shadow: 0 0 25px rgba(233, 79, 55, 0.25) !important;
   }
 
   /* 3. Body Paragraph Tier (Left Accent Border + Crisp Typography) */
   .hero-description-responsive {
     font-size: 15px !important;
     line-height: 1.68 !important;
-    color: #a1a1aa !important;
+    color: #393E41 !important;
+    opacity: 0.85;
     font-weight: 400 !important;
     margin-bottom: 2rem !important;
-    border-left: 2px solid rgba(212, 176, 124, 0.45) !important;
+    border-left: 2px solid rgba(233, 79, 55, 0.6) !important;
     padding-left: 0.85rem !important;
     letter-spacing: 0.01em !important;
   }
@@ -230,7 +231,7 @@ nav,
 
   .hero-cursive-title {
     font-size: 44px !important;
-    color: #d4b07c !important;
+    color: #E94F37 !important;
     line-height: 1 !important;
     padding-right: 0.5rem !important;
   }
@@ -238,7 +239,7 @@ nav,
   .hero-cursive-subtitle {
     font-size: 8.5px !important;
     letter-spacing: 0.25em !important;
-    color: #ffffff !important;
+    color: #393E41 !important;
   }
 
   /* About Section */
@@ -363,9 +364,15 @@ nav,
      ULTRA-COOL MOBILE FOOTER ARCHITECTURE
      ------------------------------------------------------------------------ */
   .site-footer {
-    padding-top: 3.5rem !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    background: transparent !important;
+  }
+
+  .footer-body-wrapper {
+    padding-top: 2rem !important;
     padding-bottom: 2.5rem !important;
-    background: radial-gradient(circle at 50% 100%, rgba(212, 176, 124, 0.08) 0%, rgba(0, 0, 0, 1) 85%) !important;
+    background: radial-gradient(circle at 50% 100%, rgba(233, 79, 55, 0.08) 0%, #393E41 85%) !important;
   }
 
   .footer-grid {
@@ -376,8 +383,8 @@ nav,
 
   /* Footer Brand Block */
   .footer-brand-col {
-    background: rgba(15, 15, 15, 0.6) !important;
-    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    background: #393E41 !important;
+    border: 1px solid rgba(246, 247, 235, 0.1) !important;
     border-radius: 14px !important;
     padding: 1.25rem !important;
     backdrop-filter: blur(12px) !important;
@@ -392,15 +399,16 @@ nav,
   .footer-pitch-text {
     font-size: 0.78rem !important;
     line-height: 1.6 !important;
-    color: #a1a1aa !important;
+    color: #F6F7EB !important;
+    opacity: 0.85;
   }
 
   /* Glassmorphic Cards for Links & Contact */
   .footer-nav-col,
   .footer-social-col,
   .footer-contact-col {
-    background: rgba(12, 12, 12, 0.5) !important;
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    background: #393E41 !important;
+    border: 1px solid rgba(246, 247, 235, 0.1) !important;
     border-radius: 12px !important;
     padding: 1.25rem !important;
   }
@@ -408,7 +416,7 @@ nav,
   .footer-col-heading {
     font-size: 0.7rem !important;
     letter-spacing: 0.25em !important;
-    color: #d4b07c !important;
+    color: #E94F37 !important;
     margin-bottom: 1rem !important;
   }
 
@@ -424,20 +432,20 @@ nav,
     align-items: center !important;
     justify-content: center !important;
     padding: 0.6rem 0.75rem !important;
-    background: rgba(255, 255, 255, 0.03) !important;
-    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    background: rgba(246, 247, 235, 0.06) !important;
+    border: 1px solid rgba(246, 247, 235, 0.1) !important;
     border-radius: 8px !important;
     text-align: center !important;
-    color: #d1d5db !important;
+    color: #F6F7EB !important;
     font-size: 0.68rem !important;
     letter-spacing: 0.1em !important;
     font-weight: 700 !important;
   }
 
   .footer-link-item:active {
-    background: rgba(212, 176, 124, 0.15) !important;
-    border-color: rgba(212, 176, 124, 0.4) !important;
-    color: #d4b07c !important;
+    background: rgba(233, 79, 55, 0.2) !important;
+    border-color: #E94F37 !important;
+    color: #E94F37 !important;
   }
 
   /* Interactive Contact Action Buttons */
@@ -451,10 +459,10 @@ nav,
     align-items: center !important;
     justify-content: center !important;
     padding: 0.65rem 1rem !important;
-    background: rgba(212, 176, 124, 0.08) !important;
-    border: 1px solid rgba(212, 176, 124, 0.22) !important;
+    background: rgba(233, 79, 55, 0.12) !important;
+    border: 1px solid rgba(233, 79, 55, 0.3) !important;
     border-radius: 8px !important;
-    color: #d4b07c !important;
+    color: #E94F37 !important;
     font-size: 0.75rem !important;
     letter-spacing: 0.05em !important;
   }
@@ -466,15 +474,16 @@ nav,
     text-align: center !important;
     padding-top: 1.5rem !important;
     font-size: 0.62rem !important;
+    color: rgba(246, 247, 235, 0.6) !important;
   }
 
   .footer-admin-link {
     display: inline-block !important;
     padding: 0.35rem 0.85rem !important;
-    background: rgba(212, 176, 124, 0.12) !important;
-    border: 1px solid rgba(212, 176, 124, 0.25) !important;
+    background: rgba(233, 79, 55, 0.15) !important;
+    border: 1px solid rgba(233, 79, 55, 0.35) !important;
     border-radius: 9999px !important;
-    color: #d4b07c !important;
+    color: #E94F37 !important;
     font-weight: 700 !important;
   }
 }

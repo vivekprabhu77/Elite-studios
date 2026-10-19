@@ -48,9 +48,9 @@ export default function Technologies() {
       </div>
 
       <div className="marquee-wrapper relative">
-        {/* Left and Right Smooth Edge Fades (replaces expensive mask-image) */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-28 md:w-36 bg-gradient-to-r from-black via-black/80 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-28 md:w-36 bg-gradient-to-l from-black via-black/80 to-transparent z-10 pointer-events-none" />
+        {/* Left and Right Subtle Red Edge Fades */}
+        <div className="absolute left-0 top-0 bottom-0 w-20 sm:w-32 md:w-44 bg-gradient-to-r from-[#E94F37]/40 via-[#E94F37]/15 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-32 md:w-44 bg-gradient-to-l from-[#E94F37]/40 via-[#E94F37]/15 to-transparent z-10 pointer-events-none" />
 
         {/* Top Row — Scrolls Left */}
         <div className="marquee-track marquee-left">

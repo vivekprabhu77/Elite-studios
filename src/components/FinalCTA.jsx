@@ -4,24 +4,24 @@ import { getWhatsAppProjectUrl } from '../utils/whatsapp';
 
 export default function FinalCTA() {
   return (
-    <section id="contact" className="py-40 px-6 md:px-12 bg-black relative overflow-hidden text-center border-b border-white/[0.04]">
+    <section id="contact" className="py-40 px-6 md:px-12 bg-[#F6F7EB] relative overflow-hidden text-center">
       {/* Background spotlights */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-white/[0.01] rounded-full blur-[140px] pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#E94F37]/[0.02] rounded-full blur-[140px] pointer-events-none"></div>
 
       <div className="max-w-5xl mx-auto w-full relative z-10">
-        <span className="text-xs uppercase tracking-widest text-[#d4b07c] font-bold block mb-6 font-display reveal">
+        <span className="text-xs uppercase tracking-widest text-[#E94F37] font-bold block mb-6 font-display reveal">
           Next Steps
         </span>
         
         {/* Massive Editorial Heading */}
-        <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.05] tracking-tighter uppercase font-creative mb-12 reveal">
+        <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-[#393E41] leading-[1.05] tracking-tighter uppercase font-creative mb-12 reveal">
           LET'S BUILD<br />
-          <span className="text-[#d4b07c]">SOMETHING</span><br />
-          <span className="text-white/60">EXCEPTIONAL</span>.
+          <span className="text-[#E94F37]">SOMETHING</span><br />
+          <span className="text-[#393E41]/50">EXCEPTIONAL</span>.
         </h2>
 
         {/* Supporting copy */}
-        <p className="text-sm md:text-base text-gray-400 font-light max-w-lg mx-auto mb-12 leading-relaxed reveal">
+        <p className="text-sm md:text-base text-[#393E41]/75 font-light max-w-lg mx-auto mb-12 leading-relaxed reveal">
           Have an ambitious project in mind? We partner with founders, innovators, and established brands to build world-class digital realities.
         </p>
 
@@ -31,25 +31,25 @@ export default function FinalCTA() {
             href={getWhatsAppProjectUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-4 px-10 py-5 bg-[#d4b07c] text-black hover:bg-transparent border border-[#d4b07c] hover:text-[#d4b07c] transition-all duration-500 text-xs font-bold uppercase tracking-widest group shadow-[0_0_40px_rgba(212,176,124,0.1)] hover:shadow-none"
+            className="inline-flex items-center gap-4 px-10 py-5 bg-[#E94F37] text-[#F6F7EB] hover:bg-transparent border border-[#E94F37] hover:text-[#E94F37] transition-all duration-500 text-xs font-bold uppercase tracking-widest group shadow-[0_4px_24px_rgba(233,79,55,0.25)] hover:shadow-none"
           >
             <span>Start Your Project</span>
-            <ArrowUpRight className="w-4 h-4 text-black group-hover:text-[#d4b07c] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-500" />
+            <ArrowUpRight className="w-4 h-4 text-[#F6F7EB] group-hover:text-[#E94F37] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-500" />
           </a>
         </div>
 
         {/* Contact Links */}
-        <div className="mt-20 flex flex-wrap justify-center items-center gap-x-12 gap-y-4 text-xs font-mono tracking-widest uppercase text-white/40 reveal">
+        <div className="mt-20 flex flex-wrap justify-center items-center gap-x-12 gap-y-4 text-xs font-mono tracking-widest uppercase text-[#393E41]/60 reveal">
           <a
             href="https://mail.google.com/mail/?view=cm&fs=1&to=elitestudiossiddapura@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#d4b07c] transition-colors duration-300"
+            className="hover:text-[#E94F37] transition-colors duration-300"
           >
             elitestudiossiddapura@gmail.com
           </a>
-          <span className="h-1 w-1 bg-[#d4b07c]/30 rounded-full hidden sm:inline"></span>
-          <a href="tel:+917259174667" className="hover:text-[#d4b07c] transition-colors duration-300">
+          <span className="h-1 w-1 bg-[#E94F37] rounded-full hidden sm:inline"></span>
+          <a href="tel:+917259174667" className="hover:text-[#E94F37] transition-colors duration-300">
             +91 7259174667
           </a>
         </div>

@@ -32,9 +32,9 @@ const TrueFocus = ({
   easing = 'smooth',
   blurAmount = 5,
   focusScale = 1,
-  borderColor = '#ffffff',
+  borderColor = '#E94F37',
   highlightColor,
-  glowColor = 'rgba(255, 255, 255, 0.5)',
+  glowColor = 'rgba(233, 79, 55, 0.4)',
   animationDuration = 0.8,
   pauseBetweenAnimations = 0.9,
   cornerSize = 16,
@@ -153,7 +153,7 @@ const TrueFocus = ({
 
   const frameStyle = {
     '--border-color': borderColor,
-    '--highlight-color': highlightColor ?? 'rgba(255, 255, 255, 0.15)',
+    '--highlight-color': highlightColor ?? 'rgba(233, 79, 55, 0.15)',
     '--glow-color': glowColor,
     '--corner-size': `${cornerSize}px`,
     '--border-width': `${borderWidth}px`,
