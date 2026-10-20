@@ -419,8 +419,10 @@ export default function ParticleText(props) {
 
     const triggerDisperse = (cx, cy, intensity = 1.0) => {
       if (count <= 0) return;
-      const radius = Math.max(90, mcRadius * 1.5);
+      const isMobile = cssW < 540;
+      const radius = isMobile ? Math.min(45, mcRadius * 0.75) : Math.max(70, mcRadius * 1.2);
       const radiusSq = radius * radius;
+      const maxForce = isMobile ? 15 : 38;
       for (let i = 0; i < count; i++) {
         const dx = ox[i] - cx;
         const dy = oy[i] - cy;
@@ -430,9 +432,9 @@ export default function ParticleText(props) {
           const nx = dx / dist;
           const ny = dy / dist;
           const falloff = 1 - dist / radius;
-          const force = falloff * falloff * (mcForce * 2.2 + 38) * intensity;
-          repX[i] += nx * force + (Math.random() - 0.5) * 8;
-          repY[i] += ny * force + (Math.random() - 0.5) * 8;
+          const force = falloff * falloff * maxForce * intensity;
+          repX[i] += nx * force + (Math.random() - 0.5) * (isMobile ? 2 : 5);
+          repY[i] += ny * force + (Math.random() - 0.5) * (isMobile ? 2 : 5);
         }
       }
     };
@@ -456,9 +458,11 @@ export default function ParticleText(props) {
       pointerRef.current.y = y;
       pointerRef.current.active = true;
 
-      // On active drag / touch rub: immediate tactile separation force
-      const rubRadius = Math.max(75, mcRadius * 1.15);
+      // On active drag / touch rub: gentle, localized tactile separation
+      const isMobile = cssW < 540;
+      const rubRadius = isMobile ? Math.min(38, mcRadius * 0.6) : Math.max(65, mcRadius * 1.0);
       const rubRadiusSq = rubRadius * rubRadius;
+      const rubPushMax = isMobile ? 2.5 : 6.0;
       for (let i = 0; i < count; i++) {
         const dx = ox[i] - x;
         const dy = oy[i] - y;
@@ -468,7 +472,7 @@ export default function ParticleText(props) {
           const nx = dx / dist;
           const ny = dy / dist;
           const falloff = 1 - dist / rubRadius;
-          const rubPush = falloff * 8;
+          const rubPush = falloff * rubPushMax;
           repX[i] += nx * rubPush;
           repY[i] += ny * rubPush;
         }
@@ -668,9 +672,10 @@ export default function ParticleText(props) {
       }
       const mx = smoothX;
       const my = smoothY;
-      const repCutoff = Math.max(1, mcRadius);
+      const isMobile = cssW < 540;
+      const repCutoff = isMobile ? Math.min(30, mcRadius * 0.5) : Math.max(1, mcRadius);
       const repCutoffSq = repCutoff * repCutoff;
-      const rF = mcForce;
+      const rF = isMobile ? Math.min(10, mcForce * 0.35) : mcForce;
 
       for (let b = 0; b < buckets.length; b++) buckets[b].length = 0;
 
@@ -695,23 +700,33 @@ export default function ParticleText(props) {
             const nx = dx / dist;
             const ny = dy / dist;
             const falloff = 1 - dist / repCutoff;
-            const push = falloff * hitSpeed * rF * 0.05;
+            const push = falloff * hitSpeed * rF * (isMobile ? 0.02 : 0.05);
             repX[i] += nx * push;
             repY[i] += ny * push;
             const targetRepX = nx * (repCutoff - dist);
             const targetRepY = ny * (repCutoff - dist);
-            repX[i] += (targetRepX - repX[i]) * 0.06;
-            repY[i] += (targetRepY - repY[i]) * 0.06;
+            repX[i] += (targetRepX - repX[i]) * (isMobile ? 0.08 : 0.06);
+            repY[i] += (targetRepY - repY[i]) * (isMobile ? 0.08 : 0.06);
             inZone = true;
           }
         }
         if (!inZone) {
-          repX[i] *= 0.97;
-          repY[i] *= 0.97;
+          repX[i] *= (isMobile ? 0.91 : 0.96);
+          repY[i] *= (isMobile ? 0.91 : 0.96);
         }
 
-        px[i] = oxi + repX[i];
-        py[i] = oyi + repY[i];
+        // Hard clamp displacement so particles never travel outside their zone
+        const maxDisp = isMobile ? 18 : 45;
+        const curDispSq = repX[i] * repX[i] + repY[i] * repY[i];
+        if (curDispSq > maxDisp * maxDisp) {
+          const curDisp = Math.sqrt(curDispSq);
+          repX[i] = (repX[i] / curDisp) * maxDisp;
+          repY[i] = (repY[i] / curDisp) * maxDisp;
+        }
+
+        // Strictly clamp px and py inside canvas boundaries
+        px[i] = Math.max(1, Math.min(cssW - 1, oxi + repX[i]));
+        py[i] = Math.max(1, Math.min(cssH - 1, oyi + repY[i]));
 
         buckets[cIdx[i]].push(i);
       }

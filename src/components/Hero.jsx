@@ -179,8 +179,8 @@ export default function Hero() {
               particleSize={windowWidth < 640 ? 8 : 10}
               particleCount={50}
               mouseEnabled={true}
-              mouseRadius={75}
-              mouseForce={35}
+              mouseRadius={windowWidth < 640 ? 40 : 70}
+              mouseForce={windowWidth < 640 ? 15 : 30}
               replay={true}
               style={{
                 width: '100%',
