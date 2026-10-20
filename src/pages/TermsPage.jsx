@@ -7,7 +7,7 @@ export default function TermsPage() {
   }, []);
 
   return (
-    <div className="pt-20 md:pt-28 pb-16 bg-[#F6F7EB] text-[#393E41] min-h-[85vh]">
+    <div className="pt-20 md:pt-28 pb-16 bg-[#F9F6F0] text-[#393E41] min-h-[85vh]">
       <Terms />
     </div>
   );

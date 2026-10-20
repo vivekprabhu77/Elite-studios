@@ -44,7 +44,7 @@ function CountUp({ value, suffix, duration = 2000 }) {
   }, [hasStarted, value, duration]);
 
   return (
-    <span ref={elementRef} className="font-creative text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tighter text-[#E94F37]">
+    <span ref={elementRef} className="font-creative text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tighter text-[#B68631]">
       {count.toLocaleString()}{suffix}
     </span>
   );
@@ -52,20 +52,20 @@ function CountUp({ value, suffix, duration = 2000 }) {
 
 export default function WhyUs() {
   return (
-    <section id="about" className="py-12 md:py-16 px-6 md:px-12 bg-[#F6F7EB] relative overflow-hidden border-y border-[#393E41]/10">
+    <section id="about" className="py-12 md:py-16 px-6 md:px-12 bg-[#F9F6F0] relative overflow-hidden border-y border-[#393E41]/10">
       {/* Background Spotlight */}
-      <div className="absolute bottom-[10%] right-[5%] w-[400px] h-[400px] bg-[#E94F37]/[0.02] rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute bottom-[10%] right-[5%] w-[400px] h-[400px] bg-[#B68631]/[0.02] rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto w-full">
         {/* Editorial Text Block */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-12 md:mb-14 text-left reveal">
           <div className="lg:col-span-4">
-            <span className="text-xs uppercase tracking-widest text-[#E94F37] font-bold block mb-4 font-display">
+            <span className="text-xs uppercase tracking-widest text-[#B68631] font-bold block mb-4 font-display">
               Why Elite Studios
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#393E41] tracking-tight leading-none font-creative">
               THE ELITE<br />
-              <span className="text-[#E94F37]">STANDARD</span>.
+              <span className="text-[#B68631]">STANDARD</span>.
             </h2>
           </div>
           

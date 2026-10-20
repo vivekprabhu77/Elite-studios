@@ -13,7 +13,7 @@ export default function WhatsAppButton() {
   return (
     <div className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-[999] flex items-center gap-3 select-none pointer-events-none group">
       {/* Premium Dark Glass Tooltip Pill - completely to the left of the button */}
-      <div className="hidden sm:flex items-center px-4 py-2 rounded-full bg-[#393E41]/95 border border-[#393E41]/30 text-[#F6F7EB] text-[10px] font-bold tracking-[0.18em] uppercase whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0 shadow-[0_10px_30px_rgba(57,62,65,0.3)] backdrop-blur-xl pointer-events-none">
+      <div className="hidden sm:flex items-center px-4 py-2 rounded-full bg-[#393E41]/95 border border-[#393E41]/30 text-[#F9F6F0] text-[10px] font-bold tracking-[0.18em] uppercase whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0 shadow-[0_10px_30px_rgba(57,62,65,0.3)] backdrop-blur-xl pointer-events-none">
         <span>CHAT ON WHATSAPP</span>
       </div>
 

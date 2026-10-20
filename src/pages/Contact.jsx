@@ -62,19 +62,19 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F6F7EB] text-[#393E41] pt-28 md:pt-[140px] pb-24 px-6 md:px-12 relative overflow-hidden font-sans">
+    <div className="min-h-screen bg-[#F9F6F0] text-[#393E41] pt-28 md:pt-[140px] pb-24 px-6 md:px-12 relative overflow-hidden font-sans">
       {/* Subtle Gold Radial Spotlight */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-b from-[#E94F37]/[0.03] to-transparent rounded-full blur-[150px] pointer-events-none"></div>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-b from-[#B68631]/[0.03] to-transparent rounded-full blur-[150px] pointer-events-none"></div>
 
       <div className="max-w-6xl mx-auto relative z-10">
         
         {/* Header Section */}
         <div className="mb-16 text-center max-w-3xl mx-auto">
-          <span className="text-xs uppercase tracking-[0.3em] font-bold text-[#E94F37] block mb-4 font-display">
+          <span className="text-xs uppercase tracking-[0.3em] font-bold text-[#B68631] block mb-4 font-display">
             INITIATE A PROJECT
           </span>
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold font-display uppercase tracking-tight text-[#393E41] leading-[1.05] mb-6">
-            LET'S BUILD SOMETHING <span className="text-[#E94F37]">EXTRAORDINARY.</span>
+            LET'S BUILD SOMETHING <span className="text-[#B68631]">EXTRAORDINARY.</span>
           </h1>
           <p className="text-[#393E41]/75 text-sm sm:text-base md:text-lg font-normal leading-relaxed">
             Reach out directly via WhatsApp, email, or telephone. We respond promptly to all project inquiries.
@@ -85,18 +85,18 @@ export default function Contact() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
           
           {/* Card 1: WhatsApp CTA */}
-          <div className="p-8 sm:p-10 rounded-2xl bg-[#393E41] border border-[#393E41] hover:border-[#E94F37]/60 transition-all duration-300 flex flex-col justify-between shadow-xl relative group">
+          <div className="p-8 sm:p-10 rounded-2xl bg-[#393E41] border border-[#393E41] hover:border-[#B68631]/60 transition-all duration-300 flex flex-col justify-between shadow-xl relative group">
             <div>
-              <div className="w-12 h-12 rounded-xl bg-[#E94F37]/15 border border-[#E94F37]/40 text-[#E94F37] flex items-center justify-center mb-6">
+              <div className="w-12 h-12 rounded-xl bg-[#B68631]/15 border border-[#B68631]/40 text-[#B68631] flex items-center justify-center mb-6">
                 <MessageSquare className="w-6 h-6" />
               </div>
-              <span className="text-xs uppercase font-bold tracking-[0.2em] text-[#E94F37] block mb-2">
+              <span className="text-xs uppercase font-bold tracking-[0.2em] text-[#B68631] block mb-2">
                 INSTANT WHATSAPP CHAT
               </span>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#F6F7EB] mb-3">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#F9F6F0] mb-3">
                 Start Your Project
               </h3>
-              <p className="text-xs sm:text-sm text-[#F6F7EB]/75 font-light leading-relaxed mb-8">
+              <p className="text-xs sm:text-sm text-[#F9F6F0]/75 font-light leading-relaxed mb-8">
                 Connect with our lead designers and developers on WhatsApp for instant feedback, project scope discussions, and quotes.
               </p>
             </div>
@@ -105,27 +105,27 @@ export default function Contact() {
               href={getWhatsAppProjectUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#E94F37] text-[#F6F7EB] font-extrabold text-xs uppercase tracking-[0.2em] rounded-lg hover:bg-[#d03e27] transition-all duration-300 shadow-[0_4px_24px_rgba(233,79,55,0.35)] hover:scale-[1.01]"
+              className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#B68631] text-[#F9F6F0] font-extrabold text-xs uppercase tracking-[0.2em] rounded-lg hover:bg-[#9e7327] transition-all duration-300 shadow-[0_4px_24px_rgba(182,134,49,0.35)] hover:scale-[1.01]"
             >
               <span>START YOUR PROJECT &rarr;</span>
             </a>
           </div>
 
           {/* Card 2: Official Email */}
-          <div className="p-8 sm:p-10 rounded-2xl bg-[#393E41] border border-[#393E41] hover:border-[#E94F37]/40 transition-all duration-300 flex flex-col justify-between shadow-xl">
+          <div className="p-8 sm:p-10 rounded-2xl bg-[#393E41] border border-[#393E41] hover:border-[#B68631]/40 transition-all duration-300 flex flex-col justify-between shadow-xl">
             <div>
               <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-xl bg-black/25 border border-[#F6F7EB]/10 text-[#F6F7EB] flex items-center justify-center">
-                  <Mail className="w-6 h-6 text-[#E94F37]" />
+                <div className="w-12 h-12 rounded-xl bg-black/25 border border-[#F9F6F0]/10 text-[#F9F6F0] flex items-center justify-center">
+                  <Mail className="w-6 h-6 text-[#B68631]" />
                 </div>
                 <button
                   onClick={handleCopyEmail}
-                  className="px-3 py-1.5 rounded-md bg-black/25 hover:bg-black/40 text-[#F6F7EB]/80 text-xs flex items-center gap-1.5 transition-colors cursor-pointer"
+                  className="px-3 py-1.5 rounded-md bg-black/25 hover:bg-black/40 text-[#F9F6F0]/80 text-xs flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   {copiedEmail ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-[#E94F37]" />
-                      <span className="text-[#E94F37] text-[10px] font-bold uppercase">Copied</span>
+                      <Check className="w-3.5 h-3.5 text-[#B68631]" />
+                      <span className="text-[#B68631] text-[10px] font-bold uppercase">Copied</span>
                     </>
                   ) : (
                     <>
@@ -136,13 +136,13 @@ export default function Contact() {
                 </button>
               </div>
 
-              <span className="text-xs uppercase font-bold tracking-[0.2em] text-[#E94F37] block mb-2">
+              <span className="text-xs uppercase font-bold tracking-[0.2em] text-[#B68631] block mb-2">
                 OFFICIAL EMAIL
               </span>
-              <h3 className="text-xl sm:text-2xl font-bold font-mono text-[#F6F7EB] mb-3 break-all">
+              <h3 className="text-xl sm:text-2xl font-bold font-mono text-[#F9F6F0] mb-3 break-all">
                 {WHATSAPP_EMAIL}
               </h3>
-              <p className="text-xs sm:text-sm text-[#F6F7EB]/75 font-light leading-relaxed mb-8">
+              <p className="text-xs sm:text-sm text-[#F9F6F0]/75 font-light leading-relaxed mb-8">
                 Send project RFPs, design briefs, or documentation directly to our inbox.
               </p>
             </div>
@@ -151,10 +151,10 @@ export default function Contact() {
               href="https://mail.google.com/mail/?view=cm&fs=1&to=elitestudiossiddapura@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-black/25 border border-[#F6F7EB]/15 hover:border-[#E94F37] text-[#F6F7EB] font-bold text-xs uppercase tracking-[0.2em] rounded-lg transition-colors"
+              className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-black/25 border border-[#F9F6F0]/15 hover:border-[#B68631] text-[#F9F6F0] font-bold text-xs uppercase tracking-[0.2em] rounded-lg transition-colors"
             >
               <span>SEND EMAIL (GMAIL)</span>
-              <ArrowUpRight className="w-4 h-4 text-[#E94F37]" />
+              <ArrowUpRight className="w-4 h-4 text-[#B68631]" />
             </a>
           </div>
 
@@ -167,43 +167,43 @@ export default function Contact() {
           <div className="p-6 rounded-xl bg-[#393E41] border border-[#393E41] flex flex-col justify-between shadow-md">
             <div>
               <div className="flex items-center justify-between mb-3">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#E94F37]">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#B68631]">
                   Telephone
                 </span>
                 <button
                   onClick={handleCopyPhone}
-                  className="p-1 text-[#F6F7EB]/60 hover:text-[#F6F7EB] transition-colors cursor-pointer"
+                  className="p-1 text-[#F9F6F0]/60 hover:text-[#F9F6F0] transition-colors cursor-pointer"
                   title="Copy Phone"
                 >
-                  {copiedPhone ? <Check className="w-3.5 h-3.5 text-[#E94F37]" /> : <Copy className="w-3.5 h-3.5" />}
+                  {copiedPhone ? <Check className="w-3.5 h-3.5 text-[#B68631]" /> : <Copy className="w-3.5 h-3.5" />}
                 </button>
               </div>
               <a
                 href={`tel:${WHATSAPP_FORMATTED_PHONE.replace(/\s+/g, '')}`}
-                className="text-lg font-bold font-mono text-[#F6F7EB] hover:text-[#E94F37] transition-colors"
+                className="text-lg font-bold font-mono text-[#F9F6F0] hover:text-[#B68631] transition-colors"
               >
                 {WHATSAPP_FORMATTED_PHONE}
               </a>
             </div>
-            <span className="text-[11px] text-[#F6F7EB]/60 mt-4 block">Direct Call & WhatsApp</span>
+            <span className="text-[11px] text-[#F9F6F0]/60 mt-4 block">Direct Call & WhatsApp</span>
           </div>
 
           {/* Headquarters */}
           <div className="p-6 rounded-xl bg-[#393E41] border border-[#393E41] shadow-md">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[#E94F37] block mb-3">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-[#B68631] block mb-3">
               Studio Location
             </span>
-            <h4 className="text-base font-bold text-[#F6F7EB]">Siddapura</h4>
-            <p className="text-xs text-[#F6F7EB]/70">Karnataka, India</p>
+            <h4 className="text-base font-bold text-[#F9F6F0]">Siddapura</h4>
+            <p className="text-xs text-[#F9F6F0]/70">Karnataka, India</p>
           </div>
 
           {/* Working Hours */}
           <div className="p-6 rounded-xl bg-[#393E41] border border-[#393E41] shadow-md">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[#E94F37] block mb-3">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-[#B68631] block mb-3">
               Operating Hours
             </span>
-            <h4 className="text-base font-bold text-[#F6F7EB]">Mon - Sat</h4>
-            <p className="text-xs text-[#F6F7EB]/70">10:30 AM - 8:00 PM IST</p>
+            <h4 className="text-base font-bold text-[#F9F6F0]">Mon - Sat</h4>
+            <p className="text-xs text-[#F9F6F0]/70">10:30 AM - 8:00 PM IST</p>
           </div>
 
         </div>
@@ -213,7 +213,7 @@ export default function Contact() {
 
         {/* Social Links Bar */}
         <div className="p-8 rounded-2xl bg-[#393E41] border border-[#393E41] mb-20 text-center shadow-lg">
-          <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#E94F37] block mb-6 font-display">
+          <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#B68631] block mb-6 font-display">
             CONNECT ON SOCIAL MEDIA
           </span>
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -223,7 +223,7 @@ export default function Contact() {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 rounded-lg bg-black/20 border border-[#F6F7EB]/10 hover:border-[#E94F37]/50 hover:bg-[#E94F37]/15 text-xs font-bold uppercase tracking-wider text-[#F6F7EB] hover:text-[#E94F37] transition-all duration-300 flex items-center gap-2"
+                className="px-6 py-3 rounded-lg bg-black/20 border border-[#F9F6F0]/10 hover:border-[#B68631]/50 hover:bg-[#B68631]/15 text-xs font-bold uppercase tracking-wider text-[#F9F6F0] hover:text-[#B68631] transition-all duration-300 flex items-center gap-2"
               >
                 <span>{social.label}</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -235,7 +235,7 @@ export default function Contact() {
         {/* FAQs */}
         <div className="max-w-4xl mx-auto pt-10 border-t border-[#393E41]/10">
           <div className="text-center mb-10">
-            <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#E94F37] block mb-2">
+            <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#B68631] block mb-2">
               FREQUENTLY ASKED QUESTIONS
             </span>
             <h3 className="text-2xl sm:text-3xl font-extrabold text-[#393E41] tracking-tight">Common Inquiries</h3>
@@ -251,13 +251,13 @@ export default function Contact() {
                 >
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full p-5 text-left flex items-center justify-between gap-4 font-semibold text-sm sm:text-base text-[#F6F7EB] hover:text-[#E94F37] transition-colors"
+                    className="w-full p-5 text-left flex items-center justify-between gap-4 font-semibold text-sm sm:text-base text-[#F9F6F0] hover:text-[#B68631] transition-colors"
                   >
                     <span>{faq.q}</span>
-                    <ChevronDown className={`w-4 h-4 text-[#E94F37] shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown className={`w-4 h-4 text-[#B68631] shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
                   </button>
                   {isOpen && (
-                    <div className="px-5 pb-5 text-xs sm:text-sm text-[#F6F7EB]/80 font-light leading-relaxed border-t border-[#F6F7EB]/10 pt-3">
+                    <div className="px-5 pb-5 text-xs sm:text-sm text-[#F9F6F0]/80 font-light leading-relaxed border-t border-[#F9F6F0]/10 pt-3">
                       {faq.a}
                     </div>
                   )}

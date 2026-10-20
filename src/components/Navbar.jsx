@@ -45,7 +45,7 @@ export default function Navbar() {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-            ? 'py-2.5 bg-[#F6F7EB]/90 backdrop-blur-md shadow-[0_4px_20px_rgba(57,62,65,0.08)] border-b border-[#393E41]/10'
+            ? 'py-2.5 bg-[#F9F6F0]/90 backdrop-blur-md shadow-[0_4px_20px_rgba(57,62,65,0.08)] border-b border-[#393E41]/10'
             : 'py-3 md:py-4 bg-transparent'
           }`}
       >
@@ -70,12 +70,12 @@ export default function Navbar() {
                   key={item.label}
                   to={item.to}
                   className={`text-[10px] font-bold tracking-[0.25em] transition-all duration-300 relative py-1 uppercase ${
-                    isActive ? 'text-[#E94F37]' : 'text-[#393E41]/80 hover:text-[#E94F37]'
+                    isActive ? 'text-[#B68631]' : 'text-[#393E41]/80 hover:text-[#B68631]'
                   }`}
                 >
                   {item.label}
                   {isActive && (
-                    <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#E94F37]"></span>
+                    <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#B68631]"></span>
                   )}
                 </NavLink>
               );
@@ -86,7 +86,7 @@ export default function Navbar() {
           <div className="hidden lg:block z-50 mr-6 lg:mr-12 xl:mr-20">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-2.5 text-[10px] font-bold uppercase tracking-[0.2em] border border-[#E94F37] text-[#E94F37] transition-all duration-300 hover:bg-[#E94F37] hover:text-[#F6F7EB] rounded-md"
+              className="inline-flex items-center gap-2 px-6 py-2.5 text-[10px] font-bold uppercase tracking-[0.2em] border border-[#B68631] text-[#B68631] transition-all duration-300 hover:bg-[#B68631] hover:text-[#F9F6F0] rounded-md"
             >
               <span>LET'S TALK</span>
               <Send className="w-3 h-3" />
@@ -110,7 +110,7 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Navigation Overlay */}
-      <div className={`fixed inset-0 z-45 bg-[#F6F7EB] flex flex-col justify-center items-center px-6 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none translate-y-4'}`}>
+      <div className={`fixed inset-0 z-45 bg-[#F9F6F0] flex flex-col justify-center items-center px-6 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none translate-y-4'}`}>
         <div className="flex flex-col gap-6 text-center">
           {navItems.map((item, idx) => {
             const isActive = checkActive(item);
@@ -120,9 +120,9 @@ export default function Navbar() {
                 to={item.to}
                 onClick={() => setIsMobileMenuOpen(false)}
                 style={{ transitionDelay: `${idx * 0.06}s` }}
-                className={`text-xl font-light tracking-widest uppercase hover:text-[#E94F37] transition-colors duration-300 ${
+                className={`text-xl font-light tracking-widest uppercase hover:text-[#B68631] transition-colors duration-300 ${
                   isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-                } transition-all duration-500 ${isActive ? 'text-[#E94F37]' : 'text-[#393E41]'}`}
+                } transition-all duration-500 ${isActive ? 'text-[#B68631]' : 'text-[#393E41]'}`}
               >
                 {item.label}
               </NavLink>
@@ -131,7 +131,7 @@ export default function Navbar() {
           <Link
             to="/contact"
             onClick={() => setIsMobileMenuOpen(false)}
-            className={`mt-8 px-8 py-3.5 text-xs font-semibold uppercase tracking-widest border border-[#E94F37] text-[#E94F37] transition-colors duration-300 bg-transparent rounded-md hover:bg-[#E94F37] hover:text-[#F6F7EB] flex items-center justify-center gap-2 ${
+            className={`mt-8 px-8 py-3.5 text-xs font-semibold uppercase tracking-widest border border-[#B68631] text-[#B68631] transition-colors duration-300 bg-transparent rounded-md hover:bg-[#B68631] hover:text-[#F9F6F0] flex items-center justify-center gap-2 ${
               isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             } transition-all duration-500`}
             style={{ transitionDelay: '0.4s' }}

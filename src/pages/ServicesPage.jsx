@@ -4,8 +4,8 @@ import FinalCTA from '../components/FinalCTA';
 
 export default function ServicesPage() {
   return (
-    <div className="pt-20 md:pt-28 bg-[#F6F7EB] text-[#393E41]">
-      <Services />
+    <div className="pt-20 md:pt-28 bg-[#F9F6F0] text-[#393E41]">
+      <Services isHomepage={false} />
       <FinalCTA />
     </div>
   );

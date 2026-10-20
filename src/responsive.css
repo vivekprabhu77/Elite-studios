@@ -9,7 +9,7 @@
    -------------------------------------------------------------------------- */
 html,
 body {
-  overflow-x: hidden !important;
+  overflow-x: clip !important;
   width: 100%;
   position: relative;
   -webkit-text-size-adjust: 100%;
@@ -56,7 +56,7 @@ nav,
     padding-bottom: 0.5rem !important;
     padding-left: 1rem !important;
     padding-right: 1rem !important;
-    background-color: rgba(246, 247, 235, 0.95) !important;
+    background-color: rgba(249, 246, 240, 0.95) !important;
     backdrop-filter: blur(20px) !important;
     -webkit-backdrop-filter: blur(20px) !important;
     border-bottom: 1px solid rgba(57, 62, 65, 0.12);
@@ -83,7 +83,7 @@ nav,
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
-    background: radial-gradient(circle at 50% 15%, rgba(233, 79, 55, 0.08) 0%, rgba(246, 247, 235, 1) 75%) !important;
+    background: radial-gradient(circle at 50% 15%, rgba(182, 134, 49, 0.08) 0%, rgba(249, 246, 240, 1) 75%) !important;
   }
 
   /* Services Grid on Tablet */
@@ -177,11 +177,11 @@ nav,
   .hero-heading-responsive span:nth-child(3) {
     font-size: clamp(30px, 8vw, 42px) !important;
     font-weight: 900 !important;
-    color: #E94F37 !important;
+    color: #B68631 !important;
     line-height: 1.05 !important;
     letter-spacing: -0.02em !important;
     display: block !important;
-    text-shadow: 0 0 25px rgba(233, 79, 55, 0.25) !important;
+    text-shadow: 0 0 25px rgba(182, 134, 49, 0.25) !important;
   }
 
   /* 3. Body Paragraph Tier (Left Accent Border + Crisp Typography) */
@@ -192,7 +192,7 @@ nav,
     opacity: 0.85;
     font-weight: 400 !important;
     margin-bottom: 2rem !important;
-    border-left: 2px solid rgba(233, 79, 55, 0.6) !important;
+    border-left: 2px solid rgba(182, 134, 49, 0.6) !important;
     padding-left: 0.85rem !important;
     letter-spacing: 0.01em !important;
   }
@@ -231,7 +231,7 @@ nav,
 
   .hero-cursive-title {
     font-size: 44px !important;
-    color: #E94F37 !important;
+    color: #B68631 !important;
     line-height: 1 !important;
     padding-right: 0.5rem !important;
   }
@@ -372,7 +372,7 @@ nav,
   .footer-body-wrapper {
     padding-top: 2rem !important;
     padding-bottom: 2.5rem !important;
-    background: radial-gradient(circle at 50% 100%, rgba(233, 79, 55, 0.08) 0%, #393E41 85%) !important;
+    background: radial-gradient(circle at 50% 100%, rgba(182, 134, 49, 0.08) 0%, #393E41 85%) !important;
   }
 
   .footer-grid {
@@ -384,7 +384,7 @@ nav,
   /* Footer Brand Block */
   .footer-brand-col {
     background: #393E41 !important;
-    border: 1px solid rgba(246, 247, 235, 0.1) !important;
+    border: 1px solid rgba(249, 246, 240, 0.1) !important;
     border-radius: 14px !important;
     padding: 1.25rem !important;
     backdrop-filter: blur(12px) !important;
@@ -399,7 +399,7 @@ nav,
   .footer-pitch-text {
     font-size: 0.78rem !important;
     line-height: 1.6 !important;
-    color: #F6F7EB !important;
+    color: #F9F6F0 !important;
     opacity: 0.85;
   }
 
@@ -408,7 +408,7 @@ nav,
   .footer-social-col,
   .footer-contact-col {
     background: #393E41 !important;
-    border: 1px solid rgba(246, 247, 235, 0.1) !important;
+    border: 1px solid rgba(249, 246, 240, 0.1) !important;
     border-radius: 12px !important;
     padding: 1.25rem !important;
   }
@@ -416,7 +416,7 @@ nav,
   .footer-col-heading {
     font-size: 0.7rem !important;
     letter-spacing: 0.25em !important;
-    color: #E94F37 !important;
+    color: #B68631 !important;
     margin-bottom: 1rem !important;
   }
 
@@ -432,20 +432,20 @@ nav,
     align-items: center !important;
     justify-content: center !important;
     padding: 0.6rem 0.75rem !important;
-    background: rgba(246, 247, 235, 0.06) !important;
-    border: 1px solid rgba(246, 247, 235, 0.1) !important;
+    background: rgba(249, 246, 240, 0.06) !important;
+    border: 1px solid rgba(249, 246, 240, 0.1) !important;
     border-radius: 8px !important;
     text-align: center !important;
-    color: #F6F7EB !important;
+    color: #F9F6F0 !important;
     font-size: 0.68rem !important;
     letter-spacing: 0.1em !important;
     font-weight: 700 !important;
   }
 
   .footer-link-item:active {
-    background: rgba(233, 79, 55, 0.2) !important;
-    border-color: #E94F37 !important;
-    color: #E94F37 !important;
+    background: rgba(182, 134, 49, 0.2) !important;
+    border-color: #B68631 !important;
+    color: #B68631 !important;
   }
 
   /* Interactive Contact Action Buttons */
@@ -459,10 +459,10 @@ nav,
     align-items: center !important;
     justify-content: center !important;
     padding: 0.65rem 1rem !important;
-    background: rgba(233, 79, 55, 0.12) !important;
-    border: 1px solid rgba(233, 79, 55, 0.3) !important;
+    background: rgba(182, 134, 49, 0.12) !important;
+    border: 1px solid rgba(182, 134, 49, 0.3) !important;
     border-radius: 8px !important;
-    color: #E94F37 !important;
+    color: #B68631 !important;
     font-size: 0.75rem !important;
     letter-spacing: 0.05em !important;
   }
@@ -474,16 +474,16 @@ nav,
     text-align: center !important;
     padding-top: 1.5rem !important;
     font-size: 0.62rem !important;
-    color: rgba(246, 247, 235, 0.6) !important;
+    color: rgba(249, 246, 240, 0.6) !important;
   }
 
   .footer-admin-link {
     display: inline-block !important;
     padding: 0.35rem 0.85rem !important;
-    background: rgba(233, 79, 55, 0.15) !important;
-    border: 1px solid rgba(233, 79, 55, 0.35) !important;
+    background: rgba(182, 134, 49, 0.15) !important;
+    border: 1px solid rgba(182, 134, 49, 0.35) !important;
     border-radius: 9999px !important;
-    color: #E94F37 !important;
+    color: #B68631 !important;
     font-weight: 700 !important;
   }
 }

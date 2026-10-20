@@ -9,16 +9,16 @@
   --font-bebas: 'Bebas Neue', sans-serif;
   --font-script: 'Pinyon Script', 'Allura', 'Monsieur La Doulaise', cursive;
   
-  --color-bg-dark: #F6F7EB;
+  --color-bg-dark: #F9F6F0;
   --color-bg-card: #393E41;
   --color-bg-card-hover: #43494d;
-  --color-accent-white: #F6F7EB;
-  --color-brand-gold: #E94F37;
+  --color-accent-white: #F9F6F0;
+  --color-brand-gold: #B68631;
   --color-text-muted: rgba(57, 62, 65, 0.7);
   --color-text-dim: rgba(57, 62, 65, 0.5);
   --color-border-dark: rgba(57, 62, 65, 0.15);
   --color-border-light: rgba(57, 62, 65, 0.1);
-  --color-border-hover: rgba(233, 79, 55, 0.4);
+  --color-border-hover: rgba(182, 134, 49, 0.4);
   
   --animate-marquee-left: marquee-left 55s linear infinite;
   --animate-marquee-right: marquee-right 55s linear infinite;
@@ -45,19 +45,19 @@
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F6F7EB;
+  background: #F9F6F0;
 }
 ::-webkit-scrollbar-thumb {
   background: #393E41;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #E94F37;
+  background: #B68631;
 }
 
 /* Base Body Style */
 body {
-  background-color: #F6F7EB;
+  background-color: #F9F6F0;
   color: #393E41;
   font-family: var(--font-sans);
 }
@@ -76,13 +76,13 @@ body {
   width: 100%;
   max-width: 1200px;
   height: 600px;
-  background: radial-gradient(circle 500px at 50% 0px, rgba(233, 79, 55, 0.05), transparent 70%);
+  background: radial-gradient(circle 500px at 50% 0px, rgba(182, 134, 49, 0.05), transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
 
 .spotlight-radial {
-  background: radial-gradient(circle 800px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(233, 79, 55, 0.03) 0%, transparent 60%);
+  background: radial-gradient(circle 800px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(182, 134, 49, 0.03) 0%, transparent 60%);
   transition: opacity 0.5s ease;
 }
 
@@ -176,7 +176,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle 300px at var(--mouse-x, 0) var(--mouse-y, 0), rgba(233, 79, 55, 0.12), transparent 70%);
+  background: radial-gradient(circle 300px at var(--mouse-x, 0) var(--mouse-y, 0), rgba(182, 134, 49, 0.12), transparent 70%);
   opacity: 0;
   transition: opacity 0.5s ease;
   pointer-events: none;
@@ -187,7 +187,7 @@ body {
 
 /* Hero mockup shadows and borders */
 .mockup-shadow {
-  box-shadow: 0px 30px 60px -15px rgba(57, 62, 65, 0.2), 0px 0px 50px 0px rgba(233, 79, 55, 0.05);
+  box-shadow: 0px 30px 60px -15px rgba(57, 62, 65, 0.2), 0px 0px 50px 0px rgba(182, 134, 49, 0.05);
 }
 
 /* Service Cards Widget Animations */
@@ -237,12 +237,12 @@ body {
 
 @keyframes node-glow {
   0%, 100% {
-    box-shadow: 0 0 4px rgba(233, 79, 55, 0.4);
-    border-color: rgba(233, 79, 55, 0.3);
+    box-shadow: 0 0 4px rgba(182, 134, 49, 0.4);
+    border-color: rgba(182, 134, 49, 0.3);
   }
   50% {
-    box-shadow: 0 0 12px rgba(233, 79, 55, 0.8);
-    border-color: rgba(233, 79, 55, 0.8);
+    box-shadow: 0 0 12px rgba(182, 134, 49, 0.8);
+    border-color: rgba(182, 134, 49, 0.8);
   }
 }
 
@@ -258,10 +258,10 @@ body {
   --font-heading: 'Inter Tight', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-body: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  --bg-primary: #F6F7EB;          /* Warm off-white background */
-  --bg-secondary: #F6F7EB;       /* Section background */
-  --gold-primary: #E94F37;       /* Eyebrow tag text color / primary */
-  --gold-secondary: #E94F37;     /* Hover accent */
+  --bg-primary: #F9F6F0;          /* Warm off-white background */
+  --bg-secondary: #F9F6F0;       /* Section background */
+  --gold-primary: #B68631;       /* Eyebrow tag text color / primary */
+  --gold-secondary: #B68631;     /* Hover accent */
   --text-white: #393E41;          /* Heading text on light background */
 }
 
@@ -380,18 +380,18 @@ body {
 }
 
 .tech-logo-card:hover {
-  border-color: #E94F37;
+  border-color: #B68631;
   background: #393E41;
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(233, 79, 55, 0.35);
+  box-shadow: 0 10px 30px rgba(182, 134, 49, 0.35);
 }
 
 .tech-icon-wrapper {
   width: 44px;
   height: 44px;
   border-radius: 8px;
-  background: rgba(246, 247, 235, 0.1);
-  border: 1px solid rgba(246, 247, 235, 0.15);
+  background: rgba(249, 246, 240, 0.1);
+  border: 1px solid rgba(249, 246, 240, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -400,7 +400,7 @@ body {
 }
 
 .tech-logo-card:hover .tech-icon-wrapper {
-  background: rgba(233, 79, 55, 0.25);
+  background: rgba(182, 134, 49, 0.25);
   border-color: var(--gold-primary);
 }
 
@@ -421,7 +421,7 @@ body {
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.03em;
-  color: #F6F7EB;
+  color: #F9F6F0;
   white-space: nowrap;
 }
 
@@ -438,9 +438,9 @@ body {
 .skeleton-shimmer {
   background: linear-gradient(
     90deg,
-    rgba(246, 247, 235, 0.04) 0%,
-    rgba(233, 79, 55, 0.15) 50%,
-    rgba(246, 247, 235, 0.04) 100%
+    rgba(249, 246, 240, 0.04) 0%,
+    rgba(182, 134, 49, 0.15) 50%,
+    rgba(249, 246, 240, 0.04) 100%
   );
   background-size: 200% 100%;
   animation: elite-skeleton-shimmer 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
@@ -450,7 +450,36 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .skeleton-shimmer {
     animation: none !important;
-    background: rgba(246, 247, 235, 0.06) !important;
+    background: rgba(249, 246, 240, 0.06) !important;
   }
 }
+
+/* ==========================================================================
+   HOMEPAGE SCROLL-DRIVEN SERVICES CARDS ANIMATION
+   ========================================================================== */
+.services-scroll-card {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  margin: 0 !important;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+}
+
+.services-scroll-card.services-card-active {
+  border-color: rgba(182, 134, 49, 0.85) !important;
+  box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.55), 0 0 0 1.5px rgba(182, 134, 49, 0.4), 0 0 35px rgba(182, 134, 49, 0.22) !important;
+  filter: brightness(1) !important;
+}
+
+.services-scroll-card:not(.services-card-active) {
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.35);
+  filter: brightness(0.85);
+}
+
+
 

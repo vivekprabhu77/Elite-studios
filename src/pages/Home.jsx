@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <Hero />
       <Technologies />
-      <Services />
+      <Services isHomepage={true} />
     </>
   );
 }

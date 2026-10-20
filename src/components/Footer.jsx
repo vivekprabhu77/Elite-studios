@@ -65,9 +65,9 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative z-10 overflow-hidden site-footer text-[#F6F7EB]/70">
+    <footer className="relative z-10 overflow-hidden site-footer text-[#F9F6F0]/70">
       {/* Full-bleed End-to-End TextLoop Ribbon acting as the curved border */}
-      <div className="w-full overflow-hidden bg-[#F6F7EB]">
+      <div className="w-full overflow-hidden bg-[#F9F6F0]">
         <TextLoop
           text="ELITE STUDIOS"
           shape="wave"
@@ -81,7 +81,7 @@ export default function Footer() {
           letterSpacing={isMobile ? 3 : 2.5}
           uppercase
           ribbon
-          ribbonColor="#E94F37"
+          ribbonColor="#B68631"
           ribbonWidth={isMobile ? 76 : 48}
           edgeFade={0}
           cross={false}
@@ -89,9 +89,9 @@ export default function Footer() {
           scrollBoost={0}
           outline={false}
           pauseOnHover
-          color="#F6F7EB"
+          color="#F9F6F0"
           viewHeight={isMobile ? 180 : 130}
-          splitTopColor="#F6F7EB"
+          splitTopColor="#F9F6F0"
           splitBottomColor="#393E41"
         />
       </div>
@@ -99,11 +99,11 @@ export default function Footer() {
       {/* Main Footer Body with Charcoal Background */}
       <div className="bg-[#393E41] relative -mt-[1px] pb-28 sm:pb-32 footer-body-wrapper">
         {/* Background radial spotlight highlight */}
-        <div className="absolute bottom-[-120px] left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-t from-[#E94F37]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none"></div>
+        <div className="absolute bottom-[-120px] left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-t from-[#B68631]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto w-full relative z-10 pt-8 sm:pt-12 px-6 md:px-12">
           {/* Top Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-16 border-b border-[#F6F7EB]/10 footer-grid">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-16 border-b border-[#F9F6F0]/10 footer-grid">
 
           {/* Logo & Pitch */}
           <div className="lg:col-span-5 flex flex-col items-start text-left footer-brand-col">
@@ -114,14 +114,14 @@ export default function Footer() {
                 className="h-32 sm:h-36 lg:h-40 w-auto object-contain mb-5 select-none footer-logo-img"
               />
             </Link>
-            <p className="text-xs sm:text-sm text-[#F6F7EB]/75 font-normal leading-relaxed max-w-md footer-pitch-text">
+            <p className="text-xs sm:text-sm text-[#F9F6F0]/75 font-normal leading-relaxed max-w-md footer-pitch-text">
               We design and engineer digital interfaces that demand attention. Crafting luxury minimalism, bespoke branding, and high-performance React frontends.
             </p>
           </div>
 
           {/* Quick Links Column */}
           <div className="lg:col-span-2 flex flex-col items-start text-left footer-nav-col">
-            <h4 className="text-xs uppercase font-bold tracking-[0.25em] text-[#E94F37] font-display mb-6 footer-col-heading">
+            <h4 className="text-xs uppercase font-bold tracking-[0.25em] text-[#B68631] font-display mb-6 footer-col-heading">
               Navigation
             </h4>
             <div className="flex flex-col gap-2.5 text-xs w-full footer-links-group">
@@ -129,9 +129,9 @@ export default function Footer() {
                 <Link
                   key={item.label}
                   to={item.to}
-                  className="hover:text-[#E94F37] text-[#F6F7EB]/90 transition-all duration-300 tracking-wider uppercase text-[11px] font-bold flex items-center gap-2.5 group py-2.5 px-3.5 rounded-lg bg-black/20 border border-[#F6F7EB]/10 hover:bg-[#E94F37]/15 hover:border-[#E94F37]/50 footer-link-item"
+                  className="hover:text-[#B68631] text-[#F9F6F0]/90 transition-all duration-300 tracking-wider uppercase text-[11px] font-bold flex items-center gap-2.5 group py-2.5 px-3.5 rounded-lg bg-black/20 border border-[#F9F6F0]/10 hover:bg-[#B68631]/15 hover:border-[#B68631]/50 footer-link-item"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#E94F37] opacity-60 group-hover:opacity-100 group-hover:scale-125 transition-all duration-300 shrink-0"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#B68631] opacity-60 group-hover:opacity-100 group-hover:scale-125 transition-all duration-300 shrink-0"></span>
                   <span>{item.label}</span>
                 </Link>
               ))}
@@ -140,7 +140,7 @@ export default function Footer() {
 
           {/* Socials Column */}
           <div className="lg:col-span-2 flex flex-col items-start text-left footer-social-col">
-            <h4 className="text-xs uppercase font-bold tracking-[0.25em] text-[#E94F37] font-display mb-6 footer-col-heading">
+            <h4 className="text-xs uppercase font-bold tracking-[0.25em] text-[#B68631] font-display mb-6 footer-col-heading">
               Socials
             </h4>
             <div className="flex flex-col gap-2.5 text-xs w-full footer-links-group">
@@ -150,9 +150,9 @@ export default function Footer() {
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-xs font-semibold text-[#F6F7EB]/90 hover:text-[#E94F37] transition-all duration-300 group py-2.5 px-3.5 rounded-lg bg-black/20 border border-[#F6F7EB]/10 hover:bg-[#E94F37]/15 hover:border-[#E94F37]/50 footer-link-item"
+                  className="flex items-center gap-3 text-xs font-semibold text-[#F9F6F0]/90 hover:text-[#B68631] transition-all duration-300 group py-2.5 px-3.5 rounded-lg bg-black/20 border border-[#F9F6F0]/10 hover:bg-[#B68631]/15 hover:border-[#B68631]/50 footer-link-item"
                 >
-                  <span className="p-1 rounded-md bg-white/[0.08] text-[#F6F7EB] group-hover:bg-[#E94F37] group-hover:text-[#F6F7EB] transition-all duration-300 shrink-0">
+                  <span className="p-1 rounded-md bg-white/[0.08] text-[#F9F6F0] group-hover:bg-[#B68631] group-hover:text-[#F9F6F0] transition-all duration-300 shrink-0">
                     {item.icon}
                   </span>
                   <span className="tracking-wider uppercase text-[11px] font-bold">{item.label}</span>
@@ -163,26 +163,26 @@ export default function Footer() {
 
           {/* Contact / Office Column */}
           <div className="lg:col-span-3 flex flex-col items-start text-left footer-contact-col">
-            <h4 className="text-xs uppercase font-bold tracking-[0.25em] text-[#E94F37] font-display mb-6 footer-col-heading">
+            <h4 className="text-xs uppercase font-bold tracking-[0.25em] text-[#B68631] font-display mb-6 footer-col-heading">
               Elite Office
             </h4>
             <div className="flex flex-col gap-2.5 text-xs font-light w-full footer-contact-group">
-              <div className="flex flex-col gap-1 text-[#F6F7EB]/90 py-2 px-3 rounded-lg bg-black/20 border border-[#F6F7EB]/10">
-                <span className="text-[#F6F7EB] font-semibold text-sm">Siddapura</span>
-                <span className="text-xs text-[#F6F7EB]/70">Karnataka, India</span>
-                <span className="text-[11px] text-[#F6F7EB]/70 font-mono mt-1 pt-1 border-t border-[#F6F7EB]/10">Mon - Sat: 10:30 AM - 8:00 PM</span>
+              <div className="flex flex-col gap-1 text-[#F9F6F0]/90 py-2 px-3 rounded-lg bg-black/20 border border-[#F9F6F0]/10">
+                <span className="text-[#F9F6F0] font-semibold text-sm">Siddapura</span>
+                <span className="text-xs text-[#F9F6F0]/70">Karnataka, India</span>
+                <span className="text-[11px] text-[#F9F6F0]/70 font-mono mt-1 pt-1 border-t border-[#F9F6F0]/10">Mon - Sat: 10:30 AM - 8:00 PM</span>
               </div>
               <a
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=elitestudiossiddapura@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 text-[#F6F7EB]/90 hover:text-[#E94F37] transition-all duration-300 text-xs font-semibold py-2.5 px-3.5 rounded-lg bg-black/20 border border-[#F6F7EB]/10 hover:bg-[#E94F37]/15 hover:border-[#E94F37]/50 footer-email-btn"
+                className="flex items-center gap-2.5 text-[#F9F6F0]/90 hover:text-[#B68631] transition-all duration-300 text-xs font-semibold py-2.5 px-3.5 rounded-lg bg-black/20 border border-[#F9F6F0]/10 hover:bg-[#B68631]/15 hover:border-[#B68631]/50 footer-email-btn"
               >
                 <span>elitestudiossiddapura@gmail.com</span>
               </a>
               <a
                 href="tel:+917259174667"
-                className="flex items-center gap-2.5 text-[#F6F7EB]/90 hover:text-[#E94F37] transition-all duration-300 text-xs font-semibold py-2.5 px-3.5 rounded-lg bg-black/20 border border-[#F6F7EB]/10 hover:bg-[#E94F37]/15 hover:border-[#E94F37]/50 footer-phone-btn"
+                className="flex items-center gap-2.5 text-[#F9F6F0]/90 hover:text-[#B68631] transition-all duration-300 text-xs font-semibold py-2.5 px-3.5 rounded-lg bg-black/20 border border-[#F9F6F0]/10 hover:bg-[#B68631]/15 hover:border-[#B68631]/50 footer-phone-btn"
               >
                 <span>+91 7259174667</span>
               </a>
@@ -192,20 +192,20 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-mono tracking-widest uppercase text-[#F6F7EB]/50 footer-bottom pr-0 sm:pr-24">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-mono tracking-widest uppercase text-[#F9F6F0]/50 footer-bottom pr-0 sm:pr-24">
           <span>&copy; {currentYear} ELITE STUDIOS. ALL RIGHTS RESERVED.</span>
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-            <a href="#privacy" className="hover:text-[#F6F7EB] transition-colors duration-300 py-1 px-1.5">PRIVACY POLICY</a>
+            <a href="#privacy" className="hover:text-[#F9F6F0] transition-colors duration-300 py-1 px-1.5">PRIVACY POLICY</a>
             <Link
               to="/terms"
-              className="py-1.5 px-3.5 rounded-md bg-[#E94F37]/15 text-[#E94F37] border border-[#E94F37]/40 hover:bg-[#E94F37] hover:text-[#F6F7EB] font-semibold transition-all duration-300 inline-flex items-center gap-1.5 cursor-pointer"
+              className="py-1.5 px-3.5 rounded-md bg-[#B68631]/15 text-[#B68631] border border-[#B68631]/40 hover:bg-[#B68631] hover:text-[#F9F6F0] font-semibold transition-all duration-300 inline-flex items-center gap-1.5 cursor-pointer"
             >
               <span>TERMS OF SERVICE</span>
               <span className="text-xs">&rarr;</span>
             </Link>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="hover:text-[#E94F37] transition-colors duration-300 flex items-center gap-1 font-bold text-[#F6F7EB]/60 py-1 px-1.5 cursor-pointer"
+              className="hover:text-[#B68631] transition-colors duration-300 flex items-center gap-1 font-bold text-[#F9F6F0]/60 py-1 px-1.5 cursor-pointer"
             >
               <span>TOP</span>
               <span>&uarr;</span>

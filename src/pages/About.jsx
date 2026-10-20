@@ -6,14 +6,14 @@ import FinalCTA from '../components/FinalCTA';
 
 export default function About() {
   return (
-    <div className="pt-24 md:pt-32 pb-8 bg-[#F6F7EB] text-[#393E41]">
+    <div className="pt-24 md:pt-32 pb-8 bg-[#F9F6F0] text-[#393E41]">
       {/* About Page Hero */}
       <section className="px-6 md:px-12 max-w-7xl mx-auto mb-20 md:mb-28 text-left">
-        <span className="text-xs uppercase tracking-[0.25em] text-[#E94F37] font-bold block mb-4 font-display">
+        <span className="text-xs uppercase tracking-[0.25em] text-[#B68631] font-bold block mb-4 font-display">
           ABOUT ELITE STUDIOS
         </span>
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight uppercase leading-[1.05] font-creative mb-8 max-w-5xl text-[#393E41]">
-          CRAFT, DISCIPLINE, AND <span className="text-[#E94F37]">UNCOMPROMISING</span> DETAIL.
+          CRAFT, DISCIPLINE, AND <span className="text-[#B68631]">UNCOMPROMISING</span> DETAIL.
         </h1>
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-8 border-t border-[#393E41]/10 items-start">
@@ -28,20 +28,20 @@ export default function About() {
           
           <div className="lg:col-span-5 grid grid-cols-2 gap-6 bg-[#393E41] p-6 border border-[#393E41] rounded-2xl shadow-lg">
             <div>
-              <span className="block text-3xl font-extrabold text-[#E94F37] font-display">2021</span>
-              <span className="text-[10px] uppercase tracking-widest text-[#F6F7EB]/60 font-mono">Founded</span>
+              <span className="block text-3xl font-extrabold text-[#B68631] font-display">2021</span>
+              <span className="text-[10px] uppercase tracking-widest text-[#F9F6F0]/60 font-mono">Founded</span>
             </div>
             <div>
-              <span className="block text-3xl font-extrabold text-[#F6F7EB] font-display">600+</span>
-              <span className="text-[10px] uppercase tracking-widest text-[#F6F7EB]/60 font-mono">Projects Delivered</span>
+              <span className="block text-3xl font-extrabold text-[#F9F6F0] font-display">600+</span>
+              <span className="text-[10px] uppercase tracking-widest text-[#F9F6F0]/60 font-mono">Projects Delivered</span>
             </div>
             <div>
-              <span className="block text-3xl font-extrabold text-[#F6F7EB] font-display">100%</span>
-              <span className="text-[10px] uppercase tracking-widest text-[#F6F7EB]/60 font-mono">Custom Built</span>
+              <span className="block text-3xl font-extrabold text-[#F9F6F0] font-display">100%</span>
+              <span className="text-[10px] uppercase tracking-widest text-[#F9F6F0]/60 font-mono">Custom Built</span>
             </div>
             <div>
-              <span className="block text-3xl font-extrabold text-[#E94F37] font-display">INDIAN</span>
-              <span className="text-[10px] uppercase tracking-widest text-[#F6F7EB]/60 font-mono">Client Base</span>
+              <span className="block text-3xl font-extrabold text-[#B68631] font-display">INDIAN</span>
+              <span className="text-[10px] uppercase tracking-widest text-[#F9F6F0]/60 font-mono">Client Base</span>
             </div>
           </div>
         </div>

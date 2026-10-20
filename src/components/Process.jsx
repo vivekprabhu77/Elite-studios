@@ -163,9 +163,9 @@ export default function Process() {
       // LAYER 1 — Background atmosphere
       // ════════════════════════════════════════════
       const bg = ctx.createRadialGradient(cx, cy, 0, cx, cy, sx * 1.6);
-      bg.addColorStop(0, 'rgba(233,79,55,0.05)');
-      bg.addColorStop(0.4, 'rgba(233,79,55,0.015)');
-      bg.addColorStop(1, 'rgba(246,247,235,0)');
+      bg.addColorStop(0, 'rgba(182,134,49,0.05)');
+      bg.addColorStop(0.4, 'rgba(182,134,49,0.015)');
+      bg.addColorStop(1, 'rgba(249,246,240,0)');
       ctx.fillStyle = bg;
       ctx.fillRect(0, 0, w, h);
 
@@ -187,7 +187,7 @@ export default function Process() {
         i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
       }
       ctx.closePath();
-      ctx.strokeStyle = 'rgba(233,79,55,0.03)';
+      ctx.strokeStyle = 'rgba(182,134,49,0.03)';
       ctx.lineWidth = 42;
       ctx.lineCap = 'round'; ctx.lineJoin = 'round';
       ctx.stroke();
@@ -200,7 +200,7 @@ export default function Process() {
         i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
       }
       ctx.closePath();
-      ctx.strokeStyle = 'rgba(233,79,55,0.06)';
+      ctx.strokeStyle = 'rgba(182,134,49,0.06)';
       ctx.lineWidth = 14;
       ctx.stroke();
 
@@ -225,7 +225,7 @@ export default function Process() {
         if (p1.depth <= 0.05) continue;
         const df = 0.5 + 0.5 * p1.depth;
         ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y);
-        ctx.strokeStyle = `rgba(233,79,55,${0.08 + 0.18 * df})`;
+        ctx.strokeStyle = `rgba(182,134,49,${0.08 + 0.18 * df})`;
         ctx.lineWidth = 1.5 + df * 1; ctx.lineCap = 'round'; ctx.stroke();
       }
 
@@ -255,24 +255,24 @@ export default function Process() {
         const alpha = intensity * 0.55;
         const lw = 1.2 + intensity * 8;
         ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y);
-        ctx.strokeStyle = `rgba(233,79,55,${alpha})`;
+        ctx.strokeStyle = `rgba(182,134,49,${alpha})`;
         ctx.lineWidth = lw; ctx.lineCap = 'round'; ctx.stroke();
       }
 
       // Head glow
       const headPt = lem(progress, cx, cy, sx, sy);
       const hg = ctx.createRadialGradient(headPt.x, headPt.y, 0, headPt.x, headPt.y, 36);
-      hg.addColorStop(0, 'rgba(233,79,55,0.5)');
-      hg.addColorStop(0.2, 'rgba(233,79,55,0.25)');
-      hg.addColorStop(0.5, 'rgba(233,79,55,0.08)');
-      hg.addColorStop(1, 'rgba(233,79,55,0)');
+      hg.addColorStop(0, 'rgba(182,134,49,0.5)');
+      hg.addColorStop(0.2, 'rgba(182,134,49,0.25)');
+      hg.addColorStop(0.5, 'rgba(182,134,49,0.08)');
+      hg.addColorStop(1, 'rgba(182,134,49,0)');
       ctx.beginPath(); ctx.arc(headPt.x, headPt.y, 36, 0, Math.PI * 2);
       ctx.fillStyle = hg; ctx.fill();
 
       // Core bead
       const cg = ctx.createRadialGradient(headPt.x - 1, headPt.y - 1, 0, headPt.x, headPt.y, 5.5);
       cg.addColorStop(0, '#FFFFFF');
-      cg.addColorStop(0.45, '#E94F37');
+      cg.addColorStop(0.45, '#B68631');
       cg.addColorStop(1, '#393E41');
       ctx.beginPath(); ctx.arc(headPt.x, headPt.y, 5.5, 0, Math.PI * 2);
       ctx.fillStyle = cg; ctx.fill();
@@ -288,13 +288,13 @@ export default function Process() {
         const p1 = lem(a1, cx, cy, sx, sy), p2 = lem(a2, cx, cy, sx, sy);
         const intensity = Math.pow(frac, 2);
         ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y);
-        ctx.strokeStyle = `rgba(233,79,55,${intensity * 0.22})`;
+        ctx.strokeStyle = `rgba(182,134,49,${intensity * 0.22})`;
         ctx.lineWidth = 1 + intensity * 3; ctx.lineCap = 'round'; ctx.stroke();
       }
       const secPt = lem(secP, cx, cy, sx, sy);
       const sg = ctx.createRadialGradient(secPt.x, secPt.y, 0, secPt.x, secPt.y, 16);
-      sg.addColorStop(0, 'rgba(233,79,55,0.22)');
-      sg.addColorStop(1, 'rgba(233,79,55,0)');
+      sg.addColorStop(0, 'rgba(182,134,49,0.22)');
+      sg.addColorStop(1, 'rgba(182,134,49,0)');
       ctx.beginPath(); ctx.arc(secPt.x, secPt.y, 16, 0, Math.PI * 2);
       ctx.fillStyle = sg; ctx.fill();
 
@@ -316,7 +316,7 @@ export default function Process() {
         if (wp.life <= 0) { wisps.splice(i, 1); continue; }
         ctx.beginPath();
         ctx.arc(wp.x, wp.y, wp.size * wp.life, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(233,79,55,${wp.life * 0.35})`;
+        ctx.fillStyle = `rgba(182,134,49,${wp.life * 0.35})`;
         ctx.fill();
       }
       if (wisps.length > 50) wisps.splice(0, wisps.length - 50);
@@ -341,13 +341,13 @@ export default function Process() {
           const tf = ti / p.trail.length;
           ctx.beginPath();
           ctx.arc(p.trail[ti].x, p.trail[ti].y, p.size * tf * 0.5, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(233,79,55,${tf * p.bright * 0.18})`;
+          ctx.fillStyle = `rgba(182,134,49,${tf * p.bright * 0.18})`;
           ctx.fill();
         }
         const dm = 0.35 + 0.65 * (0.5 + 0.5 * base.depth);
         ctx.beginPath();
         ctx.arc(px, py, p.size * dm, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(233,79,55,${p.bright * 0.35 * dm})`;
+        ctx.fillStyle = `rgba(182,134,49,${p.bright * 0.35 * dm})`;
         ctx.fill();
       });
 
@@ -355,9 +355,9 @@ export default function Process() {
       // LAYER 8 — Center nexus
       // ════════════════════════════════════════════
       const ng = ctx.createRadialGradient(cx, cy, 0, cx, cy, 50);
-      ng.addColorStop(0, `rgba(233,79,55,${0.08 + 0.03 * Math.sin(T * 0.0015)})`);
-      ng.addColorStop(0.4, 'rgba(233,79,55,0.02)');
-      ng.addColorStop(1, 'rgba(233,79,55,0)');
+      ng.addColorStop(0, `rgba(182,134,49,${0.08 + 0.03 * Math.sin(T * 0.0015)})`);
+      ng.addColorStop(0.4, 'rgba(182,134,49,0.02)');
+      ng.addColorStop(1, 'rgba(182,134,49,0)');
       ctx.beginPath(); ctx.arc(cx, cy, 50, 0, Math.PI * 2);
       ctx.fillStyle = ng; ctx.fill();
 
@@ -366,14 +366,14 @@ export default function Process() {
         const rl = 25 + 7 * Math.sin(T * 0.001 + r * 2);
         ctx.beginPath(); ctx.moveTo(cx, cy);
         ctx.lineTo(cx + Math.cos(ra) * rl, cy + Math.sin(ra) * rl);
-        ctx.strokeStyle = `rgba(233,79,55,${0.05 + 0.03 * Math.sin(T * 0.0012 + r)})`;
+        ctx.strokeStyle = `rgba(182,134,49,${0.05 + 0.03 * Math.sin(T * 0.0012 + r)})`;
         ctx.lineWidth = 0.8; ctx.stroke();
       }
 
       const cn = ctx.createRadialGradient(cx, cy, 0, cx, cy, 4);
       cn.addColorStop(0, 'rgba(255,255,255,0.7)');
-      cn.addColorStop(0.5, 'rgba(233,79,55,0.25)');
-      cn.addColorStop(1, 'rgba(233,79,55,0)');
+      cn.addColorStop(0.5, 'rgba(182,134,49,0.25)');
+      cn.addColorStop(1, 'rgba(182,134,49,0)');
       ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI * 2);
       ctx.fillStyle = cn; ctx.fill();
 
@@ -390,8 +390,8 @@ export default function Process() {
           const gr = 30 + 20 * proximity;
           const ga = 0.28 * Math.pow(proximity, 1.3);
           const pg = ctx.createRadialGradient(pt.x, pt.y, 8, pt.x, pt.y, gr);
-          pg.addColorStop(0, `rgba(233,79,55,${ga})`);
-          pg.addColorStop(1, 'rgba(233,79,55,0)');
+          pg.addColorStop(0, `rgba(182,134,49,${ga})`);
+          pg.addColorStop(1, 'rgba(182,134,49,0)');
           ctx.beginPath(); ctx.arc(pt.x, pt.y, gr, 0, Math.PI * 2);
           ctx.fillStyle = pg; ctx.fill();
         }
@@ -401,11 +401,11 @@ export default function Process() {
           const pr = 30 + 4 * Math.sin(T * 0.002);
           ctx.beginPath();
           ctx.arc(pt.x, pt.y, pr, T * 0.0015, T * 0.0015 + Math.PI * 0.5);
-          ctx.strokeStyle = 'rgba(233,79,55,0.35)';
+          ctx.strokeStyle = 'rgba(182,134,49,0.35)';
           ctx.lineWidth = 1.3; ctx.stroke();
           ctx.beginPath();
           ctx.arc(pt.x, pt.y, pr, T * 0.0015 + Math.PI, T * 0.0015 + Math.PI * 1.3);
-          ctx.strokeStyle = 'rgba(233,79,55,0.15)';
+          ctx.strokeStyle = 'rgba(182,134,49,0.15)';
           ctx.lineWidth = 0.8; ctx.stroke();
         }
       });
@@ -431,15 +431,15 @@ export default function Process() {
   const step = STEPS[active];
 
   return (
-    <section id="process" className="py-12 md:py-16 px-6 md:px-12 bg-[#F6F7EB] relative overflow-hidden border-b border-[#393E41]/10">
-      <div className="absolute top-[10%] left-[-15%] w-[500px] h-[500px] bg-[#E94F37]/[0.03] rounded-full blur-[120px] pointer-events-none" />
+    <section id="process" className="py-12 md:py-16 px-6 md:px-12 bg-[#F9F6F0] relative overflow-hidden border-b border-[#393E41]/10">
+      <div className="absolute top-[10%] left-[-15%] w-[500px] h-[500px] bg-[#B68631]/[0.03] rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto w-full">
         {/* Header */}
         <div className={`mb-4 md:mb-6 text-left transition-all duration-1000 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="text-xs uppercase tracking-widest text-[#E94F37] font-bold block mb-2 font-display">Our Method</span>
+          <span className="text-xs uppercase tracking-widest text-[#B68631] font-bold block mb-2 font-display">Our Method</span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#393E41] tracking-tight leading-none font-creative">
-            THE CREATIVE <span className="text-[#E94F37]">PROCESS</span>
+            THE CREATIVE <span className="text-[#B68631]">PROCESS</span>
           </h2>
         </div>
 
@@ -464,19 +464,19 @@ export default function Process() {
                 <div
                   className={`relative flex items-center justify-center rounded-full transition-all duration-700 ease-out
                     ${isActive
-                      ? 'w-12 h-12 sm:w-14 sm:h-14 border-[1.5px] border-[#E94F37] bg-[#393E41] shadow-[0_4px_24px_rgba(57,62,65,0.2),0_0_40px_rgba(233,79,55,0.25)]'
-                      : 'w-9 h-9 sm:w-11 sm:h-11 border border-[#393E41]/20 bg-[#F6F7EB] group-hover:border-[#E94F37]/50 group-hover:bg-[#393E41]'
+                      ? 'w-12 h-12 sm:w-14 sm:h-14 border-[1.5px] border-[#B68631] bg-[#393E41] shadow-[0_4px_24px_rgba(57,62,65,0.2),0_0_40px_rgba(182,134,49,0.25)]'
+                      : 'w-9 h-9 sm:w-11 sm:h-11 border border-[#393E41]/20 bg-[#F9F6F0] group-hover:border-[#B68631]/50 group-hover:bg-[#393E41]'
                     }`}
                   style={{ backdropFilter: 'blur(12px)' }}
                 >
-                  <span className={`transition-all duration-500 font-display font-bold ${isActive ? 'text-[#F6F7EB] text-xs sm:text-sm' : 'text-[#393E41]/60 text-[11px] sm:text-xs group-hover:text-[#F6F7EB]'}`}>
+                  <span className={`transition-all duration-500 font-display font-bold ${isActive ? 'text-[#F9F6F0] text-xs sm:text-sm' : 'text-[#393E41]/60 text-[11px] sm:text-xs group-hover:text-[#F9F6F0]'}`}>
                     {s.num}
                   </span>
-                  {isActive && <span className="absolute inset-0 rounded-full border border-[#E94F37]/40 animate-[ping_2.5s_cubic-bezier(0,0,0.2,1)_infinite]" />}
+                  {isActive && <span className="absolute inset-0 rounded-full border border-[#B68631]/40 animate-[ping_2.5s_cubic-bezier(0,0,0.2,1)_infinite]" />}
                 </div>
                 <span className={`absolute left-1/2 -translate-x-1/2 whitespace-nowrap font-display uppercase tracking-[0.15em] transition-all duration-500
                   ${isActive
-                    ? 'text-[10px] sm:text-[11px] font-bold text-[#E94F37] top-full mt-1.5'
+                    ? 'text-[10px] sm:text-[11px] font-bold text-[#B68631] top-full mt-1.5'
                     : 'text-[8px] sm:text-[9px] font-medium text-[#393E41]/50 top-full mt-1 group-hover:text-[#393E41]'
                   }`}>
                   {s.phase}
@@ -490,8 +490,8 @@ export default function Process() {
         <div className={`mt-4 md:mt-6 text-center max-w-2xl mx-auto transition-all duration-700 delay-300 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
           <div key={active} className="process-fade-in">
             <div className="flex items-center justify-center gap-3 mb-2">
-              <span className="w-8 h-8 flex items-center justify-center rounded-full border border-[#E94F37]/30 text-[#E94F37] bg-[#E94F37]/10">{step.icon}</span>
-              <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[#E94F37] font-bold font-display">{step.phase}</span>
+              <span className="w-8 h-8 flex items-center justify-center rounded-full border border-[#B68631]/30 text-[#B68631] bg-[#B68631]/10">{step.icon}</span>
+              <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[#B68631] font-bold font-display">{step.phase}</span>
             </div>
             <h3 className="text-lg md:text-xl font-bold text-[#393E41] tracking-tight mb-2 font-display">{step.title}</h3>
             <p className="text-xs sm:text-sm text-[#393E41]/75 font-light leading-relaxed max-w-lg mx-auto">{step.desc}</p>
@@ -506,18 +506,18 @@ export default function Process() {
                 onClick={() => jumpToStep(idx)}
                 className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border text-[10px] sm:text-xs font-bold tracking-wider uppercase cursor-pointer font-display transition-all duration-400
                   ${idx === active
-                    ? 'border-[#E94F37] bg-[#393E41] text-[#F6F7EB] shadow-[0_4px_16px_rgba(57,62,65,0.15)]'
-                    : 'border-[#393E41]/15 bg-[#F6F7EB] text-[#393E41]/60 hover:text-[#393E41] hover:border-[#393E41]/30'
+                    ? 'border-[#B68631] bg-[#393E41] text-[#F9F6F0] shadow-[0_4px_16px_rgba(57,62,65,0.15)]'
+                    : 'border-[#393E41]/15 bg-[#F9F6F0] text-[#393E41]/60 hover:text-[#393E41] hover:border-[#393E41]/30'
                   }`}
               >
                 <span className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center text-[9px] sm:text-[10px] font-bold
-                  ${idx === active ? 'bg-[#E94F37] text-[#F6F7EB]' : 'bg-[#393E41]/10 text-[#393E41]/70'}`}>
+                  ${idx === active ? 'bg-[#B68631] text-[#F9F6F0]' : 'bg-[#393E41]/10 text-[#393E41]/70'}`}>
                   {idx + 1}
                 </span>
                 <span className="hidden sm:inline">{s.phase}</span>
               </button>
               {idx < STEPS.length - 1 && (
-                <div className={`w-4 sm:w-8 h-[1px] transition-all duration-500 ${idx < active ? 'bg-[#E94F37]/40' : 'bg-[#393E41]/10'}`} />
+                <div className={`w-4 sm:w-8 h-[1px] transition-all duration-500 ${idx < active ? 'bg-[#B68631]/40' : 'bg-[#393E41]/10'}`} />
               )}
             </React.Fragment>
           ))}
@@ -526,9 +526,9 @@ export default function Process() {
         <div className="flex items-center justify-center mt-3 gap-0">
           {STEPS.map((_, idx) => (
             <React.Fragment key={idx}>
-              <div className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${idx === active ? 'bg-[#E94F37] scale-125' : idx < active ? 'bg-[#E94F37]/40' : 'bg-[#393E41]/15'}`} />
+              <div className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${idx === active ? 'bg-[#B68631] scale-125' : idx < active ? 'bg-[#B68631]/40' : 'bg-[#393E41]/15'}`} />
               {idx < STEPS.length - 1 && (
-                <div className={`w-6 sm:w-10 h-[1px] transition-all duration-500 ${idx < active ? 'bg-gradient-to-r from-[#E94F37]/40 to-[#E94F37]/10' : 'bg-[#393E41]/10'}`} />
+                <div className={`w-6 sm:w-10 h-[1px] transition-all duration-500 ${idx < active ? 'bg-gradient-to-r from-[#B68631]/40 to-[#B68631]/10' : 'bg-[#393E41]/10'}`} />
               )}
             </React.Fragment>
           ))}

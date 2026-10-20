@@ -116,7 +116,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="relative bg-[#F6F7EB] text-[#393E41] min-h-screen selection:bg-[#E94F37] selection:text-[#F6F7EB] overflow-x-hidden">
+    <div className="relative bg-[#F9F6F0] text-[#393E41] min-h-screen selection:bg-[#B68631] selection:text-[#F9F6F0] overflow-x-clip">
 
       {/* Subtle Grain Overlay over the whole site */}
       <div className="grain-overlay" aria-hidden="true"></div>
