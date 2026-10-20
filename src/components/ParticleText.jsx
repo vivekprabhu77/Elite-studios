@@ -407,26 +407,91 @@ export default function ParticleText(props) {
     });
     ro.observe(container);
 
-    const onMove = (e) => {
-      if (!mcEnabled) return;
+    const getCoords = (clientX, clientY) => {
       const rect = canvas.getBoundingClientRect();
-
       const scaleX = rect.width > 0 ? cssW / rect.width : 1;
       const scaleY = rect.height > 0 ? cssH / rect.height : 1;
-      const mx = (e.clientX - rect.left) * scaleX;
-      const my = (e.clientY - rect.top) * scaleY;
+      return {
+        x: (clientX - rect.left) * scaleX,
+        y: (clientY - rect.top) * scaleY,
+      };
+    };
+
+    const triggerDisperse = (cx, cy, intensity = 1.0) => {
+      if (count <= 0) return;
+      const radius = Math.max(90, mcRadius * 1.5);
+      const radiusSq = radius * radius;
+      for (let i = 0; i < count; i++) {
+        const dx = ox[i] - cx;
+        const dy = oy[i] - cy;
+        const distSq = dx * dx + dy * dy;
+        if (distSq < radiusSq) {
+          const dist = Math.max(1, Math.sqrt(distSq));
+          const nx = dx / dist;
+          const ny = dy / dist;
+          const falloff = 1 - dist / radius;
+          const force = falloff * falloff * (mcForce * 2.2 + 38) * intensity;
+          repX[i] += nx * force + (Math.random() - 0.5) * 8;
+          repY[i] += ny * force + (Math.random() - 0.5) * 8;
+        }
+      }
+    };
+
+    const onMove = (e) => {
+      if (!mcEnabled) return;
+      const clientX = e.touches && e.touches.length > 0 ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches && e.touches.length > 0 ? e.touches[0].clientY : e.clientY;
+      const { x, y } = getCoords(clientX, clientY);
 
       if (prevMx > -9000) {
-        const ddx = mx - prevMx;
-        const ddy = my - prevMy;
-        mouseSpeed = Math.sqrt(ddx * ddx + ddy * ddy);
+        const ddx = x - prevMx;
+        const ddy = y - prevMy;
+        mouseSpeed = Math.max(12, Math.sqrt(ddx * ddx + ddy * ddy));
+      } else {
+        mouseSpeed = 22;
       }
-      prevMx = mx;
-      prevMy = my;
-      pointerRef.current.x = mx;
-      pointerRef.current.y = my;
+      prevMx = x;
+      prevMy = y;
+      pointerRef.current.x = x;
+      pointerRef.current.y = y;
       pointerRef.current.active = true;
+
+      // On active drag / touch rub: immediate tactile separation force
+      const rubRadius = Math.max(75, mcRadius * 1.15);
+      const rubRadiusSq = rubRadius * rubRadius;
+      for (let i = 0; i < count; i++) {
+        const dx = ox[i] - x;
+        const dy = oy[i] - y;
+        const distSq = dx * dx + dy * dy;
+        if (distSq < rubRadiusSq) {
+          const dist = Math.max(1, Math.sqrt(distSq));
+          const nx = dx / dist;
+          const ny = dy / dist;
+          const falloff = 1 - dist / rubRadius;
+          const rubPush = falloff * 8;
+          repX[i] += nx * rubPush;
+          repY[i] += ny * rubPush;
+        }
+      }
     };
+
+    const onDown = (e) => {
+      if (!mcEnabled) return;
+      const clientX = e.touches && e.touches.length > 0 ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches && e.touches.length > 0 ? e.touches[0].clientY : e.clientY;
+      const { x, y } = getCoords(clientX, clientY);
+
+      prevMx = x;
+      prevMy = y;
+      mouseSpeed = 25;
+      pointerRef.current.x = x;
+      pointerRef.current.y = y;
+      pointerRef.current.active = true;
+
+      // Tap / Click separation shockwave:
+      triggerDisperse(x, y, 1.25);
+    };
+
     const onLeave = () => {
       pointerRef.current.x = -99999;
       pointerRef.current.y = -99999;
@@ -434,9 +499,26 @@ export default function ParticleText(props) {
       prevMx = -99999;
       prevMy = -99999;
     };
+
+    const onClick = (e) => {
+      if (!mcEnabled) return;
+      const { x, y } = getCoords(e.clientX, e.clientY);
+      triggerDisperse(x, y, 1.5);
+    };
+
     canvas.addEventListener('pointermove', onMove);
+    canvas.addEventListener('pointerdown', onDown);
+    canvas.addEventListener('pointerup', onLeave);
     canvas.addEventListener('pointerleave', onLeave);
     canvas.addEventListener('pointercancel', onLeave);
+
+    // Dedicated touch listeners for mobile rub and tap
+    canvas.addEventListener('touchstart', onDown, { passive: true });
+    canvas.addEventListener('touchmove', onMove, { passive: true });
+    canvas.addEventListener('touchend', onLeave, { passive: true });
+    canvas.addEventListener('touchcancel', onLeave, { passive: true });
+
+    canvas.addEventListener('click', onClick);
 
     let containerIo = null;
     let heroIo = null;
@@ -669,8 +751,15 @@ export default function ParticleText(props) {
       staticDraw();
       return () => {
         canvas.removeEventListener('pointermove', onMove);
+        canvas.removeEventListener('pointerdown', onDown);
+        canvas.removeEventListener('pointerup', onLeave);
         canvas.removeEventListener('pointerleave', onLeave);
         canvas.removeEventListener('pointercancel', onLeave);
+        canvas.removeEventListener('touchstart', onDown);
+        canvas.removeEventListener('touchmove', onMove);
+        canvas.removeEventListener('touchend', onLeave);
+        canvas.removeEventListener('touchcancel', onLeave);
+        canvas.removeEventListener('click', onClick);
         removeTriggers();
         ro.disconnect();
       };
@@ -685,8 +774,15 @@ export default function ParticleText(props) {
     return () => {
       if (rafRef.current != null) cancelAnimationFrame(rafRef.current);
       canvas.removeEventListener('pointermove', onMove);
+      canvas.removeEventListener('pointerdown', onDown);
+      canvas.removeEventListener('pointerup', onLeave);
       canvas.removeEventListener('pointerleave', onLeave);
       canvas.removeEventListener('pointercancel', onLeave);
+      canvas.removeEventListener('touchstart', onDown);
+      canvas.removeEventListener('touchmove', onMove);
+      canvas.removeEventListener('touchend', onLeave);
+      canvas.removeEventListener('touchcancel', onLeave);
+      canvas.removeEventListener('click', onClick);
       removeTriggers();
       ro.disconnect();
     };
@@ -730,6 +826,10 @@ export default function ParticleText(props) {
           width: '100%',
           height: '100%',
           display: 'block',
+          touchAction: 'none',
+          cursor: 'pointer',
+          userSelect: 'none',
+          WebkitUserSelect: 'none',
         }}
       />
     </div>
