@@ -9,6 +9,18 @@
   user-select: none;
 }
 
+.hero-true-focus {
+  justify-content: flex-start !important;
+  gap: 0.75em !important;
+}
+
+.hero-true-focus .focus-word {
+  font-size: clamp(0.68rem, 0.95vw, 0.88rem) !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.18em !important;
+  font-family: var(--font-display, 'Outfit', sans-serif) !important;
+}
+
 .focus-word {
   position: relative;
   font-size: clamp(0.95rem, 2.2vw, 1.85rem);

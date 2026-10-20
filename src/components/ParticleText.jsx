@@ -78,8 +78,22 @@ function resolveDuration(trans) {
   return typeof d === 'number' && d > 0 ? d : 1;
 }
 
+function extractLines(text, linesProp) {
+  if (Array.isArray(linesProp) && linesProp.length > 0) {
+    return linesProp.map((s) => String(s).trim()).filter(Boolean);
+  }
+  if (Array.isArray(text) && text.length > 0) {
+    return text.map((s) => String(s).trim()).filter(Boolean);
+  }
+  if (!text) return ['ELITE', 'STUDIOS'];
+  const parts = String(text).split(/\r?\n|\\n/);
+  const clean = parts.map((s) => s.trim()).filter(Boolean);
+  return clean.length > 0 ? clean : ['ELITE', 'STUDIOS'];
+}
+
 const COMPONENT_DEFAULTS = {
-  text: 'ELITE STUDIOS',
+  text: 'ELITE\nSTUDIOS',
+  lines: ['ELITE', 'STUDIOS'],
   colors: ['#393E41'],
   mode: 'onEnter',
   replay: true,
@@ -91,6 +105,8 @@ const COMPONENT_DEFAULTS = {
   mouseForce: 30,
   fontSize: 100,
   autoFit: true,
+  align: 'left',
+  lineHeight: 0.84,
   transition: { type: 'tween', duration: 1.2, ease: 'easeOut' },
 };
 
@@ -98,6 +114,7 @@ export default function ParticleText(props) {
   props = { ...COMPONENT_DEFAULTS, ...props };
   const {
     text,
+    lines: linesProp,
     colors,
     mode,
     replay,
@@ -109,6 +126,8 @@ export default function ParticleText(props) {
     mouseForce,
     fontSize,
     autoFit,
+    align,
+    lineHeight,
     transition,
     style,
   } = props;
@@ -129,6 +148,7 @@ export default function ParticleText(props) {
     renderTarget === RenderTarget.export ||
     renderTarget === RenderTarget.thumbnail;
 
+  const linesKey = JSON.stringify(extractLines(text, linesProp));
   const colorsKey = Array.isArray(colors) ? colors.join('|') : '';
   const transitionKey = JSON.stringify(transition ?? {});
 
@@ -174,32 +194,35 @@ export default function ParticleText(props) {
 
     const fitFontSize = (
       measureCtx,
-      label,
+      lines,
       family,
       maxW,
       maxH,
       cap
     ) => {
-      if (!label) return cap;
-      let lo = 8;
+      if (!lines || lines.length === 0) return cap;
+      let lo = 12;
       let hi = cap;
       let best = lo;
-      for (let iter = 0; iter < 12; iter++) {
+      const lh = typeof lineHeight === 'number' ? lineHeight : 0.84;
+      for (let iter = 0; iter < 16; iter++) {
         const mid = (lo + hi) / 2;
-        measureCtx.font = `700 ${mid}px ${family}`;
-        const m = measureCtx.measureText(label);
-        const w = m.width;
-        const h =
-          (m.actualBoundingBoxAscent || mid * 0.8) +
-          (m.actualBoundingBoxDescent || mid * 0.2);
-        if (w <= maxW && h <= maxH) {
+        measureCtx.font = `900 ${mid}px ${family}`;
+        let widest = 0;
+        for (const line of lines) {
+          const w = measureCtx.measureText(line).width;
+          if (w > widest) widest = w;
+        }
+        const lineH = mid * lh;
+        const totalH = mid * 0.85 + (lines.length - 1) * lineH;
+        if (widest <= maxW && totalH <= maxH) {
           best = mid;
           lo = mid;
         } else {
           hi = mid;
         }
       }
-      return Math.max(8, Math.floor(best));
+      return Math.max(12, Math.floor(best));
     };
 
     const sampleText = () => {
@@ -215,37 +238,49 @@ export default function ParticleText(props) {
       offCtx.scale(dpr, dpr);
 
       const fontFamily =
-        'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
+        '"Outfit", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
 
-      const maxW = W * 0.96;
+      const lines = extractLines(text, linesProp);
+
+      const maxW = W * 0.99;
       const maxH = H * 0.96;
-      let effectiveSize = Math.max(8, fontSize);
+      let effectiveSize = Math.max(12, fontSize);
       if (autoFit) {
         effectiveSize = fitFontSize(
           offCtx,
-          text || '',
+          lines,
           fontFamily,
           maxW,
           maxH,
-          Math.max(8, fontSize)
+          Math.max(12, fontSize)
         );
       }
 
-      offCtx.font = `700 ${effectiveSize}px ${fontFamily}`;
-      const gm = offCtx.measureText(text || '');
-      const gW = gm.width || 1;
-      const gH =
-        (gm.actualBoundingBoxAscent || effectiveSize * 0.8) +
-        (gm.actualBoundingBoxDescent || effectiveSize * 0.2);
-      const fitScale = Math.min(1, maxW / gW, maxH / gH);
-      if (fitScale < 1) effectiveSize = Math.max(8, effectiveSize * fitScale);
+      offCtx.font = `900 ${effectiveSize}px ${fontFamily}`;
+      let widest = 0;
+      for (const line of lines) {
+        const w = offCtx.measureText(line).width;
+        if (w > widest) widest = w;
+      }
+      const lh = typeof lineHeight === 'number' ? lineHeight : 0.84;
+      const lineStep = effectiveSize * lh;
+      const totalH = effectiveSize * 0.85 + (lines.length - 1) * lineStep;
+      const fitScale = Math.min(1, maxW / (widest || 1), maxH / (totalH || 1));
+      if (fitScale < 1) effectiveSize = Math.max(12, effectiveSize * fitScale);
 
+      const isAlignLeft = align === 'left';
       offCtx.clearRect(0, 0, W, H);
       offCtx.fillStyle = '#fff';
-      offCtx.font = `700 ${effectiveSize}px ${fontFamily}`;
-      offCtx.textAlign = 'center';
-      offCtx.textBaseline = 'middle';
-      offCtx.fillText(text || '', W / 2, H / 2);
+      offCtx.font = `900 ${effectiveSize}px ${fontFamily}`;
+      offCtx.textAlign = isAlignLeft ? 'left' : 'center';
+      offCtx.textBaseline = 'top';
+
+      const totalBlockH = (lines.length - 1) * lineStep + effectiveSize * 0.85;
+      const startY = Math.max(0, (H - totalBlockH) / 2);
+      const startX = isAlignLeft ? 2 : W / 2;
+      lines.forEach((line, idx) => {
+        offCtx.fillText(line, startX, startY + idx * lineStep);
+      });
 
       const img = offCtx.getImageData(
         0,
@@ -656,11 +691,13 @@ export default function ParticleText(props) {
       ro.disconnect();
     };
   }, [
+    linesKey,
+    colorsKey,
+    align,
+    lineHeight,
     mode,
     replay,
     position,
-    text,
-    colorsKey,
     particleSize,
     particleCount,
     mcEnabled,
