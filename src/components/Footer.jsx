@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import footerLogo from '../assets/ELITE STUDIOS.png';
+import footerLogo from '../assets/ELITE STUDIOS white.png';
 import TextLoop from './TextLoop';
 
 export default function Footer() {
